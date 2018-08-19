@@ -1,0 +1,3 @@
+here are files that are display charts and analytics
+
+can be shared by some pagges and copmonents

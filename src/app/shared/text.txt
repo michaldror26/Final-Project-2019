@@ -1,0 +1,3 @@
+here are files that are meant to be shared within more than one component
+
+like product-list ect.

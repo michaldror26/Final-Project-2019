@@ -1,0 +1,3 @@
+here are files that are meant to be regularly at the site
+
+like nav, footer, login ect.
