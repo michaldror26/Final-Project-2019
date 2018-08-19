@@ -1,3 +1,15 @@
+                 Schedule tasks
+        ________________________________
+
 1. admin only to fulfill our customer's basic requirements
 2. authorizations and privacy to close the "must do" things
-3. if time rest
+3. if time rest customer account
+4. BI - from files to db
+5. BI - filters on db for analytics
+6. BI - CHARTS on angular 
+7.fix buggers all over the project - client and server
+8. employee account in angular
+9. fix buggers all over
+10. create demo
+11. create real site with domain
+12. take privious data from admin's company and store it in DB
