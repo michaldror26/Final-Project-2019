@@ -69,7 +69,8 @@ import {EntitiesManagmentComponent} from './entities-managment.component';
     CustomerViewComponent,
     CustomerDeleteComponent,
     CustomerEditComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    EntitiesManagmentComponent
   ],
   exports: [EntitiesManagmentComponent]
 })
