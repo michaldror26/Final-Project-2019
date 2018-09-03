@@ -1,0 +1,15 @@
+footer {
+  background-color: orange;
+  direction: rtl;
+  position: sticky;
+  bottom: 0px;
+  width: 100%;
+
+  .logo-font {
+    text-align: right;
+  }
+
+  .attribution {
+    text-align: left;
+  }
+}

@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [BreadcrumbComponent],
+  exports: [BreadcrumbComponent]
 })
-export class SharedModule { }
+export class SharedModule {
+}

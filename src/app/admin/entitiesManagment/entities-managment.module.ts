@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 
-import {FeedListComponent} from '../../shared/feed/feed-list/feed-list.component';
-import {AdDirective} from '../../shared/feed/directives/ad.directive';
+// import {FeedListComponent} from '../../shared/feed/feed-list/feed-list.component';
+// import {AdDirective} from '../../shared/feed/directives/ad.directive';
 
 import {UserComponent} from './user/user.component';
 
@@ -42,8 +42,8 @@ import {EntitiesManagmentComponent} from './entities-managment.component';
     CommonModule
   ],
   declarations: [
-    AdDirective,
-    FeedListComponent,
+   // AdDirective,
+  //  FeedListComponent,
     UserComponent,
     EmployeeComponent,
     ProductComponent,
