@@ -12,10 +12,10 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule'
   },
-  {
-    path: 'customer',
-    loadChildren: './customer/customer.module#CustomerModule'
-  },
+  // {
+  //   path: 'customer',
+  //   loadChildren: './customer/customer.module#CustomerModule'
+  // },
   {
     path: 'employee',
     loadChildren: './employee/employee.module#EmployeeModule'

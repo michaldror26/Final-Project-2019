@@ -1,6 +1,7 @@
 // Modules - angularCore
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Modules - ourCustom
 import {EntitiesManagmentModule} from './admin/entitiesManagment/entities-managment.module';
@@ -9,7 +10,6 @@ import {EmployeeModule} from './employee/employee.module';
 import {HomeModule} from './home/home.module';
 import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AppRoutingModule} from './app-routing.module';
-
 // Components
 import {AppComponent} from './app.component';
 
@@ -19,6 +19,7 @@ import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer
 @NgModule({
   imports: [
     BrowserModule,
+    NgbModule,
     HomeModule,
     AdminRoutingModule,
     SharedModule,
