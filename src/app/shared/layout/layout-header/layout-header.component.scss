@@ -1,0 +1,45 @@
+.header-wrapper {
+  width: 100%;
+  background-color: #263345;
+  header {
+    .header-container-wrapper {
+      position: relative;
+      border-bottom: 1px solid #e8e8e8;
+      background: #ffffff;
+      width: 100%;
+      z-index: 999;
+      -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .04);
+      -moz-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .04);
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .04);
+      text-align: center;
+
+
+
+    }
+  }
+}
+
+.direction {
+  flex-flow: row-reverse !important;
+}
+
+.sign-in {
+  text-decoration: none;
+  padding: 6px 14px;
+  font-weight: 600;
+  border: 1px solid #999;
+  background: transparent;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  //-webkit-transition: color .3s ease-out, background .3s ease-out, border .3s ease-out;
+  //-moz-transition: color .3s ease-out, background .3s ease-out, border .3s ease-out;
+  //-ms-transition: color .3s ease-out, background .3s ease-out, border .3s ease-out;
+  //-o-transition: color .3s ease-out, background .3s ease-out, border .3s ease-out;
+  //transition: color .3s ease-out, background .3s ease-out, border .3s ease-out;
+
+  &:hover {
+    border-color: #666;
+    background: #999;
+    color: #fff;
+  }
+}
