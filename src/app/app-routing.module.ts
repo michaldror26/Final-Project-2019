@@ -9,6 +9,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    loadChildren: './auth/auth2.module#Auth2Module'
+  },
+  {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule'
   },

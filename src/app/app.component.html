@@ -1,8 +1,9 @@
 <div id="headPage"></div>
-<div class="app-back-img" >
-<app-layout-header></app-layout-header>
-
-<router-outlet></router-outlet>
-
-<app-layout-footer></app-layout-footer>
+<!--TODO supposed to get imageUrl depending on Sales-Season in setting-->
+<div class="app-back-img">
+  <app-layout-header></app-layout-header>
+  <main role="main" dir="rtl" class="text-center">
+    <router-outlet></router-outlet>
+  </main>
+  <app-layout-footer></app-layout-footer>
 </div>

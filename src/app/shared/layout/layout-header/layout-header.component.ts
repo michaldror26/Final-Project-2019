@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-layout-header',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutHeaderComponent implements OnInit {
 
-  constructor() { }
+  loginPage: boolean = false;
+
+  constructor() {
+    // TODO not correct question
+    this.loginPage = window.location.href.endsWith('login');
+  }
 
   ngOnInit() {
+
   }
 
 }

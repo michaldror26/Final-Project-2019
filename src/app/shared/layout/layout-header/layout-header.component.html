@@ -9,8 +9,9 @@
       <!--<span class="navbar-toggler-icon"></span>-->
       <!--</button>-->
 
-      <div id="navbarsExample03">
+      <div id="navbarsExample03" role="navigation">
         <ul class="navbar-nav flex-row-reverse">
+          <!--TODO supposed to get aaray of routes depending on auth-->
           <li class="nav-item"><a class="p-2 text-primary font-weight-400 nav-link" routerLink="/about">אודות</a></li>
           <li class="nav-item"><a class="p-2 text-primary font-weight-400 nav-link" routerLink="/products">מוצרים</a></li>
           <li class="nav-item"><a class="p-2 text-primary font-weight-400 nav-link" routerLink="/contact">צור קשר</a></li>
@@ -21,7 +22,8 @@
         </ul>
       </div>
     </nav>
+    <!--TODO supposed to get boolean-var if login/logout/nothing-on login page-->
 
-    <a class="btn btn-outline-primary background-color" routerLink="/login">התחבר</a>
+    <a class="btn btn-outline-primary background-color" *ngIf="!loginPage" routerLink="/login">התחבר</a>
   </div>
 </header>
