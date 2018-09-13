@@ -8,10 +8,10 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomeModule',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    redirectTo:''
-  },
+  // {
+  //   path: 'home',
+  //   redirectTo:''
+  // },
   {
     path: 'login',
     loadChildren: './auth/auth2.module#Auth2Module'

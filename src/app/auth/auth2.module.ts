@@ -8,8 +8,6 @@ import {Auth2RoutingModule} from "./auth2-routing.module";
     CommonModule,
     Auth2RoutingModule
   ],
-  declarations: [
-    AuthComponent
-  ]
+  declarations: [AuthComponent]
 })
 export class Auth2Module { }

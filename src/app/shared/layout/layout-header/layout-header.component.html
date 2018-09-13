@@ -19,14 +19,14 @@
                  [routerLink]="route.component">{{route.name}}</a>
             </li>
 
-            <li *ngIf="route.children.length!==0" class="nav-item dropdown show">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+            <li *ngIf="route.children.length!==0" class="nav-item dropdown show dropleft" style="display: inline-block">
+              <a class="nav-link dropdown-toggle font-weight-400" href="#" id="navbarDropdownMenuLink"
                  data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                 {{route.name}}
               </a>
-              <div class="dropdown-menu dropdown-style" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item direction-a-dropdown" *ngFor="let child of route.children" [routerLink]="child.component">{{child.name}}</a>
+              <div class="dropdown-menu mt-2" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item " *ngFor="let child of route.children" [routerLink]="child.component">{{child.name}}</a>
               </div>
             </li>
           </ng-container>

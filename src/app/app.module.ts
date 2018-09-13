@@ -8,8 +8,8 @@ import {EntitiesManagmentModule} from './admin/entitiesManagment/entities-managm
 import {SharedModule} from './shared/shared.module';
 import {EmployeeModule} from './employee/employee.module';
 import {HomeModule} from './home/home.module';
-import {AdminRoutingModule} from './admin/admin-routing.module';
-import {Auth2Module} from "./auth/auth2.module";
+import {AdminModule} from './admin/admin.module';
+import {Auth2Module} from './auth/auth2.module';
 import {AppRoutingModule} from './app-routing.module';
 // Components
 import {AppComponent} from './app.component';
@@ -22,13 +22,13 @@ import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer
   imports: [
     BrowserModule,
     // NgbModule,
-   // GoTopButtonModule, to install
+    // GoTopButtonModule, to install
     HomeModule,
-    AdminRoutingModule,
     SharedModule,
     EmployeeModule,
     EntitiesManagmentModule,
     Auth2Module,
+    AdminModule,
     AppRoutingModule
   ],
   declarations: [
