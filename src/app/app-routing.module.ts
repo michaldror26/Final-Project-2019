@@ -9,6 +9,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'home',
+    redirectTo:''
+  },
+  {
     path: 'login',
     loadChildren: './auth/auth2.module#Auth2Module'
   },
@@ -26,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: ''
   }
 
 ];

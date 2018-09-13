@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     //component:  ,
-    redirectTo: '',
+    redirectTo: 'home',
     pathMatch: 'full'
     //canActivate: [AuthGuard]
   }

@@ -1,6 +1,7 @@
 <header>
   <div
-    class="d-flex flex-column flex-md-row-reverse align-items-center p-3 px-md-4 border-bottom shadow-sm"><!--bg-white-->
+    class="d-flex flex-column flex-md-row-reverse align-items-center p-3 px-md-4 border-bottom shadow-sm">
+    <!--bg-white-->
     <h5 class="my-0 ml-md-auto font-weight-normal"><a class="nav-link" routerLink="/">שם החברה</a></h5>
     <nav class="my-2 my-md-0 ml-md-3 navbar-expand-sm">
 
@@ -11,19 +12,29 @@
 
       <div id="navbarsExample03" role="navigation">
         <ul class="navbar-nav flex-row-reverse">
-          <!--TODO supposed to get aaray of routes depending on auth-->
-          <li class="nav-item"><a class="p-2 text-primary font-weight-400 nav-link" routerLink="/about">אודות</a></li>
-          <li class="nav-item"><a class="p-2 text-primary font-weight-400 nav-link" routerLink="/products">מוצרים</a></li>
-          <li class="nav-item"><a class="p-2 text-primary font-weight-400 nav-link" routerLink="/contact">צור קשר</a></li>
-          <li class="nav-item"><a class="p-2 text-primary font-weight-400 nav-link" routerLink="/cart">
-            <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"/></svg>-->
-            עגלה
-          </a></li>
+          <!--TODO supposed to get array of routes depending on auth-->
+          <ng-container *ngFor="let route of routes">
+            <li class="nav-item" *ngIf="route.children.length===0">
+              <a class="p-2 text-primary font-weight-400 nav-link"
+                 [routerLink]="route.component">{{route.name}}</a>
+            </li>
+
+            <li *ngIf="route.children.length!==0" class="nav-item dropdown show">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                 data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                {{route.name}}
+              </a>
+              <div class="dropdown-menu dropdown-style" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" *ngFor="let child of route.children" [routerLink]="child.component">{{child.name}}</a>
+              </div>
+            </li>
+          </ng-container>
         </ul>
       </div>
     </nav>
-    <!--TODO supposed to get boolean-var if login/logout/nothing-on login page-->
 
+    <!--TODO supposed to get boolean-var if login/logout/nothing-on login page-->
     <a class="btn btn-outline-primary background-color" *ngIf="!loginPage" routerLink="/login">התחבר</a>
   </div>
 </header>
