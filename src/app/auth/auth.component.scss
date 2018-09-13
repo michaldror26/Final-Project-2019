@@ -6,8 +6,50 @@
 }
 
 .form-control:focus {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0.2rem rgba(72, 72, 67, 0.25);
+  //border: 1px solid #ced4da !important;
+  //box-shadow: 0 0 0 0.2rem rgba(72, 72, 67, 0.25);
+}
+.bounce {
+    -webkit-animation: bounce 2s;
+    animation: bounce 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
 }
 
+@-webkit-keyframes bounce {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-20px) rotate(90deg);
+    transform: translateY(-20px) rotate(90deg);
+  }
+  60% {
+    -webkit-transform: translateY(-12px) rotate(90deg);
+    transform: translateY(-12px) rotate(90deg);
+  }
+}
 
+@keyframes bounce {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    -webkit-transform: translateY(0) rotate(90deg);
+    transform: translateY(0) rotate(90deg);
+  }
+  40% {
+    -webkit-transform: translateY(-20px) rotate(90deg);
+    transform: translateY(-20px) rotate(90deg);
+  }
+  60% {
+    -webkit-transform: translateY(-12px) rotate(90deg);
+    transform: translateY(-12px) rotate(90deg);
+  }
+}
