@@ -26,7 +26,7 @@
                 {{route.name}}
               </a>
               <div class="dropdown-menu dropdown-style" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" *ngFor="let child of route.children" [routerLink]="child.component">{{child.name}}</a>
+                <a class="dropdown-item direction-a-dropdown" *ngFor="let child of route.children" [routerLink]="child.component">{{child.name}}</a>
               </div>
             </li>
           </ng-container>
