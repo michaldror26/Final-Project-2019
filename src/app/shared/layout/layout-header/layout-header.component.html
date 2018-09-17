@@ -3,7 +3,7 @@
     class="d-flex flex-column flex-md-row-reverse align-items-center p-3 px-md-4 border-bottom shadow-sm">
     <!--bg-white-->
     <h5 class="my-0 ml-md-auto font-weight-normal text-right"><a class="nav-link" routerLink="/">שם החברה</a></h5>
-    <nav class="d-md-table my-2 my-md-0 ml-md-3 navbar-expand-sm">
+    <nav class="d-md-table my-2 my-md-0 navbar-expand-sm">
 
       <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"-->
       <!--aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">-->
@@ -11,22 +11,22 @@
       <!--</button>-->
 
       <div id="navbarsExample03" role="navigation">
-        <ul class="navbar-nav flex-row-reverse">
+        <ul class="navbar-nav flex-row-reverse" *ngIf="routes">
           <!--TODO supposed to get array of routes depending on auth-->
           <ng-container *ngFor="let route of routes">
             <li class="nav-item" *ngIf="route.children.length===0">
               <a class="p-2 text-primary font-weight-400 nav-link text-right"
-                 [routerLink]="route.component">{{route.name}}</a>
+                 [routerLink]="route.path">{{route.data[0]}}</a>
             </li>
 
             <li *ngIf="route.children.length!==0" class="nav-item dropdown show dropleft text-right">
               <a class="p-2 nav-link dropdown-toggle font-weight-400  text-right" href="#" id="navbarDropdownMenuLink"
                  data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
-                {{route.name}}
+                {{route.data[0]}}
               </a>
               <div class="dropdown-menu mt-2" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item text-right" *ngFor="let child of route.children" [routerLink]="child.component">{{child.name}}</a>
+                <a class="dropdown-item text-right" *ngFor="let child of route.children" [routerLink]="child.path">{{child.data[0]}}</a>
               </div>
             </li>
           </ng-container>
@@ -35,6 +35,6 @@
     </nav>
 
     <!--TODO supposed to get boolean-var if login/logout/nothing-on login page-->
-    <a class="btn btn-outline-primary background-color" *ngIf="!loginPage" routerLink="/login">התחבר</a>
+    <a class="btn btn-outline-primary mr-md-3 background-color" *ngIf="!loginPage" routerLink="/login">התחבר</a>
   </div>
 </header>

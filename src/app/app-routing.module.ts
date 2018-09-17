@@ -15,23 +15,41 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: './auth/auth2.module#Auth2Module'
-  },
-  {
+  }
+// ,{
+  //   path: 'chart',
+  //   loadChildren: ''
+  // },
+  // {
+  //   path: 'products',
+  //   loadChildren: ''
+  // },
+  // {
+  //   path: 'contact',
+  //   loadChildren: './shared/contact.module#ContactModule'
+  // },
+  // {
+  //   path: 'about',
+  //   loadChildren: './shared/about.module#AboutModule'
+  // },
+
+  // {
+  //   path: '**',
+  //   redirectTo: ''
+  // }
+  , {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule'
-  },
+  }
+  //,
   // {
   //   path: 'customer',
   //   loadChildren: './customer/customer.module#CustomerModule'
   // },
-  {
-    path: 'employee',
-    loadChildren: './employee/employee.module#EmployeeModule'
-  },
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  // {
+  //   path: 'employee',
+  //   loadChildren: './employee/employee.module#EmployeeModule'
+  // }
 
 ];
 

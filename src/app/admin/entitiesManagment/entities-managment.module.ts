@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 
-// import {FeedListComponent} from '../../shared/feed/feed-list/feed-list.component';
-// import {AdDirective} from '../../shared/feed/directives/ad.directive';
+// import {FeedListComponent} from '../../shared/feeds/feeds-list/feeds-list.component';
+// import {AdDirective} from '../../shared/feeds/directives/ad.directive';
 
 import {UserComponent} from './user/user.component';
 
@@ -36,10 +36,12 @@ import {CustomerEditComponent} from './customer/customer-edit/customer-edit.comp
 import {CustomerCreateComponent} from './customer/customer-create/customer-create.component';
 
 import {EntitiesManagmentComponent} from './entities-managment.component';
+import {EntityManagmentRoutingModule} from "./entity-managment-routing.module";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    EntityManagmentRoutingModule
   ],
   declarations: [
    // AdDirective,
@@ -72,7 +74,7 @@ import {EntitiesManagmentComponent} from './entities-managment.component';
     CustomerCreateComponent,
     EntitiesManagmentComponent
   ],
-  exports: [EntitiesManagmentComponent]
+  exports: []
 })
 export class EntitiesManagmentModule {
 }

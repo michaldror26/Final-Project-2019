@@ -25,7 +25,7 @@ import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer
     HomeModule,
     SharedModule,
     EmployeeModule,
-    EntitiesManagmentModule,
+    // EntitiesManagmentModule,
     Auth2Module,
     AdminModule,
     AppRoutingModule
