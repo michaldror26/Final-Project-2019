@@ -10,4 +10,11 @@ main {
   height: 100%;
   width: 100%;
   //min-height:600px;
+ // background-color: rgba(217, 213, 210, 0.89);
+}
+@media (min-height: 950px) {
+  main {
+    padding-bottom: 2.5rem;
+    padding-top: 2.5rem;
+  }
 }

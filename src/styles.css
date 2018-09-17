@@ -7,3 +7,6 @@ body {
   /*background: url(http://www.dirshu.co.il/wp-content/uploads/thumbs/ETROG-32e6njn2czvd93ikknuc5c.jpg) no-repeat center center fixed;*/
   /*background-size: cover;*/
 }
+p ,h2{
+  color: grey !important;
+}

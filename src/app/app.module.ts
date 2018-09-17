@@ -17,7 +17,6 @@ import {AppComponent} from './app.component';
 import {LayoutHeaderComponent} from './shared/layout/layout-header/layout-header.component';
 import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer.component';
 
-
 @NgModule({
   imports: [
     BrowserModule,
