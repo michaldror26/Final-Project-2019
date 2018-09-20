@@ -2,13 +2,14 @@
   <div
     class="d-flex flex-column flex-md-row-reverse align-items-center p-3 px-md-4 border-bottom shadow-sm">
     <!--bg-white-->
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"-->
+    <!--aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
     <h5 class="my-0 ml-md-auto font-weight-normal text-right"><a class="nav-link" routerLink="/">שם החברה</a></h5>
     <nav class="d-md-table my-2 my-md-0 navbar-expand-sm">
 
-      <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"-->
-      <!--aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">-->
-      <!--<span class="navbar-toggler-icon"></span>-->
-      <!--</button>-->
+
 
       <div id="navbarsExample03" role="navigation">
         <ul class="navbar-nav flex-row-reverse" *ngIf="routes">
@@ -19,7 +20,8 @@
                  [routerLink]="route.path">{{route.data[0]}}</a>
             </li>
 
-            <li *ngIf="route.children.length!==0" class="nav-item dropdown show dropleft text-right">
+            <li *ngIf="route.children.length!==0" class="nav-item dropdown show dropdown text-right"
+                style="direction: rtl">
               <a class="p-2 nav-link dropdown-toggle font-weight-400  text-right" href="#" id="navbarDropdownMenuLink"
                  data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">

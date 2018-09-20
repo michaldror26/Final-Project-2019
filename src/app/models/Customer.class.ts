@@ -7,7 +7,8 @@ export class Customer extends User {
   public discountPercentage: number;
 
 //Create SiteUser & User at once
-  constructor(discountPercentage: number,
+  constructor(id:number,
+    discountPercentage: number,
               firstName:string,
               lastName: string,
               mobilePhone: string,
@@ -16,6 +17,7 @@ export class Customer extends User {
               telephone?: string) {
 
     super(firstName, lastName, mobilePhone, city, email, telephone);
+    this.id=id;
     this.discountPercentage=discountPercentage;
     this.customerJoiningDate = new Date();
   }

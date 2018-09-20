@@ -10,10 +10,13 @@ import {CustomerComponent} from "./customer/customer.component";
 
 
 const routes: Routes = [
-  {path: 'customers',component:CustomerComponent, data: ['לקוחות']},
-  {path: 'providers',component:ProviderComponent, data: ['ספקים']},
-  {path: 'employees',component:EmployeeComponent, data: ['עובדים']},
-  {path: 'products',component:ProductComponent, data: ['מוצרים']}
+  {
+    path: 'customers', component: CustomerComponent, data: ['לקוחות'],
+    loadChildren:'./customer/customer.module#CustomerModule'
+  },
+  {path: 'providers', component: ProviderComponent, data: ['ספקים']},
+  {path: 'employees', component: EmployeeComponent, data: ['עובדים']},
+  {path: 'products', component: ProductComponent, data: ['מוצרים']}
 ];
 
 

@@ -38,11 +38,11 @@ export class LayoutHeaderComponent implements OnInit {
     },
     {path: '/',data:['תקבול'], children: []},
     {
-      path: '',data:['בסיס נתונים'], children: [
-      {path: '/admin/customers',data:['לקוחות']},
-      {path: '/admin/providers',data:['ספקים']},
-      {path: '/admin/employees',data:['עובדים']},
-      {path: '/admin/products',data:['מוצרים']}
+      path: '/entity-managment',data:['בסיס נתונים'], children: [
+      {path: '/admin/entity-managment/customers',data:['לקוחות']},
+      {path: '/admin/entity-managment/providers',data:['ספקים']},
+      {path: '/admin/entity-managment/employees',data:['עובדים']},
+      {path: '/admin/entity-managment/products',data:['מוצרים']}
     ]
     },
     {
@@ -62,7 +62,7 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.routes=this.routesOfAdmin;
+   this.routes=this.routesOfAdmin;
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

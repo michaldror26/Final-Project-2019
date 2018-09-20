@@ -1,3 +1,30 @@
-<p>
-  customer works!
-</p>
+<div
+  class="d-flex flex-column flex-md-row-reverse align-items-center p-3 px-md-4 border-bottom shadow-sm">
+  <!--bg-white-->
+  <nav class="d-md-table my-2 my-md-0 navbar-expand-sm">
+    <div role="navigation">
+      <ul class="navbar-nav flex-row-reverse" *ngIf="routes">
+        <!--TODO supposed to get array of routes depending on auth-->
+        <ng-container *ngFor="let route of routes">
+          <li class="nav-item" *ngIf="route.data.atNavBar">
+            <a class="p-2 text-primary font-weight-400 nav-link text-right"
+               [routerLink]="route.path">{{route.data.name}}</a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+</div>
+<router-outlet></router-outlet>
+
+<!--<nav aria-label="weather navigation links" class="mat-primary mat-tab-nav-bar" md-tab-nav-bar="">-->
+  <!--<div class="mat-tab-links">-->
+    <!--<ng-container *ngFor="let route of routes; let i = index">-->
+
+      <!--<a *ngIf="route.data.atNavBar" [routerLink]="route.path"-->
+         <!--class="mat-tab-link" md-tab-link="" href="/catalog/list" aria-disabled="false"-->
+         <!--tabindex="0">{{route.data.name}}</a>-->
+    <!--</ng-container>-->
+    <!--<hr class="mat-ink-bar" style="visibility: visible; left: 590px; width: 160px;">-->
+  <!--</div>-->
+<!--</nav>-->

@@ -11,7 +11,6 @@ import {EmployeeComponent} from './employee/employee.component';
 import {ProductComponent} from './product/product.component';
 import {CategoryComponent} from './category/category.component';
 import {ProviderComponent} from './provider/provider.component';
-import {CustomerComponent} from './customer/customer.component';
 
 import {CategoryViewComponent} from './category/category-view/category-view.component';
 import {CategoryEditComponent} from './category/category-edit/category-edit.component';
@@ -30,18 +29,15 @@ import {ProviderEditComponent} from './provider/provider-edit/provider-edit.comp
 import {ProviderDeleteComponent} from './provider/provider-delete/provider-delete.component';
 import {ProviderCreateComponent} from './provider/provider-create/provider-create.component';
 
-import {CustomerViewComponent} from './customer/customer-view/customer-view.component';
-import {CustomerDeleteComponent} from './customer/customer-delete/customer-delete.component';
-import {CustomerEditComponent} from './customer/customer-edit/customer-edit.component';
-import {CustomerCreateComponent} from './customer/customer-create/customer-create.component';
-
 import {EntitiesManagmentComponent} from './entities-managment.component';
 import {EntityManagmentRoutingModule} from "./entity-managment-routing.module";
+import {CustomerModule} from "./customer/customer.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    EntityManagmentRoutingModule
+    EntityManagmentRoutingModule,
+    CustomerModule
   ],
   declarations: [
    // AdDirective,
@@ -67,11 +63,6 @@ import {EntityManagmentRoutingModule} from "./entity-managment-routing.module";
     ProviderEditComponent,
     ProviderDeleteComponent,
     ProviderCreateComponent,
-    CustomerComponent,
-    CustomerViewComponent,
-    CustomerDeleteComponent,
-    CustomerEditComponent,
-    CustomerCreateComponent,
     EntitiesManagmentComponent
   ],
   exports: []

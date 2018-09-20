@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
+import {EntitiesManagmentComponent} from "./entitiesManagment/entities-managment.component";
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
       // },
       // {path: '/', data: ['תקבול'], children: []},
       {
-        path: 'entity-managment', data: ['בסיס נתונים'],
+        path: 'entity-managment',component:EntitiesManagmentComponent, data: ['בסיס נתונים'],
         loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'
       }
       ,
