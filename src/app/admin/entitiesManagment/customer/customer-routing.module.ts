@@ -6,9 +6,11 @@ import {CustomerViewComponent} from "./customer-view/customer-view.component";
 import {CustomerEditComponent} from "./customer-edit/customer-edit.component";
 import {CustomerCreateComponent} from "./customer-create/customer-create.component";
 import {CustomerDeleteComponent} from "./customer-delete/customer-delete.component";
+import {CustomerService} from "./customer.service";
 
 
  const routes: Routes = [
+  {path: '', component: CustomerViewComponent, data: {name: 'לקוחות', atNavBar: false}},
   {path: 'view', component: CustomerViewComponent, data: {name: 'לקוחות', atNavBar: true}},
   {path: 'edit/:id', component: CustomerEditComponent, data: {name: 'עריכה מחדש', atNavBar: true}},
   {path: 'create', component: CustomerCreateComponent, data: {name: 'לקוח חדש', atNavBar: true}},
@@ -20,7 +22,9 @@ import {CustomerDeleteComponent} from "./customer-delete/customer-delete.compone
   imports: [
     CommonModule,
     RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[CustomerService]
+
 })
 export class CustomerRoutingModule {
 }

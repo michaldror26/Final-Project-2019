@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Customer} from "../../../../models/Customer.class";
+import {CustomerService} from "../customer.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-customer-view',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerViewComponent implements OnInit {
 
-  constructor() { }
+  customersList: Customer[] = [];
+
+  constructor(public _customrService: CustomerService,
+              public router: Router,
+              public rout: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.customersList = this._customrService.getCustomers()
+  }
+
+  goEdit() {
+    this.router.navigate(['/edit'], {relativeTo: this.rout});
   }
 
 }

@@ -28,44 +28,10 @@ export class CustomerComponent implements OnInit {
     },
   ];
 
-  cusArr: Customer[] = [
-    {
-      id: 1,
-      discountPercentage: 98,
-      firstName: "miryam",
-      lastName: "trabelsi",
-      mobilePhone: "0587896541",
-      city: "bney brak",
-      email: "miryam@gmail.com",
-      telephone: "097496761",
-      customerJoiningDate: new Date(),
-    },
-    {
-      id: 2,
-      discountPercentage: 98,
-      firstName: "sara",
-      lastName: "trabelsi",
-      mobilePhone: "0587896541",
-      city: "bney brak",
-      email: "sara555@gmail.com",
-      telephone: "097496761",
-      customerJoiningDate: new Date(),
-    },
-    {
-      id: 3,
-      discountPercentage: 98,
-      firstName: "dafna",
-      lastName: "trabelsi",
-      mobilePhone: "0587896541",
-      city: "bney brak",
-      email: "dafnat555@gmail.com",
-      telephone: "097496761",
-      customerJoiningDate: new Date(),
-    },
-
-  ];
 
   activeLinkIndex=0;
+
+
   constructor() {
   }
 
