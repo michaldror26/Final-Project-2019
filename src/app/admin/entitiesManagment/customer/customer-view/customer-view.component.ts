@@ -22,7 +22,7 @@ export class CustomerViewComponent implements OnInit {
   }
 
   goEdit() {
-    this.router.navigate(['/edit'], {relativeTo: this.rout});
+    this.router.navigate(['../edit',1], {relativeTo: this.rout});
   }
 
 }
