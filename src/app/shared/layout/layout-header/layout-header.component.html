@@ -1,42 +1,76 @@
-<header>
-  <div
-    class="d-flex flex-column flex-md-row-reverse align-items-center p-3 px-md-4 border-bottom shadow-sm">
-    <!--bg-white-->
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"-->
-    <!--aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--<span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
-    <h5 class="my-0 ml-md-auto font-weight-normal text-right"><a class="nav-link" routerLink="/">שם החברה</a></h5>
-    <nav class="d-md-table my-2 my-md-0 navbar-expand-sm">
+<!--https://bootsnipp.com/snippets/featured/multi-level-navbar-menu-->
 
 
+<div class="navbar navbar-expand-lg navbar-dark bg-dark" dir="rtl"  role="navigation">
+  <a class="navbar-brand" routerLink="/">שם החברה</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" #navbarCollapse
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto" *ngIf="routes" dir="rtl" >
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">בית<span class="sr-only">(current)</span></a>
+      </li>
+      <ng-container *ngFor="let route of routes">
+        <li class="nav-item" *ngIf="route.children.length===0">
+          <a class="nav-link" [routerLink]="route.path" (click)="navbarCollapse.click()">{{route.data[0]}}</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="route.children.length!==0">
+          <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">{{route.data[0]}}</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown1" >
+            <li *ngFor="let child of route.children" class="dropdown-item" ><a [routerLink]="child.path" class="d-block" (click)="navbarCollapse.click()">{{child.data[0]}}</a></li>
+          </ul>
+        </li>
 
-      <div id="navbarsExample03" role="navigation">
-        <ul class="navbar-nav flex-row-reverse" *ngIf="routes">
-          <!--TODO supposed to get array of routes depending on auth-->
-          <ng-container *ngFor="let route of routes">
-            <li class="nav-item" *ngIf="route.children.length===0">
-              <a class="p-2 text-primary font-weight-400 nav-link text-right"
-                 [routerLink]="route.path">{{route.data[0]}}</a>
-            </li>
-
-            <li *ngIf="route.children.length!==0" class="nav-item dropdown show dropdown text-right"
-                style="direction: rtl">
-              <a class="p-2 nav-link dropdown-toggle font-weight-400  text-right" href="#" id="navbarDropdownMenuLink"
-                 data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                {{route.data[0]}}
-              </a>
-              <div class="dropdown-menu mt-2" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item text-right" *ngFor="let child of route.children" [routerLink]="child.path">{{child.data[0]}}</a>
-              </div>
-            </li>
-          </ng-container>
-        </ul>
-      </div>
-    </nav>
-
-    <!--TODO supposed to get boolean-var if login/logout/nothing-on login page-->
-    <a class="btn btn-outline-primary mr-md-3 background-color" *ngIf="!loginPage" routerLink="/login">התחבר</a>
+      </ng-container>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <button class="btn btn-outline-primary my-2 my-sm-0 mr-lg-2" type="submit"
+              routerLink="/login" *ngIf="!loginPage" (click)="navbarCollapse.click()">התחבר</button>
+    </form>
   </div>
-</header>
+</div>
+<!--<header>-->
+<!--<div-->
+<!--class="d-flex flex-column flex-md-row-reverse align-items-center p-3 px-md-4 border-bottom shadow-sm">-->
+<!--&lt;!&ndash;bg-white&ndash;&gt;-->
+<!--&lt;!&ndash;<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"&ndash;&gt;-->
+<!--&lt;!&ndash;aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--&lt;!&ndash;<span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;</button>&ndash;&gt;-->
+<!--<h5 class="my-0 ml-md-auto font-weight-normal text-right"><a class="nav-link" routerLink="/">שם החברה</a></h5>-->
+<!--<nav class="d-md-table my-2 my-md-0 navbar-expand-sm">-->
+
+
+<!--<div id="navbarsExample03" role="navigation">-->
+<!--<ul class="navbar-nav flex-row-reverse" *ngIf="routes">-->
+<!--&lt;!&ndash;TODO supposed to get array of routes depending on auth&ndash;&gt;-->
+<!--<ng-container *ngFor="let route of routes">-->
+<!--<li class="nav-item" *ngIf="route.children.length===0">-->
+<!--<a class="p-2 text-primary font-weight-400 nav-link text-right"-->
+<!--[routerLink]="route.path">{{route.data[0]}}</a>-->
+<!--</li>-->
+
+<!--<li *ngIf="route.children.length!==0" class="nav-item dropdown show dropdown text-right"-->
+<!--style="direction: rtl">-->
+<!--<a class="p-2 nav-link dropdown-toggle font-weight-400  text-right" href="#" id="navbarDropdownMenuLink"-->
+<!--data-toggle="dropdown"-->
+<!--aria-haspopup="true" aria-expanded="false">-->
+<!--{{route.data[0]}}-->
+<!--</a>-->
+<!--<div class="dropdown-menu mt-2" aria-labelledby="navbarDropdownMenuLink">-->
+<!--<a class="dropdown-item text-right" *ngFor="let child of route.children"
+[routerLink]="child.path">{{child.data[0]}}</a>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ng-container>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash;TODO supposed to get boolean-var if login/logout/nothing-on login page&ndash;&gt;-->
+<!--<a class="btn btn-outline-primary mr-md-3 background-color" *ngIf="!loginPage" routerLink="/login">התחבר</a>-->
+<!--</div>-->
+<!--</header>-->
