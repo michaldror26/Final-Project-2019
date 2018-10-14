@@ -13,10 +13,10 @@ export class LayoutHeaderComponent implements OnInit {
   // @Input()
   // routes: Routes;
   routes: Routes = [
-    {path: '/about', data: ['אודות'], children: []},
     {path: '/products', data: ['מוצרים'], children: []},
-    {path: '/contact', data: ['צור קשר'], children: []},
-    {path: '/cart', data: ['עגלה'], children: []}
+    {path: '/cart', data: ['עגלה'], children: []},
+    {path: '/about', data: ['אודות'], children: []},
+    {path: '/contact', data: ['צור קשר'], children: []}
   ];
 
   routesOfAdmin = [
