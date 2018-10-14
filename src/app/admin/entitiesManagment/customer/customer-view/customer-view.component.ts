@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-customer-view',
   templateUrl: './customer-view.component.html',
-  styleUrls: ['./customer-view.component.css']
+  styleUrls: ['./customer-view.component.scss']
 })
 export class CustomerViewComponent implements OnInit {
 
@@ -21,8 +21,8 @@ export class CustomerViewComponent implements OnInit {
     this.customersList = this._customrService.getCustomers()
   }
 
-  goEdit() {
-    this.router.navigate(['../edit',1], {relativeTo: this.rout});
-  }
+  // goEdit() {
+  //   this.router.navigate(['../edit',1], {relativeTo: this.rout});
+  // }
 
 }
