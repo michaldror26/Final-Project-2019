@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CustomerService} from "../customer.service";
+import {Customer} from "../../../../models/Customer.class";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-customer-edit',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerEditComponent implements OnInit {
 
-  constructor() { }
+  customer: Customer;
+
+  constructor(public _customerService:CustomerService,
+              private _activateRout: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    let id: number = this._activateRout.snapshot.params['id'];
+    this.customer = this._customerService.getCustomer(id);
   }
 
 }

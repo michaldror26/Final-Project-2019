@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Customer} from "../../../models/Customer.class";
 
 @Injectable({
@@ -43,19 +43,25 @@ export class CustomerService {
   ];
 
 
-  constructor() { }
+  constructor() {
+  }
 
-  getCustomers():Customer[]{
+  getCustomers(): Customer[] {
     return this.cusArr;
   }
-  deleteCustomer(id:number)
-  {
-    let customer = this.cusArr.find(customer=>customer.id==id);
 
-    const index = this.cusArr.indexOf(customer, 0);
-    if (index > -1) {
-      this.cusArr.splice(index, 1);
-      console.log(this.cusArr);
-    }
+  getCustomer(id: number): Customer {
+    return this.cusArr.find(customer => customer.id == id);
   }
+  //
+  // deleteCustomer(id: number) {
+  //   let customer = this.cusArr.find(customer => customer.id == id);
+  //
+  //   const index = this.cusArr.indexOf(customer, 0);
+  //   if (index > -1) {
+  //     this.cusArr.splice(index, 1);
+  //     console.log(this.cusArr);
+  //   }
+  // }
+
 }

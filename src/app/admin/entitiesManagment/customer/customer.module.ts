@@ -8,6 +8,8 @@ import {CustomerViewComponent} from "./customer-view/customer-view.component";
 import {CustomerComponent} from "./customer.component";
 
 import {CustomerRoutingModule} from "./customer-routing.module";
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import {CustomerService} from "./customer.service";
 
 
 
@@ -21,7 +23,9 @@ import {CustomerRoutingModule} from "./customer-routing.module";
     CustomerViewComponent,
     CustomerEditComponent,
     CustomerCreateComponent,
-    CustomerDeleteComponent
-  ]
+    CustomerDeleteComponent,
+    CustomerDetailsComponent
+  ],
+  providers:[CustomerService]
 })
 export class CustomerModule { }
