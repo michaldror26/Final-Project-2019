@@ -26,7 +26,7 @@ const routes: Routes = [
   // },
   ,{
     path: 'contact',
-    loadChildren: './shared/contact.module#ContactModule'
+    loadChildren: './shared/contact/contact.module#ContactModule'
   }//,
   // {
   //   path: 'about',
