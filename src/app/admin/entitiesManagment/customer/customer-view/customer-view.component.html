@@ -18,7 +18,7 @@
         <!--<th><input type="checkbox" id="checkall"/></th>-->
         <th>שם פרטי</th>
         <th>שם משפחה</th>
-        <!--<th>אימייל</th>-->
+        <th>אימייל</th>
         <th>פלאפון</th>
 
         <th>עריכה</th>
@@ -30,9 +30,9 @@
           <!--<td><input type="checkbox"/></td>-->
           <td>{{customer.firstName }}</td>
           <td>{{customer.lastName }}</td>
-          <!--<td>{{customer.email }}</td>-->
+          <td>{{customer.email }}</td>
           <td>{{customer.mobilePhone }}</td>
-          <td [routerLink]="['../edit', customer.id]">
+          <td [routerLink]="['../edit', customer.id]" >
 
             <button class="btn" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top"
                     data-toggle="tooltip" title="Edit">

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms'
 
 import {CustomerCreateComponent} from "./customer-create/customer-create.component";
 import {CustomerEditComponent} from "./customer-edit/customer-edit.component";
@@ -16,7 +17,8 @@ import {CustomerService} from "./customer.service";
 @NgModule({
   imports: [
     CommonModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    FormsModule
   ],
   declarations: [
     CustomerComponent,

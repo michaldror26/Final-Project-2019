@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Customer} from "../../../models/Customer.class";
+import { SiteUser } from 'src/app/models/SiteUser.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private cusArr: Customer[] = [
+  //private cusArr: SiteUser[] = [
+    private cusArr: Customer[] = [
     {
       id: 1,
       discountPercentage: 98,
@@ -15,7 +17,9 @@ export class CustomerService {
       city: "בני ברק",
       email: "miryam@gmail.com",
       telephone: "097496761",
-      customerJoiningDate: new Date(),
+      customerRegisterDate: new Date().toLocaleDateString(),
+      // userName:'fvdgvgb',
+      //  password:'26565'
     },
     {
       id: 2,
@@ -26,7 +30,9 @@ export class CustomerService {
       city: "bney brak",
       email: "sara555@gmail.com",
       telephone: "097496761",
-      customerJoiningDate: new Date(),
+      customerRegisterDate: new Date().toLocaleDateString(),
+      // userName:'fvdgvgb',
+      // password:'26565'
     },
     {
       id: 3,
@@ -37,7 +43,9 @@ export class CustomerService {
       city: "bney brak",
       email: "dafnat555@gmail.com",
       telephone: "097496761",
-      customerJoiningDate: new Date(),
+      customerRegisterDate: new Date().toLocaleDateString(),
+      // userName:'fvdgvgb',
+      // password:'26565'
     },
 
   ];

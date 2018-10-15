@@ -16,7 +16,7 @@ export class CustomerComponent implements OnInit {
     },
     {
       path: 'edit/:id',
-      data: {name: 'עריכה מחדש', atNavBar: true}
+      data: {name: 'עריכה מחדש', atNavBar: false}
     },
     {
       path: 'create',

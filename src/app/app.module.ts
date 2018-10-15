@@ -2,6 +2,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from "@angular/forms"
 
 // Modules - ourCustom
 import {EntitiesManagmentModule} from './admin/entitiesManagment/entities-managment.module';
@@ -20,6 +21,7 @@ import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     // NgbModule,
     // GoTopButtonModule, to install
     HomeModule,

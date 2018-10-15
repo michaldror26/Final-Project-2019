@@ -6,7 +6,7 @@
   background-color: #FFFFFF;
   float: right;
   text-align: center;
-  width: 33.3%;
+  width: 50%;
   padding-top: 6px;
   padding-right: 0px;
   padding-bottom: 6px;
@@ -37,7 +37,7 @@
 #mainnav a:hover, #mainnav a:active, #mainnav a:focus {
   color: #FFFFFF;
   text-decoration: none;
-  background-color: #357F7F;
+  background-color: #007bff;
 }
 
 /*.mat-tab-nav-bar {*/

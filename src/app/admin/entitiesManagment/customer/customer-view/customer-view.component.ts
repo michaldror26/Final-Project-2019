@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class CustomerViewComponent implements OnInit {
 
-  customersList: Customer[] = [];
+  customersList: any[] = [];
 
   constructor(public _customrService: CustomerService,
               public router: Router,

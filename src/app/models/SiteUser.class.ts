@@ -6,7 +6,7 @@ export class SiteUser extends User {
   public userName: string;
   public password: string;
   public authenticationTypeId: number;
-  public joiningDate: Date;
+  public RegisterDate: Date;
 
 
 //Create SiteUser & User at once
@@ -22,7 +22,7 @@ export class SiteUser extends User {
               telephone?: string) {
 
     super(firstName, lastName, mobilePhone, city, email, telephone);
-    this.joiningDate = new Date();
+    this.RegisterDate = new Date();
     this.userName = userName;
     this.password = password;
     this.authenticationTypeId = authenticationTypeId;
@@ -34,7 +34,7 @@ export class SiteUser extends User {
 //               password: string,
 //               authenticationTypeId: number) {
 //
-//   this.joiningDate = new Date();
+//   this.RegisterDate = new Date();
 //   this.userName=userName;
 //   this.password=password;
 //   this.authenticationTypeId=authenticationTypeId;

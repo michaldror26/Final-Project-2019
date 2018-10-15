@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {CustomerService} from "../customer.service";
 import {Customer} from "../../../../models/Customer.class";
 import {ActivatedRoute} from "@angular/router";
@@ -18,7 +18,9 @@ export class CustomerEditComponent implements OnInit {
 
   ngOnInit() {
     let id: number = this._activateRout.snapshot.params['id'];
+    
     this.customer = this._customerService.getCustomer(id);
+console.log(this.customer);
   }
-
+ 
 }

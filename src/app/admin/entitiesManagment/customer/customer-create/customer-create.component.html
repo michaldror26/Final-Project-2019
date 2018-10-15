@@ -1,4 +1,3 @@
-customer-create works!
 <div class="container col-xl-5 col-lg-7 col-md-8">
   <div class="py-5 mb-5 mt-5 p-5 shadow">
     <form>
@@ -7,28 +6,28 @@ customer-create works!
       <div class="row">
         <div class="col-md-6  col-12">
           <input type="text" id="inputFirstName" class="form-control form-group"
-                 placeholder="שם פרטי" required>
+                 placeholder="שם פרטי" title="שם פרטי"required>
         </div>
         <div class="col-md-6  col-12">
           <input type="text" id="inputLastName" class="form-control form-group"
-                 placeholder="שם משפחה" required>
+                 placeholder="שם משפחה" title="שם משפחה" required>
         </div>
       </div>
-      <input type="email" id="inputEmailName" class="form-control form-group" placeholder="כתובת מייל"
+      <input type="email" id="inputEmailName" class="form-control form-group" placeholder="כתובת מייל" title="כתובת מייל"
              required>
       <div class="row">
         <div class="col-md-6  col-12">
           <input type="tel" id="inputMobile" class="form-control form-group"
-                 placeholder="נייד" required>
+                 placeholder="נייד" title="נייד"required>
         </div>
-        <div class="col-md-6  col-12">
+        <div class="col-md-6  col-12">          
           <input type="tel" id="inputTel" class="form-control form-group"
-                 placeholder="טלפון"
-                 required>
+                 placeholder="טלפון" title="טלפון">
         </div>
       </div>
 
-      <input type="text" id="inputCity" class="form-control form-group" placeholder="עיר" required>
+      <input type="text" id="inputCity" class="form-control form-group" placeholder="עיר"  title="עיר" required>
+      <input type="number" id="inputDiscountPercentage" class="form-control form-group" placeholder="אחוז הנחה" title="אחוז הנחה">
       <button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit">שמור</button>
 
     </form>
@@ -36,9 +35,9 @@ customer-create works!
     <h1 class="h3 mb-3 mt-5 font-weight-normal">הזן פרטי משתמש</h1>
 
     <!--<label for="inputUserName" class="sr-only">שם משתמש</label>-->
-    <input type="text" id="inputUserName" class="form-control form-group" placeholder="שם משתמש" required>
+    <input type="text" id="inputUserName" class="form-control form-group" placeholder="שם משתמש"  title="שם משתמש" required>
     <!--<label for="inputPassword" class="sr-only">סיסמא</label>-->
-    <input type="password" id="inputPassword" class="form-control form-group" placeholder="סיסמא" required>
+    <input type="password" id="inputPassword" class="form-control form-group" placeholder="סיסמא" title="סיסמא" required>
 
 
     <button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit">שמור</button>
