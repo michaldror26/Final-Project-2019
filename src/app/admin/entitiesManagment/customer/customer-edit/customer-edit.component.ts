@@ -18,9 +18,7 @@ export class CustomerEditComponent implements OnInit {
 
   ngOnInit() {
     let id: number = this._activateRout.snapshot.params['id'];
-    
     this.customer = this._customerService.getCustomer(id);
-console.log(this.customer);
   }
  
 }
