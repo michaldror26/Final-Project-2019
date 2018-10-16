@@ -22,7 +22,7 @@
   text-decoration: none;
 }
 .navbar .dropdown-item , .navbar .dropdown-item{
-  padding-left: 0.5rem;
+
   &:focus,&:hover {
   color: #16181b;
   text-decoration: none;
@@ -36,4 +36,7 @@
 .navbar-brand {
   margin-right: 0rem;
   margin-left: 1rem;
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
 }

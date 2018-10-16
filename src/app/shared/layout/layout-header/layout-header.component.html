@@ -1,34 +1,36 @@
 <!--https://bootsnipp.com/snippets/featured/multi-level-navbar-menu-->
-
+<!--TODO to fix trigger click of navBar when it id not display-->
+<!--TODO to set routerLinkActive="active" to routes-->
 
 <div class="navbar navbar-expand-lg navbar-dark bg-dark" dir="rtl"  role="navigation">
   <a class="navbar-brand" routerLink="/">שם החברה</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" #navbarCollapse
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" #navbarCollapseButton
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto" *ngIf="routes" dir="rtl" >
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">בית<span class="sr-only">(current)</span></a>
+  <div class="collapse navbar-collapse" id="navbarCollapse"  >
+    <ul class="navbar-nav mr-auto" *ngIf="routes" dir="rtl">
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" routerLink="/" (click)="navbarCollapseButton.click()">בית</a>
       </li>
       <ng-container *ngFor="let route of routes">
         <li class="nav-item" *ngIf="route.children.length===0">
-          <a class="nav-link" [routerLink]="route.path" (click)="navbarCollapse.click()">{{route.data[0]}}</a>
+          <a class="nav-link"   [routerLink]="route.path" (click)="navbarCollapseButton.click()">{{route.data[0]}}</a>
         </li>
         <li class="nav-item dropdown" *ngIf="route.children.length!==0">
           <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">{{route.data[0]}}</a>
-          <ul class="dropdown-menu" aria-labelledby="dropdown1" >
-            <li *ngFor="let child of route.children" class="dropdown-item" ><a [routerLink]="child.path" class="d-block" (click)="navbarCollapse.click()">{{child.data[0]}}</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="dropdown1">
+
+              <a *ngFor="let child of route.children" class="dropdown-item" [routerLink]="child.path" (click)="navbarCollapseButton.click()">{{child.data[0]}}</a>
+          </div>
         </li>
 
       </ng-container>
     </ul>
     <form class="form-inline mt-2 mt-md-0">
       <button class="btn btn-outline-primary my-2 my-sm-0 mr-lg-2" type="submit"
-              routerLink="/login" *ngIf="!loginPage" (click)="navbarCollapse.click()">התחבר</button>
+              routerLink="/login" *ngIf="!loginPage" (click)="navbarCollapseButton.click()">התחבר</button>
     </form>
   </div>
 </div>
