@@ -31,7 +31,7 @@ import {ProviderCreateComponent} from './provider/provider-create/provider-creat
 
 import {EntitiesManagmentComponent} from './entities-managment.component';
 import {EntityManagmentRoutingModule} from "./entity-managment-routing.module";
-import {CustomerModule} from "./customer/customer.module";
+import {CustomerModule} from "./customer/modules/customer.module";
 
 @NgModule({
   imports: [
