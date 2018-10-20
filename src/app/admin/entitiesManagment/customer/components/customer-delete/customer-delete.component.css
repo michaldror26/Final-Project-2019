@@ -1,0 +1,14 @@
+p {
+    display: block;
+    width: 100%;
+    /* text-align: right; */
+    margin-bottom: .5rem;
+    
+}
+p:last-of-type {
+    margin-bottom: 1rem;
+}
+.shadow-delete {
+    text-shadow: 2px 2px 4px #000000;
+}
+

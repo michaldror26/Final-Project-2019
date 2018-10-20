@@ -1,14 +1,15 @@
-<p>
-  customer-view works!
-</p>
-<p><a href="https://bootsnipp.com/snippets/92md4">https://bootsnipp.com/snippets/92md4</a></p>
-<p><a href="https://bootsnipp.com/snippets/aMWKk">https://bootsnipp.com/snippets/aMWKk</a></p>
+<p><a href="https://bootsnipp.com/snippets/92md4">one ///////</a><a href="https://bootsnipp.com/snippets/aMWKk">two</a></p>
 
-<div class="shadow row">
+<div class="shadow row"  dir="rtl">
 
-
-  <div class="col-md-12 text-center" dir="rtl">
+  <div class="col-md-12 text-center">
     <h4>לקוחות</h4>
+
+    <form class="form-inline" >
+      <input class="form-control mx-sm-auto mr-md-2 my-2 col-xl-3" type="search" placeholder="חפש משהו כאן..." aria-label="Search" (input)="searchText($event.target.value)" >
+      <!-- <button class="btn btn-outline-success  col-2" type="submit">חפש</button> -->
+    </form>
+
     <div class="table-responsive">
 
       <table id="mytable" class="table table-bordred table-striped">

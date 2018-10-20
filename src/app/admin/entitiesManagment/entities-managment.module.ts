@@ -8,7 +8,6 @@ import {CommonModule} from '@angular/common';
 import {UserComponent} from './user/user.component';
 
 import {EmployeeComponent} from './employee/employee.component';
-import {ProductComponent} from './product/product.component';
 import {CategoryComponent} from './category/category.component';
 import {ProviderComponent} from './provider/provider.component';
 
@@ -20,31 +19,28 @@ import {EmployeeViewComponent} from './employee/employee-view/employee-view.comp
 import {EmployeeEditComponent} from './employee/employee-edit/employee-edit.component';
 import {EmployeeCreateComponent} from './employee/employee-create/employee-create.component';
 import {EmployeeDeleteComponent} from './employee/employee-delete/employee-delete.component';
-import {ProductViewComponent} from './product/product-view/product-view.component';
-import {ProductCreateComponent} from './product/product-create/product-create.component';
-import {ProductEditComponent} from './product/product-edit/product-edit.component';
-import {ProductDeleteComponent} from './product/product-delete/product-delete.component';
 import {ProviderViewComponent} from './provider/provider-view/provider-view.component';
 import {ProviderEditComponent} from './provider/provider-edit/provider-edit.component';
 import {ProviderDeleteComponent} from './provider/provider-delete/provider-delete.component';
 import {ProviderCreateComponent} from './provider/provider-create/provider-create.component';
 
 import {EntitiesManagmentComponent} from './entities-managment.component';
-import {EntityManagmentRoutingModule} from "./entity-managment-routing.module";
-import {CustomerModule} from "./customer/modules/customer.module";
+import {EntityManagmentRoutingModule} from './entity-managment-routing.module';
+import {CustomerModule} from './customer/modules/customer.module';
+import { ProductModule } from './product/modules/product.module';
 
 @NgModule({
   imports: [
     CommonModule,
     EntityManagmentRoutingModule,
-    CustomerModule
+    CustomerModule,
+    ProductModule
   ],
   declarations: [
    // AdDirective,
   //  FeedListComponent,
     UserComponent,
     EmployeeComponent,
-    ProductComponent,
     CategoryComponent,
     ProviderComponent,
     CategoryViewComponent,
@@ -55,10 +51,6 @@ import {CustomerModule} from "./customer/modules/customer.module";
     EmployeeEditComponent,
     EmployeeCreateComponent,
     EmployeeDeleteComponent,
-    ProductViewComponent,
-    ProductCreateComponent,
-    ProductEditComponent,
-    ProductDeleteComponent,
     ProviderViewComponent,
     ProviderEditComponent,
     ProviderDeleteComponent,
