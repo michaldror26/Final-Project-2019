@@ -1,3 +1,6 @@
+
+////////////////////////// to delete that
+
 import {Type} from '@angular/core';
 
 export class Entity {

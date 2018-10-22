@@ -38,11 +38,11 @@ export class LayoutHeaderComponent implements OnInit {
     },
     {path: '/',data:['תקבול'], children: []},
     {
-      path: '/entity-managment',data:['בסיס נתונים'], children: [
-      {path: '/admin/entity-managment/customers',data:['לקוחות']},
-      {path: '/admin/entity-managment/providers',data:['ספקים']},
-      {path: '/admin/entity-managment/employees',data:['עובדים']},
-      {path: '/admin/entity-managment/products',data:['מוצרים']}
+      path: '/purchase',data:['בסיס נתונים'], children: [
+      {path: '/admin/purchase/customers',data:['לקוחות']},
+      {path: '/admin/purchase/providers',data:['ספקים']},
+      {path: '/admin/purchase/employees',data:['עובדים']},
+      {path: '/admin/purchase/products',data:['מוצרים']}
     ]
     },
     {

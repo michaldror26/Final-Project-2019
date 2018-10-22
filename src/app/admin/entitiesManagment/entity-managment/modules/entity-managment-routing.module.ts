@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 
 import {RouterModule, Routes} from '@angular/router';
 
-import {EmployeeComponent} from '../employee/components/employee/employee.component';
-import {ProviderComponent} from '../provider/components/provider/provider.component';
-import {ProductComponent} from '../product/components/product/product.component';
-import {CustomerComponent} from '../customer/components/customer/customer.component';
+import {EmployeeComponent} from '../../employee/components/employee/employee.component';
+import {ProviderComponent} from '../../provider/components/provider/provider.component';
+import {ProductComponent} from '../../product/components/product/product.component';
+import {CustomerComponent} from '../../customer/components/customer/customer.component';
 
 
 const routes: Routes = [

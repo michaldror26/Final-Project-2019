@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Customer} from '../../../../models/Customer.class';
-import {SiteUser} from 'src/app/models/SiteUser.class';
+import {Customer} from '../../entity-managment/models/Customer.class';
+import {SiteUser} from 'src/app/admin/entitiesManagment/entity-managment/models/SiteUser.class';
 
 @Injectable({
   providedIn: 'root'

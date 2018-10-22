@@ -5,7 +5,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms'
 
 // Modules - ourCustom
-import {EntitiesManagmentModule} from './admin/entitiesManagment/entity-managment/entities-managment.module';
+import {EntitiesManagmentModule} from './admin/entitiesManagment/entity-managment/modules/entities-managment.module';
 import {SharedModule} from './shared/shared.module';
 // import {EmployeeModule} from './employee/employee.module';
 import {HomeModule} from './home/home.module';

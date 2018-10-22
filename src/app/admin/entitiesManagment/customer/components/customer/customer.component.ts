@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Customer} from '../../../../../models/Customer.class';
+import {Customer} from '../../../entity-managment/models/Customer.class';
 import {Routes} from '@angular/router';
 
 @Component({

@@ -1,4 +1,4 @@
-// export interface User { ?
+// export numbererface User { ?
 export abstract class User {
   public id: number;
 
