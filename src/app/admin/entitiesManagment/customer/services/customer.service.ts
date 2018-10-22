@@ -63,16 +63,21 @@ export class CustomerService {
   }
 
   deleteCustomer(id: number) {
-    //   let customer = this.cusArr.find(customer => customer.id == id);
-    //
-    //   const index = this.cusArr.indexOf(customer, 0);
-    //   if (index > -1) {
-    //     this.cusArr.splice(index, 1);
-    //     console.log(this.cusArr);
-    //   }
+      let customer = this.cusArr.find(customer => customer.id == id);
+
+      const index = this.cusArr.indexOf(customer, 0);
+      if (index > -1) {
+        this.cusArr.splice(index, 1);
+        console.log(this.cusArr);
+      }
   }
 
-  editCustomer(id: number) {
+  editCustomer(updatedCustomer:Customer) {
+    //TODO implement this as reallity
+    let cust=this.cusArr.find(customer => customer.id == updatedCustomer.id);
+    let index=this.cusArr.indexOf(cust);
+    this.cusArr[index]=updatedCustomer;
+
   }
 
   search(text:string):Customer[]{

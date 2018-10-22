@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Customer } from 'src/app/models/Customer.class';
 
 @Component({
@@ -12,11 +12,9 @@ export class CustomerDeleteComponent implements OnInit {
 
   customer: Customer;
 
-  // @Output()
-  // EventEmitter<Customer> customerToDelete = new EventEmitter<Customer>();
-
   constructor(public _customerService:CustomerService,
-              private _activateRout: ActivatedRoute) {
+              private _activateRout: ActivatedRoute,
+              private _router:Router) {
   }
 
   ngOnInit() {
@@ -25,7 +23,8 @@ export class CustomerDeleteComponent implements OnInit {
   }
   deleteCustomer()
   {
-
+    this._customerService.deleteCustomer(this.customer.id);
+    this._router.navigate(['../../view']);
   }
 
 }
