@@ -6,7 +6,7 @@ import {ProductCreateComponent} from '../components/product-create/product-creat
 import {ProductEditComponent} from '../components/product-edit/product-edit.component';
 import {ProductDeleteComponent} from '../components/product-delete/product-delete.component';
 import {ProductViewComponent} from '../components/product-view/product-view.component';
-import {ProductComponent} from '../product.component';
+import {ProductComponent} from '../components/product/product.component';
 
 import {ProductRoutingModule} from './product-routing.module';
 import { ProductDetailsComponent } from '../components/product-details/product-details.component';

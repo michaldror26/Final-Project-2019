@@ -2,12 +2,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule} from "@angular/forms"
+import {FormsModule} from '@angular/forms'
 
 // Modules - ourCustom
-import {EntitiesManagmentModule} from './admin/entitiesManagment/entities-managment.module';
+import {EntitiesManagmentModule} from './admin/entitiesManagment/entity-managment/entities-managment.module';
 import {SharedModule} from './shared/shared.module';
-import {EmployeeModule} from './employee/employee.module';
+// import {EmployeeModule} from './employee/employee.module';
 import {HomeModule} from './home/home.module';
 import {AdminModule} from './admin/admin.module';
 import {Auth2Module} from './auth/auth2.module';
@@ -26,7 +26,7 @@ import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer
     // GoTopButtonModule, to install
     HomeModule,
     SharedModule,
-    EmployeeModule,
+    // EmployeeModule,
     // EntitiesManagmentModule,
     Auth2Module,
     AdminModule,

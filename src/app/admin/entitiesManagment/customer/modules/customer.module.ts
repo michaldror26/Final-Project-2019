@@ -6,7 +6,7 @@ import {CustomerCreateComponent} from '../components/customer-create/customer-cr
 import {CustomerEditComponent} from '../components/customer-edit/customer-edit.component';
 import {CustomerDeleteComponent} from '../components/customer-delete/customer-delete.component';
 import {CustomerViewComponent} from '../components/customer-view/customer-view.component';
-import {CustomerComponent} from '../customer.component';
+import {CustomerComponent} from '../components/customer/customer.component';
 
 import {CustomerRoutingModule} from './customer-routing.module';
 import { CustomerDetailsComponent } from '../components/customer-details/customer-details.component';

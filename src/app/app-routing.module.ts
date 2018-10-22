@@ -24,10 +24,11 @@ const routes: Routes = [
   //   path: 'products',
   //   loadChildren: ''
   // },
-  ,{
+  , {
     path: 'contact',
     loadChildren: './shared/contact/contact.module#ContactModule'
-  }//,
+  }
+  // ,
   // {
   //   path: 'about',
   //   loadChildren: './shared/about.module#AboutModule'

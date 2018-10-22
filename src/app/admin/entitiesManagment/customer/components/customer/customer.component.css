@@ -34,7 +34,7 @@
 
 }
 
-#mainnav a:hover, #mainnav a:active, #mainnav a:focus {
+#mainnav a:hover, #mainnav a:active , #mainnav a:focus {
   color: #FFFFFF;
   text-decoration: none;
   background-color: #007bff;

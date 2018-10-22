@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Customer} from "../../../models/Customer.class";
-import {Routes} from "@angular/router";
+import {Customer} from '../../../../../models/Customer.class';
+import {Routes} from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -27,9 +27,6 @@ export class CustomerComponent implements OnInit {
       data: {name: 'מחיקה', atNavBar: false}
     },
   ];
-
-
-  activeLinkIndex=0;
 
 
   constructor() {

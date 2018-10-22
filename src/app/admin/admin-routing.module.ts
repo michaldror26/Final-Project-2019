@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 
 import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
-import {EntitiesManagmentComponent} from "./entitiesManagment/entities-managment.component";
+import {EntitiesManagmentComponent} from './entitiesManagment/entity-managment/entities-managment.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-   // canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
     children: [
       // //{path: '/**', data: ['צפייה במלאי'], children: []},
       // {
@@ -29,8 +29,8 @@ const routes: Routes = [
       // },
       // {path: '/', data: ['תקבול'], children: []},
       {
-        path: 'entity-managment',component:EntitiesManagmentComponent, data: ['בסיס נתונים'],
-        loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'
+        path: 'entity-managment', component: EntitiesManagmentComponent, data: ['בסיס נתונים'],
+        loadChildren: './entitiesManagment/entity-managment/entities-managment.module#EntitiesManagmentModule'
       }
       ,
       // {

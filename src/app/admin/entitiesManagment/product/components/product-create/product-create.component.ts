@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from "../../../category/category.service";
+import {CategoryService} from "../../../category/services/category.service";
 import {ProductService} from "../../services/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
 // import 'rxjs/add/operator/take';
