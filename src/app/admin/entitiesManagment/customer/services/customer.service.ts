@@ -63,28 +63,26 @@ export class CustomerService {
   }
 
   deleteCustomer(id: number) {
-      let customer = this.cusArr.find(customer => customer.id == id);
-
-      const index = this.cusArr.indexOf(customer, 0);
-      if (index > -1) {
-        this.cusArr.splice(index, 1);
-        console.log(this.cusArr);
-      }
+    let index = this.cusArr.findIndex(customer => customer.id == id);
+    if (index != -1)
+      this.cusArr.splice(index, 1);
   }
 
-  editCustomer(updatedCustomer:Customer) {
-    //TODO implement this as reallity
-    let cust=this.cusArr.find(customer => customer.id == updatedCustomer.id);
-    let index=this.cusArr.indexOf(cust);
-    this.cusArr[index]=updatedCustomer;
+  editCustomer(updatedCustomer: Customer) {
+    let index = this.cusArr.findIndex(customer => customer.id == updatedCustomer.id);
+    if (index != -1) {
+      //TODO implement this as reallity
+      this.cusArr[index] = updatedCustomer;
+    }
+
 
   }
 
-  search(text:string):Customer[]{
-    return this.cusArr.filter(customer=>customer.firstName.includes(text)
-    ||customer.lastName.includes(text)
-    ||customer.mobilePhone.includes(text)
-    ||customer.email.includes(text)
+  search(text: string): Customer[] {
+    return this.cusArr.filter(customer => customer.firstName.includes(text)
+      || customer.lastName.includes(text)
+      || customer.mobilePhone.includes(text)
+      || customer.email.includes(text)
     );
   }
 }
