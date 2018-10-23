@@ -12,19 +12,19 @@ import {CustomerComponent} from '../../customer/components/customer/customer.com
 const routes: Routes = [
   {
     path: 'customers', component: CustomerComponent, data: ['לקוחות'],
-    loadChildren: '../customer/modules/customer.module#CustomerModule'
+    loadChildren: '../../customer/modules/customer.module#CustomerModule'
   },
   {
     path: 'providers', component: ProviderComponent, data: ['ספקים'],
-    loadChildren: '../provider/modules/provider.module#ProviderModule'
+    loadChildren: '../../provider/modules/provider.module#ProviderModule'
   },
   {
     path: 'employees', component: EmployeeComponent, data: ['עובדים'],
-    loadChildren: '../employee/modules/employee.module#EmployeeModule'
+    loadChildren: '../../employee/modules/employee.module#EmployeeModule'
   },
   {
     path: 'products', component: ProductComponent, data: ['מוצרים'],
-    loadChildren: '../product/modules/product.module#ProductModule'
+    loadChildren: '../../product/modules/product.module#ProductModule'
   }
 ];
 
