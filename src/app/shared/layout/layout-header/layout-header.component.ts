@@ -10,7 +10,7 @@ import {ActivatedRoute, NavigationEnd, Router, Routes} from '@angular/router';
 export class LayoutHeaderComponent implements OnInit {
 
   loginPage: boolean = false;
-  // @Input()
+  // @Input
   // routes: Routes;
   routes: Routes = [
     {path: '/products', data: ['מוצרים'], children: []},
