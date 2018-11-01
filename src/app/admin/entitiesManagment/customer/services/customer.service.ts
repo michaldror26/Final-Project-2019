@@ -6,10 +6,10 @@ import {SiteUser} from 'src/app/admin/entitiesManagment/entity-managment/models/
   providedIn: 'root'
 })
 export class CustomerService {
-  // private cusArr: SiteUser[] = [
-  private cusArr: Customer[] = [
+  // private cusArr: Customer[] = [
+  private cusArr: any = [
     {
-      id: 1,
+      customerId: 1,
       discountPercentage: 98,
       firstName: 'מרים',
       lastName: 'טרבלסי',
@@ -22,7 +22,7 @@ export class CustomerService {
       //  password:'26565'
     },
     {
-      id: 2,
+      customerId: 2,
       discountPercentage: 98,
       firstName: 'sara',
       lastName: 'trabelsi',
@@ -35,7 +35,7 @@ export class CustomerService {
       // password:'26565'
     },
     {
-      id: 3,
+      customerId: 3,
       discountPercentage: 98,
       firstName: 'dafna',
       lastName: 'trabelsi',
@@ -59,23 +59,21 @@ export class CustomerService {
   }
 
   getCustomer(id: number): Customer {
-    return this.cusArr.find(customer => customer.id == id);
+    return this.cusArr.find(customer => customer.customerId === id);
   }
 
   deleteCustomer(id: number) {
-    let index = this.cusArr.findIndex(customer => customer.id == id);
-    if (index != -1)
+    let index = this.cusArr.findIndex(customer => customer.customerId === id);
+    if (index !== -1)
       this.cusArr.splice(index, 1);
   }
 
   editCustomer(updatedCustomer: Customer) {
-    let index = this.cusArr.findIndex(customer => customer.id == updatedCustomer.id);
-    if (index != -1) {
-      //TODO implement this as reallity
+    let index = this.cusArr.findIndex(customer => customer.customerId === updatedCustomer.customerId);
+    if (index !== -1) {
+      // TODO implement this as reallity
       this.cusArr[index] = updatedCustomer;
     }
-
-
   }
 
   search(text: string): Customer[] {

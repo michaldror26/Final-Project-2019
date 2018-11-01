@@ -29,8 +29,8 @@ const routes: Routes = [
       // },
       // {path: '/', data: ['תקבול'], children: []},
       {
-        path: 'purchase', component: EntitiesManagmentComponent, data: ['בסיס נתונים'],
-        loadChildren: './entitiesManagment/purchase/entities-managment.module#EntitiesManagmentModule'
+        path: 'entities-managment', component: EntitiesManagmentComponent, data: ['בסיס נתונים'],
+        loadChildren: './entitiesManagment/entity-managment/modules/entities-managment.module#EntitiesManagmentModule'
       }
       ,
       // {

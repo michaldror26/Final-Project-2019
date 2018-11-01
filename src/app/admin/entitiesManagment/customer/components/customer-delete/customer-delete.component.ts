@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CustomerService } from '../../services/customer.service';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {CustomerService} from '../../services/customer.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Customer } from 'src/app/admin/entitiesManagment/entity-managment/models/Customer.class';
+import {Customer} from 'src/app/admin/entitiesManagment/entity-managment/models/Customer.class';
 
 @Component({
   selector: 'app-customer-delete',
@@ -12,18 +12,18 @@ export class CustomerDeleteComponent implements OnInit {
 
   customer: Customer;
 
-  constructor(public _customerService:CustomerService,
+  constructor(public _customerService: CustomerService,
               private _activateRout: ActivatedRoute,
-              private _router:Router) {
+              private _router: Router) {
   }
 
   ngOnInit() {
-    let id: number = this._activateRout.snapshot.params['id'];
+    const id: number = this._activateRout.snapshot.params['id'];
     this.customer = this._customerService.getCustomer(id);
   }
-  deleteCustomer()
-  {
-    this._customerService.deleteCustomer(this.customer.id);
+
+  deleteCustomer() {
+    this._customerService.deleteCustomer(this.customer.customerId);
     this._router.navigate(['../../view']);
   }
 

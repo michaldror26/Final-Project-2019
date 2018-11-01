@@ -1,5 +1,6 @@
-﻿export class Provider {
-  // יורש מ user
-  public id: number;
+﻿import {User} from './User.class';
+
+export class Provider extends User{
+    public ProviderId: number;
 }
 
