@@ -1,13 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Customer} from '../../entity-managment/models/Customer.class';
-import {SiteUser} from 'src/app/admin/entitiesManagment/entity-managment/models/SiteUser.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  // private cusArr: Customer[] = [
-  private cusArr: any = [
+  private cusArr: Customer[] = [
     {
       customerId: 1,
       discountPercentage: 98,
@@ -18,8 +16,8 @@ export class CustomerService {
       email: 'miryam@gmail.com',
       telephone: '097496761',
       customerRegisterDate: new Date().toLocaleDateString(),
-      // userName:'fvdgvgb',
-      //  password:'26565'
+      // userName: 'fvdgvgb',
+      //  password: '26565'
     },
     {
       customerId: 2,
@@ -46,8 +44,7 @@ export class CustomerService {
       customerRegisterDate: new Date().toLocaleDateString(),
       // userName:'fvdgvgb',
       // password:'26565'
-    },
-
+    }
   ];
 
 
@@ -59,17 +56,18 @@ export class CustomerService {
   }
 
   getCustomer(id: number): Customer {
-    return this.cusArr.find(customer => customer.customerId === id);
+    return this.cusArr.find(customer => customer.customerId == id);
   }
 
   deleteCustomer(id: number) {
-    let index = this.cusArr.findIndex(customer => customer.customerId === id);
-    if (index !== -1)
+    const index = this.cusArr.findIndex(customer => customer.customerId === id);
+    if (index !== -1) {
       this.cusArr.splice(index, 1);
+    }
   }
 
   editCustomer(updatedCustomer: Customer) {
-    let index = this.cusArr.findIndex(customer => customer.customerId === updatedCustomer.customerId);
+    const index = this.cusArr.findIndex(customer => customer.customerId === updatedCustomer.customerId);
     if (index !== -1) {
       // TODO implement this as reallity
       this.cusArr[index] = updatedCustomer;

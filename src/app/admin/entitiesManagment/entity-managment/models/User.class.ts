@@ -1,6 +1,5 @@
 // export numbererface User { ?
 export abstract class User {
-  public userId: number;
 
   constructor(
               public firstName: string,

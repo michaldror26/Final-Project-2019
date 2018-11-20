@@ -1,7 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {CustomerService} from '../../services/customer.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Customer} from 'src/app/admin/entitiesManagment/entity-managment/models/Customer.class';
+import {Customer} from '../../../entity-managment/models/Customer.class';
 
 @Component({
   selector: 'app-customer-delete',
