@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
@@ -26,22 +26,25 @@ const routes: Routes = [
   // },
   , {
     path: 'contact',
-    loadChildren: './shared/contact/contact.module#ContactModule'
+    loadChildren: './shared/components/contact/contact.module#ContactModule'
   }
   // ,
   // {
   //   path: 'about',
-  //   loadChildren: './shared/about.module#AboutModule'
-  // },
-
-  // {
-  //   path: '**',
-  //   redirectTo: ''
+  //   loadChildren: './components/shared/about.module#AboutModule'
   // }
+  , {
+    path: '**',
+    redirectTo: ''
+  }
   , {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule'
   }
+  // , {
+  //   path: 'shopping',
+  //   loadChildren: './shopping/shopping.module#ShoppingModule'
+  // }
   // ,
   // {
   //   path: 'customer',

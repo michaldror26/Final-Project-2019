@@ -5,7 +5,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms'
 
 // Modules - ourCustom
-import {EntitiesManagmentModule} from './admin/entitiesManagment/entity-managment/modules/entities-managment.module';
+import {EntitiesManagmentModule} from './admin/entitiesManagment/entities-managment.module';
 import {SharedModule} from './shared/shared.module';
 // import {EmployeeModule} from './employee/employee.module';
 import {HomeModule} from './home/home.module';
@@ -14,9 +14,10 @@ import {Auth2Module} from './auth/auth2.module';
 import {AppRoutingModule} from './app-routing.module';
 // Components
 import {AppComponent} from './app.component';
+import {LayoutHeaderComponent} from './shared/components/layout/layout-header/layout-header.component';
+import {LayoutFooterComponent} from './shared/components/layout/layout-footer/layout-footer.component';
 
-import {LayoutHeaderComponent} from './shared/layout/layout-header/layout-header.component';
-import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer.component';
+// import {ShoppingModule} from './shopping/shopping.module';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {LayoutFooterComponent} from './shared/layout/layout-footer/layout-footer
     // EntitiesManagmentModule,
     Auth2Module,
     AdminModule,
+    // ShoppingModule,
     AppRoutingModule
   ],
   declarations: [
