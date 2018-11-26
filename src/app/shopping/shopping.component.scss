@@ -17,8 +17,10 @@ sort-filters{
 cart{
   position: absolute;
   // top: -23px;
-  right: -57px;
+  // right: -57px;
   z-index: 99999999;
+  left: 0;
+  top: 0;
 }
 
 search-bar{

@@ -1,6 +1,6 @@
 <div class="preview" [class.expanded]='expanded'>
   <button [class.not-shown]='!products.length || expanded' type="button" class="circle" (click)="onCartClick()">
-    <img src="../../assets/cart_white.svg" alt="cart" />
+    <img src="../../../assets/cart_white.svg" alt="cart" />
     <div class="indicator"><span>{{numProducts}}</span></div>
   </button>
   <div class="fill" [style.height]="expanded ? expandedHeight : 'inherit'" [class.not-shown]='!products.length' [class.animate-plop]='animatePlop' [class.shown]='animatePopout && !expanded'>

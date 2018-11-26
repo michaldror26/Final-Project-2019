@@ -120,6 +120,7 @@
     width: 460px;
     border-radius: 3px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.49);
+    right: 0;
     &.animate-plop{
       -webkit-transform: scale(1.02);
       transform: scale(1.02);
@@ -164,7 +165,7 @@
     border-radius: 50px;
     position: relative;
     z-index: 5;
-    background: none;
+    // background: none;
     @include transition-fade-circ(0.2s);
     img{
       position: relative;
