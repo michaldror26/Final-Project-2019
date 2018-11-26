@@ -6,7 +6,9 @@
     <div class="row" *ngIf="cart$ | async as cart">
       <ng-container *ngFor="let product of filteredProducts; let i = index">
         <div class="col">
-          <product-card [product]="product" [width]="20" [shopping-cart]="cart"></product-card>
+          <p>name:{{product.name}}</p>
+          <p>sellingPrice:{{product.sellingPrice}}</p>
+          <p>qty:{{product.qty}}</p>
         </div>
         <div class="w-100" *ngIf="(i+1)%2 === 0"></div>
       </ng-container>

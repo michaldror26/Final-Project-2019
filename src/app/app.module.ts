@@ -2,7 +2,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
 
 // Modules - ourCustom
 import {EntitiesManagmentModule} from './admin/entitiesManagment/entities-managment.module';
@@ -17,7 +17,7 @@ import {AppComponent} from './app.component';
 import {LayoutHeaderComponent} from './shared/components/layout/layout-header/layout-header.component';
 import {LayoutFooterComponent} from './shared/components/layout/layout-footer/layout-footer.component';
 
-// import {ShoppingModule} from './shopping/shopping.module';
+import {ShoppingModule} from './shopping/shopping.module';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import {LayoutFooterComponent} from './shared/components/layout/layout-footer/la
     // EntitiesManagmentModule,
     Auth2Module,
     AdminModule,
-    // ShoppingModule,
+    ShoppingModule,
+    ShoppingModule,
     AppRoutingModule
   ],
   declarations: [

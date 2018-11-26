@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+import { ShoppingModule } from './shopping';
 
 const routes: Routes = [
   {
@@ -33,18 +34,15 @@ const routes: Routes = [
   //   path: 'about',
   //   loadChildren: './components/shared/about.module#AboutModule'
   // }
-  , {
-    path: '**',
-    redirectTo: ''
-  }
+
   , {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule'
   }
-  // , {
-  //   path: 'shopping',
-  //   loadChildren: './shopping/shopping.module#ShoppingModule'
-  // }
+  , {
+    path: 'shopping',
+  loadChildren: './shopping/shopping.module#ShoppingModule'
+  }
   // ,
   // {
   //   path: 'customer',
@@ -54,7 +52,10 @@ const routes: Routes = [
   //   path: 'employee',
   //   loadChildren: './employee/employee.module#EmployeeModule'
   // }
-
+  , {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

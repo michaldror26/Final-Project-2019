@@ -62,7 +62,7 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.routes = this.routesOfAdmin;
+    // this.routes = this.routesOfAdmin;
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

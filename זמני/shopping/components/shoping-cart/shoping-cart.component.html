@@ -21,7 +21,7 @@
                 <div class="thumbnail" [style.backgroundImage]="'url('+ item.imageUrl +')'"></div>
               </td>
               <td>{{item.title}}</td>
-              <td class="text-left">
+              <td class="text-right">
                 <product-quantity [product]="item" [shopping-cart]="cart" [msg]="null"></product-quantity>
               </td>
               <td class="text-right">{{item.totalPrice | currency:'INR':true}}</td>
