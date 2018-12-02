@@ -2,14 +2,20 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {RouterModule, Routes} from '@angular/router';
-import {ShoppingComponent} from './shopping.component';
+import {CartComponent} from './cart/cart.component';
+import {ShippingProductsComponent} from './products/shipping-products.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ShoppingComponent
-    //,canActivate: [AuthGuard]
-  }
+    path: '/products',
+    component: ShippingProductsComponent
+    // ,canActivate: [AuthGuard]
+  },
+  {
+    path: '/cart',
+    component: CartComponent
+    // ,canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

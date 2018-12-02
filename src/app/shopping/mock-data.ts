@@ -38,6 +38,7 @@ export const DATA: any  = {
       'available': false,
       'best_seller': false,
       'categories': [
+        2,
         4
       ],
       'img': 'http://lorempixel.com/200/100/food/',
@@ -50,6 +51,7 @@ export const DATA: any  = {
       'available': true,
       'best_seller': true,
       'categories': [
+        3,
         4
       ],
       'img': 'http://lorempixel.com/200/100/food/',
@@ -89,7 +91,8 @@ export const DATA: any  = {
       'best_seller': false,
       'categories': [
         1,
-        4
+        4,
+        3
       ],
       'img': 'http://lorempixel.com/200/100/food/',
       'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'

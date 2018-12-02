@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, Routes} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router, Routes} from '@angular/router';
 
 
 @Component({
@@ -13,8 +13,9 @@ export class LayoutHeaderComponent implements OnInit {
   // @Input
   // routes: Routes;
   routes: Routes = [
-    {path: '/products', data: ['מוצרים'], children: []},
-    {path: '/cart', data: ['עגלה'], children: []},
+    {path: '/shopping/products', data: ['מוצרים'], children: []},
+    {path: '/shopping/cart', data: ['עגלה'], children: []},
+    {path: '/shopping/orders', data: ['הזמנות'], children: []},
     {path: '/about', data: ['אודות'], children: []},
     {path: '/contact', data: ['צור קשר'], children: []}
   ];

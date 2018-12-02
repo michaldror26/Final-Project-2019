@@ -1,4 +1,4 @@
-﻿export class SaleShippingCertificate {
+﻿export class SaleShppingCertificate {
   public Id: number;
   public Date: Date; // DateTime
   public CustomerId: number;
