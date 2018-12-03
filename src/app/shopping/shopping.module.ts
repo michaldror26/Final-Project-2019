@@ -4,8 +4,6 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import {ShoppingRoutingModule} from './shopping-routing.module';
 import {DataService} from './data.service';
 import {CartService} from './cart.service';
-import {ShippingProductsModule} from './products/shipping-products.module';
-import {CartModule} from './cart/cart.module';
 import {ShoppingComponent} from './shopping.component';
 
 @NgModule({
@@ -16,9 +14,7 @@ import {ShoppingComponent} from './shopping.component';
     FormsModule,
     HttpModule,
     JsonpModule,
-    ShoppingRoutingModule,
-    ShippingProductsModule,
-    CartModule
+    ShoppingRoutingModule
   ],
   providers: [
     DataService,

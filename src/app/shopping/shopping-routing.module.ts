@@ -7,12 +7,12 @@ import {ShippingProductsComponent} from './products/shipping-products.component'
 
 const routes: Routes = [
   {
-    path: '/products',
+    path: 'products',
     component: ShippingProductsComponent
     // ,canActivate: [AuthGuard]
   },
   {
-    path: '/cart',
+    path: 'cart',
     component: CartComponent
     // ,canActivate: [AuthGuard]
   },
