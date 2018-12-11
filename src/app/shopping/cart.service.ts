@@ -1,12 +1,13 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 
 @Injectable()
 export class CartService {
 
   products: any[] = []
-  cartTotal: number = 0
+  cartTotal: number = 0;
+
   initF: boolean = true;
 
   private productAddedSource = new Subject<any>()
@@ -17,7 +18,7 @@ export class CartService {
   constructor() {
   }
   init() {
-    if (this.products==[])
+    if (this.products == [])
       if (localStorage.getItem('products') !== null) {
         let products = localStorage.getItem('products');
         this.products = JSON.parse(products);
@@ -27,11 +28,13 @@ export class CartService {
         this.productAddedSource.next({ products: this.products, cartTotal: this.cartTotal })
       }
   }
+  getCart() {
 
+  }
   addProductToCart(product) {
     let exists = false
     let parsedPrice = parseFloat(product.price.replace(/\./g, '').replace(',', '.'))
-    this.cartTotal += parsedPrice
+    this.cartTotal += parsedPrice;
     //Search this product on the cart and increment the quantity
     this.products = this.products.map(_product => {
       if (_product.product.id == product.id) {

@@ -14,6 +14,7 @@ export class MiniCartComponent implements OnInit {
 
   products: any[] = []
   numProducts: number = 0
+  
   animatePlop: boolean = false
   animatePopout: boolean = false
   expanded: boolean = false
@@ -30,9 +31,7 @@ export class MiniCartComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger
     this.cartService.init();
-    this.changeDetectorRef.detectChanges();
     this.expandedHeight = '0'
     this.cartService.productAdded$.subscribe(data => {
       this.products = data.products
@@ -41,7 +40,6 @@ export class MiniCartComponent implements OnInit {
         acc += product.quantity
         return acc
       }, 0)
-      debugger
       //Make a plop animation
       if (this.numProducts > 1) {
         this.animatePlop = true
