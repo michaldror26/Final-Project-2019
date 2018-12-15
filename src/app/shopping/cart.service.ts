@@ -52,6 +52,8 @@ export class CartService {
       })
     }
 
+    console.log('product',this.products);
+    console.log('cartTotal',this.cartTotal);
     this.saveCartLocaly();
     this.productAddedSource.next({ products: this.products, cartTotal: this.cartTotal })
   }

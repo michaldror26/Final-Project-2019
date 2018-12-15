@@ -20,11 +20,11 @@ export class ProductThumbnailComponent implements OnInit {
     this.detailViewActive = false;
   }
 
-  onProductClick() {
+  productClicked() {
     this.detailViewActive = !this.detailViewActive;
   }
 
-  onAddToCart() {
+  addToCart() {
     this.cartService.addProductToCart(this.product);
   }
 
