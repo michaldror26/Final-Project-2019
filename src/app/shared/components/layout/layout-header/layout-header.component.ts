@@ -15,7 +15,7 @@ export class LayoutHeaderComponent implements OnInit {
   routes: Routes = [
     {path: '/shopping/products', data: ['מוצרים'], children: []},
     {path: '/shopping/cart', data: ['עגלה'], children: []},
-    {path: '/shopping/orders', data: ['הזמנות'], children: []},
+    {path: '/shopping/myorders', data: ['הזמנות'], children: []},
     {path: '/about', data: ['אודות'], children: []},
     {path: '/contact', data: ['צור קשר'], children: []}
   ];

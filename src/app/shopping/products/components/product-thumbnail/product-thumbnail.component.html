@@ -31,7 +31,7 @@
         <p class="d-holder d-price">$ {{product.price}}</p>
         <p class="d-holder d-description">{{product.description}}</p>
       </div>
-      <button type="button" class="hide-detail-btn" (click)='onProductClick()'>לחץ לסגירה</button>
+      <button type="button" class="hide-detail-btn" (click)='productClicked()'>לחץ לסגירה</button>
     </div>
   </div>
   <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf = 'product.best_seller'>

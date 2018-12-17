@@ -5,10 +5,12 @@ import {ShoppingRoutingModule} from './shopping-routing.module';
 import {DataService} from './data.service';
 import {CartService} from './cart.service';
 import {ShoppingComponent} from './shopping.component';
+import { OrderViewComponent } from './order-view/order-view.component';
 
 @NgModule({
   declarations: [
-    ShoppingComponent
+    ShoppingComponent,
+    OrderViewComponent
   ],
   imports: [
     FormsModule,
