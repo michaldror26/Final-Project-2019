@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-8 col-sm-12">
-    <!-- <ng-container *ngIf="order$ | async as order"; else notFound> -->
-    <ng-container *ngIf="true" ; else notFound>
+    <ng-container *ngIf="order$ | async as order" ; else notFound>
       <ng-container *ngIf="order.items" ; else notFound>
         <div class="card">
           <div class="card-body">
