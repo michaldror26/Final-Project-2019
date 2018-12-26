@@ -18,7 +18,8 @@ import {CustomerService} from '../../../../shared/services/customer.service';
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   declarations: [
     CustomerComponent,
