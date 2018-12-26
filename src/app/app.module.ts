@@ -14,10 +14,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LayoutHeaderComponent} from './shared/components/layout/layout-header/layout-header.component';
 import {LayoutFooterComponent} from './shared/components/layout/layout-footer/layout-footer.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     // GoTopButtonModule, to install

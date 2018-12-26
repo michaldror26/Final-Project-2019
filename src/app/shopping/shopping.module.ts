@@ -6,6 +6,10 @@ import {DataService} from './data.service';
 import {CartService} from './cart.service';
 import {ShoppingComponent} from './shopping.component';
 import { OrderViewComponent } from './order-view/order-view.component';
+import { ShippingProductsModule } from './products/shipping-products.module';
+import { CartModule } from './cart/cart.module';
+import { MyOrderModule } from './my-orders/my-orders.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { OrderViewComponent } from './order-view/order-view.component';
     FormsModule,
     HttpModule,
     JsonpModule,
-    ShoppingRoutingModule
+    ShoppingRoutingModule,
+    MyOrderModule,
+    ShippingProductsModule,
+    CartModule,
+    CommonModule
   ],
   providers: [
     DataService,

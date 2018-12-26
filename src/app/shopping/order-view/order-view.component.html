@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-8 col-sm-12">
-    <ng-container *ngIf="order$ | async as order" ; else notFound>
+    <!-- <ng-container *ngIf="order$ | async as order" ; else notFound> -->
+    <ng-container *ngIf="false" ; else notFound>
       <ng-container *ngIf="order.items" ; else notFound>
         <div class="card">
           <div class="card-body">
@@ -16,13 +17,17 @@
               <li class="list-group-item"><span class="font-weight-bold">הזמנה:</span>
                 <div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let item of order.items">
-                      {{item.product.title}} x {{item.qty}} ({{item.price | currency:'USD':true}})
-                      <div class="float-right">{{item.totalPrice | currency:'USD':true}}</div>
+                    <!-- <li class="list-group-item" *ngFor="let item of order.items"> -->
+                      <li class="list-group-item">
+                      <!-- {{item.product.title}} x {{item.qty}} ({{item.price | currency:'USD':true}}) -->
+                      {{item.product.title}} x {{item.qty}} ({{item.price}})
+                      <!-- <div class="float-right">{{item.totalPrice | currency:'USD':true}}</div> -->
+                      <div class="float-right">{{item.totalPrice }}</div>
                     </li>
                     <li class="list-group-item">
                       <span class="font-weight-bold">סה"כ: </span>
-                      <div class="float-right">{{order.netPrice | currency:'USD':true}}</div>
+                      <!-- <div class="float-right">{{order.netPrice | currency:'USD':true}}</div> -->
+                      <div class="float-right">{{order.netPrice}}</div>
                     </li>
                   </ul>
                 </div>

@@ -12,7 +12,8 @@ import {CartService} from '../cart.service';
     CommonModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    CommonModule
   ],
   declarations: [CartComponent
   ],
