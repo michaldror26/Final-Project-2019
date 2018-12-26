@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router, Routes} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router, Routes } from '@angular/router';
 
 
 @Component({
@@ -12,45 +12,46 @@ export class LayoutHeaderComponent implements OnInit {
   loginPage: boolean = false;
   // @Input
   // routes: Routes;
-  routes: Routes = [
-    {path: '/shopping/products', data: ['מוצרים'], children: []},
-    {path: '/shopping/cart', data: ['עגלה'], children: []},
-    {path: '/shopping/myorders', data: ['הזמנות'], children: []},
-    {path: '/about', data: ['אודות'], children: []},
-    {path: '/contact', data: ['צור קשר'], children: []}
+  routes: Routes;
+  routesOfHost: Routes = [
+    { path: '/shopping/products', data: ['מוצרים'], children: [] },
+    { path: '/shopping/cart', data: ['עגלה'], children: [] },
+    { path: '/shopping/myorders', data: ['הזמנות'], children: [] },
+    { path: '/about', data: ['אודות'], children: [] },
+    { path: '/contact', data: ['צור קשר'], children: [] }
   ];
 
-  routesOfAdmin = [
-    {path: '/', data: ['צפייה במלאי'], children: []},
+  routesOfAdmin: Routes = [
+    { path: '/', data: ['צפייה במלאי'], children: [] },
     {
       path: '', data: ['קניה'], children: [
-        {path: '1', data: ['הזמן מספק']},
-        {path: '2', data: ['קבל מספק']},
-        {path: '3', data: ['מיון אתרוגים']},
+        { path: '1', data: ['הזמן מספק'] },
+        { path: '2', data: ['קבל מספק'] },
+        { path: '3', data: ['מיון אתרוגים'] },
       ]
     },
     {
       path: '', data: ['מכירה'], children: [
-        {path: '1', data: ['הזמן ללקוח']},
-        {path: '2', data: ['אשר אספקה']},
-        {path: '3', data: ['החזר סחורה']},
-        {path: '4', data: ['צפי המכירות להיום']}
+        { path: '1', data: ['הזמן ללקוח'] },
+        { path: '2', data: ['אשר אספקה'] },
+        { path: '3', data: ['החזר סחורה'] },
+        { path: '4', data: ['צפי המכירות להיום'] }
       ]
     },
-    {path: '/', data: ['תקבול'], children: []},
+    { path: '/', data: ['תקבול'], children: [] },
     {
       path: '/entities-managment', data: ['בסיס נתונים'], children: [
-        {path: '/admin/entities-managment/customers', data: ['לקוחות']},
-        {path: '/admin/entities-managment/providers', data: ['ספקים']},
-        {path: '/admin/entities-managment/employees', data: ['עובדים']},
-        {path: '/admin/entities-managment/products', data: ['מוצרים']}
+        { path: '/admin/entities-managment/customers', data: ['לקוחות'] },
+        { path: '/admin/entities-managment/providers', data: ['ספקים'] },
+        { path: '/admin/entities-managment/employees', data: ['עובדים'] },
+        { path: '/admin/entities-managment/products', data: ['מוצרים'] }
       ]
     },
     {
       path: '/', data: ['דוחות'], children: [
-        {path: '1', data: ['בסיסי נתונים']},
-        {path: '2', data: ['קניה']},
-        {path: '3', data: ['מכירה']}
+        { path: '1', data: ['בסיסי נתונים'] },
+        { path: '2', data: ['קניה'] },
+        { path: '3', data: ['מכירה'] }
       ]
     },
     {
@@ -63,7 +64,7 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.routes = this.routesOfAdmin;
+    this.routes = this.routesOfHost;
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -71,6 +72,10 @@ export class LayoutHeaderComponent implements OnInit {
       }
     });
 
+  }
+  //זמני לשם נוחות
+  switchRoutes() {
+    this.routes = this.routes == this.routesOfAdmin ? this.routesOfHost : this.routesOfAdmin;
   }
 
 }
