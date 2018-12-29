@@ -7,38 +7,38 @@
         <div class="row">
           <div class="col-md-6  col-12">
             <input type="text" id="inputFirstName" class="form-control form-group" name="inputFirstName" placeholder="שם פרטי"
-              title="שם פרטי" [(ngModel)]="customer.firstName" required>
+              title="שם פרטי" [(ngModel)]="customer.FirstName" required>
           </div>
           <div class="col-md-6  col-12">
             <input type="text" id="inputLastName" class="form-control form-group" name="inputLastName" placeholder="שם משפחה"
-              title="שם משפחה" [(ngModel)]="customer.lastName" required>
+              title="שם משפחה" [(ngModel)]="customer.LastName" required>
           </div>
         </div>
         <input type="email" id="inputEmailName" class="form-control form-group" placeholder="כתובת מייל" title="כתובת מייל"
-          name="inputEmailName" [(ngModel)]="customer.email" required>
+          name="inputEmailName" [(ngModel)]="customer.Email" required>
         <div class="row">
           <div class="col-md-6  col-12">
             <input type="tel" id="inputMobile" class="form-control form-group" name="inputMobile" placeholder="נייד"
-              title="נייד" [(ngModel)]="customer.mobilePhone" required>
+              title="נייד" [(ngModel)]="customer.MobilePhone" required>
           </div>
           <div class="col-md-6  col-12">
             <input type="tel" id="inputTel" class="form-control form-group" name="inputTel" placeholder="טלפון" title="טלפון"
-              [(ngModel)]="customer.telephone" required>
+              [(ngModel)]="customer.Telephone" required>
           </div>
         </div>
 
         <input type="text" id="inputCity" class="form-control form-group" placeholder="עיר" title="עיר" name="inputCity"
-          [(ngModel)]="customer.city" required>
+          [(ngModel)]="customer.City" required>
 
         <div class="row mx-0">
           <label for="inputRegisterDate" class="col-md-5 col-12 text-right text-md-left">תאריך הצטרפות:</label>
           <input type="text" id="inputRegisterDate" class="form-control form-group col-md-7 col-12" placeholder="תאריך הצטרפות"
-            title="תאריך הצטרפות" name="inputRegisterDate" [(ngModel)]="customer.customerRegisterDate" required>
+            title="תאריך הצטרפות" name="inputRegisterDate" [(ngModel)]="customer.RegisteredDate" required>
         </div>
         <div class="row mx-0">
           <label for="inputDiscountPercentage" class="col-md-5 col-12 text-right text-md-left">אחוז הנחה:</label>
           <input type="number" id="inputDiscountPercentage" class="form-control form-group col-md-7 col-12" placeholder="אחוז הנחה"
-            title="אחוז הנחה" name="inputDiscountPercentage" [(ngModel)]="customer.discountPercentage"
+            title="אחוז הנחה" name="inputDiscountPercentage" [(ngModel)]="customer.DiscountPercentage"
             required>
 
         </div>

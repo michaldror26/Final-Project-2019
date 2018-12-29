@@ -24,11 +24,13 @@
         <th>אימייל</th>
         <th>פלאפון</th>
         </thead>
-        <tbody *ngIf="customersList&&customersList.length>0">
+        <!-- <tbody *ngIf="customersList && (customersList).length"> -->
+          <tbody *ngIf="(customersList$ | async ).length">
 
-        <tr *ngFor="let customer of customersList;" [routerLink]="['../details', customer.id]">
+        <!-- <tr *ngFor="let customer of customersList;" [routerLink]="['../details', customer.CustomerId]"> -->
+          <tr *ngFor="let customer of customersList$ | async;" [routerLink]="['../details', customer.CustomerId]">
           <!--<td><input type="checkbox"/></td>-->
-          <td [routerLink]="['../edit', customer.customerId]" class="px-sm-1 px-3" >
+          <td [routerLink]="['../edit', customer.CustomerId]" class="px-sm-1 px-3" >
 
             <button class="btn border-0 p-0 bg-transparent" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top"
                     data-toggle="tooltip" title="עדכן">
@@ -39,7 +41,7 @@
               </svg>
             </button>
           </td>
-          <td [routerLink]="['../delete', customer.customerId]" class="px-sm-1 px-3">
+          <td [routerLink]="['../delete', customer.CustomerId]" class="px-sm-1 px-3">
             <a class="btn border-0 p-0 bg-transparent" data-placement="top" data-toggle="tooltip" title="מחיקה"
                     data-title="Delete" data-toggle="modal" data-target="#delete">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -49,10 +51,10 @@
             </a>
           </td>
 
-          <td>{{customer.firstName }}</td>
-          <td>{{customer.lastName }}</td>
-          <td>{{customer.email }}</td>
-          <td>{{customer.mobilePhone }}</td>
+          <td>{{customer.FirstName }}</td>
+          <td>{{customer.LastName }}</td>
+          <td>{{customer.Email }}</td>
+          <td>{{customer.MobilePhone }}</td>
         </tr>
 
         </tbody>

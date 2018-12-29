@@ -1,10 +1,10 @@
 ﻿export class CustomerPayment {
 
-  public id: number;
-  public date: Date;
-  public customerId: number;
-  public amount: number; // float
-  public circulationMedium: number;
+  public Id: number;
+  public Date: Date;
+  public CustomerId: number;
+  public Amount: number; // float
+  public CirculationMedium: number;
 
 }
 

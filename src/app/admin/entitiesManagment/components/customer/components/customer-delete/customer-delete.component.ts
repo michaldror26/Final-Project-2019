@@ -20,10 +20,11 @@ export class CustomerDeleteComponent implements OnInit {
   ngOnInit() {
     const id: number = this._activateRout.snapshot.params['id'];
     this.customer = this._customerService.getCustomer(id);
+    // console.log(this.customer)
   }
 
   deleteCustomer() {
-    this._customerService.deleteCustomer(this.customer.customerId);
+    this._customerService.deleteCustomer(this.customer.CustomerId);
     this._router.navigate(['../../view']);
   }
 

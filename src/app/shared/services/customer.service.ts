@@ -1,5 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Customer} from '../models/Customer.class';
+import { Injectable } from '@angular/core';
+import { Customer } from '../models/Customer.class';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs'
+import { map, catchError, filter, find, first } from 'rxjs/operators';
+import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Injectable({
   providedIn: 'root'
@@ -7,78 +11,89 @@ import {Customer} from '../models/Customer.class';
 export class CustomerService {
   private cusArr: Customer[] = [
     {
-      customerId: 1,
-      discountPercentage: 98,
-      firstName: 'מרים',
-      lastName: 'טרבלסי',
-      mobilePhone: '0587896541',
-      city: 'בני ברק',
-      email: 'miryam@gmail.com',
-      telephone: '097496761',
-      customerRegisterDate: new Date().toLocaleDateString(),
+      CustomerId: 1,
+      DiscountPercentage: 98,
+      FirstName: 'מרים',
+      LastName: 'טרבלסי',
+      MobilePhone: '0587896541',
+      City: 'בני ברק',
+      Email: 'miryam@gmail.com',
+      Telephone: '097496761',
+      RegisteredDate: new Date().toLocaleDateString(),
       // userName: 'fvdgvgb',
       //  password: '26565'
     },
     {
-      customerId: 2,
-      discountPercentage: 98,
-      firstName: 'sara',
-      lastName: 'trabelsi',
-      mobilePhone: '0587896541',
-      city: 'bney brak',
-      email: 'sara555@gmail.com',
-      telephone: '097496761',
-      customerRegisterDate: new Date().toLocaleDateString(),
+      CustomerId: 2,
+      DiscountPercentage: 98,
+      FirstName: 'sara',
+      LastName: 'trabelsi',
+      MobilePhone: '0587896541',
+      City: 'bney brak',
+      Email: 'sara555@gmail.com',
+      Telephone: '097496761',
+      RegisteredDate: new Date().toLocaleDateString(),
       // userName:'fvdgvgb',
       // password:'26565'
     },
     {
-      customerId: 3,
-      discountPercentage: 98,
-      firstName: 'dafna',
-      lastName: 'trabelsi',
-      mobilePhone: '0587896541',
-      city: 'bney brak',
-      email: 'dafnat555@gmail.com',
-      telephone: '097496761',
-      customerRegisterDate: new Date().toLocaleDateString(),
+      CustomerId: 3,
+      DiscountPercentage: 98,
+      FirstName: 'dafna',
+      LastName: 'trabelsi',
+      MobilePhone: '0587896541',
+      City: 'bney brak',
+      Email: 'dafnat555@gmail.com',
+      Telephone: '097496761',
+      RegisteredDate: new Date().toLocaleDateString(),
       // userName:'fvdgvgb',
       // password:'26565'
     }
   ];
+  private cusArr$: Observable<Customer[]>;
 
-
-  constructor() {
+  constructor(private _http: Http) {
   }
 
-  getCustomers(): Customer[] {
-    return this.cusArr;
+  getCustomers(): Observable<Customer[]> {
+    // this.cusArr$ = 
+    return this._http.get('http://localhost:49738/api/customer/GetAllCustomers')
+      .pipe(map(res => <Customer[]>res.json()));
+    // return this.cusArr$;
   }
-
-  getCustomer(id: number): Customer {
-    return this.cusArr.find(customer => customer.customerId == id);
-  }
+  // getCustomers(): Customer[] {
+  //   return this.cusArr;
+  // }
+  getCustomer(id: number) {
+     let x = this.getCustomers()
+      .pipe(filter(cust => cust['CustomerId'] === id)).subscribe(x=> x=x);
+  return x;
+}
 
   deleteCustomer(id: number) {
-    const index = this.cusArr.findIndex(customer => customer.customerId === id);
+    const index = this.cusArr.findIndex(customer => customer.CustomerId === id);
     if (index !== -1) {
       this.cusArr.splice(index, 1);
     }
   }
 
   editCustomer(updatedCustomer: Customer) {
-    const index = this.cusArr.findIndex(customer => customer.customerId === updatedCustomer.customerId);
+    const index = this.cusArr.findIndex(customer => customer.CustomerId === updatedCustomer.CustomerId);
     if (index !== -1) {
       // TODO implement this as reallity
       this.cusArr[index] = updatedCustomer;
     }
   }
 
-  search(text: string): Customer[] {
-    return this.cusArr.filter(customer => customer.firstName.includes(text)
-      || customer.lastName.includes(text)
-      || customer.mobilePhone.includes(text)
-      || customer.email.includes(text)
+  search(text: string): Observable<Customer[]> {
+    let list;
+    this.getCustomers().subscribe(l => list = l)
+    list.filter(customer =>
+      customer.FirstName.includes(text)
+      || customer.LastName.includes(text)
+      || customer.MobilePhone.includes(text)
+      || customer.Email.includes(text)
     );
+    return list.unsubscribe();
   }
 }
