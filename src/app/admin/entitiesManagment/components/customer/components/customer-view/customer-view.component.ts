@@ -25,10 +25,6 @@ export class CustomerViewComponent implements OnInit {
     //to remove
     // this.customersList$.subscribe(x => this.customersList = x);
   }
-
-  // goEdit() {
-  //   this._router.navigate(['../edit',1], {relativeTo: this._rout});
-  // }
   
   searchText(text: string) {
     this.customersList$ = this._customerService.search(text);

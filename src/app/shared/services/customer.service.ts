@@ -56,33 +56,36 @@ export class CustomerService {
   }
 
   getCustomers(): Observable<Customer[]> {
-    // this.cusArr$ = 
-    return this._http.get('http://localhost:49738/api/customer/GetAllCustomers')
+    this.cusArr$ = this._http.get('http://localhost:49738/api/customer/getAllCustomers')
       .pipe(map(res => <Customer[]>res.json()));
-    // return this.cusArr$;
+    return this.cusArr$;
   }
   // getCustomers(): Customer[] {
   //   return this.cusArr;
   // }
   getCustomer(id: number) {
-     let x = this.getCustomers()
-      .pipe(filter(cust => cust['CustomerId'] === id)).subscribe(x=> x=x);
-  return x;
-}
+    return this._http.get('http://localhost:49738/api/customer/getCustomer?id=' + id)
+      .pipe(map(res => <Customer>res.json()));
+  }
 
   deleteCustomer(id: number) {
-    const index = this.cusArr.findIndex(customer => customer.CustomerId === id);
-    if (index !== -1) {
-      this.cusArr.splice(index, 1);
-    }
+    // const index = this.cusArr.findIndex(customer => customer.CustomerId === id);
+    // if (index !== -1) {
+    //   this.cusArr.splice(index, 1);
+    // }
+    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id=', id);
+
   }
 
   editCustomer(updatedCustomer: Customer) {
-    const index = this.cusArr.findIndex(customer => customer.CustomerId === updatedCustomer.CustomerId);
-    if (index !== -1) {
-      // TODO implement this as reallity
-      this.cusArr[index] = updatedCustomer;
-    }
+    // const index = this.cusArr.findIndex(customer => customer.CustomerId === updatedCustomer.CustomerId);
+    // if (index !== -1) {
+    //   // TODO implement this as reallity
+    //   this.cusArr[index] = updatedCustomer;
+    // }
+
+    this._http.post('http://localhost:49738/api/customer/editCustomer', updatedCustomer);
+
   }
 
   search(text: string): Observable<Customer[]> {
