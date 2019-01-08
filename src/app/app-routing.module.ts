@@ -1,7 +1,6 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import { ShoppingModule } from './shopping';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -9,22 +8,10 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomeModule',
     pathMatch: 'full'
   },
-  // {
-  //   path: 'home',
-  //   redirectTo:''
-  // },
   {
     path: 'login',
     loadChildren: './auth/auth2.module#Auth2Module'
   }
-// ,{
-  //   path: 'chart',
-  //   loadChildren: ''
-  // },
-  // {
-  //   path: 'products',
-  //   loadChildren: ''
-  // },
   , {
     path: 'contact',
     loadChildren: './shared/components/contact/contact.module#ContactModule'
@@ -41,7 +28,7 @@ const routes: Routes = [
   }
   , {
     path: 'shopping',
-  loadChildren: './shopping/shopping.module#ShoppingModule'
+    loadChildren: './shopping/shopping.module#ShoppingModule'
   }
   //,{
    // path: 'signup',

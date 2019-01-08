@@ -5,11 +5,11 @@
         <h1 class="h3 mb-3 font-weight-normal">האם אתה בטוח כי ברצונך למחוק לקוח?</h1>
         <h3>שפרטיו:</h3>
         <div class="row">
-          <p *ngIf="customer.firstName || customer.lastName"><span>שם:</span> {{customer.firstName +" " +customer.lastName }} </p>
-          <p *ngIf="customer.mobilePhone"><span>נייד:</span> {{customer.mobilePhone }} </p>
-          <p *ngIf="customer.telephone"><span>טלפון:</span> {{customer.telephone }} </p>
-          <p *ngIf="customer.email"><span>כתובת מייל:</span> {{customer.email }} </p>
-          <p *ngIf="customer.city"><span>עיר מגורים:</span> {{customer.city }} </p>
+          <p *ngIf="customer.FirstName || customer.LastName"><span>שם:</span> {{customer.FirstName +" " +customer.LastName }} </p>
+          <p *ngIf="customer.MobilePhone"><span>נייד:</span> {{customer.MobilePhone }} </p>
+          <p *ngIf="customer.Telephone"><span>טלפון:</span> {{customer.Telephone }} </p>
+          <p *ngIf="customer.Email"><span>כתובת מייל:</span> {{customer.Email }} </p>
+          <p *ngIf="customer.City"><span>עיר מגורים:</span> {{customer.City }} </p>
         </div>
         <!-- TODO like component details-->
 

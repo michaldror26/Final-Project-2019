@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-8 col-sm-12">
+    <!-- <ng-container *ngIf="order$ | async as order" ; else notFound> -->
+    <ng-container *ngIf="false" ; else notFound>
+      <ng-container *ngIf="order.items" ; else notFound>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">פרטי ההזמנה</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="font-weight-bold">שם הלקוח:</span> {{order.user.username}}
+              </li>
+              <li class="list-group-item">
+                <!-- <span class="font-weight-bold">תאריך ההזמנה:</span> {{order.datePlaced | date}} -->
+                <span class="font-weight-bold">תאריך ההזמנה:</span> {{order.datePlaced}}
+              </li>
+              <li class="list-group-item"><span class="font-weight-bold">הזמנה:</span>
+                <div>
+                  <ul class="list-group list-group-flush">
+                    <!-- <li class="list-group-item" *ngFor="let item of order.items"> -->
+                      <li class="list-group-item">
+                      <!-- {{item.product.title}} x {{item.qty}} ({{item.price | currency:'USD':true}}) -->
+                      {{item.product.title}} x {{item.qty}} ({{item.price}})
+                      <!-- <div class="float-right">{{item.totalPrice | currency:'USD':true}}</div> -->
+                      <div class="float-right">{{item.totalPrice }}</div>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="font-weight-bold">סה"כ: </span>
+                      <!-- <div class="float-right">{{order.netPrice | currency:'USD':true}}</div> -->
+                      <div class="float-right">{{order.netPrice}}</div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="list-group-item"><span class="font-weight-bold">כתובת למשלוח:</span>
+                <div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> שם : {{order.shipping.name}}</li>
+                    <li class="list-group-item"> כתובת : {{order.shipping.address}}</li>
+                    <li class="list-group-item"> עיר : {{order.shipping.city}}</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #notFound>
+        אופס! פרטים לא נמצאו
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

@@ -9,11 +9,5 @@ export abstract class User {
   public Telephone?: string;
   public City: string;
   public Email: string;
-  
- 
-  getFullName()
-  {
-   return this.FirstName +' '+this.LastName;
-  }
 }
 

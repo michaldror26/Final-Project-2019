@@ -1,4 +1,4 @@
-﻿export class PurchaseShippingCertificate {
+﻿export class PurchaseShppingCertificate {
   public id: number;
   public Date: Date; // DateTime
   public ProviderId: number;
