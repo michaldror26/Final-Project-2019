@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'shopping',
   loadChildren: './shopping/shopping.module#ShoppingModule'
   }
+  //,{
+   // path: 'signup',
+  
+  //}
   // ,
   // {
   //   path: 'customer',

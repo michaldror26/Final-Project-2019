@@ -1,25 +1,32 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, Routes} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router, Routes, Params} from '@angular/router';
+import {CurrentUser} from '../../../currentUser';
+import { AuthService } from '../../../services/auth.service';
+import { SiteUserService } from '../../../services/siteUser.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
   selector: 'app-layout-header',
   templateUrl: './layout-header.component.html',
-  styleUrls: ['./layout-header.component.scss']
+  styleUrls: ['./layout-header.component.scss'],
 })
 export class LayoutHeaderComponent implements OnInit {
 
   loginPage: boolean = false;
-  // @Input
-  // routes: Routes;
-  routes: Routes = [
+  userName:string =null;
+  thisPage:Params; 
+ 
+  
+   routes: Routes;
+   defaultRoutes : Routes = [
     {path: '/products', data: ['מוצרים'], children: []},
     {path: '/cart', data: ['עגלה'], children: []},
     {path: '/about', data: ['אודות'], children: []},
     {path: '/contact', data: ['צור קשר'], children: []}
   ];
 
-  routesOfAdmin = [
+  adminRoutes = [
     {path: '/', data: ['צפייה במלאי'], children: []},
     {
       path: '', data: ['קניה'], children: [
@@ -57,19 +64,64 @@ export class LayoutHeaderComponent implements OnInit {
     }
   ];
 
+  customerRoutes =[
+    {path: '/products', data: ['מוצרים'], children: []},
+    {path: '/cart', data: ['עגלה'], children: []},
+    {path: '/about', data: ['אודות'], children: []},
+    {path: '/contact', data: ['צור קשר'], children: []},
+    {path: '/contact', data: ['ניהול חשבון'], children: [
+      {path: '1', data: ['פרטים אישיים']},
+      {path: '2', data: ['דוחות']},
+      {path: '3', data: ['עוד דברים']},
+    ]}
 
-  constructor(private router: Router) {
-  }
+ ]
+ constructor(private router: Router,
+             private currentUser:CurrentUser,
+             private authService: AuthService,
+             private siteUserServicde:SiteUserService,
+             private cookieService:CookieService){
+
+  this.authService.listen().subscribe(() => {
+      this.setRoutes();
+  });
+  if(this.cookieService.get("userName")!="")
+  this.goToLoginPage();
+}
 
   ngOnInit() {
-    // this.routes = this.routesOfAdmin;
-
+    this.routes=this.defaultRoutes;
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.loginPage = event.url === '/login';
+        this.loginPage = event.url === '/login'; 
       }
     });
-
   }
+
+//דרך נכונה?
+  goToLoginPage()
+  {
+    this.router.navigate(["/login"], { queryParams: { thisPage: window.location.pathname } });
+  }
+
+  logout()
+  {
+    this.siteUserServicde.logout().subscribe();
+  }
+  
+  setRoutes()
+  {
+  if(this.currentUser.isUserLogin()==true){
+     switch(this.currentUser.get().AuthenticationTypeId){
+    case 1:this.routes=this.adminRoutes; break;
+    case 2:this.routes=this.customerRoutes; break;
+     }
+     this.userName=this.currentUser.get().FirstName+' '+this.currentUser.get().LastName;
+  }
+  else{
+    this.routes=this.defaultRoutes;
+    this.userName=null;
+  }
+}
 
 }

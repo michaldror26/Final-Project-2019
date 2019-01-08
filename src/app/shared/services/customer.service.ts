@@ -1,50 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Customer} from '../models/Customer.class';
+import { SiteUser } from '../models/SiteUser.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
   private cusArr: Customer[] = [
-    {
-      customerId: 1,
-      discountPercentage: 98,
-      firstName: 'מרים',
-      lastName: 'טרבלסי',
-      mobilePhone: '0587896541',
-      city: 'בני ברק',
-      email: 'miryam@gmail.com',
-      telephone: '097496761',
-      customerRegisterDate: new Date().toLocaleDateString(),
-      // userName: 'fvdgvgb',
-      //  password: '26565'
-    },
-    {
-      customerId: 2,
-      discountPercentage: 98,
-      firstName: 'sara',
-      lastName: 'trabelsi',
-      mobilePhone: '0587896541',
-      city: 'bney brak',
-      email: 'sara555@gmail.com',
-      telephone: '097496761',
-      customerRegisterDate: new Date().toLocaleDateString(),
-      // userName:'fvdgvgb',
-      // password:'26565'
-    },
-    {
-      customerId: 3,
-      discountPercentage: 98,
-      firstName: 'dafna',
-      lastName: 'trabelsi',
-      mobilePhone: '0587896541',
-      city: 'bney brak',
-      email: 'dafnat555@gmail.com',
-      telephone: '097496761',
-      customerRegisterDate: new Date().toLocaleDateString(),
-      // userName:'fvdgvgb',
-      // password:'26565'
-    }
   ];
 
 
@@ -58,6 +20,7 @@ export class CustomerService {
   getCustomer(id: number): Customer {
     return this.cusArr.find(customer => customer.customerId == id);
   }
+
 
   deleteCustomer(id: number) {
     const index = this.cusArr.findIndex(customer => customer.customerId === id);
@@ -75,10 +38,10 @@ export class CustomerService {
   }
 
   search(text: string): Customer[] {
-    return this.cusArr.filter(customer => customer.firstName.includes(text)
-      || customer.lastName.includes(text)
-      || customer.mobilePhone.includes(text)
-      || customer.email.includes(text)
+    return this.cusArr.filter(customer => customer.FirstName.includes(text)
+      || customer.LastName.includes(text)
+      || customer.MobilePhone.includes(text)
+      || customer.Email.includes(text)
     );
   }
 }

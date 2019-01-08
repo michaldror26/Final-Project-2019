@@ -3,6 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 // Modules - ourCustom
 import {EntitiesManagmentModule} from './admin/entitiesManagment/entities-managment.module';
@@ -18,11 +20,14 @@ import {LayoutHeaderComponent} from './shared/components/layout/layout-header/la
 import {LayoutFooterComponent} from './shared/components/layout/layout-footer/layout-footer.component';
 
 import {ShoppingModule} from './shopping/shopping.module';
+import {AuthService} from './shared/services/auth.service';
+import {CurrentUser} from './shared/currentUser';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     // NgbModule,
     // GoTopButtonModule, to install
     HomeModule,
@@ -33,15 +38,28 @@ import {ShoppingModule} from './shopping/shopping.module';
     AdminModule,
     ShoppingModule,
     ShoppingModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
     LayoutHeaderComponent,
-    LayoutFooterComponent
+    LayoutFooterComponent,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers:[ CookieService,
+              AuthService,
+              CurrentUser]
 })
 export class AppModule {
 }
+
+
+
+
+
+
+
+
+
+
+

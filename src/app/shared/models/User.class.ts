@@ -1,11 +1,19 @@
+
+
 // export numbererface User { ?
 export abstract class User {
-
-  public firstName: string;
-  public lastName: string;
-  public mobilePhone: string;
-  public city: string;
-  public email: string;
-  public telephone?: string;
+  public AuthenticationTypeId: number;
+  public FirstName: string;
+  public LastName: string;
+  public MobilePhone: string;
+  public Telephone?: string;
+  public City: string;
+  public Email: string;
+  
+ 
+  getFullName()
+  {
+   return this.FirstName +' '+this.LastName;
+  }
 }
 
