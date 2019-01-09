@@ -38,7 +38,7 @@ t
     this.sub = this.activateRoute
     .queryParams
     .subscribe(params => {
-      this.returnPage = params['thisPage'].toString() || "/";
+      this.returnPage = (params['thisPage']|| "/").toString();
     });
 }
  
@@ -51,7 +51,7 @@ t
    error=> {this.isValidData = false;},
   );
   let element = <HTMLInputElement> document.getElementById("c");  
-    if (element.checked) {  this.saveAsCookie(data.userName) }
+    if (element!= null && element.checked) {  this.saveAsCookie(data.userName) }
   }
 
 saveAsCookie(userName)

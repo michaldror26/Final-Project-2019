@@ -102,12 +102,12 @@ export class LayoutHeaderComponent implements OnInit {
 //דרך נכונה?
   goToLoginPage()
   {
-    this.router.navigate(["/login"], { queryParams: { thisPage: window.location.pathname } });
+    this.router.navigate(["/login"], { queryParams: { thisPage: window.location.pathname} });
   }
   //זמני לשם נוחות
-  //switchRoutes() {
-//this.routes = this.routes == this.routesOfAdmin ? this.routesOfHost : this.routesOfAdmin;
-  //}
+  switchRoutes() {
+this.routes = this.routes == this.routesOfAdmin ? this.routesOfHost : this.routesOfAdmin;
+  }
 
   logout()
   {
@@ -116,11 +116,12 @@ export class LayoutHeaderComponent implements OnInit {
   
   setRoutes()
   {
-  if(this.currentUser.isUserLogin()==true){
-     switch(this.currentUser.get().AuthenticationTypeId){
-    case 1:this.routes=this.routesOfAdmin; break;
-    case 2:this.routes=this.customerRoutes; break;
-     }
+  if(this.currentUser.isUserLogin()){
+     if(this.currentUser.isCustomer()==true)
+      this.routes=this.customerRoutes;
+     
+    else
+        this.routes=this.routesOfAdmin;
      this.userName=this.currentUser.get().FirstName+' '+this.currentUser.get().LastName;
   }
   else{
