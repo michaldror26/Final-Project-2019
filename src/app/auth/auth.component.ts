@@ -38,7 +38,7 @@ t
     this.sub = this.activateRoute
     .queryParams
     .subscribe(params => {
-      this.returnPage = (params['thisPage']|| "/").toString();
+      this.returnPage = (params['thisPage'] || "/").toString();
     });
 }
  

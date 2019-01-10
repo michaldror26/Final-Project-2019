@@ -16,6 +16,8 @@ export class OrderService {
 
   getAllOrders() {
     // return this.db.list('/order');
+
+    
   }
 
   getOrderByUser(userId: string) {

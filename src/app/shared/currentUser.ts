@@ -38,3 +38,4 @@ export class CurrentUser  {
    {
        return this.user ==null && this.customer!=null;
    }
+}
