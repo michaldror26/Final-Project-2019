@@ -7,6 +7,7 @@ import {CurrentUser} from '../currentUser';
 import {Injectable} from '@angular/core';
 import { AuthService } from './auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Customer } from '../models/Customer.class';
 
 
 @Injectable({
@@ -25,7 +26,7 @@ export class SiteUserService {
       .get<User>(ROOT_URL + 'user/login?userName='+userName+ '&password='+ password)
       .pipe(
       map(
-        data => {this.currentUser.set(data as User);
+        data => {this.currentUser.set(data);
                  this.authService.setRouter()},
         error =>{catchError(this.handleError)}
     )); 
@@ -33,9 +34,7 @@ export class SiteUserService {
 
   logout():Observable<any> {
     this.currentUser.set(null);
-    alert(this.cookieService.get("userName"));
     this.cookieService.deleteAll();
-    alert(this.cookieService.get("userName"));
     this.authService.setRouter();
       return this.httpClient
       .post<any>(ROOT_URL + 'user/logout','')

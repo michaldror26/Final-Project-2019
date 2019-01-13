@@ -20,7 +20,8 @@ export class CustomerService {
       Email: 'miryam@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId:2
+      // userName: 'fvdgvgb',
+      //  password: '26565'
     },
     {
       CustomerId: 2,
@@ -32,7 +33,8 @@ export class CustomerService {
       Email: 'sara555@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId:2
+      // userName:'fvdgvgb',
+      // password:'26565'
     },
     {
       CustomerId: 3,
@@ -44,7 +46,8 @@ export class CustomerService {
       Email: 'dafnat555@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId:2
+      // userName:'fvdgvgb',
+      // password:'26565'
     }
   ];
   private cusArr$: Observable<Customer[]>;
@@ -64,7 +67,6 @@ export class CustomerService {
     return this._http.get('http://localhost:49738/api/customer/getCustomer?id=' + id)
       .pipe(map(res => <Customer>res.json()));
   }
-
 
   deleteCustomer(id: number) {
     // const index = this.cusArr.findIndex(customer => customer.CustomerId === id);

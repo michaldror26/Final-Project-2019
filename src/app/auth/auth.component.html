@@ -22,10 +22,9 @@
     <input ngModel #password="ngModel" name="password" type="password" id="inputPassword" class="form-control form-group" placeholder="סיסמא" required>
     <div *ngIf="!isValidData" class="alert alert-danger">שם משתמש או סיסמה אינם נכונים</div>
     <button (click)="forgetPassword(userName)" class="btn btn-link">שכחת סיסמה?</button>
-    <div class="checkbox my-3">
+  <div *ngIf="!isUserLogin"class="checkbox my-3" >
       <label>
         <input ngModel #rememberMe="ngModel"name="rememberMe" type="checkbox" value="remember-me" id="c"> זכור אותי לפעמים הבאות
-      <!--"-->
       </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">היכנס</button>
