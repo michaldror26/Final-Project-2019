@@ -105,9 +105,9 @@ export class LayoutHeaderComponent implements OnInit {
     this.router.navigate(["/login"], { queryParams: { thisPage: window.location.pathname } });
   }
   //זמני לשם נוחות
-  //switchRoutes() {
-//this.routes = this.routes == this.routesOfAdmin ? this.routesOfHost : this.routesOfAdmin;
-  //}
+  switchRoutes() {
+this.routes = this.routes == this.routesOfAdmin ? this.routesOfHost : this.routesOfAdmin;
+  }
 
   logout()
   {

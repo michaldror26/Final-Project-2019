@@ -71,7 +71,7 @@ export class CustomerService {
     // if (index !== -1) {
     //   this.cusArr.splice(index, 1);
     // }
-    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id=', id);
+    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id='+ id);
 
   }
 
