@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Customer } from '../models/Customer.class';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs'
-import { map, catchError, filter, find, first } from 'rxjs/operators';
-import { findLast } from '@angular/compiler/src/directive_resolver';
+import {Injectable} from '@angular/core';
+import {Customer} from '../models/Customer.class';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs';
+import {map, catchError, filter, find, first} from 'rxjs/operators';
+import {findLast} from '@angular/compiler/src/directive_resolver';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,7 @@ export class CustomerService {
       Email: 'miryam@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
+      AuthenticationTypeId: 2,
       // userName: 'fvdgvgb',
       //  password: '26565'
     },
@@ -33,6 +34,7 @@ export class CustomerService {
       Email: 'sara555@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
+      AuthenticationTypeId: 2,
       // userName:'fvdgvgb',
       // password:'26565'
     },
@@ -46,6 +48,7 @@ export class CustomerService {
       Email: 'dafnat555@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
+      AuthenticationTypeId: 2,
       // userName:'fvdgvgb',
       // password:'26565'
     }
@@ -60,6 +63,7 @@ export class CustomerService {
       .pipe(map(res => <Customer[]>res.json()));
     return this.cusArr$;
   }
+
   // getCustomers(): Customer[] {
   //   return this.cusArr;
   // }
@@ -73,7 +77,7 @@ export class CustomerService {
     // if (index !== -1) {
     //   this.cusArr.splice(index, 1);
     // }
-    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id='+ id);
+    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id=' + id);
 
   }
 
@@ -90,7 +94,7 @@ export class CustomerService {
 
   search(text: string): Observable<Customer[]> {
     let list;
-    this.getCustomers().subscribe(l => list = l)
+    this.getCustomers().subscribe(l => list = l);
     list.filter(customer =>
       customer.FirstName.includes(text)
       || customer.LastName.includes(text)

@@ -1,8 +1,11 @@
-import {ROOT_URL} from '../../../shared/config'
+import {ROOT_URL} from '../../../shared/config';
 import { Observable } from 'rxjs';
-export class InventoryService{
+import {HttpClient} from '@angular/common/http';
+import {User} from '../../../shared/models/User.class';
 
-constructor(){}
+export class InventoryService {
+
+constructor(private httpClient: HttpClient){}
 
 login(userName:string, password:string):Observable<any> {
     return this.httpClient
