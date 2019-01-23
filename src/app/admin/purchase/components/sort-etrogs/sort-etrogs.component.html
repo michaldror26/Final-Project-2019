@@ -1,0 +1,30 @@
+<h1 class="my-shadow-text">מיון אתרוגים</h1>
+<h3 class="mt-2">כמות התחלתית: {{startAmount}}</h3>
+<h4>כמות נוכחית: {{startAmount}}</h4>
+<div class="m-auto"></div>
+<div class="w-50 shadow-lg d-inline-block">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">כמות</th>
+        <th scope="col">קטגוריה</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ['dddd','fffff','6yy7fferetrt']">
+        <td class="align-middle  w-25">
+          <input name='countOf' type="number" class="form-control text-right" placeholder='countOf'>
+        </td>
+        <td class="text-right">{{item}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="w-25 d-inline-block align-top px-3">
+  <button class="btn btn-lg btn-primary btn-block">הכנס למלאי</button>
+  <button class="btn btn-lg btn-block">נקה שדות</button>
+</div>
+<div class="px-3">
+    <button class="w-25 btn btn-lg btn-primary m-2">הכנס למלאי</button>
+    <button class="w-25 btn btn-lg m-2">נקה שדות</button>
+  </div>

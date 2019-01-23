@@ -1,0 +1,970 @@
+
+
+
+{
+    "main": {
+      "props": {
+        "title": ""
+      },
+      "data": {
+        "1wkt3t": {
+          "feed": {
+            "order_type_id": 3,
+            "background_color": "fef0a9",
+            "coordinates": {
+              "latitude": null,
+              "longitude": null
+            },
+            "row_1": "אאודי A6",
+            "title_1": " שנת 2011",
+            "title_2": "",
+            "row_2": "4X4 C7 Executive אוט' 3.0 (310 כ''ס)",
+            "row_3": [
+              2011,
+              "יד ראשונה",
+              "141,000 ק״מ"
+            ],
+            "row_4": [
+              {
+                "key": "year",
+                "label": "שנה",
+                "value": 2011
+              },
+              {
+                "key": "hand",
+                "label": "יד",
+                "value": 1
+              },
+              {
+                "key": "engine_size",
+                "label": "סמ\"ק",
+                "value": "2,995"
+              }
+            ],
+            "line_1": "",
+            "line_2": "עודכן היום",
+            "external": [
+            ],
+            "promotional_ad": 0,
+            "ad_type": "ad",
+            "type": "ad",
+            "can_hide": 0,
+            "is_hidden": 0,
+            "img_url": "//img.yad2.co.il/Pic/201812/16/1_1/o/o1_1_1_715077_20181216161257.jpg",
+            "merchant": false,
+            "link_token": "1wkt3t",
+            "ad_highlight_type": "yellow",
+            "highlight_text": "",
+            "is_liked": 0,
+            "like_count": 0,
+            "line_1_text_color": "",
+            "line_2_text_color": "808080",
+            "can_change_layout": 1,
+            "default_layout": "system",
+            "remove_on_unlike": false,
+            "video_url": null,
+            "updated_at": "עודכן היום",
+            "price": "100,000 ₪",
+            "cat_id": "1",
+            "subcat_id": "1",
+            "customer_id": 6261166,
+            "area_id": 10,
+            "city": "גנות",
+            "street": "",
+            "contact_name": "להב",
+            "date": "2019-01-08 00:15:07",
+            "date_added": "2018-12-16 16:44:22",
+            "ad_number": "53541933",
+            "id": "1wkt3t",
+            "SubModelID_text": null,
+            "SubSubModelVal_text": null,
+            "OwnerID_prev_text": null,
+            "OwnerID_text": "פרטית",
+            "Year_text": 2011,
+            "Hand_text": "יד ראשונה",
+            "ColorID_text": "לבן",
+            "Auto_text": "אוטומט",
+            "EngineVal_text": null,
+            "EngineTypeID_text": "בנזין",
+            "AreaID_text": "בקעת אונו",
+            "DateOnRoad_text": "אוקטובר",
+            "manufacturer": "אאודי",
+            "model": "A6",
+            "year": 2011
+          },
+          "details": {
+            "price": {
+              "value": 100000,
+              "text": "100,000 ₪",
+              "label": "מחיר",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "year": {
+              "value": 2011,
+              "text": 2011,
+              "label": "שנה",
+              "optimalValue": "maximum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "hand": {
+              "value": 1,
+              "text": 1,
+              "label": "יד",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "km": {
+              "value": 141000,
+              "text": "141,000",
+              "label": "ק\"מ",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "engine_type": {
+              "value": 1,
+              "text": "בנזין",
+              "label": "סוג מנוע",
+              "area": "details"
+            },
+            "engine_size": {
+              "value": 2995,
+              "text": "2,995",
+              "label": "סמ\"ק",
+              "optimalValue": "maximum",
+              "area": "details",
+              "isOptimal": true
+            },
+            "gear_box": {
+              "value": 1,
+              "text": "אוטומט",
+              "label": "תיבת הילוכים",
+              "area": "details"
+            },
+            "color": {
+              "value": "לבן",
+              "text": "לבן",
+              "background_color": "#FFFFFF",
+              "label": "צבע",
+              "area": "details"
+            },
+            "date_on_road": {
+              "value": 10,
+              "text": 10,
+              "label": "תאריך עליה לכביש",
+              "area": "details"
+            },
+            "test_date": {
+              "value": "2019-10-01",
+              "text": "לא הוזן",
+              "label": "טסט עד",
+              "area": "details"
+            },
+            "current_owner": {
+              "value": "פרטית",
+              "text": "פרטית",
+              "label": "בעלות נוכחית",
+              "area": "details"
+            },
+            "previous_owner": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "בעלות קודמת",
+              "area": "details"
+            },
+            "trade_in": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "מוכן להחלפה",
+              "area": "details"
+            },
+            "disabled_friendly": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "מותאם לנכים",
+              "area": "details"
+            }
+          }
+        },
+        "98dhsc": {
+          "feed": {
+            "order_type_id": 3,
+            "background_color": "fef0a9",
+            "coordinates": {
+              "latitude": null,
+              "longitude": null
+            },
+            "row_1": "רנו קליאו דור 4 (2013-2018)",
+            "title_1": " שנת 2014",
+            "title_2": "",
+            "row_2": "Collection אוט' 1.2 (120 כ''ס)",
+            "row_3": [
+              2014,
+              "יד ראשונה",
+              "74,000 ק״מ"
+            ],
+            "row_4": [
+              {
+                "key": "year",
+                "label": "שנה",
+                "value": 2014
+              },
+              {
+                "key": "hand",
+                "label": "יד",
+                "value": 1
+              },
+              {
+                "key": "engine_size",
+                "label": "סמ\"ק",
+                "value": "1,197"
+              }
+            ],
+            "line_1": "",
+            "line_2": "עודכן היום",
+            "external": [
+            ],
+            "promotional_ad": 0,
+            "ad_type": "ad",
+            "type": "ad",
+            "can_hide": 0,
+            "is_hidden": 0,
+            "img_url": "//img.yad2.co.il/Pic/201812/19/1_1/o/o1_1_1_722807_20181219161257.jpg",
+            "merchant": false,
+            "link_token": "98dhsc",
+            "ad_highlight_type": "yellow",
+            "highlight_text": "",
+            "is_liked": 0,
+            "like_count": 0,
+            "line_1_text_color": "",
+            "line_2_text_color": "808080",
+            "can_change_layout": 1,
+            "default_layout": "system",
+            "remove_on_unlike": false,
+            "video_url": null,
+            "updated_at": "עודכן היום",
+            "price": "48,000 ₪",
+            "cat_id": "1",
+            "subcat_id": "1",
+            "customer_id": 3491844,
+            "area_id": 9,
+            "city": "ראשון לציון",
+            "street": "",
+            "contact_name": "עידן מרקוס",
+            "date": "2019-01-08 10:09:08",
+            "date_added": "2018-12-19 16:40:53",
+            "ad_number": "86874469",
+            "id": "98dhsc",
+            "SubModelID_text": null,
+            "SubSubModelVal_text": null,
+            "OwnerID_prev_text": null,
+            "OwnerID_text": "פרטית",
+            "Year_text": 2014,
+            "Hand_text": "יד ראשונה",
+            "ColorID_text": "שחור מטאלי",
+            "Auto_text": "אוטומט",
+            "EngineVal_text": null,
+            "EngineTypeID_text": "בנזין",
+            "AreaID_text": "ראשון לציון והסביבה",
+            "DateOnRoad_text": "ינואר",
+            "manufacturer": "רנו",
+            "model": "קליאו דור 4 (2013-2018)",
+            "year": 2014
+          },
+          "details": {
+            "price": {
+              "value": 48000,
+              "text": "48,000 ₪",
+              "label": "מחיר",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": true
+            },
+            "year": {
+              "value": 2014,
+              "text": 2014,
+              "label": "שנה",
+              "optimalValue": "maximum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "hand": {
+              "value": 1,
+              "text": 1,
+              "label": "יד",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "km": {
+              "value": 74000,
+              "text": "74,000",
+              "label": "ק\"מ",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "engine_type": {
+              "value": 1,
+              "text": "בנזין",
+              "label": "סוג מנוע",
+              "area": "details"
+            },
+            "engine_size": {
+              "value": 1197,
+              "text": "1,197",
+              "label": "סמ\"ק",
+              "optimalValue": "maximum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "gear_box": {
+              "value": 1,
+              "text": "אוטומט",
+              "label": "תיבת הילוכים",
+              "area": "details"
+            },
+            "color": {
+              "value": "שחור מטאלי",
+              "text": "שחור מטאלי",
+              "background_color": "#000000",
+              "label": "צבע",
+              "area": "details"
+            },
+            "date_on_road": {
+              "value": 1,
+              "text": 1,
+              "label": "תאריך עליה לכביש",
+              "area": "details"
+            },
+            "test_date": {
+              "value": "2020-01-01",
+              "text": "לא הוזן",
+              "label": "טסט עד",
+              "area": "details"
+            },
+            "current_owner": {
+              "value": "פרטית",
+              "text": "פרטית",
+              "label": "בעלות נוכחית",
+              "area": "details"
+            },
+            "previous_owner": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "בעלות קודמת",
+              "area": "details"
+            },
+            "trade_in": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "מוכן להחלפה",
+              "area": "details"
+            },
+            "disabled_friendly": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "מותאם לנכים",
+              "area": "details"
+            }
+          }
+        },
+        "1adi60": {
+          "feed": {
+            "order_type_id": 3,
+            "background_color": "fef0a9",
+            "coordinates": {
+              "latitude": null,
+              "longitude": null
+            },
+            "row_1": "פולקסווגן פאסאט",
+            "title_1": " שנת 2016",
+            "title_2": "",
+            "row_2": "Comfort אוט' 1.4 (150 כ''ס)",
+            "row_3": [
+              2016,
+              "יד ראשונה",
+              "47,000 ק״מ"
+            ],
+            "row_4": [
+              {
+                "key": "year",
+                "label": "שנה",
+                "value": 2016
+              },
+              {
+                "key": "hand",
+                "label": "יד",
+                "value": 1
+              },
+              {
+                "key": "engine_size",
+                "label": "סמ\"ק",
+                "value": "1,395"
+              }
+            ],
+            "line_1": "",
+            "line_2": "עודכן היום",
+            "external": [
+            ],
+            "promotional_ad": 0,
+            "ad_type": "ad",
+            "type": "ad",
+            "can_hide": 0,
+            "is_hidden": 0,
+            "img_url": "//img.yad2.co.il/Pic/201812/22/1_1/o/o1_1_1_726785_20181222111209.jpg",
+            "merchant": false,
+            "link_token": "1adi60",
+            "ad_highlight_type": "yellow",
+            "highlight_text": "",
+            "is_liked": 0,
+            "like_count": 0,
+            "line_1_text_color": "",
+            "line_2_text_color": "808080",
+            "can_change_layout": 1,
+            "default_layout": "system",
+            "remove_on_unlike": false,
+            "video_url": null,
+            "updated_at": "עודכן היום",
+            "price": "102,000 ₪",
+            "cat_id": "1",
+            "subcat_id": "1",
+            "customer_id": 2008528,
+            "area_id": 67,
+            "city": "זכרון יעקב",
+            "street": "",
+            "contact_name": "דימיטרי",
+            "date": "2019-01-08 00:15:08",
+            "date_added": "2018-12-22 11:12:23",
+            "ad_number": "84253641",
+            "id": "1adi60",
+            "SubModelID_text": null,
+            "SubSubModelVal_text": null,
+            "OwnerID_prev_text": null,
+            "OwnerID_text": "פרטית",
+            "Year_text": 2016,
+            "Hand_text": "יד ראשונה",
+            "ColorID_text": "אפור מטאלי",
+            "Auto_text": "אוטומט",
+            "EngineVal_text": null,
+            "EngineTypeID_text": "בנזין",
+            "AreaID_text": "זכרון וחוף הכרמל",
+            "DateOnRoad_text": "מאי",
+            "manufacturer": "פולקסווגן",
+            "model": "פאסאט",
+            "year": 2016
+          },
+          "details": {
+            "price": {
+              "value": 102000,
+              "text": "102,000 ₪",
+              "label": "מחיר",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "year": {
+              "value": 2016,
+              "text": 2016,
+              "label": "שנה",
+              "optimalValue": "maximum",
+              "area": "details",
+              "isOptimal": true
+            },
+            "hand": {
+              "value": 1,
+              "text": 1,
+              "label": "יד",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "km": {
+              "value": 47000,
+              "text": "47,000",
+              "label": "ק\"מ",
+              "optimalValue": "minimum",
+              "area": "details",
+              "isOptimal": true
+            },
+            "engine_type": {
+              "value": 1,
+              "text": "בנזין",
+              "label": "סוג מנוע",
+              "area": "details"
+            },
+            "engine_size": {
+              "value": 1395,
+              "text": "1,395",
+              "label": "סמ\"ק",
+              "optimalValue": "maximum",
+              "area": "details",
+              "isOptimal": false
+            },
+            "gear_box": {
+              "value": 1,
+              "text": "אוטומט",
+              "label": "תיבת הילוכים",
+              "area": "details"
+            },
+            "color": {
+              "value": "אפור מטאלי",
+              "text": "אפור מטאלי",
+              "background_color": "#9B9B9B",
+              "label": "צבע",
+              "area": "details"
+            },
+            "date_on_road": {
+              "value": 5,
+              "text": 5,
+              "label": "תאריך עליה לכביש",
+              "area": "details"
+            },
+            "test_date": {
+              "value": "2019-05-01",
+              "text": "לא הוזן",
+              "label": "טסט עד",
+              "area": "details"
+            },
+            "current_owner": {
+              "value": "פרטית",
+              "text": "פרטית",
+              "label": "בעלות נוכחית",
+              "area": "details"
+            },
+            "previous_owner": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "בעלות קודמת",
+              "area": "details"
+            },
+            "trade_in": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "מוכן להחלפה",
+              "area": "details"
+            },
+            "disabled_friendly": {
+              "value": null,
+              "text": "לא הוזן",
+              "label": "מותאם לנכים",
+              "area": "details"
+            }
+          }
+        }
+      }
+    },
+    "additional": {
+      "props": {
+        "title": "מידע נוסף"
+      },
+      "data": {
+        "1wkt3t": {
+          "accessories": [
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "Asdfasdfsdf"
+          ],
+          "reviews": {
+            "prop": {
+              "title": "חוות דעת גולשים",
+              "description": "ציון כללי לדגם - פולקסווגן גולף"
+            },
+            "data": {
+              "reviews_general": {
+                "value": 4.2000000000000002,
+                "text": 4.2000000000000002,
+                "area": "reviews"
+              },
+              "reviews_total": {
+                "value": 1089,
+                "text": "1,089 דירוגים",
+                "area": "reviews"
+              }
+            }
+          },
+          "safety": {
+            "prop": {
+              "title": "בטיחות"
+            },
+            "data": {
+              "safety_adults": {
+                "value": 91,
+                "text": 91,
+                "label": "מבוגרים",
+                "area": "safety"
+              },
+              "safety_children": {
+                "value": 83,
+                "text": 83,
+                "label": "ילדים",
+                "area": "safety"
+              },
+              "safety_pedestrian": {
+                "value": 41,
+                "text": 41,
+                "label": "הולכי רגל",
+                "area": "safety"
+              }
+            }
+          }
+        },
+        "98dhsc": {
+          "accessories": [
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "Asdfasdfsdf"
+          ],
+          "reviews": {
+            "prop": {
+              "title": "חוות דעת גולשים",
+              "description": "ציון כללי לדגם - פולקסווגן גולף"
+            },
+            "data": {
+              "reviews_general": {
+                "value": 4.5,
+                "text": 4.5,
+                "label": "ציון כללי",
+                "area": "reviews"
+              },
+              "reviews_total": {
+                "value": null,
+                "text": "לא הוזן",
+                "label": "ציון כללי",
+                "area": "reviews"
+              }
+            }
+          },
+          "safety": {
+            "prop": {
+              "title": "בטיחות"
+            },
+            "data": {
+              "safety_adults": {
+                "value": 88,
+                "text": 88,
+                "label": "מבוגרים",
+                "area": "safety"
+              },
+              "safety_children": {
+                "value": 89,
+                "text": 89,
+                "label": "ילדים",
+                "area": "safety"
+              },
+              "safety_pedestrian": {
+                "value": 66,
+                "text": 66,
+                "label": "הולכי רגל",
+                "area": "safety"
+              }
+            }
+          }
+        },
+        "1adi60": {
+          "accessories": [
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "asdfsadfsfda",
+            "Asdfasdfsdf"
+          ],
+          "reviews": {
+            "prop": {
+              "title": "חוות דעת גולשים",
+              "description": "ציון כללי לדגם - פולקסווגן גולף"
+            },
+            "data": {
+              "reviews_general": {
+                "value": 4.2000000000000002,
+                "text": 4.2000000000000002,
+                "label": "ציון כללי",
+                "area": "reviews"
+              },
+              "reviews_total": {
+                "value": null,
+                "text": "לא הוזן",
+                "label": "ציון כללי",
+                "area": "reviews"
+              }
+            }
+          },
+          "safety": {
+            "prop": {
+              "title": "בטיחות"
+            },
+            "data": {
+              "safety_adults": {
+                "value": 85,
+                "text": 85,
+                "label": "מבוגרים",
+                "area": "safety"
+              },
+              "safety_children": {
+                "value": 87,
+                "text": 87,
+                "label": "ילדים",
+                "area": "safety"
+              },
+              "safety_pedestrian": {
+                "value": 66,
+                "text": 66,
+                "label": "הולכי רגל",
+                "area": "safety"
+              }
+            }
+          }
+        }
+      }
+    },
+    "technical": {
+      "props": {
+        "title": "מפרט טכני"
+      },
+      "data": {
+        "1wkt3t": {
+          "technical_car_length": {
+            "value": "4927 מ\"מ",
+            "text": "4927 מ\"מ",
+            "label": "אורך כולל",
+            "area": "technical"
+          },
+          "technical_car_width": {
+            "value": "1855 מ\"מ",
+            "text": "1855 מ\"מ",
+            "label": "רוחב כולל",
+            "area": "technical"
+          },
+          "technical_car_height": {
+            "value": "1459 מ\"מ",
+            "text": "1459 מ\"מ",
+            "label": "גובה כולל",
+            "area": "technical"
+          },
+          "tire_in_term": {
+            "value": "2843 מ\"מ",
+            "text": "2843 מ\"מ",
+            "label": "בסיס גלגלים",
+            "area": "technical"
+          },
+          "technical_capacity": {
+            "value": "310 סל\"ד/כ\"ס",
+            "text": "310 סל\"ד/כ\"ס",
+            "label": "הספק מרבי",
+            "area": "technical"
+          },
+          "technical_moment": {
+            "value": "2900 / 44.8 סל\"ד/קג\"מ",
+            "text": "2900 / 44.8 סל\"ד/קג\"מ",
+            "label": "מומנט מרבי",
+            "area": "technical"
+          },
+          "technical_max_speed": {
+            "value": "250 קמ\"ש",
+            "text": "250 קמ\"ש",
+            "label": "מהירות מקסימלית",
+            "area": "technical"
+          },
+          "technical_acceleration": {
+            "value": "5.5 שניות",
+            "text": "5.5 שניות",
+            "label": "תאוצה 0-100",
+            "area": "technical"
+          },
+          "technical_avg_reqfuel": {
+            "value": null,
+            "text": "לא הוזן",
+            "label": "צריכת דלק ממוצעת",
+            "area": "technical"
+          },
+          "technical_full_capacity": {
+            "value": "70 ליטר",
+            "text": "70 ליטר",
+            "label": "קיבולת מיכל דלק",
+            "area": "technical"
+          },
+          "technical_chassi": {
+            "value": "סדאן",
+            "text": "סדאן",
+            "label": "מרכב",
+            "area": "technical"
+          }
+        },
+        "98dhsc": {
+          "technical_car_length": {
+            "value": "4062 מ\"מ",
+            "text": "4062 מ\"מ",
+            "label": "אורך כולל",
+            "area": "technical"
+          },
+          "technical_car_width": {
+            "value": "1732 מ\"מ",
+            "text": "1732 מ\"מ",
+            "label": "רוחב כולל",
+            "area": "technical"
+          },
+          "technical_car_height": {
+            "value": "1448 מ\"מ",
+            "text": "1448 מ\"מ",
+            "label": "גובה כולל",
+            "area": "technical"
+          },
+          "tire_in_term": {
+            "value": "2589 מ\"מ",
+            "text": "2589 מ\"מ",
+            "label": "בסיס גלגלים",
+            "area": "technical"
+          },
+          "technical_capacity": {
+            "value": "120 סל\"ד/כ\"ס",
+            "text": "120 סל\"ד/כ\"ס",
+            "label": "הספק מרבי",
+            "area": "technical"
+          },
+          "technical_moment": {
+            "value": "19.3 סל\"ד/קג\"מ",
+            "text": "19.3 סל\"ד/קג\"מ",
+            "label": "מומנט מרבי",
+            "area": "technical"
+          },
+          "technical_max_speed": {
+            "value": "199 קמ\"ש",
+            "text": "199 קמ\"ש",
+            "label": "מהירות מקסימלית",
+            "area": "technical"
+          },
+          "technical_acceleration": {
+            "value": "8.9 שניות",
+            "text": "8.9 שניות",
+            "label": "תאוצה 0-100",
+            "area": "technical"
+          },
+          "technical_avg_reqfuel": {
+            "value": null,
+            "text": "לא הוזן",
+            "label": "צריכת דלק ממוצעת",
+            "area": "technical"
+          },
+          "technical_full_capacity": {
+            "value": "45 ליטר",
+            "text": "45 ליטר",
+            "label": "קיבולת מיכל דלק",
+            "area": "technical"
+          },
+          "technical_chassi": {
+            "value": "הצ'בק",
+            "text": "הצ'בק",
+            "label": "מרכב",
+            "area": "technical"
+          }
+        },
+        "1adi60": {
+          "technical_car_length": {
+            "value": "4767 מ\"מ",
+            "text": "4767 מ\"מ",
+            "label": "אורך כולל",
+            "area": "technical"
+          },
+          "technical_car_width": {
+            "value": "1832 מ\"מ",
+            "text": "1832 מ\"מ",
+            "label": "רוחב כולל",
+            "area": "technical"
+          },
+          "technical_car_height": {
+            "value": "1456 מ\"מ",
+            "text": "1456 מ\"מ",
+            "label": "גובה כולל",
+            "area": "technical"
+          },
+          "tire_in_term": {
+            "value": "2791 מ\"מ",
+            "text": "2791 מ\"מ",
+            "label": "בסיס גלגלים",
+            "area": "technical"
+          },
+          "technical_capacity": {
+            "value": "150 סל\"ד/כ\"ס",
+            "text": "150 סל\"ד/כ\"ס",
+            "label": "הספק מרבי",
+            "area": "technical"
+          },
+          "technical_moment": {
+            "value": "25.4 סל\"ד/קג\"מ",
+            "text": "25.4 סל\"ד/קג\"מ",
+            "label": "מומנט מרבי",
+            "area": "technical"
+          },
+          "technical_max_speed": {
+            "value": "220 קמ\"ש",
+            "text": "220 קמ\"ש",
+            "label": "מהירות מקסימלית",
+            "area": "technical"
+          },
+          "technical_acceleration": {
+            "value": "8.4 שניות",
+            "text": "8.4 שניות",
+            "label": "תאוצה 0-100",
+            "area": "technical"
+          },
+          "technical_avg_reqfuel": {
+            "value": null,
+            "text": "לא הוזן",
+            "label": "צריכת דלק ממוצעת",
+            "area": "technical"
+          },
+          "technical_full_capacity": {
+            "value": "66 ליטר",
+            "text": "66 ליטר",
+            "label": "קיבולת מיכל דלק",
+            "area": "technical"
+          },
+          "technical_chassi": {
+            "value": "סדאן",
+            "text": "סדאן",
+            "label": "מרכב",
+            "area": "technical"
+          }
+        }
+      }
+    },
+    "description": {
+      "props": {
+        "title": "תאור"
+      },
+      "data": {
+        "1wkt3t": {
+          "text": ""
+        },
+        "98dhsc": {
+          "text": ""
+        },
+        "1adi60": {
+          "text": ""
+        }
+      }
+    }
+  }
