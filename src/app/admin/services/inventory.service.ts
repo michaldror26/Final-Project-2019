@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {Category} from 'src/app/shopping/shared/category.model';
 
+
 export class InventoryService {
 
   constructor(private httpClient: HttpClient) {
