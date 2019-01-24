@@ -21,7 +21,6 @@ import { CommonModule } from '@angular/common';
 
 import {AuthService} from './shared/services/auth.service';
 import {CurrentUser} from './shared/currentUser';
-import {ScrollToTopComponent} from './shared/components/layout/scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   imports: [
@@ -41,8 +40,7 @@ import {ScrollToTopComponent} from './shared/components/layout/scroll-to-top/scr
   declarations: [
     AppComponent,
     LayoutHeaderComponent,
-    LayoutFooterComponent,
-    ScrollToTopComponent
+    LayoutFooterComponent
   ],
   bootstrap: [AppComponent],
   providers:[ CookieService,

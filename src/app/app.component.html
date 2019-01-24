@@ -1,11 +1,11 @@
-<div id="headPage"></div>
 <!--TODO supposed to get imageUrl depending on Sales-Season in setting-->
 <!--<div class="app-back-img">-->
-  <app-layout-header></app-layout-header>
-  <main role="main" dir="rtl" class="text-center">
-    <router-outlet></router-outlet>
-  </main>
-  <app-layout-footer></app-layout-footer>
+<app-layout-header></app-layout-header>
+<main role="main" dir="rtl" class="text-center" (scroll)="updateScrollToTop()">
+  <router-outlet></router-outlet>
+</main>
+<app-scroll-to-top *ngIf="scrollDown"></app-scroll-to-top>
+<app-layout-footer></app-layout-footer>
 <!--</div>-->
 
 <!--padding-left: 30px;-->
