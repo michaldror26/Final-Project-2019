@@ -12,6 +12,7 @@ import {AdminModule} from './admin/admin.module';
 import {Auth2Module} from './auth/auth2.module';
 import {ShoppingModule} from './shopping/shopping.module';
 import {AppRoutingModule} from './app-routing.module';
+
 // Components
 import {AppComponent} from './app.component';
 import {LayoutHeaderComponent} from './shared/components/layout/layout-header/layout-header.component';
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
 
 import {AuthService} from './shared/services/auth.service';
 import {CurrentUser} from './shared/currentUser';
+import {ScrollToTopComponent} from './shared/components/layout/scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   imports: [
@@ -40,6 +42,7 @@ import {CurrentUser} from './shared/currentUser';
     AppComponent,
     LayoutHeaderComponent,
     LayoutFooterComponent,
+    ScrollToTopComponent
   ],
   bootstrap: [AppComponent],
   providers:[ CookieService,

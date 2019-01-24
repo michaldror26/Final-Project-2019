@@ -1,4 +1,0 @@
-here are the files that are concerned with employee -- and only him
-
-shares component will be at "shared" directory
-

@@ -14,8 +14,8 @@ const routes: Routes = [
     children: [
       // //{path: '/**', data: ['צפייה במלאי'], children: []},
       {
-        path: 'purchase', data: ['קניה'], component: PurchaseComponent, data: ['קניה'],
-        loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'
+        path: 'purchase', component: PurchaseComponent, data: ['קניה'],
+        loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentMod ule'
       },
       // {
       //   path: '', data: ['מכירה'], children: [
