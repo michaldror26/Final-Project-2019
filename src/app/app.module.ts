@@ -3,7 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
+import {CookieService} from 'ngx-cookie-service';
+import {CommonModule} from '@angular/common';
 
 // Modules - ourCustom
 import {SharedModule} from './shared/shared.module';
@@ -11,14 +12,16 @@ import {HomeModule} from './home/home.module';
 import {AdminModule} from './admin/admin.module';
 import {Auth2Module} from './auth/auth2.module';
 import {ShoppingModule} from './shopping/shopping.module';
+import {SaleModule} from './admin/sale/sale.module';
+
 import {AppRoutingModule} from './app-routing.module';
 
 // Components
 import {AppComponent} from './app.component';
 import {LayoutHeaderComponent} from './shared/components/layout/layout-header/layout-header.component';
 import {LayoutFooterComponent} from './shared/components/layout/layout-footer/layout-footer.component';
-import { CommonModule } from '@angular/common';
 
+// Services
 import {AuthService} from './shared/services/auth.service';
 import {CurrentUser} from './shared/currentUser';
 
@@ -28,13 +31,12 @@ import {CurrentUser} from './shared/currentUser';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    // NgbModule,
-    // GoTopButtonModule, to install
     HomeModule,
     SharedModule,
     Auth2Module,
     AdminModule,
     ShoppingModule,
+    SaleModule,
     AppRoutingModule
   ],
   declarations: [
@@ -43,9 +45,11 @@ import {CurrentUser} from './shared/currentUser';
     LayoutFooterComponent
   ],
   bootstrap: [AppComponent],
-  providers:[ CookieService,
-              AuthService,
-              CurrentUser]
+  providers: [
+    CookieService,
+    AuthService,
+    CurrentUser
+  ]
 })
 export class AppModule {
 }

@@ -38,20 +38,12 @@ showcase{
   position: relative;
 }
 
-url-form{
-  // position: absolute;
-  // top: -55px;
-}
 
 /** Media queries **/
 @media only screen
 and (min-device-width: 320px)
 and (max-device-width: 480px) {
-  url-form{
-    position: fixed;
-    bottom: 20px;
-    left: 10px;
-  }
+
 
   filters{
     position: fixed;

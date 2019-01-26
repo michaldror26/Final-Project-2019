@@ -32,9 +32,9 @@ export class ShippingProductsComponent implements OnInit {
 
   customFilters: any[] = [
     { name: 'הכל', value: 'all', checked: true },
-    { name: 'זמין', value: 'available', checked: false },
-    { name: 'לא זמין', value: 'unavailable', checked: false },
-    { name: 'רב מכר', value: 'bestseller', checked: false }
+    // { name: 'זמין', value: 'available', checked: false },
+    // { name: 'לא זמין', value: 'unavailable', checked: false },
+    // { name: 'רב מכר', value: 'bestseller', checked: false }
   ];
 
   priceFilters: any[] = [

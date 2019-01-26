@@ -25,8 +25,8 @@
               <button class="btn btn-outline-secondary m-1 px-2 px-2">-</button> -->
               <!-- <span class="w-50"><button class="btn btn-outline-secondary mx-1 py-1 px-2">+</button></span>
               <span class="w-50"><button class="btn btn-outline-secondary mx-1 py-1 px-2">-</button></span> -->
-              <div class="w-50 d-inline-block p-1"><button class="btn btn-outline-secondary mx-1 py-1 px-2 w-100" (click)='addOneMoreProduct()'>+</button></div>
-              <div class="w-50 d-inline-block p-1"><button class="btn btn-outline-secondary mx-1 py-1 px-2 w-100" (click)='removeOneProduct()'>-</button></div>
+              <div class="d-inline-block p-1"><button class="btn btn-outline-secondary mx-1 py-1 px-2  plus_cart"  (click)='addOneMoreProduct()'>+</button></div>
+              <div class="d-inline-block p-1"><button class="btn btn-outline-secondary mx-1 py-1 px-2  minus_cart" (click)='removeOneProduct()'>-</button></div>
               <!-- <div class="thumbnail" [style.backgroundImage]="'url('+ item.imageUrl +')'"></div> -->
             </td>
             <td>{{item}}</td>
@@ -36,15 +36,15 @@
             </td>
             <td>
               מחיר
-              <!-- {{item.price | currency:'USD':true }}</td> -->
+              <!-- {{item.price  + " ש\"ח" }}</td> -->
           </tr>
         </tbody>
         <tfoot>
           <tr class="table-secondary">
             <th colspan="2" class="px-4">מחיר סופי: </th>
             <th></th>
-            <!-- <th class="text-right px-4">{{cart.cartTotal | currency:'USD':true}}</th> -->
-            <th class="text-right px-4">{{cart.cartTotal}}</th>
+            <!-- <th class="text-right px-4">{{cart.cartTotal    + " ש\"ח"}}</th> -->
+            <th class="text-right px-4">{{cart.cartTotal   + " ש\"ח"}}</th>
           </tr>
         </tfoot>
       </table>

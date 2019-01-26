@@ -10,7 +10,6 @@ import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {ShowcaseComponent} from './components/showcase/showcase.component';
 import {SortFiltersComponent} from './components/sort-filters/sort-filters.component';
 import {MiniCartComponent} from './components/mini-cart/cart.component';
-import {UrlFormComponent} from './components/url-form/url-form.component';
 import {ProductThumbnailComponent} from './components/product-thumbnail/product-thumbnail.component';
 
 @NgModule({
@@ -27,7 +26,6 @@ import {ProductThumbnailComponent} from './components/product-thumbnail/product-
     ShowcaseComponent,
     SortFiltersComponent,
     MiniCartComponent,
-    UrlFormComponent,
     ProductThumbnailComponent
   ],
   providers: [

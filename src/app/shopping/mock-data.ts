@@ -20,10 +20,8 @@ export const DATA: any  = {
   'products': [
     {
       'id': 1,
-      'name': 'מוצר1',
+      'name': 'מוצר',
       'price': '60.000',
-      'available': true,
-      'best_seller': true,
       'categories': [
         1,
         4
@@ -33,10 +31,8 @@ export const DATA: any  = {
     },
     {
       'id': 2,
-      'name': 'מוצר2',
+      'name': 'מוצר',
       'price': '20.000',
-      'available': false,
-      'best_seller': false,
       'categories': [
         2,
         4
@@ -48,8 +44,6 @@ export const DATA: any  = {
       'id': 3,
       'name': 'מוצר3',
       'price': '10.000',
-      'available': true,
-      'best_seller': true,
       'categories': [
         3,
         4
@@ -61,21 +55,18 @@ export const DATA: any  = {
       'id': 4,
       'name': 'מוצר4',
       'price': '35.000',
-      'available': false,
-      'best_seller': false,
       'categories': [
         1,
         2
       ],
-      'img': 'http://lorempixel.com/200/100/food/',
+
+      'img': '../../../../../assets/sipur-2.jpg',
       'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
     },
     {
       'id': 5,
       'name': '5מוצר',
       'price': '12.000',
-      'available': true,
-      'best_seller': true,
       'categories': [
         1,
         4
@@ -87,8 +78,6 @@ export const DATA: any  = {
       'id': 6,
       'name': 'מוצר6',
       'price': '120.000',
-      'available': true,
-      'best_seller': false,
       'categories': [
         1,
         4,
@@ -101,8 +90,6 @@ export const DATA: any  = {
       'id': 7,
       'name': 'מוצר7',
       'price': '50.000',
-      'available': false,
-      'best_seller': false,
       'categories': [
         1,
         3
@@ -114,8 +101,6 @@ export const DATA: any  = {
       'id': 8,
       'name': 'מוצר8',
       'price': '2000',
-      'available': true,
-      'best_seller': false,
       'categories': [
         1,
         3
@@ -127,8 +112,6 @@ export const DATA: any  = {
       'id': 9,
       'name': 'מוצר9',
       'price': '150.000',
-      'available': true,
-      'best_seller': true,
       'categories': [
         2,
         4
@@ -138,10 +121,8 @@ export const DATA: any  = {
     },
     {
       'id': 10,
-      'name': 'מוצר10',
+      'name': 'מוצר',
       'price': '200.000',
-      'available': false,
-      'best_seller': true,
       'categories': [
         2,
         3
