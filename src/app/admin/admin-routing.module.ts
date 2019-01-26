@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin.component';
-import { EntitiesManagmentComponent } from './entitiesManagment/components/entities-managment.component';
-import { PurchaseComponent } from './purchase/components/purchase.component';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminComponent} from './admin.component';
+import {EntitiesManagmentComponent} from './entitiesManagment/components/entities-managment.component';
+import {PurchaseComponent} from './purchase/components/purchase.component';
 
 const routes: Routes = [
   {
@@ -14,11 +14,15 @@ const routes: Routes = [
     children: [
       // //{path: '/**', data: ['צפייה במלאי'], children: []},
       {
-        path: 'purchase', component: PurchaseComponent, data: ['קניה'],
+        path: 'entities-managment', component: PurchaseComponent, data: ['בסיס נתונים'],
         loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'
       },
+      {
+        path: 'sale', component: PurchaseComponent, data: ['מכירה'],
+        loadChildren: './sale/sale.module#SaleModule'
+      },
       // {
-      //   path: '', data: ['מכירה'], children: [
+      //   path: '', , children: [
       //   {path: '1', data: ['הזמן ללקוח']},
       //   {path: '2', data: ['אשר אספקה']},
       //   {path: '3', data: ['החזר סחורה']},
@@ -27,10 +31,9 @@ const routes: Routes = [
       // },
       // {path: '/', data: ['תקבול'], children: []},
       {
-        path: 'entities-managment', component: EntitiesManagmentComponent, data: ['בסיס נתונים'],
-        loadChildren: './purchase/purchase.module#PurchaseModule'
-      }
-      ,
+        path: 'purchase', component: EntitiesManagmentComponent, data: ['קניה'],
+        loadChildren: './purchase/purchase.module#SaleModule'
+      },
       // {
       //   path: '/', data: ['דוחות'], children: [
       //   {path: '1', data: ['בסיסי נתונים']},
