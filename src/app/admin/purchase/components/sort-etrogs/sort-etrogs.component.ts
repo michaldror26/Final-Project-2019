@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryService } from 'src/app/admin/services/inventory.service';
+import { Product } from 'src/app/shared/models/Product.class';
+import { NgForm } from '@angular/forms';
+
 // import { InventoryService } from '../../../../admin/services/inventory.service';
 
 @Component({
@@ -8,17 +12,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SortEtrogsComponent implements OnInit {
 
-  startAmount:number= 500;
-  // constructor(private inventoryService:InventoryService) {
+  startAmount:number;
+  currentAmount:number;
+  productsArr:Product[]=[];
+   constructor(private inventoryService:InventoryService) {
 
-  // this.inventoryService.getAmountProject().subscribe(
-  //   data => {this.startAmount=data},
-  //  error=> {},
-  // );
+   this.inventoryService.getAmountProject().subscribe(
+     data => {this.startAmount=this.currentAmount=data},
+    error=> {},
+   );
+
+   this.inventoryService.getAllSubCategories().subscribe(
+    data => {this.productsArr=data;},
+   error=> {},
+  );
   
-  //  }
+    }
 
   ngOnInit() {
   }
+  updateCurrentAmount(val:number){
+    this.currentAmount-=val;
+  }
+  CancelUpdateCurrentAmount(val:number){
+    this.currentAmount+=val;
+  }
+  reset(){
+ 
+  }
 
+  enterToDB(pform: NgForm){
+   alert(pform);
+  }
 }

@@ -8,10 +8,10 @@ import { Http } from '@angular/http';
 export class ProductService {
 
   products: Product[] = [
-    { id: 1, categoryId: 2, name: 'product1', sellingPrice: 25 },
-    { id: 2, categoryId: 3, name: 'product2', sellingPrice: 125 },
-    { id: 3, categoryId: 3, name: 'product3', sellingPrice: 255 },
-    { id: 4, categoryId: 2, name: 'product4', sellingPrice: 85 },
+    { ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25 ,Amount:5},
+    { ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125 ,Amount:5},
+    { ProductId: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255 ,Amount:5},
+    { ProductId: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85 ,Amount:5},
   ];
   basicURL: string = 'urlBasic';
 
@@ -30,7 +30,7 @@ export class ProductService {
   }
 
   getById(id: number) {
-    this.products.filter(p => p.id === id);
+    this.products.filter(p => p.ProductId === id);
   }
 
   updateById(id, product) {
