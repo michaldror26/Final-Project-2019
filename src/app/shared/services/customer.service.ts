@@ -13,6 +13,7 @@ export class CustomerService {
     {
       CustomerId: 1,
       DiscountPercentage: 98,
+      AuthenticationTypeId:2,
       FirstName: 'מרים',
       LastName: 'טרבלסי',
       MobilePhone: '0587896541',
@@ -20,11 +21,13 @@ export class CustomerService {
       Email: 'miryam@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId:2
+      // userName: 'fvdgvgb',
+      //  password: '26565'
     },
     {
       CustomerId: 2,
       DiscountPercentage: 98,
+      AuthenticationTypeId:2,
       FirstName: 'sara',
       LastName: 'trabelsi',
       MobilePhone: '0587896541',
@@ -32,11 +35,13 @@ export class CustomerService {
       Email: 'sara555@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId:2
+      // userName:'fvdgvgb',
+      // password:'26565'
     },
     {
       CustomerId: 3,
       DiscountPercentage: 98,
+      AuthenticationTypeId:2,
       FirstName: 'dafna',
       LastName: 'trabelsi',
       MobilePhone: '0587896541',
@@ -44,7 +49,8 @@ export class CustomerService {
       Email: 'dafnat555@gmail.com',
       Telephone: '097496761',
       RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId:2
+      // userName:'fvdgvgb',
+      // password:'26565'
     }
   ];
   private cusArr$: Observable<Customer[]>;
@@ -65,13 +71,12 @@ export class CustomerService {
       .pipe(map(res => <Customer>res.json()));
   }
 
-
   deleteCustomer(id: number) {
     // const index = this.cusArr.findIndex(customer => customer.CustomerId === id);
     // if (index !== -1) {
     //   this.cusArr.splice(index, 1);
     // }
-    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id='/*,id*/);
+    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id='+ id);
 
   }
 

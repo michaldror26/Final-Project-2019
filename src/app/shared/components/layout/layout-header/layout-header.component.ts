@@ -30,10 +30,10 @@ export class LayoutHeaderComponent implements OnInit {
   routesOfAdmin: Routes = [
     { path: '/', data: ['צפייה במלאי'], children: [] },
     {
-      path: '', data: ['קניה'], children: [
+      path: 'purchase', data: ['קניה'], children: [
         { path: '1', data: ['הזמן מספק'] },
         { path: '2', data: ['קבל מספק'] },
-        { path: '3', data: ['מיון אתרוגים'] },
+        { path: 'sort-etrogs', data: ['מיון אתרוגים'] },
       ]
     },
     {

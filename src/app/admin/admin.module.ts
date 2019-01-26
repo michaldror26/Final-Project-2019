@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import {EntitiesManagmentModule} from './entitiesManagment/entities-managment.module';
-import { SortEtrogsComponent } from './purchase/purchase/models/sort-etrogs/sort-etrogs.component';
+import { PurchaseModule } from './purchase/purchase.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
-    EntitiesManagmentModule
+    EntitiesManagmentModule,
+    PurchaseModule
   ],
-  declarations: [AdminComponent, SortEtrogsComponent]
+  declarations: [AdminComponent]
 })
 export class AdminModule { }

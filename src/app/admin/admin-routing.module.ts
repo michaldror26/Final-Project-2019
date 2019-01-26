@@ -1,9 +1,10 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import {RouterModule, Routes} from '@angular/router';
-import {AdminComponent} from './admin.component';
-import {EntitiesManagmentComponent} from './entitiesManagment/components/entities-managment.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin.component';
+import { EntitiesManagmentComponent } from './entitiesManagment/components/entities-managment.component';
+import { PurchaseComponent } from './purchase/components/purchase.component';
 
 const routes: Routes = [
   {
@@ -12,13 +13,10 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
     children: [
       // //{path: '/**', data: ['צפייה במלאי'], children: []},
-      // {
-      //   path: '', data: ['קניה'], children: [
-      //   {path: '1', data: ['הזמן מספק']},
-      //   {path: '2', data: ['קבל מספק']},
-      //   {path: '3', data: ['מיון אתרוגים']},
-      // ]
-      // },
+      {
+        path: 'purchase', component: PurchaseComponent, data: ['קניה'],
+        loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'
+      },
       // {
       //   path: '', data: ['מכירה'], children: [
       //   {path: '1', data: ['הזמן ללקוח']},
@@ -30,7 +28,7 @@ const routes: Routes = [
       // {path: '/', data: ['תקבול'], children: []},
       {
         path: 'entities-managment', component: EntitiesManagmentComponent, data: ['בסיס נתונים'],
-        loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'
+        loadChildren: './purchase/purchase.module#PurchaseModule'
       }
       ,
       // {
