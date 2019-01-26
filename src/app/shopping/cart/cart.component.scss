@@ -7,3 +7,11 @@
 .plus_cart ,.minus_cart {
   width: 50px !important;
 }
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+table {
+  margin-top: 15px;
+}
