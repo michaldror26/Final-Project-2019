@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import { ListOrderViewComponent } from './components/list-order-view/list-order-view.component';
-
-
-@NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [ListOrderViewComponent],
-  exports: [ ]
-})
-export class SharedModule {
-}
-=======
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ListOrderViewComponent} from './components/list-order-view/list-order-view.component';
@@ -42,4 +26,3 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 })
 export class SharedModule {
 }
->>>>>>> 3e414644bb9cc468301f2c473745b8f8cb0ac38f

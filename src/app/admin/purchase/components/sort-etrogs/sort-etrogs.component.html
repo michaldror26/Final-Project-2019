@@ -13,13 +13,13 @@
     <tbody>
       <tr *ngFor="let p of productsArr">
         <td class="align-middle  w-25">
-          <input #amount (mouseleave)="updateCurrentAmount(amount.value)" name='countOf' type="number" class="form-control text-right" placeholder='הכנס כמות'>
+          <input #amount (mouseenter)="CancelUpdateCurrentAmount(amount.value)" (mouseleave)="updateCurrentAmount(amount.value)" name='countOf' type="number" class="form-control text-right" placeholder='הכנס כמות'>
         </td>
         <td class="text-right">{{p.Name}}</td>
       </tr>
     </tbody>
   </table>
-  <form #pForm="ngForm" class = "Table">
+  <form #pForm="ngForm"  (ngSubmit)="enterToDB(pForm.value)" class = "Table">
       <div *ngFor="let p of productsArr" class = "Row">
           <label class = "Cell" for = "Name">{{p.Name}}</label>
           <input class = "Cell" #amount (mouseleave)="updateCurrentAmount(amount.value)" name='countOf' type="number" placeholder='הכנס כמות'>
@@ -27,8 +27,8 @@
     
 
 <div class="w-25 d-inline-block align-top px-3">
-  <button class="btn btn-lg btn-primary btn-block">הכנס למלאי</button>
-  <button (click)=".reset()" class="btn btn-lg btn-block">נקה שדות</button>
+  <button type="submit" class="btn btn-lg btn-primary btn-block">הכנס למלאי</button>
+  <button (click)="pForm.reset()" class="btn btn-lg btn-block">נקה שדות</button>
 </div>
 </form>
 </div>

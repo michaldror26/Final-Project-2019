@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from 'src/app/admin/services/inventory.service';
 import { Product } from 'src/app/shared/models/Product.class';
+import { NgForm } from '@angular/forms';
 
 // import { InventoryService } from '../../../../admin/services/inventory.service';
 
@@ -33,12 +34,14 @@ export class SortEtrogsComponent implements OnInit {
   updateCurrentAmount(val:number){
     this.currentAmount-=val;
   }
-
+  CancelUpdateCurrentAmount(val:number){
+    this.currentAmount+=val;
+  }
   reset(){
  
   }
 
-  enterToDB(){
-
+  enterToDB(pform: NgForm){
+   alert(pform);
   }
 }
