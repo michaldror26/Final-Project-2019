@@ -4,6 +4,8 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import {map, catchError, filter, find, first} from 'rxjs/operators';
 import {findLast} from '@angular/compiler/src/directive_resolver';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ROOT_URL} from '../config';
 
 @Injectable({
   providedIn: 'root'
@@ -55,21 +57,40 @@ export class CustomerService {
   ];
   private cusArr$: Observable<Customer[]>;
 
-  constructor(private _http: Http) {
+
+  constructor(private _http: HttpClient) {
   }
 
   getCustomers(): Observable<Customer[]> {
-    this.cusArr$ = this._http.get('http://localhost:49738/api/customer/getAllCustomers')
-      .pipe(map(res => <Customer[]>res.json()));
+
+    this.cusArr$ = this._http
+      .get<Customer[]>(ROOT_URL + 'customer/getAllCustomers')
+      .pipe(
+        map(
+          data => {
+            return data;
+          },
+          error => {
+          })
+      );
+
     return this.cusArr$;
   }
 
   // getCustomers(): Customer[] {
   //   return this.cusArr;
   // }
-  getCustomer(id: number) {
-    return this._http.get('http://localhost:49738/api/customer/getCustomer?id=' + id)
-      .pipe(map(res => <Customer>res.json()));
+  getCustomer(id: number): Observable<Customer> {
+    return this._http
+      .get<Customer>(ROOT_URL + 'customer/getCustomer?id=' + id)
+      .pipe(
+        map(
+          data => {
+            return data;
+          },
+          error => {
+          })
+      );
   }
 
   deleteCustomer(id: number) {
@@ -82,13 +103,18 @@ export class CustomerService {
   }
 
   editCustomer(updatedCustomer: Customer) {
-    // const index = this.cusArr.findIndex(customer => customer.CustomerId === updatedCustomer.CustomerId);
-    // if (index !== -1) {
-    //   // TODO implement this as reallity
-    //   this.cusArr[index] = updatedCustomer;
-    // }
 
-    this._http.post('http://localhost:49738/api/customer/editCustomer', updatedCustomer);
+    const _headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8'
+    });
+debugger
+    const index = this.cusArr.findIndex(customer => customer.CustomerId === updatedCustomer.CustomerId, {headers: _headers});
+    if (index !== -1) {
+      //   // TODO implement this as reallity
+      this.cusArr[index] = updatedCustomer;
+    }
+debugger
+    this._http.post(ROOT_URL + 'customer/editCustomer', JSON.stringify(updatedCustomer));
 
   }
 

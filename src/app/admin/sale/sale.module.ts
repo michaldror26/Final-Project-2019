@@ -8,7 +8,8 @@ import { TempComponent } from './sale/component/temp/temp.component';
     CommonModule,
     SaleRoutingModule
   ],
-  declarations: [TempComponent]
+  declarations: [TempComponent],
+  exports: [SaleRoutingModule]
 })
 export class SaleModule {
 }

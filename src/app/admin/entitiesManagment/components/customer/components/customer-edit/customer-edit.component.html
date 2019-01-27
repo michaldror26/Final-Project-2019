@@ -1,6 +1,6 @@
 <div class="container col-xl-5 col-lg-7 col-md-8">
   <div class="py-5 my-4 p-5 shadow">
-    <div *ngIf="customer$ | async as customer">
+    <div *ngIf="customer">
       <form>
         <h1 class="h3 mb-3 font-weight-normal">הזן פרטי לקוח</h1>
 
@@ -31,9 +31,13 @@
           [(ngModel)]="customer.City" required>
 
         <div class="row mx-0">
+
           <label for="inputRegisterDate" class="col-md-5 col-12 text-right text-md-left">תאריך הצטרפות:</label>
           <input type="text" id="inputRegisterDate" class="form-control form-group col-md-7 col-12" placeholder="תאריך הצטרפות"
-            title="תאריך הצטרפות" name="inputRegisterDate" [(ngModel)]="customer.RegisteredDate" required>
+            title="תאריך הצטרפות" name="inputRegisterDate"
+                 [ngModel]="customer.RegisteredDate | date: 'dd/MM/yyyy'"
+                 (ngModelChange)="customer.RegisteredDate=$event"
+                 required>
         </div>
         <div class="row mx-0">
           <label for="inputDiscountPercentage" class="col-md-5 col-12 text-right text-md-left">אחוז הנחה:</label>
