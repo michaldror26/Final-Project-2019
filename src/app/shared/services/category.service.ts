@@ -9,7 +9,7 @@ export class CategoryService {
   constructor() {
   }
 
-  getCategories(): Category[] {
-    return [{id: 1, name: 'לולבים', categoryID: 3}, {id: 2, name: 'אתרוגים', categoryID: 4}];
-  }
+ // getCategories():Category[] {
+   // return [{id: 1, name: 'לולבים', categoryID: 3}, {id: 2, name: 'אתרוגים', categoryID: 4}];
+ // }
 }

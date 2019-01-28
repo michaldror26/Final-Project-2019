@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../../../shared/product.model'
+
 import { CartService } from '../../../cart.service';
+import { Product } from 'src/app/shared/models/Product.class';
 
 @Component({
   selector: 'showcase',

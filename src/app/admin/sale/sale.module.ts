@@ -5,7 +5,7 @@ import {SaleRoutingModule} from './sale-routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    SaleRoutingModule
+    SaleRoutingModule,
   ],
   declarations: []
 })

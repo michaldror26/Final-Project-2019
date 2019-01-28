@@ -2,9 +2,9 @@
   public ProductId: number;
   public Name: string;
   public CategoryId: number;
-  public SellingPrice: number; // float
+  public SellingPrice?: number; // float
 //to del
-public Amount:number;
+public Amount?:number;
   // price?: string
   // available?: boolean
   // best_seller?: boolean

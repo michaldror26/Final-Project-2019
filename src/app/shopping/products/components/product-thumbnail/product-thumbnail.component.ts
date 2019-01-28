@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from '../../../cart.service';
-import {Product} from '../../../shared/product.model';
+import { Product } from 'src/app/shared/models/Product.class';
 
 @Component({
   selector: 'product-thumbnail',

@@ -4,17 +4,17 @@
       <img class="img" [src]='product.img'>
       <div class="img-placeholder"></div>
     </div>
-    <h5 class="title">{{product.name}}</h5>
-    <p class="price">$<span>{{product.price}}</span></p>
+    <h5 class="title">{{product.Name}}</h5>
+    <p class="price">$<span>{{product.SellingPrice}}</span></p>
     <div class="details">
       <div class="available" *ngIf = 'product.available'>
         <hr>
         <div class="row">
           <div class="col-8-sm view-details-wrapper">
-            <button type="button" class="view" (click)='productClicked(product.id)'>פרטים</button>
+            <button type="button" class="view" (click)='productClicked(product.ProductId)'>פרטים</button>
           </div>
           <div class="col-4-sm add-cart-wrapper">
-            <button type="button" class="cart" (click)="addToCart(product.id)"><img src="../../../../../assets/cart_primary.svg" alt="" /></button>
+            <button type="button" class="cart" (click)="addToCart(product.ProductId)"><img src="../../../../../assets/cart_primary.svg" alt="" /></button>
           </div>
         </div>
       </div>
@@ -34,9 +34,9 @@
       <button type="button" class="hide-detail-btn" (click)='productClicked()'>לחץ לסגירה</button>
     </div>
   </div>
-  <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf = 'product.best_seller'>
+  <!-- <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf = 'product.best_seller'>
     <span class="star left">&nbsp;</span>
     <span class="txt">רב מכר</span>
     <span class="star right">&nbsp;</span>
-  </div>
+  </div> -->
 </div>

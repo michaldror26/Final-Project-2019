@@ -2,7 +2,6 @@ import {ROOT_URL} from '../../shared/config'
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Category } from 'src/app/shopping/shared/category.model';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/shared/models/Product.class';
 @Injectable()
@@ -26,7 +25,12 @@ getAmountProject():Observable<number> {
        .pipe(
           map(data =>{return data},
             error=>{}      
-            ));
-      
+            ));      
    }
+
+   updateAmount(arr:object[]) {
+      //TODO
+       this.httpClient
+              
+     }
 }

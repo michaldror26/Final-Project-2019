@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Product } from '../shared/product.model';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DataService } from '../data.service';
 import { CartService } from '../cart.service';
+import { Product } from 'src/app/shared/models/Product.class';
 
 @Component({
   selector: 'app-shipping-products',
@@ -43,47 +43,52 @@ export class ShippingProductsComponent implements OnInit {
     { name: 'מחיר < 10.000', value: 'less_10000', checked: false }
   ];
 
-  originalData: any = [];
+  originalData: Product[] = [];
 
   constructor(private dataService: DataService, private cartService: CartService) {
   }
 
   ngOnInit() {
-    this.dataService.getData().then(data => {
-      this.originalData = data;
-      this.mainFilter = {
-        search: '',
-        categories: this.originalData.categories.slice(0),
-        customFilter: this.customFilters[0],
-        priceFilter: this.priceFilters[0]
-      };
+    this.dataService.getAllProducts().then(
+      data => {this.originalData = (data as Product[]);
+               this.products = this.originalData.slice(0);});
+
+     this.dataService.getAllCategories().then(
+       data=>{               
+       this.mainFilter = {
+         search: '',
+         categories: data,
+         customFilter: this.customFilters[0],
+         priceFilter: this.priceFilters[0]
+       };
+      });
 
       // Make a deep copy of the original data to keep it immutable
-      this.products = this.originalData.products.slice(0);
-      this.sortProducts('name');
-    });
+      //this.sortProducts('name');
+    
   }
   ngOnDestroy() {
     this.cartService.saveCartLocaly();
   }
-  onURLChange(url) {
-    this.dataService.getRemoteData(url).subscribe(data => {
-      this.originalData = data;
-      this.mainFilter = {
-        search: '',
-        categories: this.originalData.categories.slice(0),
-        customFilter: this.customFilters[0],
-        priceFilter: this.priceFilters[0]
-      };
+   onURLChange(url) {
+    //  this.dataService.getRemoteData(url).subscribe(data => {
+    //    this.originalData = data;
+    //   this.mainFilter = {
+    //     search: '',
+    //     categories: this.originalData.categories.slice(0),
+    //     customFilter: this.customFilters[0],
+    //     priceFilter: this.priceFilters[0]
+    //   };
 
-      // Make a deep copy of the original data to keep it immutable
-      this.products = this.originalData.products.slice(0);
-      this.sortProducts('name');
-      this.filtersComponent.reset(this.customFilters, this.priceFilters);
-      this.searchComponent.reset();
-      this.cartService.flushCart();
-    });
-  }
+    //   // Make a deep copy of the original data to keep it immutable
+    //   //this.products = this.originalData.products.slice(0);
+    //   this.products = this.originalData.slice(0);
+    //   this.sortProducts('name');
+  //     this.filtersComponent.reset(this.customFilters, this.priceFilters);
+  //     this.searchComponent.reset();
+  //     this.cartService.flushCart();
+  //   });
+   }
 
 
   onSearchChange(search) {
@@ -94,7 +99,7 @@ export class ShippingProductsComponent implements OnInit {
     });
   }
 
-  onFilterChange(data) {
+ onFilterChange(data) {
     if (data.type == 'category') {
       if (data.isChecked) {
         this.mainFilter.categories.push(data.filter);
@@ -115,7 +120,7 @@ export class ShippingProductsComponent implements OnInit {
   }
 
   updateProducts(filter) {
-    let productsSource = this.originalData.products;
+     let productsSource:Product[] = this.originalData;
     let prevProducts = this.products;
     let filterAllData = true;
     if ((filter.type == 'search' && filter.change == 1) || (filter.type == 'category' && filter.change == -1)) {
@@ -123,25 +128,28 @@ export class ShippingProductsComponent implements OnInit {
       filterAllData = false;
     }
     //console.log('filtering ' + productsSource.length + ' products')
-
-    this.products = productsSource.filter(product => {
+    this.products = productsSource.filter(p => {
       //Filter by search
       if (filterAllData || filter.type == 'search') {
-        if (!product.name.match(new RegExp(this.mainFilter.search, 'i'))) {
+        if (!p.Name.match(new RegExp(this.mainFilter.search, 'i'))) {
           return false;
         }
-      }
+     }
 
       //Filter by categories
       if (filterAllData || filter.type == 'category') {
         let passCategoryFilter = false;
-        product.categories.forEach(product_category => {
-          if (!passCategoryFilter) {
-            passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
-              return found || product_category == category.categori_id;
-            }, false);
-          }
-        });
+        
+        passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
+                return found || p.CategoryId == category.CategoryId;
+              }, false);
+        // p..forEach(product_category => {
+        //   if (!passCategoryFilter) {
+        //     passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
+        //       return found || product_category == category.categori_id;
+        //     }, false);
+        //   }
+        //});
         if (!passCategoryFilter) {
           return false;
         }
@@ -149,27 +157,27 @@ export class ShippingProductsComponent implements OnInit {
 
       //Filter by custom filters
       if (filterAllData || filter.type == 'custom') {
-        let passCustomFilter = false;
-        let customFilter = this.mainFilter.customFilter.value;
-        if (customFilter == 'all') {
-          passCustomFilter = true;
-        } else if (customFilter == 'available' && product.available) {
-          passCustomFilter = true;
-        } else if (customFilter == 'unavailable' && !product.available) {
-          passCustomFilter = true;
-        } else if (customFilter == 'bestseller' && product.best_seller) {
-          passCustomFilter = true;
-        }
-        if (!passCustomFilter) {
-          return false;
-        }
+        // let passCustomFilter = false;
+        // let customFilter = this.mainFilter.customFilter.value;
+        // if (customFilter == 'all') {
+        //   passCustomFilter = true;
+        // } else if (customFilter == 'available' && p.available) {
+        //   passCustomFilter = true;
+        // } else if (customFilter == 'unavailable' && !p.available) {
+        //   passCustomFilter = true;
+        // } else if (customFilter == 'bestseller' && p.best_seller) {
+        //   passCustomFilter = true;
+        // }
+        // if (!passCustomFilter) {
+        //   return false;
+       // }
       }
 
       //Filter by price filters
       if (filterAllData || filter.type == 'price') {
         let passPriceFilter = false;
         let customFilter = this.mainFilter.priceFilter.value;
-        let productPrice = parseFloat(product.price.replace(/\./g, '').replace(',', '.'));
+        let productPrice = parseFloat(p.SellingPrice.toString().replace(/\./g, '').replace(',', '.'));
         if (customFilter == 'all') {
           passPriceFilter = true;
         } else if (customFilter == 'more_30000' && productPrice > 30000) {
@@ -195,26 +203,26 @@ export class ShippingProductsComponent implements OnInit {
     if (filter.type == 'custom' || filter.type == 'price') {
       this.sortProducts(this.currentSorting);
     }
-  }
+ }
 
-  sortProducts(criteria) {
-    //console.log('sorting ' + this.products.length + ' products')
+ sortProducts(criteria) {
+    console.log('sorting ' + this.products.length + ' products')
     this.products.sort((a, b) => {
-      let priceComparison = parseFloat(a.price.replace(/\./g, '').replace(',', '.')) - parseFloat(b.price.replace(/\./g, '').replace(',', '.'));
+      let priceComparison = parseFloat(a.SellingPrice.toString().replace(/\./g, '').replace(',', '.')) - parseFloat(b.SellingPrice.toString().replace(/\./g, '').replace(',', '.'));
       if (criteria == 'priceDes') {
         return -priceComparison;
       } else if (criteria == 'priceAsc') {
         return priceComparison;
       } else if (criteria == 'name') {
-        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+        let nameA = a.Name.toLowerCase(), nameB = b.Name.toLowerCase();
         if (nameA < nameB)
           return -1;
         if (nameA > nameB)
           return 1;
         return 0;
       } else {
-        //Keep the same order in case of any unexpected sort criteria
-        return -1;
+       // Keep the same order in case of any unexpected sort criteria
+       return -1;
       }
     });
     this.currentSorting = criteria;

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Category } from '../../../shared/category.model';
+import { Category } from 'src/app/shared/models/Category.class';
 
 @Component({
   selector: 'filters',
