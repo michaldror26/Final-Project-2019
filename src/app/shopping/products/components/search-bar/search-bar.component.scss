@@ -30,25 +30,26 @@
 
 .search-bar{
   width: 100%;
+  outline: aquamarine 1px solid;
+  padding-right: 5px;
   display: block;
   margin: 0 auto;
   height: 35px;
   border-radius: 20px;
   border: none;
-  padding-left: 20px;
   box-shadow: 0 3px 14px rgba(25, 25, 25, 0.05);
   font-weight: 500;
   position: relative;
-  left: -33px;
   color: #999999;
   @include transition-fade-circ(0.4s);
+
   &:focus{
     box-shadow: 0 4px 11px rgba(93, 78, 240, 0.09);
     font-weight: 500;
     color: #5D4EF0;
     width: 120%;
-    -webkit-transform: translateX(-15%);
-    transform: translateX(-15%);
+    -webkit-transform: translateX(15%);
+    transform: translateX(15%);
     & + svg path{
         fill: #5D4EF0;
     }

@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+import {TempComponent} from './sale/component/temp/temp.component';
 
 const routes: Routes = [
   {
-    // path: 'sort-etrogs', component: SortEtrogsComponent, data: ['מיון אתרוגים']
+    path: 'temp', component: TempComponent, data: ['מיון אתרוגים']
   },
 ];
 

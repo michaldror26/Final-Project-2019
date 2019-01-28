@@ -25,6 +25,7 @@ export class ProductThumbnailComponent implements OnInit {
   }
 
   addToCart() {
+    alert();
     this.cartService.addProductToCart(this.product);
   }
 

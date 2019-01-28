@@ -5,9 +5,10 @@
       <div class="img-placeholder"></div>
     </div>
     <h5 class="title">{{product.Name}}</h5>
-    <p class="price">$<span>{{product.SellingPrice}}</span></p>
+    <p class="price"><span>{{product.SellingPrice}}</span>ש"ח </p>
     <div class="details">
-      <div class="available" *ngIf = 'product.available'>
+        <!-- *ngIf = 'product.available' -->
+      <div class="available">
         <hr>
         <div class="row">
           <div class="col-8-sm view-details-wrapper">
@@ -18,10 +19,10 @@
           </div>
         </div>
       </div>
-      <div class="not-available" *ngIf = '!product.available'>
+      <!-- <div class="not-available" *ngIf = '!product.available'>
         <hr>
         <p>לא זמין</p>
-      </div>
+      </div> -->
     </div>
     <!--span class="category-name" *ngFor='let category of product.categories'>{{category}}</span-->
     <div class="detail-view" [class.active]='detailViewActive'>

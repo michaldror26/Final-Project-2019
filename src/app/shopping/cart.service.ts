@@ -1,11 +1,12 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { Product } from '../shared/models/Product.class';
 
 
 @Injectable()
 export class CartService {
 
-  products: any[] = []
+  products =[]
   cartTotal: number = 0;
 
   initF: boolean = true;
@@ -33,12 +34,12 @@ export class CartService {
   }
   addProductToCart(product) {
     let exists = false
-    let parsedPrice = parseFloat(product.price.replace(/\./g, '').replace(',', '.'))
+    let parsedPrice = parseFloat(product.SellingPrice.toString().replace(/\./g, '').replace(',', '.'))
     this.cartTotal += parsedPrice;
     //Search this product on the cart and increment the quantity
     this.products = this.products.map(_product => {
-      if (_product.product.id == product.id) {
-        _product.quantity++
+      if (_product.product.id == product.ProductId) {
+        _product.Amount++
         exists = true
       }
       return _product
@@ -47,7 +48,7 @@ export class CartService {
     if (!exists) {
       product.parsedPrice = parsedPrice
       this.products.push({
-        product: product,
+        product: Product,
         quantity: 1
       })
     }
@@ -61,7 +62,7 @@ export class CartService {
   deleteProductFromCart(product) {
     this.products = this.products.filter(_product => {
       if (_product.product.id == product.id) {
-        this.cartTotal -= _product.product.parsedPrice * _product.quantity
+        this.cartTotal -= _product.product.parsedPrice * _product.Amount
         return false
       }
       return true

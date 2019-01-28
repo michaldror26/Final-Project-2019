@@ -4,6 +4,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { DataService } from '../data.service';
 import { CartService } from '../cart.service';
 import { Product } from 'src/app/shared/models/Product.class';
+import { Category } from 'src/app/shared/models/Category.class';
 
 @Component({
   selector: 'app-shipping-products',
@@ -13,7 +14,7 @@ import { Product } from 'src/app/shared/models/Product.class';
 export class ShippingProductsComponent implements OnInit {
 
   products: Product[];
-
+  categories: Category[]=[];
   mainFilter: any;
 
   currentSorting: string;
@@ -30,13 +31,6 @@ export class ShippingProductsComponent implements OnInit {
     { name: 'מחיר (מהגבוה לנמוך)', value: 'priceDes' }
   ];
 
-  customFilters: any[] = [
-    { name: 'הכל', value: 'all', checked: true },
-    { name: 'זמין', value: 'available', checked: false },
-    { name: 'לא זמין', value: 'unavailable', checked: false },
-    { name: 'רב מכר', value: 'bestseller', checked: false }
-  ];
-
   priceFilters: any[] = [
     { name: 'הכל', value: 'all', checked: true },
     { name: 'מחיר > 30.000', value: 'more_30000', checked: false },
@@ -50,15 +44,16 @@ export class ShippingProductsComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getAllProducts().then(
-      data => {this.originalData = (data as Product[]);
-               this.products = this.originalData.slice(0);});
+      data => {this.originalData=data;
+               this.products = this.originalData.slice(0);}
+               );
 
      this.dataService.getAllCategories().then(
-       data=>{               
+       data=>{this.categories=data;                  
        this.mainFilter = {
          search: '',
-         categories: data,
-         customFilter: this.customFilters[0],
+         categories: this.categories,
+        // customFilter: this.customFilters[0],
          priceFilter: this.priceFilters[0]
        };
       });
@@ -86,7 +81,7 @@ export class ShippingProductsComponent implements OnInit {
     //   this.sortProducts('name');
   //     this.filtersComponent.reset(this.customFilters, this.priceFilters);
   //     this.searchComponent.reset();
-  //     this.cartService.flushCart();
+       this.cartService.flushCart();
   //   });
    }
 
@@ -105,7 +100,7 @@ export class ShippingProductsComponent implements OnInit {
         this.mainFilter.categories.push(data.filter);
       } else {
         this.mainFilter.categories = this.mainFilter.categories.filter(category => {
-          return category.categori_id != data.filter.categori_id;
+          return category.CategoryId != data.filter.CategoryId;
         });
       }
     } else if (data.type == 'custom') {
@@ -119,7 +114,7 @@ export class ShippingProductsComponent implements OnInit {
     });
   }
 
-  updateProducts(filter) {
+updateProducts(filter) {
      let productsSource:Product[] = this.originalData;
     let prevProducts = this.products;
     let filterAllData = true;
@@ -136,24 +131,20 @@ export class ShippingProductsComponent implements OnInit {
         }
      }
 
+      
       //Filter by categories
       if (filterAllData || filter.type == 'category') {
         let passCategoryFilter = false;
-        
-        passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
-                return found || p.CategoryId == category.CategoryId;
-              }, false);
-        // p..forEach(product_category => {
-        //   if (!passCategoryFilter) {
-        //     passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
-        //       return found || product_category == category.categori_id;
-        //     }, false);
-        //   }
-        //});
+          if (!passCategoryFilter) {
+            passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
+              return found || p.CategoryId == category.CategoryId;
+            }, false);
+          }
         if (!passCategoryFilter) {
           return false;
         }
       }
+        
 
       //Filter by custom filters
       if (filterAllData || filter.type == 'custom') {

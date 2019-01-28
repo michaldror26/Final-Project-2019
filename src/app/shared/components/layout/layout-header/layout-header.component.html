@@ -2,53 +2,64 @@
 <!--TODO to fix trigger click of navBar when it id not display-->
 <!--TODO to set routerLinkActive="active" to routes-->
 
-<div class="navbar navbar-expand-lg navbar-dark bg-dark" dir="rtl"  role="navigation" id="main_header">
-  <a class="navbar-brand" routerLink="/">שם החברה</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" #navbarCollapseButton
+<div class="navbar navbar-expand-lg navbar-dark bg-dark" dir="rtl" role="navigation" id="main_header">
+  <a class="navbar-brand" routerLink="/">
+    <img
+      src="../../../../../assets/icon.png"
+      alt="" title="חכם בעסק" class="icon" height="35">
+    <span class="title_name">בחגיך</span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          #navbarCollapseButton
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse"  >
+  <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto" *ngIf="routes" dir="rtl">
-      <li class="nav-item" routerLinkActive="active" >
+      <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/" (click)="navbarCollapseButton.click()">בית</a>
       </li>
       <ng-container *ngFor="let route of routes">
         <li class="nav-item" *ngIf="route.children.length===0">
-          <a class="nav-link"   [routerLink]="route.path" (click)="navbarCollapseButton.click()">{{route.data[0]}}</a>
+          <a class="nav-link" [routerLink]="route.path" (click)="navbarCollapseButton.click()">{{route.data[0]}}</a>
         </li>
         <li class="nav-item dropdown" *ngIf="route.children.length!==0">
           <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">{{route.data[0]}}</a>
           <div class="dropdown-menu" aria-labelledby="dropdown1">
 
-              <a *ngFor="let child of route.children" class="dropdown-item" [routerLink]="child.path" (click)="navbarCollapseButton.click()">{{child.data[0]}}</a>
+            <a *ngFor="let child of route.children" class="dropdown-item" [routerLink]="child.path"
+               (click)="navbarCollapseButton.click()">{{child.data[0]}}</a>
           </div>
         </li>
 
       </ng-container>
-  <!-- זמני לשם נוחות -->
+      <!-- זמני לשם נוחות -->
       <li>
-  <button class="btn btn-outline-primary my-2 my-sm-0 mr-lg-2" title="זמני לשם נוחות" (click)="switchRoutes()">שנה ניתוב</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0 mr-lg-2" title="זמני לשם נוחות" (click)="switchRoutes()">שנה
+          ניתוב
+        </button>
       </li>
     </ul>
     <form class="form-inline mt-2 mt-md-0">
-      <div *ngIf="userName==null"> <button class="btn btn-outline-primary my-2 my-sm-0 mr-lg-2" type="submit"
-          (click)="goToLoginPage()  &&  navbarCollapseButton.click()">התחבר</button>
-     </div>
+      <div *ngIf="userName==null">
+        <button class="btn btn-outline-primary my-2 my-sm-0 mr-lg-2" type="submit"
+                (click)="goToLoginPage()  &&  navbarCollapseButton.click()">התחבר
+        </button>
+      </div>
     </form>
-    <div *ngIf="userName != null"> 
+    <div *ngIf="userName != null">
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false"> שלום {{userName}}</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown1">
+        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false"> שלום {{userName}}</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown1">
 
-             <a class="dropdown-item" (click)="navbarCollapseButton.click()">עריכת פרטים</a>
-              <a class="dropdown-item" (click)="navbarCollapseButton.click()">הודעות</a>
-              <a class="dropdown-item" (click)="logout() &&navbarCollapseButton.click()">התנתק</a>
-          </div>
-        </li>
+          <a class="dropdown-item" (click)="navbarCollapseButton.click()">עריכת פרטים</a>
+          <a class="dropdown-item" (click)="navbarCollapseButton.click()">הודעות</a>
+          <a class="dropdown-item" (click)="logout() &&navbarCollapseButton.click()">התנתק</a>
+        </div>
+      </li>
 
-</div>
+    </div>
   </div>
 </div>
