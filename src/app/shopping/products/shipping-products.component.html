@@ -5,7 +5,7 @@
         <div class="filters-wrapper">
 
           <mini-cart></mini-cart>
-          <filters #filtersComponent [categories]='originalData.categories' [customFilters]='customFilters' [priceFilters]='priceFilters' (onFilterChange)='onFilterChange($event)'></filters>
+          <filters #filtersComponent [categories]='categories' [customFilters]='customFilters' [priceFilters]='priceFilters' (onFilterChange)='onFilterChange($event)'></filters>
         </div>
       </div>
       <div class="col-9">

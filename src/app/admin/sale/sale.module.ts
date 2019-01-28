@@ -6,7 +6,7 @@ import { TempComponent } from './sale/component/temp/temp.component';
 @NgModule({
   imports: [
     CommonModule,
-    SaleRoutingModule
+    SaleRoutingModule,
   ],
   declarations: [TempComponent],
   exports: [SaleRoutingModule]

@@ -1,3 +1,5 @@
+import { Product } from "../shared/models/Product.class";
+
 export const DATA: any  = {
   'categories': [
     {
@@ -20,8 +22,10 @@ export const DATA: any  = {
   'products': [
     {
       'id': 1,
-      'name': 'מוצר',
+      'name': 'מוצר1',
       'price': '60.000',
+      'available': true,
+      'best_seller': true,
       'categories': [
         1,
         4
@@ -31,104 +35,100 @@ export const DATA: any  = {
     },
     {
       'id': 2,
-      'name': 'מוצר',
-      'price': '20.000',
-      'categories': [
-        2,
-        4
-      ],
-      'img': 'http://lorempixel.com/200/100/food/',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 3,
-      'name': 'מוצר3',
-      'price': '10.000',
+      'name': 'מוצר2',
+      'price': '60.000',
+      'available': true,
+      'best_seller': true,
       'categories': [
         3,
-        4
-      ],
-      'img': 'http://lorempixel.com/200/100/food/',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 4,
-      'name': 'מוצר4',
-      'price': '35.000',
-      'categories': [
-        1,
-        2
-      ],
-
-      'img': '../../../../../assets/sipur-2.jpg',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 5,
-      'name': '5מוצר',
-      'price': '12.000',
-      'categories': [
-        1,
-        4
-      ],
-      'img': 'http://lorempixel.com/200/100/food/',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 6,
-      'name': 'מוצר6',
-      'price': '120.000',
-      'categories': [
-        1,
-        4,
-        3
-      ],
-      'img': 'http://lorempixel.com/200/100/food/',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 7,
-      'name': 'מוצר7',
-      'price': '50.000',
-      'categories': [
-        1,
-        3
-      ],
-      'img': 'http://lorempixel.com/200/100/food/',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 8,
-      'name': 'מוצר8',
-      'price': '2000',
-      'categories': [
-        1,
-        3
-      ],
-      'img': 'http://lorempixel.com/200/100/food/',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 9,
-      'name': 'מוצר9',
-      'price': '150.000',
-      'categories': [
-        2,
-        4
-      ],
-      'img': 'http://lorempixel.com/200/100/food/',
-      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
-    },
-    {
-      'id': 10,
-      'name': 'מוצר',
-      'price': '200.000',
-      'categories': [
-        2,
-        3
+        5
       ],
       'img': 'http://lorempixel.com/200/100/food/',
       'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu.'
     }
   ]
 };
+// temp:Product[]=[
+//   {"ProductId":1006,
+//   "Name":"אתרוג כשר",
+//   "CategoryId":2,
+//   "SellingPrice":200.0,z
+//   "Amount":0
+// },
+// {"ProductId":1009,
+// "Name":"אתרוג תימני ג'ארד",
+// "CategoryId":3,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1012,
+// "Name":"אתרוג מחפוד א",
+// "CategoryId":1006,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1021,
+// "Name":"אתרוג מחפוד ב",
+// "CategoryId":1006,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1022,
+// "Name":"אתרוג מחפוד ג",
+// "CategoryId":1006,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1023,
+// "Name":"אתרוג מאזוז א",
+// "CategoryId":1007,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1024,
+// "Name":"אתרוג מאזוז ב",
+// "CategoryId":1007,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1025,
+// "Name":"אתרוג מאזוז ג",
+// "CategoryId":1007,
+// "SellingPrice":200.0,
+// "Amount":0},
+// {"ProductId":1026,
+// "Name":"אתרוג אשכנזי פתוח א",
+// "CategoryId":1008,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1027,
+// "Name":"אתרוג אשכנזי פתוח ב",
+// "CategoryId":1008 ,
+// "SellingPrice":200.0,
+// "Amount":0},
+// {"ProductId":1028,
+// "Name":"אתרוג אשכנזי פתוח ג",
+// "CategoryId":1008 ,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1029,
+// "Name":"אתרוג מהודר",
+// "CategoryId":2 ,
+// "SellingPrice":200.0,
+// "Amount":0
+// },
+// {"ProductId":1031,
+// "Name":"אתרוג ג'ארד",
+// "CategoryId":2 ,
+// "SellingPrice":0.0,
+// "Amount":500
+// },
+// {"ProductId":2030,
+// "Name":"קוישלעך",
+// "CategoryId":1 ,
+// "SellingPrice":10.0,
+// "Amount":0
+// },
+// ];
