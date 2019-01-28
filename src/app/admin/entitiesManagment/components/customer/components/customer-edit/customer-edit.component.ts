@@ -10,26 +10,52 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class CustomerEditComponent implements OnInit {
 
-  customer; // : Customer;
-  customer$;
+  customer: Customer;
+  isNew: boolean = false;
   linkToList: boolean = false;
+  message = '';
 
   constructor(public _customerService: CustomerService,
-              private _activateRout: ActivatedRoute,
-              private _router: Router) {
+              private _activateRout: ActivatedRoute) {
   }
 
   async ngOnInit() {
     const id = this._activateRout.snapshot.params['id'];
-    // this.customer$ = await this._customerService.getCustomer(id);
-    this._customerService.getCustomer(id).subscribe(x => this.customer = x);
+
+    if (id) {
+      this._customerService.getCustomer(id).subscribe((cust: Customer) => this.customer = cust);
+    } else {
+      this.customer = new Customer();
+      this.isNew = true;
+    }
     console.log(this.customer);
-    debugger;
   }
 
-  editCustomer() {
-    debugger;
-    this._customerService.editCustomer(this.customer);
+  addOrEditCustomer() {
+    if (this.isNew) {
+      this._customerService.addCustomer(this.customer).subscribe(insertededCust => {
+          if (insertededCust) {
+            this.customer = insertededCust;
+            this.message = 'הלקוח נוסף בהצלחה';
+          } else {
+            this.message = 'בדוק תקינות הפרטים שהזנת ונסה שוב';
+          }
+        }
+      );
+    } else {
+      this._customerService.editCustomer(this.customer).subscribe(updatedCust => {
+        if (updatedCust) {
+          this.customer = updatedCust;
+          this.message = 'הלקוח נוסף בהצלחה';
+        } else {
+          this.message = 'בדוק תקינות הפרטים שהזנת ונסה שוב';
+        }
+      });
+    }
     this.linkToList = true;
+  }
+
+  register() {
+
   }
 }

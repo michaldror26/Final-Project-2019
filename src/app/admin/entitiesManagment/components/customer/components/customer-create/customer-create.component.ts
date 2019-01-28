@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Customer} from '../../../../../../shared/models/Customer.class';
 
 @Component({
   selector: 'app-customer-create',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerCreateComponent implements OnInit {
 
+  customer;
   constructor() { }
 
   ngOnInit() {
+    this.customer = new Customer();
   }
 
 }

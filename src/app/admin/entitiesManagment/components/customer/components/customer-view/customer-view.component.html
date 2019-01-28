@@ -3,10 +3,10 @@
 <div class="shadow row"  dir="rtl">
 
   <div class="col-md-12 text-center">
-    <h4>לקוחות</h4>
+    <h4 class="mt-3">לקוחות</h4>
 
     <form class="form-inline" >
-      <input class="form-control mx-sm-auto mr-md-2 my-2 col-xl-3" type="search" placeholder="חפש משהו כאן..." aria-label="Search" (input)="searchText($event.target.value)" >
+      <input class="form-control mx-sm-auto mr-md-2 my-2 col-xl-3" type="search" placeholder="חפש כאן לקוח ..." aria-label="Search" (input)="searchText($event.target.value)" >
       <!-- <button class="btn btn-outline-success  col-2" type="submit">חפש</button> -->
     </form>
 
@@ -24,13 +24,12 @@
         <th>אימייל</th>
         <th>פלאפון</th>
         </thead>
-        <!-- <tbody *ngIf="customersList && (customersList).length"> -->
-          <tbody *ngIf="(customersList$ | async ).length">
+          <tbody *ngIf="customersList && customersList.length > 0">
 
         <!-- <tr *ngFor="let customer of customersList;" [routerLink]="['../details', customer.CustomerId]"> -->
-          <tr *ngFor="let customer of customersList$ | async;" [routerLink]="['../details', customer.CustomerId]">
+          <tr *ngFor="let customer of customersList" [routerLink]="['../details', customer.CustomerId]">
           <!--<td><input type="checkbox"/></td>-->
-          <td [routerLink]="['../edit', customer.CustomerId]" class="px-sm-1 px-3" >
+          <td [routerLink]="['../addoredit', customer.CustomerId]" class="px-sm-1 px-3" >
 
             <button class="btn border-0 p-0 bg-transparent" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top"
                     data-toggle="tooltip" title="עדכן">

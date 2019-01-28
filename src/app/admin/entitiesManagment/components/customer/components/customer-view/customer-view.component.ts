@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Customer } from '../../../../../../shared/models/Customer.class';
-import { CustomerService } from '../../../../../../shared/services/customer.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {Customer} from '../../../../../../shared/models/Customer.class';
+import {CustomerService} from '../../../../../../shared/services/customer.service';
 
 @Component({
   selector: 'app-customer-view',
@@ -12,23 +9,21 @@ import { map } from 'rxjs/operators';
 })
 export class CustomerViewComponent implements OnInit {
 
-  customersList$: Observable<Customer[]>;
   customersList: Customer[] = [];
+  realCustomersList: Customer[];
 
-  constructor(public _customerService: CustomerService,
-    public _router: Router,
-    public _rout: ActivatedRoute) {
+  constructor(public _customerService: CustomerService) {
   }
 
   ngOnInit() {
-    this.customersList$ = this._customerService.getCustomers();
-    //to remove
-    // this.customersList$.subscribe(x => this.customersList = x);
+    this._customerService.getCustomers()
+      .subscribe((employessObse: Customer[]) => {
+        this.customersList = employessObse;
+        this.realCustomersList = this.customersList;
+      });
   }
-  
+
   searchText(text: string) {
-    this.customersList$ = this._customerService.search(text);
-    //to remove
-    // this.customersList$.subscribe(list => this.customersList = list)
+    this.customersList = this._customerService.search(this.realCustomersList, text);
   }
 }

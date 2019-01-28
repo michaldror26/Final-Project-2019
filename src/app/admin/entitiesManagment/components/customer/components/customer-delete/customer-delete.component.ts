@@ -11,7 +11,8 @@ import {CustomerService} from '../../../../../../shared/services/customer.servic
 export class CustomerDeleteComponent implements OnInit {
 
   customer: Customer;
-  customer$;
+
+  // customer$;
   constructor(public _customerService: CustomerService,
               private _activateRout: ActivatedRoute,
               private _router: Router) {
@@ -19,12 +20,11 @@ export class CustomerDeleteComponent implements OnInit {
 
   ngOnInit() {
     let id: number = this._activateRout.snapshot.params['id'];
-    this.customer$ = this._customerService.getCustomer(id);
-    this.customer$.subscribe(x => this.customer = x);
+    this._customerService.getCustomer(id).subscribe((cust: Customer) => this.customer = cust);
   }
 
   deleteCustomer() {
-    this._customerService.deleteCustomer(this.customer.CustomerId);
+    this._customerService.deleteCustomer(this.customer.CustomerId).subscribe((cust: Customer) => this.customer = cust);
     this._router.navigate(['../../view']);
   }
 

@@ -1,10 +1,12 @@
 <nav id="mainnav">
-  <ul *ngIf="routes" style="list-style: none;">
-    <ng-container *ngFor="let route of routes">
-      <li *ngIf="route.data.atNavBar">
-        <a [routerLink]="route.path"  >{{route.data.name}}</a>
+  <ul style="list-style: none;">
+    <li>
+    <a [routerLink]="['view']">לקוחות</a>
+  </li>
+      <li>
+        <a [routerLink]="['addoredit']">לקוח חדש</a>
       </li>
-    </ng-container>
+
   </ul>
 </nav>
 <div class="clearfix"></div>

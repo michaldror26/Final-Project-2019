@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Customer} from '../models/Customer.class';
 import {Http, Response} from '@angular/http';
-import {Observable} from 'rxjs';
-import {map, catchError, filter, find, first} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+import {map, catchError, filter, find, first, finalize} from 'rxjs/operators';
 import {findLast} from '@angular/compiler/src/directive_resolver';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ROOT_URL} from '../config';
@@ -55,31 +55,19 @@ export class CustomerService {
       // password:'26565'
     }
   ];
-  private cusArr$: Observable<Customer[]>;
 
 
   constructor(private _http: HttpClient) {
   }
 
   getCustomers(): Observable<Customer[]> {
-
-    this.cusArr$ = this._http
-      .get<Customer[]>(ROOT_URL + 'customer/getAllCustomers')
+    return this._http.get<Customer[]>(ROOT_URL + 'customer/getAllCustomers')
       .pipe(
-        map(
-          data => {
-            return data;
-          },
-          error => {
-          })
-      );
-
-    return this.cusArr$;
+        catchError((error: Response) => {
+          return throwError('Something went wrong');
+        }));
   }
 
-  // getCustomers(): Customer[] {
-  //   return this.cusArr;
-  // }
   getCustomer(id: number): Observable<Customer> {
     return this._http
       .get<Customer>(ROOT_URL + 'customer/getCustomer?id=' + id)
@@ -93,40 +81,56 @@ export class CustomerService {
       );
   }
 
-  deleteCustomer(id: number) {
-    // const index = this.cusArr.findIndex(customer => customer.CustomerId === id);
-    // if (index !== -1) {
-    //   this.cusArr.splice(index, 1);
-    // }
-    this._http.get('http://localhost:49738/api/customer/deleteCustomer/?id=' + id);
+  deleteCustomer(id: number): Observable<Customer> {
+    return this._http.delete<Customer>(ROOT_URL + 'customer/deleteCustomer?id=' + id)
+      .pipe(
+        map(
+          data => {
+            return data;
+          },
+          error => {
+          })
+      );
 
   }
 
-  editCustomer(updatedCustomer: Customer) {
-
-    const _headers: HttpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8'
-    });
-debugger
-    const index = this.cusArr.findIndex(customer => customer.CustomerId === updatedCustomer.CustomerId, {headers: _headers});
-    if (index !== -1) {
-      //   // TODO implement this as reallity
-      this.cusArr[index] = updatedCustomer;
-    }
-debugger
-    this._http.post(ROOT_URL + 'customer/editCustomer', JSON.stringify(updatedCustomer));
+  editCustomer(updatedCustomer: Customer): Observable<Customer> {
+    return this._http.post<Customer>(ROOT_URL + 'customer/editCustomer', updatedCustomer)
+      .pipe(
+        map(
+          data => {
+            return data;
+          },
+          error => {
+          })
+      );
 
   }
 
-  search(text: string): Observable<Customer[]> {
-    let list;
-    this.getCustomers().subscribe(l => list = l);
-    list.filter(customer =>
+  addCustomer(newCustomer: Customer): Observable<Customer> {
+
+    return this._http.put<Customer>(ROOT_URL + 'customer/addCustomer', newCustomer)
+      .pipe(
+        map(
+          data => {
+            console.log(data);
+            return data;
+          },
+          error => {
+          })
+      );
+
+
+  }
+
+
+  search(custs: Customer[], text: string): Customer[] {
+    return custs.filter(customer =>
       customer.FirstName.includes(text)
       || customer.LastName.includes(text)
       || customer.MobilePhone.includes(text)
       || customer.Email.includes(text)
     );
-    return list.unsubscribe();
+
   }
 }
