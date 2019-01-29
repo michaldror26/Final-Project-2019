@@ -75,8 +75,6 @@ export class CustomerService {
         map(
           data => {
             return data;
-          },
-          error => {
           })
       );
   }
@@ -87,8 +85,6 @@ export class CustomerService {
         map(
           data => {
             return data;
-          },
-          error => {
           })
       );
 
@@ -100,10 +96,8 @@ export class CustomerService {
         map(
           data => {
             return data;
-          },
-          error => {
-          })
-      );
+          }
+        ));
 
   }
 
@@ -113,10 +107,7 @@ export class CustomerService {
       .pipe(
         map(
           data => {
-            console.log(data);
             return data;
-          },
-          error => {
           })
       );
 

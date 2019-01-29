@@ -40,17 +40,23 @@ export class CustomerEditComponent implements OnInit {
           } else {
             this.message = 'בדוק תקינות הפרטים שהזנת ונסה שוב';
           }
+        },
+        error1 => {
+          this.message = error1.error.ExceptionMessage;
         }
       );
     } else {
       this._customerService.editCustomer(this.customer).subscribe(updatedCust => {
-        if (updatedCust) {
-          this.customer = updatedCust;
-          this.message = 'הלקוח נוסף בהצלחה';
-        } else {
-          this.message = 'בדוק תקינות הפרטים שהזנת ונסה שוב';
-        }
-      });
+          if (updatedCust) {
+            this.customer = updatedCust;
+            this.message = 'הלקוח עודכן בהצלחה';
+          } else {
+            this.message = 'בדוק תקינות הפרטים שהזנת ונסה שוב';
+          }
+        },
+        error1 => {
+          this.message = error1.error.ExceptionMessage;
+        });
     }
     this.linkToList = true;
   }
