@@ -37,7 +37,7 @@ export class MiniCartComponent implements OnInit {
       this.products = data.products
       this.cartTotal = data.cartTotal
       this.numProducts = data.products.reduce((acc, product) => {
-        acc += product.quantity
+        acc += product.Amount
         return acc
       }, 0)
       //Make a plop animation

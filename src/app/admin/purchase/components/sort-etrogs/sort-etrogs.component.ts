@@ -14,7 +14,7 @@ export class SortEtrogsComponent implements OnInit {
   startAmount:number;
   currentAmount:number;
   productsArr:Product[]=[];
-  temp:Product[]=[{"ProductId":1006,"Name":"אתרוג כשר","CategoryId":2,"SellingPrice":200.0,"Amount":0},{"ProductId":1009,"Name":"אתרוג תימני ג'ארד","CategoryId":3,"SellingPrice":200.0,"Amount":0},{"ProductId":1012,"Name":"אתרוג מחפוד א","CategoryId":1006,"SellingPrice":200.0,"Amount":0},{"ProductId":1021,"Name":"אתרוג מחפוד ב","CategoryId":1006,"SellingPrice":200.0,"Amount":0},{"ProductId":1022,"Name":"אתרוג מחפוד ג","CategoryId":1006,"SellingPrice":200.0,"Amount":0},{"ProductId":1023,"Name":"אתרוג מאזוז א","CategoryId":1007,"SellingPrice":200.0,"Amount":0},{"ProductId":1024,"Name":"אתרוג מאזוז ב","CategoryId":1007,"SellingPrice":200.0,"Amount":0},{"ProductId":1025,"Name":"אתרוג מאזוז ג","CategoryId":1007,"SellingPrice":200.0,"Amount":0},{"ProductId":1026,"Name":"אתרוג אשכנזי פתוח א","CategoryId":1008,"SellingPrice":200.0,"Amount":0},{"ProductId":1027,"Name":"אתרוג אשכנזי פתוח ב","CategoryId":1008 ,"SellingPrice":200.0,"Amount":0},{"ProductId":1028,"Name":"אתרוג אשכנזי פתוח ג","CategoryId":1008 ,"SellingPrice":200.0,"Amount":0},{"ProductId":1029,"Name":"אתרוג מהודר","CategoryId":2 ,"SellingPrice":200.0,"Amount":0},{"ProductId":1031,"Name":"אתרוג ג'ארד","CategoryId":2 ,"SellingPrice":0.0,"Amount":500},{"ProductId":2030,"Name":"קוישלעך","CategoryId":1 ,"SellingPrice":10.0,"Amount":0}];
+  temp:Product[]=[];//[{"ProductId":1006,"Name":"אתרוג כשר","CategoryId":2,"SellingPrice":200.0, },{"ProductId":1009,"Name":"אתרוג תימני ג'ארד","CategoryId":3,"SellingPrice":200.0, },{"ProductId":1012,"Name":"אתרוג מחפוד א","CategoryId":1006,"SellingPrice":200.0, },{"ProductId":1021,"Name":"אתרוג מחפוד ב","CategoryId":1006,"SellingPrice":200.0, },{"ProductId":1022,"Name":"אתרוג מחפוד ג","CategoryId":1006,"SellingPrice":200.0, },{"ProductId":1023,"Name":"אתרוג מאזוז א","CategoryId":1007,"SellingPrice":200.0, },{"ProductId":1024,"Name":"אתרוג מאזוז ב","CategoryId":1007,"SellingPrice":200.0, },{"ProductId":1025,"Name":"אתרוג מאזוז ג","CategoryId":1007,"SellingPrice":200.0, },{"ProductId":1026,"Name":"אתרוג אשכנזי פתוח א","CategoryId":1008,"SellingPrice":200.0, },{"ProductId":1027,"Name":"אתרוג אשכנזי פתוח ב","CategoryId":1008 ,"SellingPrice":200.0, },{"ProductId":1028,"Name":"אתרוג אשכנזי פתוח ג","CategoryId":1008 ,"SellingPrice":200.0, },{"ProductId":1029,"Name":"אתרוג מהודר","CategoryId":2 ,"SellingPrice":200.0, },{"ProductId":1031,"Name":"אתרוג ג'ארד","CategoryId":2 ,"SellingPrice":0.0,"Amount":500},{"ProductId":2030,"Name":"קוישלעך","CategoryId":1 ,"SellingPrice":10.0, }];
   form = new FormGroup({
     products: new FormArray([]),
   });
@@ -59,9 +59,9 @@ export class SortEtrogsComponent implements OnInit {
   enterToDB(){
     let ret:object[]=[];
   this.form.value.products.forEach(p => {
-    if((p as Product).Amount != 0)
-    ret.push({id:(p as Product).ProductId,amount:(p as Product).Amount});
-  });
+  //   if((p as Product).Amount != 0)
+  //   ret.push({id:(p as Product).ProductId,amount:(p as Product).Amount});
+   });
   console.log(ret);
  // this.inventoryService.updateAmount(ret);
   }

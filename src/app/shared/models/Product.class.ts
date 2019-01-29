@@ -3,13 +3,12 @@
   public Name: string;
   public CategoryId: number;
   public SellingPrice?: number; // float
-//to del
-public Amount?:number;
+  //to del
   // price?: string
   // available?: boolean
   // best_seller?: boolean
   // categories?: number[]
-  // img?: string
+   img?: string
   // description?: string
 }
 
