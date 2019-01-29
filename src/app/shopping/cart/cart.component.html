@@ -28,11 +28,15 @@
               <!-- <span class="w-50"><button class="btn btn-outline-secondary mx-1 py-1 px-2">+</button></span>
               <span class="w-50"><button class="btn btn-outline-secondary mx-1 py-1 px-2">-</button></span> -->
               <div class="d-inline-block p-1">
-                <button class="btn btn-outline-secondary mx-1 py-1 px-2  plus_cart" (click)='addOneMoreProduct()'>+
+                  <button class="btn btn-outline-secondary mx-1 py-1 px-2  plus_cart" title="הסר מהעגלה" (click)='deleteProduct()'>x
                 </button>
               </div>
               <div class="d-inline-block p-1">
-                <button class="btn btn-outline-secondary mx-1 py-1 px-2  minus_cart" (click)='removeOneProduct()'>-
+                <button class="btn btn-outline-secondary mx-1 py-1 px-2  plus_cart" title="הוסף יחידה" (click)='addOneMoreProduct()'>+
+                </button>
+              </div>
+              <div class="d-inline-block p-1">
+                <button class="btn btn-outline-secondary mx-1 py-1 px-2  minus_cart"  title="הורד יחידה" (click)='removeOneProduct()'>-
                 </button>
               </div>
               <!-- <div class="thumbnail" [style.backgroundImage]="'url('+ item.imageUrl +')'"></div> -->
