@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
+import { OrderProduct } from 'src/app/shared/models/OrderProduct.class';
 //import { Product } from '../shared/product.model';
 
 @Component({
@@ -10,7 +11,7 @@ import { CartService } from '../cart.service';
 export class CartComponent implements OnInit {
 
   cart = {
-  products: [],
+  products:[],
   cartTotal: 0,
   numProducts: 0
 };
@@ -28,16 +29,16 @@ ngOnInit() {
   //     return acc
   //   }, 0);
   // }
-  this.cart.products = this.cartService.products
-  this.cart.cartTotal = this.cartService.cartTotal
-  this.cart.numProducts = this.cartService.products.reduce((acc, product) => {
-    acc += product.quantity
+  this.cart.products = this.cartService.orderProducts;
+  this.cart.cartTotal = this.cartService.cartTotal;
+  this.cart.numProducts = this.cartService.orderProducts.reduce((acc, product) => {
+    acc += product.Amount;
     return acc
   }, 0);
-  this.cart.products = ["מוצר1", "מוצר2", "מוצר3"];
-  this.cart.cartTotal = 328;
-  this.cart.numProducts = 3;
-  console.log(this.cart);
+  // this.cart.products = ["מוצר1", "מוצר2", "מוצר3"];
+  // this.cart.cartTotal = 328;
+  // this.cart.numProducts = 3;
+  // console.log(this.cart);
 }
 
 addOneMoreProduct(id){
