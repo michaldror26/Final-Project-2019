@@ -55,24 +55,26 @@
 
         </div>
         <button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit" (click)="addOrEditCustomer()">
-          {{isNew ? 'הוסף' : 'עדכן'}}
+          {{ isNew ? 'הוסף' : 'עדכן' }}
         </button>
         <div class="mt-2"><a *ngIf="linkToList" [routerLink]="['/admin/entities-managment/customers/view']">חזור לרשימת
           הלקוחות</a></div>
       </form>
-      <!--<form>-->
-      <!--<h1 class="h3 mb-3 mt-5 font-weight-normal">הזן פרטי משתמש</h1>-->
+      <!--TODO-->
+      <form *ngIf="isNew || !customer.SiteUserId && customer.SiteUser">
+        <h1 class="h3 mb-3 mt-5 font-weight-normal">הזן פרטי משתמש</h1>
 
-      <!--&lt;!&ndash;<label for="inputUserName" class="sr-only">שם משתמש</label>&ndash;&gt;-->
-      <!--<input type="text" id="inputUserName" class="form-control form-group" placeholder="שם משתמש" title="שם משתמש"-->
-      <!--required>-->
-      <!--&lt;!&ndash;<label for="inputPassword" class="sr-only">סיסמא</label>&ndash;&gt;-->
-      <!--<input type="password" id="inputPassword" class="form-control form-group" placeholder="סיסמא" title="סיסמא"-->
-      <!--required>-->
+        <!--<label for="inputUserName" class="sr-only">שם משתמש</label>-->
+        <input type="text" [(ngModel)]="customer.SiteUser.userName" id="inputUserName" class="form-control form-group" placeholder="שם משתמש" title="שם משתמש"
+               required>
+        <!--<label for="inputPassword" class="sr-only">סיסמא</label>-->
+        <input type="password" [(ngModel)]="customer.SiteUser.password" id="inputPassword" class="form-control form-group" placeholder="סיסמא" title="סיסמא"
+               required>
 
 
-      <!--<button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit" (click)="register()">עדכן</button>-->
-      <!--</form>-->
+        <button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit" (click)="registerWithId()">עדכן
+        </button>
+      </form>
     </div>
 
     <div *ngIf="!customer">

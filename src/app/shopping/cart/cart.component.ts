@@ -35,10 +35,11 @@ ngOnInit() {
     acc += product.Amount;
     return acc
   }, 0);
-  // this.cart.products = ["מוצר1", "מוצר2", "מוצר3"];
-  // this.cart.cartTotal = 328;
-  // this.cart.numProducts = 3;
-  // console.log(this.cart);
+
+   this.cart.products = ["מוצר1", "מוצר2", "מוצר3"];
+   this.cart.cartTotal = 328;
+   this.cart.numProducts = 3;
+   console.log(this.cart);
 }
 
   addOneMoreProduct(id) {

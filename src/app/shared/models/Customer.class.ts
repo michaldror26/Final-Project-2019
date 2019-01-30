@@ -1,4 +1,5 @@
 import { User } from './User.class';
+import {SiteUser} from './SiteUser.class';
 
 
 export class Customer extends User {
@@ -8,7 +9,7 @@ export class Customer extends User {
   public DiscountPercentage: number;
 
   public SiteUserId?: number;
-  public SiteUser?: any;
+  public SiteUser?: SiteUser;
   public SaleOrders?: any[];
   public SaleShippingCertificates?: any[];
   public CustomerPayments?: any[];

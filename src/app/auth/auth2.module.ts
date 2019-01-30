@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
 
-import { HttpClientModule } from '@angular/common/http';
-import { AuthComponent } from "./auth.component";
-import {Auth2RoutingModule} from "./auth2-routing.module";
-import {SiteUserService} from '../shared/services/siteUser.service'
+import {HttpClientModule} from '@angular/common/http';
+import {Auth2RoutingModule} from './auth2-routing.module';
+import {SiteUserService} from '../shared/services/siteUser.service';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
 
 @NgModule({
   imports: [
@@ -16,8 +17,11 @@ import {SiteUserService} from '../shared/services/siteUser.service'
     Auth2RoutingModule,
     HttpClientModule
   ],
-  declarations: [AuthComponent],
-  providers:[CookieService,
-             SiteUserService],
+  declarations: [LoginComponent, RegisterComponent],
+  providers: [
+    CookieService,
+    SiteUserService
+  ],
 })
-export class Auth2Module { }
+export class Auth2Module {
+}

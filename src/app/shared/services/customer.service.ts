@@ -102,7 +102,6 @@ export class CustomerService {
   }
 
   addCustomer(newCustomer: Customer): Observable<Customer> {
-
     return this._http.put<Customer>(ROOT_URL + 'customer/addCustomer', newCustomer)
       .pipe(
         map(

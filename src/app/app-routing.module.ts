@@ -10,8 +10,8 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomeModule',
     pathMatch: 'full'
   }, {
-    path: 'login',
-    loadChildren: './auth/auth2.module#Auth2Module'
+    path: '',
+    loadChildren: './auth/auth2.module#Auth2Module',
   }, {
     path: 'contact',
     loadChildren: './shared/components/contact/contact.module#ContactModule'
