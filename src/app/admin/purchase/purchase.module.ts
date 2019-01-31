@@ -14,7 +14,7 @@ import {InventoryService} from '../services/inventory.service';
     ReactiveFormsModule,
     PurchaseRoutingModule
   ],
-  declarations: [PurchaseComponent,SortEtrogsComponent ],
+  declarations: [PurchaseComponent, SortEtrogsComponent ],
   providers: [InventoryService]
 })
 export class PurchaseModule { }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, Routes, Params} from '@angular/router';
 import {CurrentUser} from '../../../currentUser';
 import {AuthService} from '../../../services/auth.service';
@@ -12,6 +12,8 @@ import {CookieService} from 'ngx-cookie-service';
   styleUrls: ['./layout-header.component.scss'],
 })
 export class LayoutHeaderComponent implements OnInit {
+
+  @ViewChild('navbarCollapseButton') navbarCollapseButton: ElementRef;
 
   loginPage = false;
   userName: string = null;
@@ -66,15 +68,15 @@ export class LayoutHeaderComponent implements OnInit {
   ];
 
   customerRoutes = [
-    {path: '/products', data: ['מוצרים'], children: []},
-    {path: '/cart', data: ['עגלה'], children: []},
+    {path: '/shopping/products', data: ['מוצרים'], children: []},
+    {path: '/shopping/cart', data: ['עגלה'], children: []},
     {path: '/about', data: ['אודות'], children: []},
     {path: '/contact', data: ['צור קשר'], children: []},
     {
-      path: '/contact', data: ['ניהול חשבון'], children: [
+      path: '/contact', data: ['userName'], children: [///'ניהול חשבון'
         {path: '1', data: ['פרטים אישיים']},
-        {path: '2', data: ['דוחות']},
-        {path: '3', data: ['עוד דברים']},
+        {path: '2', data: ['הזמנות']},
+        {path: '2', data: ['דוחות']}
       ]
     }
 
@@ -102,8 +104,15 @@ export class LayoutHeaderComponent implements OnInit {
     });
   }
 
+  triggerNavBarClick() {
+
+    let el: HTMLElement = this.navbarCollapseButton.nativeElement as HTMLElement;
+    el.click();
+  }
+
   // דרך נכונה?
   goToLoginPage() {
+    this.triggerNavBarClick();
     this.router.navigate(['/login'], {queryParams: {thisPage: window.location.pathname}});
   }
 
@@ -113,16 +122,17 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   logout() {
+    this.triggerNavBarClick();
     this.siteUserServicde.logout().subscribe();
   }
 
   setRoutes() {
     if (this.currentUser.isUserLogin()) {
-      if (this.currentUser.isCustomer() == true)
+      if (this.currentUser.isCustomer()) {
         this.routes = this.customerRoutes;
-
-      else
+      } else {
         this.routes = this.routesOfAdmin;
+      }
       this.userName = this.currentUser.get().FirstName + ' ' + this.currentUser.get().LastName;
     } else {
       this.routes = this.routesOfHost;

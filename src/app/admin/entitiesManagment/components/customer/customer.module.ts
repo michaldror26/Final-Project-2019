@@ -11,6 +11,7 @@ import {CustomerComponent} from './components/customer.component';
 import {CustomerRoutingModule} from './customer-routing.module';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import {CustomerService} from '../../../../shared/services/customer.service';
+import { CustomerCardComponent } from './components/customer-card/customer-card.component';
 
 
 
@@ -27,7 +28,8 @@ import {CustomerService} from '../../../../shared/services/customer.service';
     CustomerEditComponent,
     CustomerCreateComponent,
     CustomerDeleteComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    CustomerCardComponent
   ],
   providers: [CustomerService]
 })

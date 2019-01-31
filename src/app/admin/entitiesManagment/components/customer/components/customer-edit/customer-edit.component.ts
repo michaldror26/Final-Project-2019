@@ -13,37 +13,39 @@ import {SiteUser} from '../../../../../../shared/models/SiteUser.class';
 export class CustomerEditComponent implements OnInit {
 
   customer: Customer;
+  siteUser: SiteUser;
   isNew: boolean = false;
   linkToList: boolean = false;
   message = '';
 
   constructor(public _customerService: CustomerService,
               private _activateRout: ActivatedRoute,
-              private _siteUserService: SiteUserService
+              private _siteUserService: SiteUserService,
+              private _router: Router
   ) {
   }
 
   async ngOnInit() {
+    this.siteUser = new SiteUser();
     const id = this._activateRout.snapshot.params['id'];
 
     if (id) {
-      this._customerService.getCustomer(id).subscribe((cust: Customer) => {
+      await this._customerService.getCustomer(id).subscribe((cust: Customer) => {
         this.customer = cust;
-        console.log('siteUserId', this.customer.SiteUserId);
-        if (!this.customer.SiteUserId) {
-          this.customer.SiteUser = new SiteUser();
-        }
+        console.log('siteUserId', this.customer.SiteUserId, !this.customer.SiteUserId);
+        console.log(this.customer);
       });
     } else {
-      this.customer = new Customer();
-      this.customer.SiteUser = new SiteUser();
+      this.customer = await new Customer();
       this.isNew = true;
     }
-    console.log(this.customer);
   }
 
-
   addOrEditCustomer() {
+
+    if (!this.customer.SiteUserId && this.siteUser.userName && this.siteUser.password) {
+      this.customer.SiteUser = this.siteUser;
+    }
     if (this.isNew) {
       this._customerService.addCustomer(this.customer).subscribe(insertededCust => {
           if (insertededCust) {
@@ -52,6 +54,9 @@ export class CustomerEditComponent implements OnInit {
           } else {
             this.message = 'בדוק תקינות הפרטים שהזנת ונסה שוב';
           }
+          setTimeout(function (router, custId) {
+            router.navigate(['/admin/entities-managment/customers/details/' + custId]);
+          }, 3000, this._router, this.customer.CustomerId);
         },
         error1 => {
           this.message = error1.error.ExceptionMessage;
@@ -73,21 +78,4 @@ export class CustomerEditComponent implements OnInit {
     this.linkToList = true;
   }
 
-  registerWithId() {
-    if (this.customer.CustomerId) {
-      this._siteUserService.registerWithId(this.customer.SiteUser.userName, this.customer.SiteUser.password, 2, this.customer.CustomerId)
-        .subscribe(insertededCust => {
-            if (insertededCust) {
-              this.customer = insertededCust as Customer;
-              this.message = 'הלקוח נרשם בהצלחה';
-            } else {
-              this.message = 'בדוק תקינות הפרטים שהזנת ונסה שוב';
-            }
-          },
-          error1 => {
-            this.message = error1.error.ExceptionMessage;
-          }
-        );
-    }
-  }
 }

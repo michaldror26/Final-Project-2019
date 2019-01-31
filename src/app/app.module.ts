@@ -12,7 +12,6 @@ import {HomeModule} from './home/home.module';
 import {AdminModule} from './admin/admin.module';
 import {Auth2Module} from './auth/auth2.module';
 import {ShoppingModule} from './shopping/shopping.module';
-import {SaleModule} from './admin/sale/sale.module';
 
 import {AppRoutingModule} from './app-routing.module';
 
@@ -36,7 +35,6 @@ import {CurrentUser} from './shared/currentUser';
     Auth2Module,
     AdminModule,
     ShoppingModule,
-    SaleModule,
     AppRoutingModule
   ],
   declarations: [

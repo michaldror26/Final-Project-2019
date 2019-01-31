@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
 import {RouterModule, Routes} from '@angular/router';
+
 import {AdminComponent} from './admin.component';
 import {EntitiesManagmentComponent} from './entitiesManagment/components/entities-managment.component';
 import {PurchaseComponent} from './purchase/components/purchase.component';
+import {SaleComponent} from './sale/sale/component/sale.component';
 
 const routes: Routes = [
   {
@@ -14,11 +15,11 @@ const routes: Routes = [
     children: [
       // //{path: '/**', data: ['צפייה במלאי'], children: []},
       {
-        path: 'entities-managment', component: PurchaseComponent, data: ['בסיס נתונים'],
+        path: 'entities-managment', component: EntitiesManagmentComponent, data: ['בסיס נתונים'],
         loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'
       },
       {
-        path: 'sale', component: PurchaseComponent, data: ['מכירה'],
+        path: 'sale', component: SaleComponent, data: ['מכירה'],
         loadChildren: './sale/sale.module#SaleModule'
       },
       // {
@@ -31,8 +32,8 @@ const routes: Routes = [
       // },
       // {path: '/', data: ['תקבול'], children: []},
       {
-        path: 'purchase', component: EntitiesManagmentComponent, data: ['קניה'],
-        loadChildren: './purchase/purchase.module#SaleModule'
+        path: 'purchase', component: PurchaseComponent, data: ['קניה'],
+        loadChildren: './purchase/purchase.module#PurchaseModule'
       },
       // {
       //   path: '/', data: ['דוחות'], children: [

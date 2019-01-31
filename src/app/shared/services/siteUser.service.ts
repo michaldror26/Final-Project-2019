@@ -31,13 +31,11 @@ export class SiteUserService {
       .pipe(
         map(
           data => {
-            debugger;
             this.currentUser.set(data);
             this.authService.setRouter();
             return data;
           },
           error => {
-            debugger;
             catchError(this.handleError);
           }
         ));
@@ -53,7 +51,7 @@ export class SiteUserService {
         catchError(this.handleError),
       );
   }
-//TODO registerWithId
+// TODO registerWithId
   registerWithId(userName: string, password: string, authType: number, userId: number): Observable<User> {
     return this.httpClient
       .post<User>(ROOT_URL + 'user/register', JSON.stringify({userName, password, authType, userId}))
@@ -71,20 +69,7 @@ export class SiteUserService {
         ));
   }
 
-  // registerNew(userName: string, password: string, user: User): Observable<any> {
-  //   return this.httpClient
-  //     .get<number>(ROOT_URL + 'user/registerNew?userName=' + userName + '&password=' + password,)
-  //     .pipe(
-  //       map(
-  //         data => {
-  //           this.currentUser.set(data);
-  //           this.authService.setRouter();
-  //         },
-  //         error => {
-  //           catchError(this.handleError);
-  //         }
-  //       ));
-  // }
+
 
   handleError(error) {
     debugger;

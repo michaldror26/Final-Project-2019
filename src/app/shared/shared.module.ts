@@ -15,13 +15,13 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     ListOrderViewComponent,
     LoadImageBase64Component,
     ScrollToTopComponent,
-    AboutUsComponent
+    AboutUsComponent,
   ],
   exports: [
     ListOrderViewComponent,
     LoadImageBase64Component,
     ScrollToTopComponent,
-    AboutUsComponent
+    AboutUsComponent,
   ]
 })
 export class SharedModule {
