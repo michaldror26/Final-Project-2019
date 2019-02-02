@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
+import {Observable} from 'rxjs';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'list-order-view',
@@ -8,8 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListOrderViewComponent implements OnInit {
 
-  @Input('order$') order$: Observable<any[]> = null;
-  constructor() { }
+  @Input('orders') orders: any[];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

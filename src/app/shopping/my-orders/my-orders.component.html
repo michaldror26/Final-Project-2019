@@ -1,3 +1,27 @@
 <h1>All Orders</h1>
+<p>CustomerId: {{orders? orders[0].CustomerId: ''}}</p>
+<ng-container *ngIf="false" ; else noOrder>
+  <!-- <ng-container *ngIf="order$ | async as orders"> -->
+  <ng-container *ngIf="orders.length > 0; else noOrder">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>קוד</th>
+        <th>תאריך</th>
+        <th>הערה</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders; index as i ">
+        <td>{{i}}</td>
+        <td>{{order.Date | date: 'dd/MM/yyyy'}}</td>
+        <td>{{order.Remark }}</td>
+        <!--<td><a [routerLink]="['/orderdetails', order.SaleOrderId]">צפה בהזמנה</p></td>-->
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #noOrder>אין הזמנות</ng-template>
+</ng-container>
 
-<!-- <list-order-view [order$]="order$"></list-order-view> -->
