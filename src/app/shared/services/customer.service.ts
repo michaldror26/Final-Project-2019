@@ -75,8 +75,6 @@ export class CustomerService {
         map(
           data => {
             return data;
-          },
-          error => {
           })
       );
   }
@@ -87,8 +85,6 @@ export class CustomerService {
         map(
           data => {
             return data;
-          },
-          error => {
           })
       );
 
@@ -100,23 +96,17 @@ export class CustomerService {
         map(
           data => {
             return data;
-          },
-          error => {
-          })
-      );
+          }
+        ));
 
   }
 
   addCustomer(newCustomer: Customer): Observable<Customer> {
-
     return this._http.put<Customer>(ROOT_URL + 'customer/addCustomer', newCustomer)
       .pipe(
         map(
           data => {
-            console.log(data);
             return data;
-          },
-          error => {
           })
       );
 

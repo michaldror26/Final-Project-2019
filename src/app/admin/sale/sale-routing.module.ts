@@ -5,7 +5,7 @@ import {TempComponent} from './sale/component/temp/temp.component';
 
 const routes: Routes = [
   {
-    path: 'temp', component: TempComponent, data: ['מיון אתרוגים']
+    path: 'temp', component: TempComponent, data: ['temp component']
   },
 ];
 

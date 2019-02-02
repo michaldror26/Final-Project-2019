@@ -35,23 +35,29 @@ ngOnInit() {
     acc += product.Amount;
     return acc
   }, 0);
-  // this.cart.products = ["מוצר1", "מוצר2", "מוצר3"];
-  // this.cart.cartTotal = 328;
-  // this.cart.numProducts = 3;
-  // console.log(this.cart);
+
+   this.cart.products = ["מוצר1", "מוצר2", "מוצר3"];
+   this.cart.cartTotal = 328;
+   this.cart.numProducts = 3;
+   console.log(this.cart);
 }
 
-addOneMoreProduct(id){
-  // this.cartService.addProductToCart(id);
-}
-removeOneProduct(id){
-}
+  addOneMoreProduct(id) {
+    // this.cartService.addProductToCart(id);
+  }
 
-clearAll() {
-  this.cart.products = [];
-  this.cart.cartTotal = 0;
-  this.cart.numProducts = 0;
-  // this.cartService.flushCart();
-}
+  removeOneProduct(id) {
+  }
+
+  deleteProduct(id) {
+
+  }
+
+  clearAll() {
+    this.cart.products = [];
+    this.cart.cartTotal = 0;
+    this.cart.numProducts = 0;
+    // this.cartService.flushCart();
+  }
 
 }

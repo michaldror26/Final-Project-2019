@@ -1,4 +1,5 @@
 import { User } from './User.class';
+import {SiteUser} from './SiteUser.class';
 
 
 export class Customer extends User {
@@ -8,22 +9,8 @@ export class Customer extends User {
   public DiscountPercentage: number;
 
   public SiteUserId?: number;
-  public SiteUser?: any;
+  public SiteUser?: SiteUser;
   public SaleOrders?: any[];
   public SaleShippingCertificates?: any[];
   public CustomerPayments?: any[];
-  //
-  // // Create SiteUser & User at once
-  //   constructor(discountPercentage: number,
-  //               firstName: string,
-  //               lastName: string,
-  //               mobilePhone: string,
-  //               city: string,
-  //               email: string,
-  //               telephone?: string) {
-  //
-  //     super( firstName , lastName, mobilePhone, city, email, telephone);
-  //     this.discountPercentage = discountPercentage;
-  //     this.registeredDate = new Date();
-  //   }
 }

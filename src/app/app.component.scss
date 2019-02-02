@@ -1,6 +1,8 @@
 // @import "./shopping/shared/grid.scss";
 // @import "./shopping/shared/mixins";
-
+* {
+  white-space: pre-wrap;
+}
 .app-back-img {
   width: 100%;
   height: 100%;

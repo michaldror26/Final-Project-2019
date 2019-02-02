@@ -1,6 +1,3 @@
-
-
-// export numbererface User { ?
 export abstract class User {
   public AuthenticationTypeId: number;
   public FirstName: string;
