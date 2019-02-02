@@ -1,5 +1,6 @@
+import { Product } from "./Product.class";
+
 export class OrderProduct {
-    public ProductId:number;
-     public Amount:number;
-     public parsedPrice:number;
+    public Product:Product;
+    public Amount:number;
 }

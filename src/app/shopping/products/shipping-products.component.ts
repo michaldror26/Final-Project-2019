@@ -14,7 +14,7 @@ import { Category } from 'src/app/shared/models/Category.class';
 export class ShippingProductsComponent implements OnInit {
 
   products: Product[];
-  categories: Category[]=[];
+  categories: Category[] = [];
   mainFilter: any;
 
   currentSorting: string;
@@ -43,29 +43,42 @@ export class ShippingProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getAllProducts().then(
-      data => {this.originalData=data;
-               this.products = this.originalData.slice(0);}
-               );
+    // this.dataService.getAllProducts().then(
+    //   data => {this.originalData=data;
+    //            this.products = this.originalData.slice(0);}
+    //            );
 
-     this.dataService.getAllCategories().then(
-       data=>{this.categories=data;                  
-       this.mainFilter = {
-         search: '',
-         categories: this.categories,
-        // customFilter: this.customFilters[0],
-         priceFilter: this.priceFilters[0]
-       };
-      });
+    //  this.dataService.getAllCategories().then(
+    //    data=>{this.categories=data;                  
+    //    this.mainFilter = {
+    //      search: '',
+    //      categories: this.categories,
+    //     // customFilter: this.customFilters[0],
+    //      priceFilter: this.priceFilters[0]
+    //    };
+    //   });
+    this.originalData = this.dataService.getAllProducts();
+    this.products = this.originalData;
+    if (!this.originalData || this.originalData.length == 0)
+      this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
+    // this.getCategoriesFromServer().subscribe(d=>console.log(d));
 
-      // Make a deep copy of the original data to keep it immutable
-      //this.sortProducts('name');
-    
+    this.categories = this.dataService.getAllCategories();
+    this.mainFilter = {
+      search: '',
+      categories: this.categories,
+      // customFilter: this.customFilters[0],
+      priceFilter: this.priceFilters[0]
+    };
+
+    // Make a deep copy of the original data to keep it immutable
+    //this.sortProducts('name');
+
   }
   ngOnDestroy() {
     this.cartService.saveCartLocaly();
   }
-   onURLChange(url) {
+  onURLChange(url) {
     //  this.dataService.getRemoteData(url).subscribe(data => {
     //    this.originalData = data;
     //   this.mainFilter = {
@@ -79,11 +92,11 @@ export class ShippingProductsComponent implements OnInit {
     //   //this.products = this.originalData.products.slice(0);
     //   this.products = this.originalData.slice(0);
     //   this.sortProducts('name');
-  //     this.filtersComponent.reset(this.customFilters, this.priceFilters);
-  //     this.searchComponent.reset();
-       this.cartService.flushCart();
-  //   });
-   }
+    //     this.filtersComponent.reset(this.customFilters, this.priceFilters);
+    //     this.searchComponent.reset();
+    this.cartService.flushCart();
+    //   });
+  }
 
 
   onSearchChange(search) {
@@ -94,7 +107,7 @@ export class ShippingProductsComponent implements OnInit {
     });
   }
 
- onFilterChange(data) {
+  onFilterChange(data) {
     if (data.type == 'category') {
       if (data.isChecked) {
         this.mainFilter.categories.push(data.filter);
@@ -114,8 +127,8 @@ export class ShippingProductsComponent implements OnInit {
     });
   }
 
-updateProducts(filter) {
-     let productsSource:Product[] = this.originalData;
+  updateProducts(filter) {
+    let productsSource: Product[] = this.originalData;
     let prevProducts = this.products;
     let filterAllData = true;
     if ((filter.type == 'search' && filter.change == 1) || (filter.type == 'category' && filter.change == -1)) {
@@ -129,22 +142,22 @@ updateProducts(filter) {
         if (!p.Name.match(new RegExp(this.mainFilter.search, 'i'))) {
           return false;
         }
-     }
+      }
 
-      
+
       //Filter by categories
       if (filterAllData || filter.type == 'category') {
         let passCategoryFilter = false;
-          if (!passCategoryFilter) {
-            passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
-              return found || p.CategoryId == category.CategoryId;
-            }, false);
-          }
+        if (!passCategoryFilter) {
+          passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
+            return found || p.CategoryId == category.CategoryId;
+          }, false);
+        }
         if (!passCategoryFilter) {
           return false;
         }
       }
-        
+
 
       //Filter by custom filters
       if (filterAllData || filter.type == 'custom') {
@@ -161,7 +174,7 @@ updateProducts(filter) {
         // }
         // if (!passCustomFilter) {
         //   return false;
-       // }
+        // }
       }
 
       //Filter by price filters
@@ -194,9 +207,9 @@ updateProducts(filter) {
     if (filter.type == 'custom' || filter.type == 'price') {
       this.sortProducts(this.currentSorting);
     }
- }
+  }
 
- sortProducts(criteria) {
+  sortProducts(criteria) {
     console.log('sorting ' + this.products.length + ' products')
     this.products.sort((a, b) => {
       let priceComparison = parseFloat(a.SellingPrice.toString().replace(/\./g, '').replace(',', '.')) - parseFloat(b.SellingPrice.toString().replace(/\./g, '').replace(',', '.'));
@@ -212,8 +225,8 @@ updateProducts(filter) {
           return 1;
         return 0;
       } else {
-       // Keep the same order in case of any unexpected sort criteria
-       return -1;
+        // Keep the same order in case of any unexpected sort criteria
+        return -1;
       }
     });
     this.currentSorting = criteria;

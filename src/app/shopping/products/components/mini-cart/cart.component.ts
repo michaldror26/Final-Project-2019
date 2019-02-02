@@ -68,4 +68,7 @@ export class MiniCartComponent implements OnInit {
     this.expanded = !this.expanded
   }
 
+  submitOrder(){
+    this.cartService.saveCartOnServer().subscribe(dd=>alert(dd));
+  }
 }

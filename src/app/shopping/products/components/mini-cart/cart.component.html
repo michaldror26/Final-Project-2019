@@ -9,19 +9,20 @@
       <h3>זה מה שאת/ה הולך לקנות...</h3>
       <div class="product" *ngFor="let item of products">
         <div class="row">
-          <button class="delete-btn" (click)='deleteProduct(item.product)'>x</button>
+          <button class="delete-btn" (click)='deleteProduct(item.Product)'>x</button>
           <div class="col-6-sm description">
-            <p><span style="text-align: right">{{item.Amount}} </span> x <span> </span></p>
-            <!-- {{item.product.name}} -->
+            <p><span style="text-align: right">{{item.Amount}} </span> x <span> {{item.Product.Name}} </span></p>
+           
           </div>
           <div class="col-6-sm price">
-            <!-- <p>{{item.quantity*item.product.parsedPrice | currency:'USD':'symbol':'1.0-0' }}</p> -->
-            <p style="text-align: left; margin-right: 20px;">{{item.Amount * item.parsedPrice  + " ש\"ח"}}</p>
+             <!-- <p>{{item.Amount*item.product.SellingPrice | currency:'USD':'symbol':'1.0-0' }}</p>  -->
+            <p style="text-align: left; margin-right: 20px;">{{item.Amount * item.Product.SellingPrice  + " ש\"ח"}}</p>
           </div>
         </div>
       </div>
-      <!-- <button type="button" class="pay-btn">Pay {{cartTotal | currency:'USD':'symbol':'1.0-0'}}</button> -->
+       <!-- <button type="button" class="pay-btn">Pay {{cartTotal | currency:'USD':'symbol':'1.0-0'}}</button>  -->
       <button type="button" class="pay-btn"> שלם {{cartTotal + " ש\"ח"}}</button>
+      <button type="button" class="pay-btn" (click)="submitOrder()"> הזמן</button>
     </div>
     <button type="button" class="close-btn" *ngIf='expanded' (click)="onCartClick()">סגור</button>
   </div>
