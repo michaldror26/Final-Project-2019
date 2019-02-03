@@ -1,7 +1,7 @@
-import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/shared/services/order.service';
+import {Observable} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {OrderService} from 'src/app/shared/services/order.service';
 
 @Component({
   selector: 'app-order-view',
@@ -11,16 +11,27 @@ import { OrderService } from 'src/app/shared/services/order.service';
 export class OrderViewComponent implements OnInit {
 
   orderId;
-  order$: Observable<any> = null;
+  order = null;
 
   constructor(
     private route: ActivatedRoute,
-    private orderService: OrderService
-    ) { }
+    private orderService: OrderService) {
+  }
 
-  ngOnInit() {
-    // this.orderId = this.route.snapshot.paramMap.get('id');
-    // this.order$ = this.orderService.getOrderById(this.orderId);
+  async ngOnInit() {
+    this.orderId = this.route.snapshot.paramMap.get('id');
+    this.orderService.getOrderById(this.orderId)
+      .subscribe(order => {
+          this.order = order;
+          console.log(this.order);
+        },
+        error => {
+        debugger
+          console.log(error);
+
+        }
+      );
+
   }
 
 

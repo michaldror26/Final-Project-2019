@@ -1,5 +1,5 @@
 // import { AuthService } from 'shared/services/auth.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {OrderService} from '../../shared/services/order.service';
 
 @Component({
@@ -9,18 +9,19 @@ import {OrderService} from '../../shared/services/order.service';
 })
 export class MyOrdersComponent implements OnInit {
 
-  orders;
+  orders: any[] = [];
 
   constructor(
     // private auth: AuthService,
     private orderService: OrderService
-  ) { }
+  ) {
+  }
 
   async ngOnInit() {
-   await this.orderService.getOrderByUser(16).subscribe((orders) => {
-     this.orders = orders;
-     console.log(this.orders);
-   });
+    await this.orderService.getOrderByUser(16).subscribe((orders) => {
+      this.orders = orders;
+      console.log(this.orders);
+    });
   }
 }
 

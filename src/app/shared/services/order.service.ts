@@ -16,15 +16,12 @@ export class OrderService {
 
   }
 
-  getOrderByUser(userId): Observable<any[]> {
-     this.orders = this.httpClient.get<any[]>(ROOT_URL + 'order/customer/16');
-debugger
-    return this.orders;
-
+  getOrderByUser(userId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(ROOT_URL + 'order/customer/16');
   }
 
-  getOrderById(orderId: string) {
-    return new Observable(); // this.db.object('/order/' + orderId);
+  getOrderById(orderId: number) {
+    return this.httpClient.get<any[]>(ROOT_URL + 'order/GetOrder/' + orderId);
   }
 
 
