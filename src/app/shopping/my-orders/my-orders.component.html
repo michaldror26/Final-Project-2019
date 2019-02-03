@@ -1,6 +1,5 @@
-<h1>All Orders</h1>
 <ng-container *ngIf="orders.length > 0; else noOrder">
-  <p>CustomerId: {{orders ? orders[0].CustomerId : ''}}</p>
+  <h3 class="my-4">הזמנות ללקוח: {{orders[0].Customer.FirstName + " " + orders[0].Customer.LastName}} </h3>
   <table class="table table-striped">
     <thead>
     <tr>

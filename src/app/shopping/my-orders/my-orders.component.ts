@@ -1,6 +1,8 @@
 // import { AuthService } from 'shared/services/auth.service';
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {OrderService} from '../../shared/services/order.service';
+import {logger} from 'codelyzer/util/logger';
+import {parseAndResolve} from '../../shared/services/CommonMethods';
 
 @Component({
   selector: 'app-my-orders',
@@ -19,10 +21,11 @@ export class MyOrdersComponent implements OnInit {
 
   async ngOnInit() {
     await this.orderService.getOrderByUser(16).subscribe((orders) => {
-      this.orders = orders;
+      this.orders = parseAndResolve((JSON.stringify(orders)));
       console.log(this.orders);
     });
   }
+
 }
 
 
