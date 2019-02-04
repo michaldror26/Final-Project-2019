@@ -1,7 +1,8 @@
 // import { AuthService } from 'shared/services/auth.service';
-import { Observable } from 'rxjs';
-// import { OrderService } from 'shared/services/order.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {OrderService} from '../../shared/services/order.service';
+import {logger} from 'codelyzer/util/logger';
+import {parseAndResolve} from '../../shared/services/CommonMethods';
 
 @Component({
   selector: 'app-my-orders',
@@ -10,17 +11,21 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class MyOrdersComponent implements OnInit {
 
-  order$: Observable<any[]>;
+  orders: any[] = [];
 
   constructor(
     // private auth: AuthService,
-    // private orderService: OrderService
-  ) { }
-
-  ngOnInit() {
-    // this.order$ = this.auth.user$
-    //   .switchMap(user => this.orderService.getOrderByUser(user.uid));
+    private orderService: OrderService
+  ) {
   }
+
+  async ngOnInit() {
+    await this.orderService.getOrderByUser(16).subscribe((orders) => {
+      this.orders = parseAndResolve((JSON.stringify(orders)));
+      console.log(this.orders);
+    });
+  }
+
 }
 
 

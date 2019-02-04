@@ -1,53 +1,75 @@
-<div class="row">
-  <div class="col-md-8 col-sm-12">
-    <!-- <ng-container *ngIf="order$ | async as order" ; else notFound> -->
-    <ng-container *ngIf="false" ; else notFound>
-      <ng-container *ngIf="order.items" ; else notFound>
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title text-center">פרטי ההזמנה</h4>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <span class="font-weight-bold">שם הלקוח:</span> {{order.user.username}}
-              </li>
-              <li class="list-group-item">
-                <!-- <span class="font-weight-bold">תאריך ההזמנה:</span> {{order.datePlaced | date}} -->
-                <span class="font-weight-bold">תאריך ההזמנה:</span> {{order.datePlaced}}
-              </li>
-              <li class="list-group-item"><span class="font-weight-bold">הזמנה:</span>
-                <div>
-                  <ul class="list-group list-group-flush">
-                    <!-- <li class="list-group-item" *ngFor="let item of order.items"> -->
-                      <li class="list-group-item">
-                      <!-- {{item.product.title}} x {{item.qty}} ({{item.price | currency:'USD':true}}) -->
-                      {{item.product.title}} x {{item.qty}} ({{item.price}})
-                      <!-- <div class="float-right">{{item.totalPrice | currency:'USD':true}}</div> -->
-                      <div class="float-right">{{item.totalPrice }}</div>
-                    </li>
-                    <li class="list-group-item">
-                      <span class="font-weight-bold">סה"כ: </span>
-                      <!-- <div class="float-right">{{order.netPrice | currency:'USD':true}}</div> -->
-                      <div class="float-right">{{order.netPrice}}</div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li class="list-group-item"><span class="font-weight-bold">כתובת למשלוח:</span>
-                <div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item"> שם : {{order.shipping.name}}</li>
-                    <li class="list-group-item"> כתובת : {{order.shipping.address}}</li>
-                    <li class="list-group-item"> עיר : {{order.shipping.city}}</li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
+<div class="row container mx-auto mt-3">
+  <div class="col-12">
+    <ng-container *ngIf="order && order.SaleOrderProducts" ; else notFound>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-center">פרטי ההזמנה</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <span
+                  class="font-weight-bold">שם הלקוח:</span> {{order.Customer.FirstName + " " + order.Customer.LastName}}
+            </li>
+            <li class="list-group-item">
+              <span class="font-weight-bold">תאריך ההזמנה:</span> {{order.Date | date: 'dd/MM/yyyy'}}
+            </li>
+            <li class="list-group-item"><span class="font-weight-bold">מוצרים:</span>
+              <div>
+                <ul class="list-group list-group-flush" *ngIf="order.SaleOrderProducts.length > 0">
+                  <li class="list-group-item">
+                    <table dir="rtl" class="table table-bordred table-striped">
+                      <thead>
+
+                      <tr>
+                        <th></th>
+                        <th>כמות</th>
+                        <th>מחיר מכירה</th>
+                        <th>אחוז הנחה</th>
+                        <th>לאחר הנחה</th>
+                        <th>סה"כ</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr
+                        *ngFor="let item of order.SaleOrderProducts ;">
+                        <td>{{item.Product.Name}}</td>
+                        <td>{{item.Quantity}}</td>
+                        <td>{{item.Product.SellingPrice}} ש"ח</td>
+                        <td>{{order.Customer.DiscountPercentage + "%"}}</td>
+                        <td>{{ item.Product.SellingPrice * order.Customer.DiscountPercentage / 100}}  ש"ח</td>
+                        <td>{{ item.Product.SellingPrice * item.Quantity * order.Customer.DiscountPercentage / 100}}
+                          ש"ח
+                        </td>
+                      </tr>
+                      </tbody>
+                      <tfoot>
+                      <tr>
+                        <td colspan="4"></td>
+                        <th>סה"כ:</th>
+                        <td> {{totalSum}} ש"ח </td>
+                      </tr>
+                      </tfoot>
+                    </table>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="list-group-item"><span class="font-weight-bold">כתובת למשלוח:</span>
+              <div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"> שם : {{order.Customer.FirstName + " " + order.Customer.LastName}}</li>
+                  <li class="list-group-item"> מייל : {{order.Customer.Email}}</li>
+                  <li class="list-group-item"> פלאפון : {{order.Customer.MobilePhone}}</li>
+                  <li class="list-group-item"> עיר : {{order.Customer.City}}</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
-      </ng-container>
-      <ng-template #notFound>
-        אופס! פרטים לא נמצאו
-      </ng-template>
+      </div>
     </ng-container>
+
+    <ng-template #notFound>
+      אופס! פרטים לא נמצאו
+    </ng-template>
   </div>
 </div>

@@ -16,6 +16,12 @@ main {
   width: 100%;
   //min-height:600px;
  // background-color: rgba(217, 213, 210, 0.89);
+
+  &::before ,&::after {
+    clear: both;
+    clear-after: both;
+    clear-side: both;
+  }
 }
 @media (min-height: 950px) {
   main {

@@ -96,9 +96,7 @@ export class CartService {
    map(
      data => {return data;},
      error =>{}
- )); 
-      
-  
+ ));
   }
 }
 

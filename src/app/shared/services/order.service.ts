@@ -1,36 +1,27 @@
-import { Injectable } from '@angular/core';
-import { CartService } from "src/app/shopping/cart.service";
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {ROOT_URL} from '../config';
 
 @Injectable()
 export class OrderService {
 
-  constructor(
-    private cartService: CartService) { }
+  orders;
 
-  async placeOrder(order) {
-     let result// = await this.db.list('/order').push(order);
-    this.cartService.flushCart();
-    return result;
+  constructor(private httpClient: HttpClient) {
   }
+
 
   getAllOrders() {
-    // return this.db.list('/order');
 
-    
   }
 
-  getOrderByUser(userId: string) {
-    // return this.db.list('/order', {
-    //   query: {
-    //     orderByChild: 'user/userId',
-    //     equalTo: userId
-    //   }
-    // });
+  getOrderByUser(userId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(ROOT_URL + 'order/customer/16');
   }
 
-  getOrderById(orderId: string) {
-    return new Observable() //this.db.object('/order/' + orderId);
+  getOrderById(orderId: number) {
+    return this.httpClient.get<any[]>(ROOT_URL + 'order/GetOrder/' + orderId);
   }
 
 

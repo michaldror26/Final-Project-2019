@@ -6,6 +6,13 @@
 .title_name {
   margin-right: 35px
 }
+.navbar {
+  &::before ,&::after {
+    clear: both;
+    clear-after: both;
+    clear-side: both;
+  }
+}
 .navbar, .navbar * {
   text-align: right;
 }

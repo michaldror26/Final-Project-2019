@@ -1,3 +1,23 @@
-<h1>All Orders</h1>
+<ng-container *ngIf="orders.length > 0; else noOrder">
+  <h3 class="my-4">הזמנות ללקוח: {{orders[0].Customer.FirstName + " " + orders[0].Customer.LastName}} </h3>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th>תאריך</th>
+      <th>הערה</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders; index as i ">
+      <td>{{i + 1}}</td>
+      <td>{{order.Date | date: 'dd/MM/yyyy'}}</td>
+      <td>{{order.Remark }}</td>
+      <td><a [routerLink]="['/shopping/orderdetails',order.SaleOrderId]">צפה בהזמנה</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <ng-template #noOrder>אין הזמנות</ng-template>
+</ng-container>
 
-<!-- <list-order-view [order$]="order$"></list-order-view> -->
