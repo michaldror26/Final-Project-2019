@@ -111,10 +111,10 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   // דרך נכונה?
-  goToLoginPage() {
-    this.triggerNavBarClick();
-    this.router.navigate(['/login'], {queryParams: {thisPage: window.location.pathname}});
-  }
+   goToLoginPage() {
+    //yyy   this.triggerNavBarClick();
+     this.router.navigate(['/login'], {queryParams: {thisPage: window.location.pathname}});
+   }
 
   // זמני לשם נוחות
   switchRoutes() {

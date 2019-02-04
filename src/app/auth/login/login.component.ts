@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   userName: String = '';
   isUserLogin: boolean = false;
 
-  t;
+ errorMessage:String;
 
   constructor(private siteUserService: SiteUserService,
               private authService: AuthService,
@@ -52,6 +52,13 @@ export class LoginComponent implements OnInit {
         this.router.navigate([this.returnPage]);
       },
       error => {
+        if (error.error instanceof ErrorEvent) {
+          // client-side error
+          this.errorMessage = 'נתונים שגויים';
+        } else {
+          // server-side error
+          this.errorMessage = error.error.ExceptionMessage;
+        }
         this.isValidData = false;
       },
     );

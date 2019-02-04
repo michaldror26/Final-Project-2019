@@ -78,7 +78,16 @@ export class CustomerService {
           })
       );
   }
-
+  getCustomerIncludeSiteUser(id: number): Observable<Customer> {
+    return this._http
+      .get<Customer>(ROOT_URL + 'customer/includeSiteUser/'+id+'')
+      .pipe(
+        map(
+          data => {
+            return data;
+          })
+      );
+  }
   deleteCustomer(id: number): Observable<Customer> {
     return this._http.delete<Customer>(ROOT_URL + 'customer/deleteCustomer?id=' + id)
       .pipe(

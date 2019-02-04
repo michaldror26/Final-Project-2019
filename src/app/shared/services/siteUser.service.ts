@@ -24,8 +24,8 @@ export class SiteUserService {
 
   login(userName: string, password: string): Observable<User> {
     let siteuser: SiteUser = new SiteUser();
-    siteuser.userName = userName;
-    siteuser.password = password; // {UserName: userName, Password: password}
+    siteuser.UserName = userName;
+    siteuser.Password = password; // {UserName: userName, Password: password}
     return this.httpClient
       .post<User>(ROOT_URL + 'user/login', {UserName: userName, Password: password})
       .pipe(
@@ -34,10 +34,10 @@ export class SiteUserService {
             this.currentUser.set(data);
             this.authService.setRouter();
             return data;
-          },
-          error => {
-            catchError(this.handleError);
           }
+           ,error => {
+            return error;
+           }
         ));
   }
 
@@ -64,7 +64,7 @@ export class SiteUserService {
             return data;
           },
           error => {
-            catchError(this.handleError);
+            console.log(catchError(this.handleError));
           }
         ));
   }
@@ -72,16 +72,14 @@ export class SiteUserService {
 
 
   handleError(error) {
-    debugger;
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error
-      errorMessage = `Error: ${error.error.message}`;
+      errorMessage = 'נתונים שגויים';
     } else {
       // server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = error.error.ExceptionMessage;
     }
-    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 

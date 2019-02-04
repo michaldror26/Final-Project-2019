@@ -30,10 +30,13 @@ export class CustomerEditComponent implements OnInit {
     const id = this._activateRout.snapshot.params['id'];
 
     if (id) {
-      await this._customerService.getCustomer(id).subscribe((cust: Customer) => {
+      await this._customerService.getCustomerIncludeSiteUser(id).subscribe((cust: Customer) => {
         this.customer = cust;
+        if(cust.SiteUser)
+        this.siteUser=cust.SiteUser;
         console.log('siteUserId', this.customer.SiteUserId, !this.customer.SiteUserId);
         console.log(this.customer);
+        console.log(this.siteUser);
       });
     } else {
       this.customer = await new Customer();
@@ -43,9 +46,16 @@ export class CustomerEditComponent implements OnInit {
 
   addOrEditCustomer() {
 
-    if (!this.customer.SiteUserId && this.siteUser.userName && this.siteUser.password) {
+    if (this.siteUser.UserName && this.siteUser.Password) {
       this.customer.SiteUser = this.siteUser;
+      
     }
+     else if(this.siteUser.UserName=="" && this.siteUser.Password=="")
+    {
+      this.customer.SiteUser = null;
+     
+    }
+    console.log(this.customer);
     if (this.isNew) {
       this._customerService.addCustomer(this.customer).subscribe(insertededCust => {
           if (insertededCust) {

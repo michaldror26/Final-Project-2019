@@ -2,9 +2,9 @@ import {User} from './User.class';
 
 export class SiteUser {
 
-  public user: number;
-  public id: number;
-  public userName: string;
-  public password: string;
+
+  public SiteUserId: number;
+  public UserName: string;
+  public Password: string;
  // public RegisterDate: Date;
 }
