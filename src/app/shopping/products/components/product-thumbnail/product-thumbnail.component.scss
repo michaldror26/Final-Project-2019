@@ -8,12 +8,20 @@
   display: block;
   padding: 16px;
   border-radius: 4px;
+  min-height: 220px;
+  max-height: 340px;
 
   .title {
     font-size: 20px;
     margin-top: 18px;
     font-weight: 600;
     margin-bottom: 3px;
+
+    @media only screen and (max-width: 600px) {
+      body {
+        min-height: 50px;
+      }
+    }
   }
 
   .price {
@@ -42,9 +50,12 @@
     margin-bottom: 0;
   }
 
-
+.available {
+  width: -webkit-fill-available;
+}
   hr {
     width: 90%;
+    width: -webkit-fill-available;
     height: 0;
     border-top: 1px solid #5D4EF0;
   }
@@ -264,9 +275,6 @@
     height: 32px;
     -webkit-transform: translateY(32px);
     transform: translateY(32px);
-  }
-  .wrapper {
-
   }
   .img-wrapper {
     height: 123px;

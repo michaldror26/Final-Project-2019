@@ -1,8 +1,8 @@
 <div class="wrapper" [class.unavailable]='!product.available'>
   <div class="info" >
     <div class="img-wrapper">
-      <!-- <img class="img" [src]='product.img'> -->
-      <div class="img-placeholder"></div>
+       <img class="img" [src]="'data:image/png;base64,' + product.Image" *ngIf="product.Image">
+      <div class="img-placeholder" *ngIf="!product.Image"></div>
     </div>
     <h5 class="title">{{product.Name}}</h5>
     <p class="price"><span>{{product.SellingPrice}}</span>ש"ח </p>
@@ -15,7 +15,8 @@
             <button type="button" class="view" (click)='productClicked(product.ProductId)'>פרטים</button>
           </div>
           <div class="col-4-sm add-cart-wrapper">
-            <button type="button" class="cart" (click)="addToCart(product.ProductId)"><img src="../../../../../assets/cart_primary.svg" alt="" /></button>
+            <button type="button" class="cart" (click)="addToCart(product.ProductId)">
+              <img src="../../../../../assets/cart_primary.svg" alt="" /></button>
           </div>
         </div>
       </div>
@@ -28,16 +29,11 @@
     <div class="detail-view" [class.active]='detailViewActive'>
       <div class="bg" [class.shown]='detailViewActive'></div>
       <div class="info-wrapper">
-        <p class="d-holder d-title">{{product.name}}</p>
-        <p class="d-holder d-price">$ {{product.price}}</p>
-        <p class="d-holder d-description">{{product.description}}</p>
+        <p class="d-holder d-title">{{product.Name}}</p>
+        <p class="d-holder d-price">$ {{product.SellingPrice}}</p>
+        <p class="d-holder d-description">{{product.Name}}</p>
       </div>
       <button type="button" class="hide-detail-btn" (click)='productClicked()'>לחץ לסגירה</button>
     </div>
   </div>
-  <!-- <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf = 'product.best_seller'>
-    <span class="star left">&nbsp;</span>
-    <span class="txt">רב מכר</span>
-    <span class="star right">&nbsp;</span>
-  </div> -->
 </div>

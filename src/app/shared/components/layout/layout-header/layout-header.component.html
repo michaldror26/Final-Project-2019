@@ -2,7 +2,7 @@
 <!--TODO to fix trigger click of navBar when it id not display-->
 <!--TODO to set routerLinkActive="active" to routes-->
 
-<div class="navbar navbar-expand-lg navbar-dark bg-dark clearfix" dir="rtl" role="navigation" id="main_header">
+<div class="navbar navbar-expand-lg navbar-dark bg-dark" dir="rtl" role="navigation" id="main_header">
   <a class="navbar-brand" routerLink="/">
     <img
       src="../../../../../assets/icon.png"
@@ -23,9 +23,13 @@
         <li class="nav-item" *ngIf="route.children.length===0">
           <a class="nav-link" [routerLink]="route.path" (click)="navbarCollapseButton.click()">{{route.data[0]}}</a>
         </li>
+
         <li class="nav-item dropdown" *ngIf="route.children.length !== 0">
           <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false" [class.userName]="route.data[0] === 'userName'">{{userName}}</a>
+             aria-expanded="false"
+             [class.userName]="route.data[0] === 'userName'">
+            {{route.data[0] === 'userName' ? userName : route.data[0] }}
+          </a>
           <div class="dropdown-menu" aria-labelledby="dropdown">
             <a *ngFor="let child of route.children" class="dropdown-item" [routerLink]="child.path"
                (click)="navbarCollapseButton.click()">{{child.data[0]}}</a>
@@ -34,8 +38,8 @@
 
       </ng-container>
       <!--<li class="nav-item dropdown" *ngIf="userName != null">-->
-        <!--<span>{{userName}}</span>-->
-        <!--<a class="dropdown-item" (click)="logout()">התנתק</a>-->
+      <!--<span>{{userName}}</span>-->
+      <!--<a class="dropdown-item" (click)="logout()">התנתק</a>-->
       <!--</li>-->
       <!-- זמני לשם נוחות -->
       <li>
