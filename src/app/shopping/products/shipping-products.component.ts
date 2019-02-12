@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DataService } from '../data.service';
@@ -12,7 +12,8 @@ import { Category } from 'src/app/shared/models/Category.class';
   styleUrls: ['./shipping-products.component.scss']
 })
 export class ShippingProductsComponent implements OnInit {
-
+  @Input()
+  type:string;
   products: Product[];
   categories: Category[] = [];
   mainFilter: any;
@@ -40,6 +41,7 @@ export class ShippingProductsComponent implements OnInit {
   originalData: Product[] = [];
 
   constructor(private dataService: DataService, private cartService: CartService) {
+    this.cartService.type=this.type;
   }
 
   ngOnInit() {
@@ -60,18 +62,18 @@ export class ShippingProductsComponent implements OnInit {
     this.originalData = this.dataService.getAllProducts();
     this.products = this.originalData;
     if (!this.originalData || this.originalData.length == 0)
-      this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
+  {
 
-      // this.originalData = this.products =  [
-      //   { ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
-      //   { ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
-      //   { ProductId: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255  },
-      //   { ProductId: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85  }
-      // ];
+    this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
+      this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
+    // this.originalData = this.products =  [
+    //   { ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
+    //   { ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
+    //   { ProductId: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255  },
+    //   { ProductId: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85  }
+    // ];
 
-    // this.getCategoriesFromServer().subscribe(d=>console.log(d));
-
-   // this.categories = this.dataService.getCategoriesFromServer().subscribe(d => {console.log(d); this.categories = d});
+  }
     this.mainFilter = {
       search: '',
       categories: this.categories,

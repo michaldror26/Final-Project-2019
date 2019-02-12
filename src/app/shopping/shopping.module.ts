@@ -10,7 +10,7 @@ import { ShippingProductsModule } from './products/shipping-products.module';
 import { CartModule } from './cart/cart.module';
 import { MyOrderModule } from './my-orders/my-orders.module';
 import { CommonModule } from '@angular/common';
-
+//import  {SaleModule} from '../admin/sale/sale.module'
 @NgModule({
   declarations: [
     ShoppingComponent,
@@ -24,7 +24,8 @@ import { CommonModule } from '@angular/common';
     MyOrderModule,
     ShippingProductsModule,
     CartModule,
-    CommonModule
+    CommonModule,
+   // SaleModule
   ],
   providers: [
     DataService,

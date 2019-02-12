@@ -23,6 +23,7 @@ import {LayoutFooterComponent} from './shared/components/layout/layout-footer/la
 // Services
 import {AuthService} from './shared/services/auth.service';
 import {CurrentUser} from './shared/currentUser';
+//import { ShoppingComponent } from './shopping/shopping.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import {CurrentUser} from './shared/currentUser';
   declarations: [
     AppComponent,
     LayoutHeaderComponent,
-    LayoutFooterComponent
+    LayoutFooterComponent,
   ],
   bootstrap: [AppComponent],
   providers: [

@@ -6,7 +6,7 @@ import {AdminComponent} from './admin.component';
 import {EntitiesManagmentComponent} from './entitiesManagment/components/entities-managment.component';
 import {PurchaseComponent} from './purchase/components/purchase.component';
 import {SaleComponent} from './sale/sale/component/sale.component';
-
+import {StaticticsComponent} from './statistics/components/statictics.component';
 const routes: Routes = [
   {
     path: '',
@@ -34,6 +34,10 @@ const routes: Routes = [
       {
         path: 'purchase', component: PurchaseComponent, data: ['קניה'],
         loadChildren: './purchase/purchase.module#PurchaseModule'
+      },
+      {
+        path: 'statistics', component: StaticticsComponent, data: ['סטטיסטיקה'],
+        loadChildren: './statistics/modules/statistics.module#StatisticsModule'
       },
       // {
       //   path: '/', data: ['דוחות'], children: [

@@ -49,7 +49,8 @@ export class DataService {
 
   public getProductsFromServer() {
     return this.httpClient
-      .get<Product[]>(ROOT_URL + 'products/getAllProducts')
+    .get<Product[]>(ROOT_URL + 'products/category/2')
+      // .get<Product[]>(ROOT_URL + 'products/getAllProducts')
       .pipe(
         map(
           data => {
@@ -62,8 +63,10 @@ export class DataService {
         ));
   }
 
+  // public getCategoriesFromServer() {
   public getCategoriesFromServer(): Observable<Category[]> {
     return this.httpClient
+      // .get<Category[]>(ROOT_URL + 'category/2')
       .get<Category[]>(ROOT_URL + 'category/getCategories')
       .pipe(
         map(

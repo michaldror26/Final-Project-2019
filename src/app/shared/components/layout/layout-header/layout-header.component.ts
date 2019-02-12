@@ -63,7 +63,9 @@ export class LayoutHeaderComponent implements OnInit {
       ]
     },
     {
-      path: '/', data: ['סטטיסטיקה'], children: []
+      path: 'statistics', data: ['סטטיסטיקה'], children: [
+        {path: 'sale-products', data: ['מכירת מוצרים']},
+      ]
     }
   ];
 
@@ -127,7 +129,8 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   setRoutes() {
-    if (this.currentUser.isUserLogin()) {
+    console.log(this.currentUser.get())
+    if (this.currentUser.isLogin()) {
       if (this.currentUser.isCustomer()) {
         this.routes = this.customerRoutes;
       } else {

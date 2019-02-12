@@ -5,6 +5,9 @@ import { OrderProduct } from '../shared/models/OrderProduct.class';
 import {ROOT_URL} from '../shared/config'
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { OrderService } from '../shared/services/order.service';
+import { CurrentUser } from '../shared/currentUser';
+import { SaleOrderService } from '../shared/services/saleOrder.service';
 
 @Injectable()
 export class CartService {
@@ -12,13 +15,20 @@ export class CartService {
   orderProducts:OrderProduct[] =[]
   cartTotal: number = 0;
   initF: boolean = true;
-
+ 
   private productAddedSource = new Subject<any>()
 
 
   productAdded$ = this.productAddedSource.asObservable()
-
-  constructor(private httpClient:HttpClient) {
+  owerId: number;
+  _type:string;
+  get type(){return this._type}
+  set type(value){this._type=value;
+  if(this.type=='sale')
+      this.service==this.saleOrderService
+    if(this.type=='p'){}}
+  service;
+  constructor(private saleOrderService:SaleOrderService,private currentUser:CurrentUser) {
   }
   init() {
     if (this.orderProducts == [])
@@ -85,18 +95,32 @@ export class CartService {
     localStorage.setItem('products', JSON.stringify(this.orderProducts));
   }
 
-  saveCartOnServer():Observable<string>{
-    
+  saveCartOnServer(){
     let productsToSubmit:any[]=[];
     this.orderProducts.forEach(prod=>
       productsToSubmit.push({productId:prod.Product.ProductId,Amount:prod.Amount}));
-   console.log(productsToSubmit);
-   return this.httpClient.post<string>(ROOT_URL+'order/customer/1',productsToSubmit)
-   .pipe(
-   map(
-     data => {return data;},
-     error =>{}
- ));
-  }
+
+     if(this.currentUser.isLogin())
+     {
+        if(this.currentUser.isAdmin()){
+          if(this.owerId==null){
+            alert("עליך לבחור נמען");
+            return;
+           }
+              this.service.add(productsToSubmit,this.owerId).subscribe();
+
+        }
+
+        if(this.currentUser.isCustomer()){
+          this.service.add(productsToSubmit).subscribe();
+
+    }
+
+     }
+
+
+
+   }
+  
 }
 

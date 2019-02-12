@@ -26,13 +26,13 @@ import {ProductThumbnailComponent} from './components/product-thumbnail/product-
     ShowcaseComponent,
     SortFiltersComponent,
     MiniCartComponent,
-    ProductThumbnailComponent
+    ProductThumbnailComponent,
   ],
   providers: [
     DataService,
     CartService
   ],
-  exports: []
+  exports: [ShippingProductsComponent]
 })
 export class ShippingProductsModule {
 }

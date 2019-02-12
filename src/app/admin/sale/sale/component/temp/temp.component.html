@@ -1,3 +1,4 @@
-<p>
-  temp works!
-</p>
+<div *ngIf='customers!=null'>
+<app-addressee-bar  [addressees]="customers" (onSelect)='setCustomer($event)'></app-addressee-bar>
+</div>
+<app-shipping-products [type]="sale"></app-shipping-products>
