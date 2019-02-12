@@ -11,6 +11,7 @@ import {ShowcaseComponent} from './components/showcase/showcase.component';
 import {SortFiltersComponent} from './components/sort-filters/sort-filters.component';
 import {MiniCartComponent} from './components/mini-cart/cart.component';
 import {ProductThumbnailComponent} from './components/product-thumbnail/product-thumbnail.component';
+import {SaleOrderService} from '../../shared/services/saleOrder.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {ProductThumbnailComponent} from './components/product-thumbnail/product-
   ],
   providers: [
     DataService,
-    CartService
+    CartService,
+    SaleOrderService
   ],
   exports: [ShippingProductsComponent]
 })

@@ -60,11 +60,12 @@ export class ShippingProductsComponent implements OnInit {
     //    };
     //   });
     await this.dataService.getAllProducts().subscribe(f => this.originalData = f);
+    await this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
     this.products = this.originalData;
     if (!this.originalData || this.originalData.length == 0) {
 
-      this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
-      this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
+     await this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
+     await this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
       // this.originalData = this.products =  [
       //   { ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
       //   { ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
