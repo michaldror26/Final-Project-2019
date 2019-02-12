@@ -5,8 +5,8 @@ import {NgxGraphModule} from '@swimlane/ngx-graph';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatisticsRoutingModule } from './statistics-routing.module';
-import {StaticticsComponent} from '../components/statictics.component';
-import {SaleProductsComponent} from '../components/sale-products/sale-products.component'.
+import {StaticticsComponent} from '../components/statictics.component'
+import {SaleProductsComponent} from '../components/sale-products/sale-products.component'
 
 @NgModule({
   imports: [
