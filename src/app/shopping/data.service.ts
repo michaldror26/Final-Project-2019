@@ -49,11 +49,10 @@ export class DataService {
 
   public getProductsFromServer() {
     return this.httpClient
-      .get<Product[]>(ROOT_URL + 'products/category/2')
+      .get<Product[]>(ROOT_URL + 'products/getAllProducts')
       .pipe(
         map(
           data => {
-            alert('from getProductsFromServer');
             this.Products = data;
             console.log(this.Products);
             return data;
@@ -63,13 +62,12 @@ export class DataService {
         ));
   }
 
-  private getCategoriesFromServer() {
+  public getCategoriesFromServer(): Observable<Category[]> {
     return this.httpClient
-      .get<Category[]>(ROOT_URL + 'category/2')
+      .get<Category[]>(ROOT_URL + 'category/getCategories')
       .pipe(
         map(
           data => {
-            alert('from getCategoriesFromServer');
             this.Categories = data;
             console.log(this.Categories);
             return data;
