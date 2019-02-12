@@ -52,7 +52,7 @@ export class MiniCartComponent implements OnInit {
           this.animatePopout = false
         }, 300)
       }
-      this.expandedHeight = (this.products.length * PRODUCT_HEIGHT + OFFSET_HEIGHT) + 'px'
+      this.expandedHeight = (this.products.length * PRODUCT_HEIGHT + OFFSET_HEIGHT) + 30 + 'px'
       if (!this.products.length) {
         this.expanded = false
       }
