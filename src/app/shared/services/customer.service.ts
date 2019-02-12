@@ -12,52 +12,56 @@ import {ROOT_URL} from '../config';
 })
 export class CustomerService {
   private cusArr: Customer[] = [
-    {
-      CustomerId: 1,
-      DiscountPercentage: 98,
-      FirstName: 'מרים',
-      LastName: 'טרבלסי',
-      MobilePhone: '0587896541',
-      City: 'בני ברק',
-      Email: 'miryam@gmail.com',
-      Telephone: '097496761',
-      RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId: 2,
-      // userName: 'fvdgvgb',
-      //  password: '26565'
-    },
-    {
-      CustomerId: 2,
-      DiscountPercentage: 98,
-      FirstName: 'sara',
-      LastName: 'trabelsi',
-      MobilePhone: '0587896541',
-      City: 'bney brak',
-      Email: 'sara555@gmail.com',
-      Telephone: '097496761',
-      RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId: 2,
-      // userName:'fvdgvgb',
-      // password:'26565'
-    },
-    {
-      CustomerId: 3,
-      DiscountPercentage: 98,
-      FirstName: 'dafna',
-      LastName: 'trabelsi',
-      MobilePhone: '0587896541',
-      City: 'bney brak',
-      Email: 'dafnat555@gmail.com',
-      Telephone: '097496761',
-      RegisteredDate: new Date().toLocaleDateString(),
-      AuthenticationTypeId: 2,
-      // userName:'fvdgvgb',
-      // password:'26565'
-    }
+    // {
+    //   Id: 1,
+    //   DiscountPercentage: 98,
+    //   FirstName: 'מרים',
+    //   LastName: 'טרבלסי',
+    //   MobilePhone: '0587896541',
+    //   City: 'בני ברק',
+    //   Email: 'miryam@gmail.com',
+    //   Telephone: '097496761',
+    //   RegisteredDate: new Date().toLocaleDateString(),
+    //  // AuthenticationTypeId: 2,
+    //   // userName: 'fvdgvgb',
+    //   //  password: '26565'
+    // },
+    // // {
+    // //    Id: 2,
+    // //   DiscountPercentage: 98,
+    // //   FirstName: 'sara',
+    // //   LastName: 'trabelsi',
+    //   MobilePhone: '0587896541',
+    //   City: 'bney brak',
+    //   Email: 'sara555@gmail.com',
+    //   Telephone: '097496761',
+    //   RegisteredDate: new Date().toLocaleDateString(),
+    //  // AuthenticationTypeId: 2,
+    //   // userName:'fvdgvgb',
+    //   // password:'26565'
+    // },
+    // {
+    //    Id: 3,
+    //   DiscountPercentage: 98,
+    //   FirstName: 'dafna',
+    //   LastName: 'trabelsi',
+    //   MobilePhone: '0587896541',
+    //   City: 'bney brak',
+    //   Email: 'dafnat555@gmail.com',
+    //   Telephone: '097496761',
+    //   RegisteredDate: new Date().toLocaleDateString(),
+    //   //AuthenticationTypeId: 2,
+    //   // userName:'fvdgvgb',
+    //   // password:'26565'
+    // }
   ];
 
 
   constructor(private _http: HttpClient) {
+  }
+  
+  getTempCustomers(): Customer[] {
+    return this.cusArr;
   }
 
   getCustomers(): Observable<Customer[]> {

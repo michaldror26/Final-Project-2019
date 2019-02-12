@@ -63,7 +63,7 @@ export class DataService {
         ));
   }
 
-  private getCategoriesFromServer() {
+  public getCategoriesFromServer() {
     return this.httpClient
       .get<Category[]>(ROOT_URL + 'category/2')
       .pipe(

@@ -5,6 +5,8 @@ import {AdminRoutingModule} from './admin-routing.module';
 import {EntitiesManagmentModule} from './entitiesManagment/entities-managment.module';
 import { PurchaseModule } from './purchase/purchase.module';
 import {SaleModule} from './sale/sale.module';
+import { StatisticsModule } from './statistics/modules/statistics.module';
+// import { AddresseeBarComponent } from './shared/addressee-bar/addressee-bar.component';
 
 @NgModule({
   imports: [
@@ -12,7 +14,8 @@ import {SaleModule} from './sale/sale.module';
     AdminRoutingModule,
     EntitiesManagmentModule,
     PurchaseModule,
-    SaleModule
+    SaleModule,
+    StatisticsModule
   ],
   declarations: [AdminComponent]
 })

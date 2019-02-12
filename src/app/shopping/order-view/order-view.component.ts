@@ -37,8 +37,8 @@ export class OrderViewComponent implements OnInit {
 
   calcTotalSum() {
     this.totalSum = 0;
-    (this.order.SaleOrderProducts as Array).forEach(item => {
-      this.totalSum += item.Product.SellingPrice * item.Quantity * this.order['Customer'].DiscountPercentage;
-    });
+    // (this.order.SaleOrderProducts as Array).forEach(item => {
+    //   this.totalSum += item.Product.SellingPrice * item.Quantity * this.order['Customer'].DiscountPercentage;
+    // });
   }
 }

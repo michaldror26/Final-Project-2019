@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DataService } from '../data.service';
@@ -12,7 +12,8 @@ import { Category } from 'src/app/shared/models/Category.class';
   styleUrls: ['./shipping-products.component.scss']
 })
 export class ShippingProductsComponent implements OnInit {
-
+  @Input()
+  type:string;
   products: Product[];
   categories: Category[] = [];
   mainFilter: any;
@@ -40,6 +41,7 @@ export class ShippingProductsComponent implements OnInit {
   originalData: Product[] = [];
 
   constructor(private dataService: DataService, private cartService: CartService) {
+    this.cartService.type=this.type;
   }
 
   ngOnInit() {
@@ -60,10 +62,10 @@ export class ShippingProductsComponent implements OnInit {
     this.originalData = this.dataService.getAllProducts();
     this.products = this.originalData;
     if (!this.originalData || this.originalData.length == 0)
+  {
       this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
-    // this.getCategoriesFromServer().subscribe(d=>console.log(d));
-
-    this.categories = this.dataService.getAllCategories();
+      this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
+  }
     this.mainFilter = {
       search: '',
       categories: this.categories,

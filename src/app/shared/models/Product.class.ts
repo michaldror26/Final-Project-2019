@@ -1,4 +1,4 @@
-import {Category} from './Category.class';
+﻿import {Category} from './Category.class';
 
 export class Product {
   public ProductId: number;
@@ -8,7 +8,7 @@ export class Product {
   public SellingPrice?: number; // float
   //to del
   // price?: string
-  // available?: boolean
+  // available?: booleanבוד
   // best_seller?: boolean
   // categories?: number[]
   public img?: string;
