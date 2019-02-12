@@ -13,8 +13,7 @@ import {OrderService} from '../../shared/services/order.service';
     CommonModule,
     FormsModule,
     HttpModule,
-    JsonpModule,
-    CommonModule
+    JsonpModule
   ],
   declarations: [CartComponent
   ],
