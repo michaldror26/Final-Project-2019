@@ -26,9 +26,10 @@
 
           </div>
         </div>
+        <div class="row mr-2 font-weight-bold my-2">{{(products ? products.length : 0 )+ " פריטים"}}</div>
         <div class="row">
           <div class="col-12">
-            <showcase [products]='products'></showcase>
+            <showcase [products]='products'>טוען קטלוג...</showcase>
           </div>
         </div>
       </div>

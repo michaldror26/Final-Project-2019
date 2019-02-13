@@ -15,8 +15,8 @@ export class CustomerViewComponent implements OnInit {
   constructor(public _customerService: CustomerService) {
   }
 
-  ngOnInit() {
-    this._customerService.getCustomers()
+  async ngOnInit() {
+   await this._customerService.getCustomers()
       .subscribe((employessObse: Customer[]) => {
         this.customersList = employessObse;
         this.realCustomersList = this.customersList;

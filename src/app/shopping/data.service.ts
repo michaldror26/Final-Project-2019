@@ -1,10 +1,7 @@
-import {throwError as observableThrowError,  Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
-import {catchError, map} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-
-// import { DATA } from './mock-data';
 import { Product } from '../shared/models/Product.class';
 import { templateJitUrl } from '@angular/compiler';
 import { Category } from '../shared/models/Category.class';
@@ -42,18 +39,18 @@ export class DataService {
   Categories: Category[];
 
   constructor(private httpClient: HttpClient) {
-    this.getProductsFromServer().subscribe(d => console.log(d));
-    this.getCategoriesFromServer().subscribe(d => console.log(d));
+   // this.getProductsFromServer().subscribe(d => console.log(d));
+   // this.getCategoriesFromServer().subscribe(d => console.log(d));
   }
 
 
   public getProductsFromServer() {
     return this.httpClient
-      .get<Product[]>(ROOT_URL + 'products/category/2')
+    // .get<Product[]>(ROOT_URL + 'products/category/2')
+      .get<Product[]>(ROOT_URL + 'products/getAllProducts')
       .pipe(
         map(
           data => {
-            alert('from getProductsFromServer');
             this.Products = data;
             console.log(this.Products);
             return data;
@@ -63,13 +60,14 @@ export class DataService {
         ));
   }
 
-  public getCategoriesFromServer() {
+  // public getCategoriesFromServer() {
+  public getCategoriesFromServer(): Observable<Category[]> {
     return this.httpClient
-      .get<Category[]>(ROOT_URL + 'category/2')
+      // .get<Category[]>(ROOT_URL + 'category/2')
+      .get<Category[]>(ROOT_URL + 'category/getCategories')
       .pipe(
         map(
           data => {
-            alert('from getCategoriesFromServer');
             this.Categories = data;
             console.log(this.Categories);
             return data;
@@ -79,37 +77,14 @@ export class DataService {
         ));
   }
 
-  //
-  getAllProducts(): Product[] {
-    //return Promise.resolve(DATA)
-    //return Promise.resolve(this.Products);
-    return this.Products;
+  getAllProducts():Observable<Product[]> {
+    return this.getProductsFromServer();
   }
 
   getAllCategories(): Category[] {
     //return Promise.resolve(this.Categories);
     return this.Categories;
   }
-
-  // getRemoteData(url): Observable<any>{
-  //   return this.http.get(url).pipe(
-  //                   map(this.extractData),
-  //                   catchError(this.handleError),);
-  // }
-
-  // private extractData(res: Response) {
-  //   let body = res.json();
-  //   return body || { };
-  // }
-
-  // private handleError (error: any) {
-  //   // In a real world app, we might use a remote logging infrastructure
-  //   // We'd also dig deeper into the error to get a better message
-  //   let errMsg = (error.message) ? error.message :
-  //     error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-  //   console.error(errMsg); // log to console instead
-  //   return observableThrowError(errMsg);
-  // }
 
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Injector } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DataService } from '../data.service';
@@ -41,11 +41,11 @@ export class ShippingProductsComponent implements OnInit {
   originalData: Product[] = [];
 
   constructor(private dataService: DataService, private cartService: CartService) {
-  
+
   }
-  
+
   ngOnInit() {
-    
+
     // this.dataService.getAllProducts().then(
     //   data => {this.originalData=data;
     //            this.products = this.originalData.slice(0);}
@@ -63,15 +63,24 @@ export class ShippingProductsComponent implements OnInit {
     if(this.type){
       console.log("type="+this.type);
       this.cartService.type=this.type;}
-      
-  
+
+
     this.originalData = this.dataService.getAllProducts();
+    await this.dataService.getAllProducts().subscribe(f => this.originalData = f);
+    await this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
     this.products = this.originalData;
-    if (!this.originalData || this.originalData.length == 0)
-  {
-      this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
-      this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
-  }
+    if (!this.originalData || this.originalData.length == 0) {
+
+     await this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
+     await this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
+      // this.originalData = this.products =  [
+      //   { ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
+      //   { ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
+      //   { ProductId: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255  },
+      //   { ProductId: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85  }
+      // ];
+
+    }
     this.mainFilter = {
       search: '',
       categories: this.categories,
@@ -83,9 +92,11 @@ export class ShippingProductsComponent implements OnInit {
     //this.sortProducts('name');
 
   }
+
   ngOnDestroy() {
     this.cartService.saveCartLocaly();
   }
+
   onURLChange(url) {
     //  this.dataService.getRemoteData(url).subscribe(data => {
     //    this.originalData = data;
@@ -218,7 +229,7 @@ export class ShippingProductsComponent implements OnInit {
   }
 
   sortProducts(criteria) {
-    console.log('sorting ' + this.products.length + ' products')
+    console.log('sorting ' + this.products.length + ' products');
     this.products.sort((a, b) => {
       let priceComparison = parseFloat(a.SellingPrice.toString().replace(/\./g, '').replace(',', '.')) - parseFloat(b.SellingPrice.toString().replace(/\./g, '').replace(',', '.'));
       if (criteria == 'priceDes') {

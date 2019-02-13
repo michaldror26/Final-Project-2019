@@ -4,7 +4,7 @@ export class Product {
   public ProductId: number;
   public Name: string;
   public CategoryId: number;
-  public Category: Category;
+  public Category?: Category;
   public SellingPrice?: number; // float
   //to del
   // price?: string
