@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-
 import {AdminComponent} from './admin.component';
 import {EntitiesManagmentComponent} from './entitiesManagment/components/entities-managment.component';
 import {PurchaseComponent} from './purchase/components/purchase.component';

@@ -38,7 +38,7 @@ export class CartService {
 
     //  if (OrderServiceMap.hasOwnProperty(this.type))
     //     this.orderService=this.injector.get<any>(OrderServiceMap[this.type]);
-    if(this.type=='sale'){
+    if(this.type==null ||this.type=='sale'){
       this.orderService=this.injector.get<any>(SaleOrderService);
       }
       else{

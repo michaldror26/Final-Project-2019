@@ -40,7 +40,7 @@ export class LayoutHeaderComponent implements OnInit {
     },
     {
       path: '/sale', data: ['מכירה'], children: [
-        {path: 'temp', data: ['הזמן ללקוח']},
+        {path: 'sale-order', data: ['הזמן ללקוח']},
         {path: '2', data: ['אשר אספקה']},
         {path: '3', data: ['החזר סחורה']},
         {path: '4', data: ['צפי המכירות להיום']}

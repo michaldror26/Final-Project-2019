@@ -14,7 +14,8 @@ constructor(private httpClient:HttpClient){
 }
 add(productsToSubmit:any[],id?:number):Observable<string>
   {
-    if(id!=null){
+
+    if(id!=undefined){
         return this.httpClient.post<string>(this.rootUrl+'/'+id,productsToSubmit)
         .pipe(
         map(

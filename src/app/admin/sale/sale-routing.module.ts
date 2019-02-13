@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {TempComponent} from './sale/component/temp/temp.component';
+import {SaleOrderComponent} from './sale/component/sale-order/sale-order.component';
 
 const routes: Routes = [
   {
-    path: 'temp', component: TempComponent, data: ['temp component']
+    path: 'sale-order', component: SaleOrderComponent, data: ['sale order component']
   },
 ];
 
