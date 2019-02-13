@@ -4,9 +4,10 @@ import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 
-let rootUrl=ROOT_URL+'Order/customer';
+
 @Injectable()
 export class SaleOrderService {
+rootUrl=ROOT_URL+'Order/customer';
 
 constructor(private httpClient:HttpClient){
 
@@ -14,14 +15,14 @@ constructor(private httpClient:HttpClient){
 add(productsToSubmit:any[],id?:number):Observable<string>
   {
     if(id!=null){
-        return this.httpClient.post<string>(ROOT_URL+'/'+id,productsToSubmit)
+        return this.httpClient.post<string>(this.rootUrl+'/'+id,productsToSubmit)
         .pipe(
         map(
           data => {return data;},
           error =>{}
       ));
     }
-    return this.httpClient.post<string>(ROOT_URL,productsToSubmit)
+    return this.httpClient.post<string>(this.rootUrl,productsToSubmit)
     .pipe(
     map(
       data => {return data;},

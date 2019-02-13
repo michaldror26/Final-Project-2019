@@ -1,14 +1,14 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, Injector } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Product } from '../shared/models/Product.class';
 import { OrderProduct } from '../shared/models/OrderProduct.class';
-import {ROOT_URL} from '../shared/config'
-import { map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { OrderService } from '../shared/services/order.service';
-import { CurrentUser } from '../shared/currentUser';
 import { SaleOrderService } from '../shared/services/saleOrder.service';
+import { PurchaseOrderService } from '../shared/services/purchaseOrder.service';
 
+export const OrderServiceMap = {
+  sale: SaleOrderService,
+  purchase:  PurchaseOrderService
+}
 @Injectable()
 export class CartService {
 
@@ -17,18 +17,13 @@ export class CartService {
   initF: boolean = true;
  
   private productAddedSource = new Subject<any>()
-
-
   productAdded$ = this.productAddedSource.asObservable()
-  owerId: number;
-  _type:string;
-  get type(){return this._type}
-  set type(value){this._type=value;
-  if(this.type=='sale')
-      this.service==this.saleOrderService
-    if(this.type=='p'){}}
-  service;
-  constructor(private saleOrderService:SaleOrderService,private currentUser:CurrentUser) {
+
+  type:string=null;
+  owerId: number=null;
+  orderService;
+ 
+  constructor(private injector:Injector) {
   }
   init() {
     if (this.orderProducts == [])
@@ -40,6 +35,19 @@ export class CartService {
         });
         this.productAddedSource.next({ products: this.orderProducts, cartTotal: this.cartTotal })
       }
+
+    //  if (OrderServiceMap.hasOwnProperty(this.type))
+    //     this.orderService=this.injector.get<any>(OrderServiceMap[this.type]);
+    if(this.type=='sale'){
+      this.orderService=this.injector.get<any>(SaleOrderService);
+      }
+      else{
+      if(this.type=='purchase')
+      this.orderService= this.injector.get<any>(PurchaseOrderService);
+      }
+      
+    console.log("type="+this.type);
+   
   }
   getCart() {
 
@@ -100,27 +108,22 @@ export class CartService {
     this.orderProducts.forEach(prod=>
       productsToSubmit.push({productId:prod.Product.ProductId,Amount:prod.Amount}));
 
-     if(this.currentUser.isLogin())
-     {
-        if(this.currentUser.isAdmin()){
-          if(this.owerId==null){
+       if(this.type!=null){
+        if(this.owerId==null){
             alert("עליך לבחור נמען");
             return;
-           }
-              this.service.add(productsToSubmit,this.owerId).subscribe();
-
-        }
-
-        if(this.currentUser.isCustomer()){
-          this.service.add(productsToSubmit).subscribe();
+       }
+       this.orderService.add(productsToSubmit,this.owerId).subscribe();
+      }
+     else
+        //הזמנה ללקוח נוכחי
+          this.orderService.add(productsToSubmit).subscribe();
 
     }
 
-     }
+ }
 
 
 
-   }
   
-}
 

@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {CartComponent} from './cart.component';
 import {DataService} from '../data.service';
 import {CartService} from '../cart.service';
+import {SaleOrderService} from '../../shared/services/saleOrder.service';
 import {OrderService} from '../../shared/services/order.service';
 
 @NgModule({
@@ -21,6 +22,7 @@ import {OrderService} from '../../shared/services/order.service';
   providers: [
     DataService,
     CartService,
+    SaleOrderService,
     OrderService
   ],
   exports: []

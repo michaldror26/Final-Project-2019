@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Injector } from '@angular/core';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DataService } from '../data.service';
@@ -41,10 +41,11 @@ export class ShippingProductsComponent implements OnInit {
   originalData: Product[] = [];
 
   constructor(private dataService: DataService, private cartService: CartService) {
-    this.cartService.type=this.type;
+  
   }
-
+  
   ngOnInit() {
+    
     // this.dataService.getAllProducts().then(
     //   data => {this.originalData=data;
     //            this.products = this.originalData.slice(0);}
@@ -59,6 +60,11 @@ export class ShippingProductsComponent implements OnInit {
     //      priceFilter: this.priceFilters[0]
     //    };
     //   });
+    if(this.type){
+      console.log("type="+this.type);
+      this.cartService.type=this.type;}
+      
+  
     this.originalData = this.dataService.getAllProducts();
     this.products = this.originalData;
     if (!this.originalData || this.originalData.length == 0)
@@ -233,4 +239,8 @@ export class ShippingProductsComponent implements OnInit {
     });
     this.currentSorting = criteria;
   }
+
+setOwer(Id:number){
+  this.cartService.owerId=Id;
+ }
 }
