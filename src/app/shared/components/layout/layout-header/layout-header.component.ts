@@ -113,10 +113,10 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   // דרך נכונה?
-   goToLoginPage() {
+  goToLoginPage() {
     //yyy   this.triggerNavBarClick();
-     this.router.navigate(['/login'], {queryParams: {thisPage: window.location.pathname}});
-   }
+    this.router.navigate(['/login'], {queryParams: {thisPage: window.location.pathname}});
+  }
 
   // זמני לשם נוחות
   switchRoutes() {
@@ -129,14 +129,15 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   setRoutes() {
-    console.log(this.currentUser.get())
+    console.log(this.currentUser.get());
     if (this.currentUser.isLogin()) {
       if (this.currentUser.isCustomer()) {
         this.routes = this.customerRoutes;
-      } else {
+      } else if (this.currentUser.isAdmin()) {
         this.routes = this.routesOfAdmin;
       }
       this.userName = this.currentUser.get().FirstName + ' ' + this.currentUser.get().LastName;
+
     } else {
       this.routes = this.routesOfHost;
       this.userName = null;
