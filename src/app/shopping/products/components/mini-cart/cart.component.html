@@ -1,5 +1,6 @@
+<div>
 <div class="preview" [class.expanded]='expanded'>
-  <button [class.not-shown]='!products.length || expanded' type="button" class="circle" (click)="onCartClick()">
+  <button [class.not-shown]='cartService && cartService.orderProducts && cartService.orderProducts.length == 0 || expanded' type="button" class="circle" (click)="onCartClick()">
     <img src="../../../../../assets/cart_white.svg" alt="cart"/>
     <div class="indicator"><span>{{numProducts}}</span></div>
   </button>
@@ -29,4 +30,5 @@
 </div>
 <div class="overlay" [class.shown]='expanded'>
 
+</div>
 </div>

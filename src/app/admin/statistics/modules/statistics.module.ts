@@ -3,7 +3,7 @@ import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NgxGraphModule} from '@swimlane/ngx-graph';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatisticsRoutingModule } from './statistics-routing.module';
 import {StaticticsComponent} from '../components/statictics.component';
 import {SaleProductsComponent} from '../components/sale-products/sale-products.component';
@@ -13,7 +13,7 @@ import {SaleProductsComponent} from '../components/sale-products/sale-products.c
     CommonModule,
     NgxGraphModule,
     NgxChartsModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     StatisticsRoutingModule
   ],
   declarations: [StaticticsComponent, SaleProductsComponent],

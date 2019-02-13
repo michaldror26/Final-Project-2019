@@ -58,7 +58,7 @@ export class SiteUserService {
       .pipe(
         map(
           data => {
-            debugger;
+            ;
             this.currentUser.set(data);
             this.authService.setRouter();
             return data;

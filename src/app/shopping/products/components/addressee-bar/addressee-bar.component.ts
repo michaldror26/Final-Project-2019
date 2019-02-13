@@ -24,13 +24,13 @@ addressees =[]
   constructor(private injector:Injector) {
   }
   
-  ngOnInit() {
+ async ngOnInit() {
       console.log("type="+this.type);
     if(this.type=='sale'){
     this.service=this.injector.get<any>(CustomerService);
     //getAll!!!!!!!!!!!
     //ID!!!!!!!!!!!!!!!
-    this.service.getCustomers().subscribe(d=>{this.addressees=d;});
+      await this.service.getCustomers().subscribe(d=>{this.addressees=d;});
     }
     else{
     if(this.type=='purchase')

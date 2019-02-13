@@ -18,9 +18,9 @@ export class CustomerDeleteComponent implements OnInit {
               private _router: Router) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     let id: number = this._activateRout.snapshot.params['id'];
-    this._customerService.getCustomer(id).subscribe((cust: Customer) => this.customer = cust);
+   await this._customerService.getCustomer(id).subscribe((cust: Customer) => this.customer = cust);
   }
 
   deleteCustomer() {

@@ -44,7 +44,7 @@ export class ShippingProductsComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+   async ngOnInit() {
 
     // this.dataService.getAllProducts().then(
     //   data => {this.originalData=data;
@@ -71,8 +71,8 @@ export class ShippingProductsComponent implements OnInit {
     this.products = this.originalData;
     if (!this.originalData || this.originalData.length == 0) {
 
-      this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
-      this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
+      await this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
+      await this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
       // this.originalData = this.products =  [
       //   { ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
       //   { ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
@@ -119,6 +119,7 @@ export class ShippingProductsComponent implements OnInit {
 
 
   onSearchChange(search) {
+    debugger
     this.mainFilter.search = search.search;
     this.updateProducts({
       type: 'search',
@@ -147,6 +148,7 @@ export class ShippingProductsComponent implements OnInit {
   }
 
   updateProducts(filter) {
+    debugger
     let productsSource: Product[] = this.originalData;
     let prevProducts = this.products;
     let filterAllData = true;
@@ -158,7 +160,7 @@ export class ShippingProductsComponent implements OnInit {
     this.products = productsSource.filter(p => {
       //Filter by search
       if (filterAllData || filter.type == 'search') {
-        if (!p.Name.match(new RegExp(this.mainFilter.search, 'i'))) {
+        if (!p.Name.match(new RegExp(this.mainFilter.search, 'i')) && !p.Name.includes(this.mainFilter.search)) {
           return false;
         }
       }
@@ -175,25 +177,6 @@ export class ShippingProductsComponent implements OnInit {
         if (!passCategoryFilter) {
           return false;
         }
-      }
-
-
-      //Filter by custom filters
-      if (filterAllData || filter.type == 'custom') {
-        // let passCustomFilter = false;
-        // let customFilter = this.mainFilter.customFilter.value;
-        // if (customFilter == 'all') {
-        //   passCustomFilter = true;
-        // } else if (customFilter == 'available' && p.available) {
-        //   passCustomFilter = true;
-        // } else if (customFilter == 'unavailable' && !p.available) {
-        //   passCustomFilter = true;
-        // } else if (customFilter == 'bestseller' && p.best_seller) {
-        //   passCustomFilter = true;
-        // }
-        // if (!passCustomFilter) {
-        //   return false;
-        // }
       }
 
       //Filter by price filters

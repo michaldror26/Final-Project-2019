@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
   }
 
 // בינתיים הרגיסטר הוא רק ללקוח
-  register() {
-    this._customerService.addCustomer(this.customer).subscribe(insertededCust => {
+ async register() {
+   await this._customerService.addCustomer(this.customer).subscribe(insertededCust => {
         if (insertededCust) {
           this.customer = insertededCust;
           this.message = 'נרשמת בהצלחה!!';

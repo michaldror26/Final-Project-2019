@@ -44,7 +44,7 @@ export class CustomerEditComponent implements OnInit {
     }
   }
 
-  addOrEditCustomer() {
+  async addOrEditCustomer() {
 
     if (this.siteUser.UserName && this.siteUser.Password) {
       this.customer.SiteUser = this.siteUser;
@@ -57,7 +57,7 @@ export class CustomerEditComponent implements OnInit {
     }
     console.log(this.customer);
     if (this.isNew) {
-      this._customerService.addCustomer(this.customer).subscribe(insertededCust => {
+     await  this._customerService.addCustomer(this.customer).subscribe(insertededCust => {
           if (insertededCust) {
             this.customer = insertededCust;
             this.message = 'הלקוח נוסף בהצלחה';
@@ -73,7 +73,7 @@ export class CustomerEditComponent implements OnInit {
         }
       );
     } else {
-      this._customerService.editCustomer(this.customer).subscribe(updatedCust => {
+      await this._customerService.editCustomer(this.customer).subscribe(updatedCust => {
           if (updatedCust) {
             this.customer = updatedCust;
             this.message = 'הלקוח עודכן בהצלחה';
