@@ -1,9 +1,6 @@
 import { NgModule} from '@angular/core';
-//  import { NgModule,CUSTOM_ELEMENTS_SCHEM } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NgxGraphModule} from '@swimlane/ngx-graph';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { StatisticsRoutingModule } from './statistics-routing.module';
 import {StaticticsComponent} from '../components/statictics.component';
 import {SaleProductsComponent} from '../components/sale-products/sale-products.component';
@@ -11,12 +8,9 @@ import {SaleProductsComponent} from '../components/sale-products/sale-products.c
 @NgModule({
   imports: [
     CommonModule,
-    NgxGraphModule,
-    NgxChartsModule,
-    BrowserAnimationsModule,
+    ChartsModule,
     StatisticsRoutingModule
   ],
   declarations: [StaticticsComponent, SaleProductsComponent],
-  // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class StatisticsModule { }

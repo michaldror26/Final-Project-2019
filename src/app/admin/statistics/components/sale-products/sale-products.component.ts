@@ -1,81 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import * as shape from 'd3-shape';
-import { NgxGraphModule } from '@swimlane/ngx-graph';
+
 @Component({
   selector: 'app-sale-products',
   templateUrl: './sale-products.component.html',
   styleUrls: ['./sale-products.component.scss']
 })
-export class SaleProductsComponent implements OnInit {
+export class SaleProductsComponent {
 
-  hierarchialGraph = {nodes: [], links: []}
-  curve = shape.curveBundle.beta(1);
-  // curve = shape.curveLinear;
-
-  public ngOnInit():void {
-    this.showGraph();
+  public barChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels:string[] = ['אתרוגים','לולבים','הדסים','ערבות'];
+  public barChartType:string = 'bar';
+  public barChartLegend:boolean = true;
+ 
+  public barChartData:number[] = [7, 6, 5,4];
+ 
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
   }
-
-  showGraph() {
-    this.hierarchialGraph.nodes = [
-  {
-    id: 'start',
-    label: 'scan',
-    position: 'x0'
-  }, {
-    id: '1',
-    label: 'Event#a',
-    position: 'x1'
-  }, {
-    id: '2',
-    label: 'Event#x',
-    position: 'x2'
-  }, {
-    id: '3',
-    label: 'Event#b',
-    position: 'x3'
-  }, {
-    id: '4',
-    label: 'Event#c',
-    position: 'x4'
-  }, {
-    id: '5',
-    label: 'Event#y',
-    position: 'x5'
-  }, {
-    id: '6',
-    label: 'Event#z',
-    position: 'x6'
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
   }
-  ];
-
-  this.hierarchialGraph.links = [
-  {
-    source: 'start',
-    target: '1',
-    label: 'Process#1'
-  }, {
-    source: 'start',
-    target: '2',
-    label: 'Process#2'
-  }, {
-    source: '1',
-    target: '3',
-    label: 'Process#3'
-  }, {
-    source: '2',
-    target: '4',
-    label: 'Process#4'
-  }, {
-    source: '2',
-    target: '6',
-    label: 'Process#6'
-  }, {
-    source: '3',
-    target: '5'
-  }
-  ];
-
-  }
+ 
+  public randomize():void {
+    // Only Change 3 values
+    let data = [
+      5,4,3,2
+      ];
+    let clone = JSON.parse(JSON.stringify(this.barChartData));
+    clone.data = data;
+    this.barChartData = clone;
+    /**
+     * (My guess), for Angular to recognize the change in the dataset
+     * it has to change the dataset variable directly,
+     * so one way around it, is to clone the data, change it and then
+     * assign it;
+     */
 }
-
+}
