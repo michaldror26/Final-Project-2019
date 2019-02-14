@@ -10,7 +10,6 @@ export class AppComponent {
   scrollDown = true;
 
   updateScrollToTop(event) {// TODO
-    debugger;
     this.scrollDown = window.scrollY >= window.screenY;
   }
 }

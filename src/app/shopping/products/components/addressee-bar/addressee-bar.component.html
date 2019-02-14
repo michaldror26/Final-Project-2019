@@ -1,11 +1,9 @@
-<p>
-  addressee-bar works!
-</p>
+
 <div class="wrapper">
-  <label>בחר </label>
-<select (change)='onSelectChange($event)'>
+  <label class="font-weight-bold">בחר </label>
+<select (change)='onSelectChange($event)' style="width: -webkit-fill-available;">
       <option></option>
-   <option *ngFor='let item of addressees' [value]="item.CustomerId">{{item.FirsrtName}} {{item.LastName}}</option> 
+   <option *ngFor='let item of addressees' [value]="item.CustomerId">{{item.FirstName + " "+ item.LastName}}</option>
 
   </select>
 </div>

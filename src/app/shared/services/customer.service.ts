@@ -64,7 +64,7 @@ export class CustomerService {
     return this.cusArr;
   }
 
-  getCustomers(): Observable<Customer[]> {
+   getCustomers(): Observable<Customer[]> {
     return this._http.get<Customer[]>(ROOT_URL + 'customer/getAllCustomers')
       .pipe(
         catchError((error: Response) => {

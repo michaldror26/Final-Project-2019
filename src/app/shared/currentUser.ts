@@ -24,6 +24,7 @@ export class CurrentUser {
   }
 
   set(value) {
+    if(value){
     if ((value as Admin).AdminId) {
       this.admin = value;
       this.customer=this.employee = null;
@@ -39,11 +40,13 @@ export class CurrentUser {
       this.admin=this.customer= null;
       return;
     }
+    }
     this.admin=this.customer=this.employee = null;
+
   }
 
   isLogin() {
-    return this.admin != null || this.customer != null|| this.employee != null;
+    return this.admin != null || this.customer != null || this.employee != null;
   }
 
 

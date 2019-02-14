@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CartService } from '../../../cart.service';
-import { Subscription } from 'rxjs';
+import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {CartService} from '../../../cart.service';
+import {Subscription} from 'rxjs';
 
-const OFFSET_HEIGHT: number = 170
-const PRODUCT_HEIGHT: number = 48
+const OFFSET_HEIGHT: number = 170;
+const PRODUCT_HEIGHT: number = 48;
 
 @Component({
   selector: 'mini-cart',
@@ -12,64 +12,68 @@ const PRODUCT_HEIGHT: number = 48
 })
 export class MiniCartComponent implements OnInit {
 
-  products: any[] = []
-  numProducts: number = 0
-  
-  animatePlop: boolean = false
-  animatePopout: boolean = false
-  expanded: boolean = false
-  expandedHeight: string
-  cartTotal: number = 0
+  products: any[] = [];
+  numProducts: number = 0;
+
+  animatePlop: boolean = false;
+  animatePopout: boolean = false;
+  expanded: boolean = false;
+  expandedHeight: string;
+  cartTotal: number = 0;
 
 
-  changeDetectorRef: ChangeDetectorRef
+  changeDetectorRef: ChangeDetectorRef;
 
 
-  constructor(private cartService: CartService, changeDetectorRef: ChangeDetectorRef) {
+  constructor(public cartService: CartService, changeDetectorRef: ChangeDetectorRef) {
     this.changeDetectorRef = changeDetectorRef;
 
   }
 
-  ngOnInit() {
-    this.cartService.init();
-    this.expandedHeight = '0'
-    this.cartService.productAdded$.subscribe(data => {
-      this.products = data.products
-      this.cartTotal = data.cartTotal
+  async ngOnInit() {
+    await this.cartService.init();
+
+    this.expandedHeight = '0';
+    await this.cartService.productAdded$.subscribe(data => {
+
+      this.products = data.products;
+      this.cartTotal = data.cartTotal;
       this.numProducts = data.products.reduce((acc, product) => {
-        acc += product.Amount
-        return acc
-      }, 0)
+        acc += product.Amount;
+        return acc;
+      }, 0);
       //Make a plop animation
       if (this.numProducts > 1) {
-        this.animatePlop = true
+        this.animatePlop = true;
         setTimeout(() => {
-          this.animatePlop = false
-        }, 160)
+          this.animatePlop = false;
+        }, 160);
       } else if (this.numProducts == 1) {
-        this.animatePopout = true
+        this.animatePopout = true;
         setTimeout(() => {
-          this.animatePopout = false
-        }, 300)
+          this.animatePopout = false;
+        }, 300);
       }
-      this.expandedHeight = (this.products.length * PRODUCT_HEIGHT + OFFSET_HEIGHT) + 30 + 'px'
+      this.expandedHeight = (this.products.length * PRODUCT_HEIGHT + OFFSET_HEIGHT) + 30 + 'px';
       if (!this.products.length) {
-        this.expanded = false
+        this.expanded = false;
       }
-      this.changeDetectorRef.detectChanges()
-    })
+
+    });
+
+    this.changeDetectorRef.detectChanges();
   }
 
   deleteProduct(product) {
-    this.cartService.deleteProductFromCart(product)
+    this.cartService.deleteProductFromCart(product);
   }
 
   onCartClick() {
-    this.expanded = !this.expanded
+    this.expanded = !this.expanded;
   }
 
-  submitOrder(){
- 
+  submitOrder() {
+
     this.cartService.saveCartOnServer();
   }
 }

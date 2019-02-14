@@ -8,7 +8,7 @@ import { PurchaseOrderService } from '../shared/services/purchaseOrder.service';
 export const OrderServiceMap = {
   sale: SaleOrderService,
   purchase:  PurchaseOrderService
-}
+};
 @Injectable()
 export class CartService {
 
@@ -31,9 +31,9 @@ export class CartService {
         let products = localStorage.getItem('products');
         this.orderProducts = JSON.parse(products);
         this.orderProducts.forEach(prod => {
-          this.cartTotal += prod.Product.SellingPrice*prod.Amount;
+          this.cartTotal += prod.Product.SellingPrice * prod.Amount;
         });
-        this.productAddedSource.next({ products: this.orderProducts, cartTotal: this.cartTotal })
+        this.productAddedSource.next({ products: this.orderProducts, cartTotal: this.cartTotal });
       }
 
     //  if (OrderServiceMap.hasOwnProperty(this.type))
@@ -103,9 +103,9 @@ export class CartService {
     localStorage.setItem('products', JSON.stringify(this.orderProducts));
   }
 
-  saveCartOnServer(){
+  async saveCartOnServer(){
     let productsToSubmit:any[]=[];
-    this.orderProducts.forEach(prod=>
+    await this.orderProducts.forEach(prod=>
       productsToSubmit.push({productId:prod.Product.ProductId,Amount:prod.Amount}));
 
        if(this.type!=null){
@@ -113,11 +113,11 @@ export class CartService {
             alert("עליך לבחור נמען");
             return;
        }
-       this.orderService.add(productsToSubmit,this.owerId).subscribe();
+       await this.orderService.add(productsToSubmit,this.owerId).subscribe();
       }
      else
         //הזמנה ללקוח נוכחי
-          this.orderService.add(productsToSubmit).subscribe();
+         await this.orderService.add(productsToSubmit).subscribe();
 
     }
 

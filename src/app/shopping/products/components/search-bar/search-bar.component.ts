@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {logger} from 'codelyzer/util/logger';
 
 @Component({
   selector: 'search-bar',
@@ -53,6 +54,7 @@ export class SearchBarComponent implements OnInit {
     }
     this.previousSearch = search;
     if (change != 0) {
+      console.log(({search, change}));
       this.onSearchChange.emit({search, change});
     }
   }

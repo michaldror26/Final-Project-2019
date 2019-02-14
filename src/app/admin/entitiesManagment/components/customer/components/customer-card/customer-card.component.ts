@@ -16,9 +16,9 @@ export class CustomerCardComponent implements OnInit {
               private _customerService: CustomerService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     const id = this._activateRout.snapshot.params['id'];
-    this._customerService.getCustomer(id).subscribe((cust: Customer) => this.customer = cust);
+    await this._customerService.getCustomer(id).subscribe((cust: Customer) => this.customer = cust);
   }
 
 }
