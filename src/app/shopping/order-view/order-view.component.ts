@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../shared/services/order.service';
 import {parseAndResolve} from '../../shared/services/CommonMethods';
+import {debounce} from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-view',
@@ -37,8 +38,8 @@ export class OrderViewComponent implements OnInit {
 
   calcTotalSum() {
     this.totalSum = 0;
-    // (this.order.SaleOrderProducts as Array).forEach(item => {
-    //   this.totalSum += item.Product.SellingPrice * item.Quantity * this.order['Customer'].DiscountPercentage;
-    // });
+    (this.order.SaleOrderProducts as Array<any>).forEach(item => {
+      this.totalSum += item.Product.SellingPrice * item.Amount * this.order['Customer'].DiscountPercentage;
+    });
   }
 }

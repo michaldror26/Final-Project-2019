@@ -3,7 +3,15 @@
     <h1 class="display-3 mainTitle">בחגיך</h1>
     <p>אודות החברה ת מה היא עושה ת מה הפעילות וכו וכו בלה בלה בלה כמה שיותר אינפורמציה אבל בגבול וכו וכו וכו וכו וכו
       וכככככו לתת אינפורמציה ע"י משתנה במערך שיכיל גם מידע על הפעילות בסוכות וגם מידע על הפעילות בפסח </p>
-    <p><a class="col-lg-4 col-md-5 btn btn-lg btn-primary py-3 my-xl-3" routerLink="/login" role="button">כניסה לחשבון שלי</a></p>
+    <p *ngIf="!currentUser.isLogin()"><a class="col-lg-4 col-md-5 btn btn-lg btn-primary py-3 my-xl-3"
+                                         routerLink="/login" role="button">כניסה לחשבון שלי</a></p>
+
+    <h3 *ngIf="currentUser.isCustomer()" class="xy-auto w-100 my-4 text-center font-weight-bold text-black-50">
+       {{ "שלום " +  currentUser.get().FirstName }}</h3>
+    <p *ngIf="currentUser.isCustomer()">
+      <a class="col-lg-4 col-md-5 btn btn-lg btn-primary py-3 my-xl-3"
+                                           routerLink="/shopping/products" role="button">הוסף מוצרים לעגלה</a>
+    </p>
   </div>
 
   <div class="container">
@@ -23,14 +31,23 @@
         </p>
         <p><a class="btn btn-secondary" routerLink="/shopping/products" role="button">בצע הזמנה&nbsp;&raquo;</a></p>
       </div>
-      <div class="col-md-4 col-home pt-3 pb-md-3">
-        <h2 class="h3 text-shadow">לקוח? פתח חשבון חינם!</h2>
+      <div class="col-md-4 col-home pt-3 pb-md-3" *ngIf="!currentUser.isCustomer()">
+        <h2 class="h3 text-shadow" >לקוח? פתח חשבון חינם!</h2>
         <p>בחשבון זה תוכל לצפות בהזמנותיך ובמסמכים שונים. תוכלו גם לבצע הזמנותיכם דרך האתר ולהיות מעודכנים בפעילותיכם
           השוטפת בחברה.
           <br> לא משכנע?! אז קבלו את זה - גרפים יעודיים נבנו במיוחד עבורכם - בהם תוכלו לצפות בסטטיסטיקה על פני שנים
           ותקופות, ועל פי פרמטרים מתאימים. תהנו!
         </p>
         <p><a class="btn btn-secondary" routerLink="/register" role="button">פתח חשבון חינם!&nbsp;&raquo;</a></p>
+      </div>
+      <div class="col-md-4 col-home pt-3 pb-md-3" *ngIf="currentUser.isCustomer()">
+        <h2 class="h3 text-shadow" >ההזמנות שלי</h2>
+        <p>רשימת הזמנות
+          <br>
+        פרטי הזמנה
+        </p>
+        <p><a class="btn btn-secondary" routerLink="/shopping/myorders" role="button">לחץ כאן!&nbsp;&raquo;</a></p>
+        <!--/shopping/myorders-->
       </div>
       <div class="col-md-4 col-home pt-3 pb-md-3">
         <h2 class="h3 text-shadow">צור קשר</h2>

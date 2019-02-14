@@ -24,7 +24,6 @@ export class LayoutHeaderComponent implements OnInit {
   routesOfHost: Routes = [
     {path: '/shopping/products', data: ['מוצרים'], children: []},
     {path: '/shopping/cart', data: ['עגלה'], children: []},
-    {path: '/shopping/myorders', data: ['הזמנות'], children: []},
     {path: '/about', data: ['אודות'], children: []},
     {path: '/contact', data: ['צור קשר'], children: []}
   ];
@@ -75,10 +74,10 @@ export class LayoutHeaderComponent implements OnInit {
     {path: '/about', data: ['אודות'], children: []},
     {path: '/contact', data: ['צור קשר'], children: []},
     {
-      path: '/contact', data: ['userName'], children: [///'ניהול חשבון'
-        {path: '1', data: ['פרטים אישיים']},
-        {path: '2', data: ['הזמנות']},
-        {path: '2', data: ['דוחות']}
+      path: '/', data: ['userName'], children: [///'ניהול חשבון'
+        {path: 'update_details', data: ['פרטים אישיים']},
+        {path: '/shopping/myorders', data: ['הזמנות']},
+        {path: '/shopping/reports', data: ['דוחות']}
       ]
     }
 
@@ -107,14 +106,15 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   triggerNavBarClick() {
-
+    if(!this.navbarCollapseButton) return;
     let el: HTMLElement = this.navbarCollapseButton.nativeElement as HTMLElement;
+    if(el)
     el.click();
   }
 
-  // דרך נכונה?
+
   goToLoginPage() {
-    //yyy   this.triggerNavBarClick();
+     this.triggerNavBarClick();
     this.router.navigate(['/login'], {queryParams: {thisPage: window.location.pathname}});
   }
 

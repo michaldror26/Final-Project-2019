@@ -1,7 +1,7 @@
 <div class="container col-xl-5 col-lg-7 col-md-8">
   <div class="py-5 my-4 p-5 shadow">
     <div *ngIf="customer">
-      <h1 class="h3 mb-3 font-weight-normal">{{customer.FirstName + " " + customer.LastName}}</h1>
+      <h1 class="h3 mb-3 font-weight-normal">{{customer.fullName}}</h1>
 
       <div class="row">
         <app-customer-details [customer]="customer"></app-customer-details>

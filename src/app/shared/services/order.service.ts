@@ -18,7 +18,7 @@ export class OrderService {
   }
 
   getOrderByUser(userId: number): Observable<any[]> {
-    return this.httpClient.get<any[]>(ROOT_URL + 'order/customer/16');
+    return this.httpClient.get<any[]>(ROOT_URL + 'order/customer/' + userId);
   }
 
   getOrderById(orderId: number) {
