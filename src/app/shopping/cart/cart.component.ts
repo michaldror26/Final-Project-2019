@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
-import { OrderProduct } from 'src/app/shared/models/OrderProduct.class';
-//import { Product } from '../shared/product.model';
-
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {CartService} from '../cart.service';
+import {OrderProduct} from 'src/app/shared/models/OrderProduct.class';
+import {CurrentUser} from '../../shared/currentUser';
+import {Customer} from '../../shared/models/Customer.class';
 
 @Component({
   selector: 'app-cart',
@@ -12,53 +12,57 @@ import { OrderProduct } from 'src/app/shared/models/OrderProduct.class';
 export class CartComponent implements OnInit {
 
   cart = {
-  products:[],
-  cartTotal: 0,
-  numProducts: 0
-};
+    products: [],
+    cartTotal: 0,
+    numProducts: 0
+  };
+  discount = null;
 
+  constructor(public cartService: CartService,
+              public currentUser: CurrentUser) {
 
-constructor(private cartService: CartService) {
-}
-
-ngOnInit() {
-  // this.cartService.productAdded$.subscribe(data => {
-  //   this.cart.products = data.products
-  //   this.cart.cartTotal = data.cartTotal
-  //   this.cart.numProducts = data.products.reduce((acc, product) => {
-  //     acc += product.quantity
-  //     return acc
-  //   }, 0);
-  // }
-  this.cart.products = this.cartService.orderProducts;
-  this.cart.cartTotal = this.cartService.cartTotal;
-  this.cart.numProducts = this.cartService.orderProducts.reduce((acc, product) => {
-    acc += product.Amount;
-    return acc
-  }, 0);
-
-   this.cart.products = ["מוצר1", "מוצר2", "מוצר3"];
-   this.cart.cartTotal = 328;
-   this.cart.numProducts = 3;
-   console.log(this.cart);
-}
-
-  addOneMoreProduct(id) {
-    // this.cartService.addProductToCart(id);
   }
 
-  removeOneProduct(id) {
+  async ngOnInit() {
+    this.cart = this.cartService.getCart();
+    console.log(this.cart);
+
+    if (this.currentUser.isCustomer()) {
+      this.discount = (this.currentUser.get() as Customer).DiscountPercentage;
+    }
   }
 
-  deleteProduct(id) {
 
+  numProducts(): number {
+    return this.cartService.numProducts;
+  }
+
+  deleteProduct(product) {
+    this.cartService.deleteProductFromCart(product);
+    this.cart = this.cartService.getCart();
+  }
+
+  submitOrder() {
+    this.cartService.saveCartOnServer();
+    this.cart = this.cartService.getCart();
+  }
+
+  addToCart(product) {
+    console.log(product);
+    this.cartService.addProductToCart(product);
+    this.cart = this.cartService.getCart();
+  }
+
+  removeOneProduct(product) {
+    this.cartService.removeProductFromCart(product);
+    this.cart = this.cartService.getCart();
   }
 
   clearAll() {
-    this.cart.products = [];
-    this.cart.cartTotal = 0;
-    this.cart.numProducts = 0;
-    // this.cartService.flushCart();
+    // this.cart.products = [];
+    // this.cart.cartTotal = 0;
+    this.cartService.flushCart();
+    this.cart = this.cartService.getCart();
   }
 
 }
