@@ -96,7 +96,7 @@ export class CartService {
     let parsedPrice = parseFloat(product.SellingPrice.toString().replace(/\./g, '').replace(',', '.'));
     this.cartTotal += parsedPrice;
     //Search this product on the cart and increment the quantity
-    await this.orderProducts = this.orderProducts.map(_product => {
+     this.orderProducts = await this.orderProducts.map(_product => {
       if (_product.Product.ProductId == product.ProductId) {
         _product.Amount++;
         this.numProducts++;
