@@ -6,6 +6,7 @@ import {EntitiesManagmentModule} from './entitiesManagment/entities-managment.mo
 import { PurchaseModule } from './purchase/purchase.module';
 import {SaleModule} from './sale/sale.module';
 import { StatisticsModule } from './statistics/modules/statistics.module';
+import {InventoryModule} from './inventory/inventory.module';
 // import { AddresseeBarComponent } from './shared/addressee-bar/addressee-bar.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { StatisticsModule } from './statistics/modules/statistics.module';
     EntitiesManagmentModule,
     PurchaseModule,
     SaleModule,
+    InventoryModule,
     StatisticsModule
   ],
   declarations: [AdminComponent]

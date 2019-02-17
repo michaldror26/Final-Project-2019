@@ -29,7 +29,7 @@ export class LayoutHeaderComponent implements OnInit {
   ];
 
   routesOfAdmin: Routes = [
-    {path: '/', data: ['צפייה במלאי'], children: []},
+    {path: '/inventory', data: ['צפייה במלאי'], children: []},
     {
       path: 'purchase', data: ['קניה'], children: [
         {path: '1', data: ['הזמן מספק']},
