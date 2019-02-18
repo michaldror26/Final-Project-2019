@@ -1,13 +1,98 @@
 <script src="node_modules/chart.js/src/chart.js"></script>
-<div>
-  <div style="display: block">
-    <canvas baseChart
-            [data]="barChartData"
-            [labels]="barChartLabels"
-           
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-  </div>
-  <button (click)="randomize()">Update</button>
+<div class="main-container">
+  <div *ngIf="loaded"class="container-fluid">
+    <div class="row">
+        <div style="background-color: gold" class="col-3"></div>
+        <div style="background-color:pink" class="col-9">
+            <div class="row" style="background-color:darkmagenta"> מבט על - ניתוח מכירות</div>
+            <div class="row">
+                <div class="col-3">
+                    <div style="display: block">
+                     <canvas baseChart
+                             [data]="barChartData1"
+                             [labels]="barChartLabels1"
+                             [legend]="barChartLegend"
+                 
+                             [chartType]="barChartType1"
+                             (chartHover)="chartHovered($event)"
+                             (chartClick)="chartClicked($event)"></canvas>
+                   </div>
+                   <button>Update</button>
+                 </div>
+                 <div  class="col-3">
+                    <div style="display: block">
+                     <canvas baseChart
+                             [data]="barChartData1"
+                             [labels]="barChartLabels1"
+                             [legend]="barChartLegend"
+                 
+                             [chartType]="barChartType1"
+                             (chartHover)="chartHovered($event)"
+                             (chartClick)="chartClicked($event)"></canvas>
+                   </div>
+                   <button>Update</button>
+                 </div>
+                 <div  class="col-3">
+                    <div style="display: block">
+                     <canvas baseChart
+                             [data]="barChartData1"
+                             [labels]="barChartLabels1"
+                             [legend]="barChartLegend"
+                 
+                             [chartType]="barChartType1"
+                             (chartHover)="chartHovered($event)"
+                             (chartClick)="chartClicked($event)"></canvas>
+                   </div>
+                   <button>Update</button>
+                 </div></div>
+          
+            <div class="row" >
+              <div  class="col">
+                <div style="display: block">
+                  <canvas baseChart
+                          [data]="barChartData"
+                          [labels]="barChartLabels"
+                          [legend]="barChartLegend"
+              
+                          [chartType]="barChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+                </div>
+                <button (click)="randomize()">Update</button>
+              </div>
+             <div  class="col">
+                     <div style="display: block">
+                      <canvas baseChart
+                              [data]="barChartData1"
+                              [labels]="barChartLabels1"
+                              [legend]="barChartLegend"
+                  
+                              [chartType]="barChartType1"
+                              (chartHover)="chartHovered($event)"
+                              (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                    <button>Update</button>
+                  </div></div>
+        </div>
+    </div>
+   
+
 </div>
+
+</div>
+
+ <!--  <div >
+                    <div style="display: block">
+                      <canvas baseChart
+                              [data]="barChartData"
+                              [labels]="barChartLabels"
+                              [legend]="barChartLegend"
+                  
+                              [chartType]="barChartType"
+                              (chartHover)="chartHovered($event)"
+                              (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                    <button (click)="randomize()">Update</button>
+                  </div> -->
+              
+                 
