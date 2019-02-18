@@ -21,7 +21,7 @@ const routes: Routes = [
     component: AboutUsComponent
   }, {
     path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule'
+      loadChildren: './admin/admin.module#AdminModule'
   }, {
     path: 'shopping',
     loadChildren: './shopping/shopping.module#ShoppingModule'

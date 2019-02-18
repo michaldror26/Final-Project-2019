@@ -33,7 +33,7 @@ export class CustomerEditComponent implements OnInit {
       await this._customerService.getCustomerIncludeSiteUser(id).subscribe((cust: Customer) => {
         this.customer = cust;
         if(cust.SiteUser)
-        this.siteUser=cust.SiteUser;
+        this.siteUser = cust.SiteUser;
         console.log('siteUserId', this.customer.SiteUserId, !this.customer.SiteUserId);
         console.log(this.customer);
         console.log(this.siteUser);

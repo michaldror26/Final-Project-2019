@@ -18,7 +18,7 @@ export class OrderService {
   }
 
   getOrderByUser(userId: number): Observable<any[]> {
-    return this.httpClient.get<any[]>(ROOT_URL + 'order/customer/16');
+    return this.httpClient.get<any[]>(ROOT_URL + 'order/customer/' + userId);
   }
 
   getOrderById(orderId: number) {
@@ -27,7 +27,7 @@ export class OrderService {
 
   addCustomerOrder(productsToSubmit:any[],id?:number):Observable<string>
   {
-    let url='Order/customer';
+    let url='order/customer';
     if(id!=null)
     url=url+'/'+id;
     return this.httpClient.post<string>(ROOT_URL+url,productsToSubmit)

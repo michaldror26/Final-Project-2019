@@ -13,7 +13,6 @@ const PRODUCT_HEIGHT: number = 48;
 export class MiniCartComponent implements OnInit {
 
   products: any[] = [];
-  numProducts: number = 0;
 
   animatePlop: boolean = false;
   animatePopout: boolean = false;
@@ -38,17 +37,14 @@ export class MiniCartComponent implements OnInit {
 
       this.products = data.products;
       this.cartTotal = data.cartTotal;
-      this.numProducts = data.products.reduce((acc, product) => {
-        acc += product.Amount;
-        return acc;
-      }, 0);
-      //Make a plop animation
-      if (this.numProducts > 1) {
+      let numProducts = data.numProducts;
+      // Make a plop animation
+      if (numProducts > 1) {
         this.animatePlop = true;
         setTimeout(() => {
           this.animatePlop = false;
         }, 160);
-      } else if (this.numProducts == 1) {
+      } else if (numProducts == 1) {
         this.animatePopout = true;
         setTimeout(() => {
           this.animatePopout = false;
@@ -62,6 +58,10 @@ export class MiniCartComponent implements OnInit {
     });
 
     this.changeDetectorRef.detectChanges();
+  }
+
+  numProducts(): number {
+    return this.cartService.numProducts;
   }
 
   deleteProduct(product) {

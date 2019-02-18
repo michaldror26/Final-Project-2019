@@ -2,33 +2,38 @@
 
   <div class="text-right my-4 p-5 shadow">
     <h4>כתוב את פנייתך כאן:</h4>
-    <form name="qryform" id="qryform" method="post" action="" onsubmit="return(validateMe());"
+    <form name="qryform" id="qryform" method="post" action="" (submit)="validateMe()"
           novalidate="novalidate">
       <div class="form-group">
         <label>שם:</label>
-        <input type="text" class="form-control" id="name" placeholder="הכנס שם" name="name">
+        <input type="text" class="form-control" id="name" placeholder="הכנס שם" name="name"
+               [(ngModel)]="message.FromName">
       </div>
       <div class="form-group">
         <label>מייל:</label>
-        <input type="email" class="form-control" id="email" placeholder="הכנס מייל" name="email">
+        <input type="email" class="form-control" id="email" placeholder="הכנס מייל" name="email"
+               [(ngModel)]="message.FromEmail">
       </div>
 
       <div class="form-group">
         <label>מס טלפון:</label>
-        <input type="text" class="form-control" id="phone" placeholder="הכנס מס טלפון" name="phone">
+        <input type="text" class="form-control" id="phone" placeholder="הכנס מס טלפון" name="phone"
+               [(ngModel)]="message.Mobile">
       </div>
       <div class="form-group">
         <label>נושא:</label>
-        <input type="text" class="form-control" id="subject" placeholder="נושא" name="subject">
+        <input type="text" class="form-control" id="subject" placeholder="נושא" name="subject"
+               [(ngModel)]="message.Topic">
       </div>
 
       <div class="form-group">
         <label>פירוט הודעה:</label>
-        <textarea name="issues" class="form-control" id="iq" placeholder="פרט הודעתך" ></textarea>
+        <textarea name="issues" class="form-control" id="iq" placeholder="פרט הודעתך"
+                  [(ngModel)]="message.Content"></textarea>
       </div>
 
 
-      <button type="submit" class="btn btn-default float-left" >שלח</button>
+      <button type="submit" class="btn btn-default float-left">שלח</button>
       <div class="clearfix"></div>
     </form>
   </div>

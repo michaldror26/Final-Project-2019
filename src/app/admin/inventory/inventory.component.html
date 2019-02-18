@@ -1,0 +1,65 @@
+<!--<p><a href="https://bootsnipp.com/snippets/92md4">one ///////</a><a href="https://bootsnipp.com/snippets/aMWKk">two</a></p>-->
+
+<div class="shadow row" dir="rtl">
+
+  <div class="col-md-12 text-center">
+    <h4 class="mt-3">מלאי</h4>
+
+    <form class="form-inline">
+      <input class="form-control mx-sm-auto mr-md-2 my-2 col-xl-3" type="search" #freeText placeholder="חפש כאן מוצר ..."
+             aria-label="Search" (input)="searchText($event.target.value)">
+      <input class="form-control my-2" type="number" placeholder="מ-כמות"
+             aria-label="Search" [(ngModel)]="countFrom" [ngModelOptions]="{standalone: true}">
+    <input class="form-control my-2" type="number" placeholder="עד-כמות"
+             aria-label="Search" [(ngModel)]="countTo" [ngModelOptions]="{standalone: true}">
+      <button class="form-control my-2" (click)="searchText(freeText.value)">חפש!</button>
+    </form>
+
+    <div class="table-responsive">
+
+      <table id="mytable" class="table table-bordred table-striped">
+
+        <thead>
+        <th></th>
+
+
+        <th>כמות</th>
+        <th>שם</th>
+        <th>קטגוריה</th>
+        <th>קטגורית אב</th>
+        <th>קטגורית אב</th>
+        <th>מחיר מכירה</th>
+        </thead>
+        <tbody *ngIf="inventory && inventory.length > 0">
+
+        <tr *ngFor="let product of inventory">
+          <td>
+            <div class="img-wrapper">
+              <img class="img" [src]="'data:image/png;base64,' + product.Image" *ngIf="product.Image">
+              <div class="img-placeholder" *ngIf="!product.Image"></div>
+            </div>
+
+
+          </td>
+
+          <td>{{product.Amount }}</td>
+          <td>{{product.Product.Name }}</td>
+          <td>{{product.Product.Category.Name }}</td>
+          <td>{{product.Product.Category.ParentCategory
+          && product.Product.Category.ParentCategory.ParentCategory
+            ? product.Product.Category.ParentCategory.Name : '-'}}</td>
+          <td>{{product.Product.Category.ParentCategory
+          && product.Product.Category.ParentCategory.ParentCategory
+           && product.Product.Category.ParentCategory.ParentCategory.ParentCategory
+              ? product.Product.Category.ParentCategory.ParentCategory.Name : '-'}}</td>
+          <td>{{product.Product.SellingPrice }}ש"ח</td>
+        </tr>
+
+        </tbody>
+
+      </table>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

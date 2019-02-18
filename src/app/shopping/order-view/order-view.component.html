@@ -32,11 +32,12 @@
                       <tr
                         *ngFor="let item of order.SaleOrderProducts ;">
                         <td>{{item.Product.Name}}</td>
-                        <td>{{item.Quantity}}</td>
+                        <td>{{item.Amount}}</td>
                         <td>{{item.Product.SellingPrice}} ש"ח</td>
                         <td>{{order.Customer.DiscountPercentage + "%"}}</td>
-                        <td>{{ item.Product.SellingPrice * order.Customer.DiscountPercentage / 100}}  ש"ח</td>
-                        <td>{{ item.Product.SellingPrice * item.Quantity * order.Customer.DiscountPercentage / 100}}
+
+                        <td>{{ item.Product.SellingPrice * (100 - order.Customer.DiscountPercentage) / 100 }}  ש"ח</td>
+                        <td>{{ item.Product.SellingPrice * item.Amount * order.Customer.DiscountPercentage / 100}}
                           ש"ח
                         </td>
                       </tr>

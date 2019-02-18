@@ -6,13 +6,14 @@ import {EntitiesManagmentComponent} from './entitiesManagment/components/entitie
 import {PurchaseComponent} from './purchase/components/purchase.component';
 import {SaleComponent} from './sale/sale/component/sale.component';
 import {StaticticsComponent} from './statistics/components/statictics.component';
+import {InventoryComponent} from './inventory/inventory.component';
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     // canActivate: [AuthGuard]
     children: [
-      // //{path: '/**', data: ['צפייה במלאי'], children: []},
+      {path: 'inventory', data: ['צפייה במלאי'], loadChildren: './inventory/inventory.module#InventoryModule'},
       {
         path: 'entities-managment', component: EntitiesManagmentComponent, data: ['בסיס נתונים'],
         loadChildren: './entitiesManagment/entities-managment.module#EntitiesManagmentModule'

@@ -41,13 +41,13 @@ import {CurrentUser} from './shared/currentUser';
   declarations: [
     AppComponent,
     LayoutHeaderComponent,
-    LayoutFooterComponent,
+    LayoutFooterComponent
   ],
   bootstrap: [AppComponent],
   providers: [
     CookieService,
     AuthService,
-    CurrentUser
+    CurrentUser,
   ]
 })
 export class AppModule {

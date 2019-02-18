@@ -1,4 +1,4 @@
-import { SiteUser } from "./SiteUser.class";
+import {SiteUser} from './SiteUser.class';
 
 export abstract class User {
   //public AuthenticationTypeId: number;
@@ -10,5 +10,9 @@ export abstract class User {
   public Email: string;
   public SiteUserId?: number;
   public SiteUser?: SiteUser;
+
+  fullName() {
+    return (this.FirstName ? this.FirstName + ' ' : '') + this.LastName || '';
+  }
 }
 

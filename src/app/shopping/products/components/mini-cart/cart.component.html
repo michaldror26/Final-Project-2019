@@ -2,7 +2,7 @@
 <div class="preview" [class.expanded]='expanded'>
   <button [class.not-shown]='cartService && cartService.orderProducts && cartService.orderProducts.length == 0 || expanded' type="button" class="circle" (click)="onCartClick()">
     <img src="../../../../../assets/cart_white.svg" alt="cart"/>
-    <div class="indicator"><span>{{numProducts}}</span></div>
+    <div class="indicator"><span>{{numProducts()}}</span></div>
   </button>
   <div class="fill" [style.height]="expanded ? expandedHeight : 'inherit'" [class.not-shown]='!products.length'
        [class.animate-plop]='animatePlop' [class.shown]='animatePopout && !expanded'>
