@@ -73,6 +73,7 @@
             <th></th>
             <!-- <th class="text-right px-4">{{cart.cartTotal    + " ש\"ח"}}</th> -->
             <th class="text-right px-4">{{cart.cartTotal + " ש\"ח"}}</th>
+            <th class="text-right px-4" *ngIf="discount">{{cart.cartTotal * ((100 - discount)/100) + " ש\"ח"}}</th>
           </tr>
           </tfoot>
         </table>

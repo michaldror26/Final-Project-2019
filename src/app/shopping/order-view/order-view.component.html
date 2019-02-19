@@ -1,5 +1,10 @@
 <div class="row container mx-auto mt-3">
+
   <div class="col-12">
+    <button class="btn btn-lg btn-secondary my-2"
+            [routerLink]="[currentUser.isCustomer()? '/shopping/myorders':'/reports/all-sales-orders']">לכל ההזמנות
+    </button>
+
     <ng-container *ngIf="order && order.SaleOrderProducts" ; else notFound>
       <div class="card">
         <div class="card-body">
@@ -46,7 +51,7 @@
                       <tr>
                         <td colspan="4"></td>
                         <th>סה"כ:</th>
-                        <td> {{totalSum}} ש"ח </td>
+                        <td> {{totalSum}} ש"ח</td>
                       </tr>
                       </tfoot>
                     </table>

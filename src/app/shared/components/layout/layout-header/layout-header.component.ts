@@ -30,13 +30,13 @@ export class LayoutHeaderComponent implements OnInit {
 
   routesOfAdmin: Routes = [
     {path: '/inventory', data: ['צפייה במלאי'], children: []},
-    {
-      path: 'purchase', data: ['קניה'], children: [
-        {path: '1', data: ['הזמן מספק']},
-        {path: '2', data: ['קבל מספק']},
-        {path: 'sort-etrogs', data: ['מיון אתרוגים']},
-      ]
-    },
+    // {
+    //   path: 'purchase', data: ['קניה'], children: [
+    //     {path: '1', data: ['הזמן מספק']},
+    //     {path: '2', data: ['קבל מספק']},
+    //     {path: 'sort-etrogs', data: ['מיון אתרוגים']},
+    //   ]
+    // },
     {
       path: '/sale', data: ['מכירה'], children: [
         {path: 'sale-order', data: ['הזמן ללקוח']},
@@ -45,7 +45,7 @@ export class LayoutHeaderComponent implements OnInit {
         {path: '4', data: ['צפי המכירות להיום']}
       ]
     },
-    {path: '/', data: ['תקבול'], children: []},
+  //  {path: '/', data: ['תקבול'], children: []},
     {
       path: '/entities-managment', data: ['בסיס נתונים'], children: [
         {path: '/admin/entities-managment/customers', data: ['לקוחות']},
@@ -55,10 +55,10 @@ export class LayoutHeaderComponent implements OnInit {
       ]
     },
     {
-      path: '/', data: ['דוחות'], children: [
+      path: '/reports', data: ['דוחות'], children: [
         {path: '1', data: ['בסיסי נתונים']},
-        {path: '2', data: ['קניה']},
-        {path: '3', data: ['מכירה']}
+      //  {path: '2', data: ['קניה']},
+        {path: '/reports/all-sales-orders', data: ['מכירה']}
       ]
     },
     {
@@ -107,15 +107,15 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   triggerNavBarClick() {
-    if(!this.navbarCollapseButton) return;
+    if (!this.navbarCollapseButton) return;
     let el: HTMLElement = this.navbarCollapseButton.nativeElement as HTMLElement;
-    if(el)
-    el.click();
+    if (el)
+      el.click();
   }
 
 
   goToLoginPage() {
-     this.triggerNavBarClick();
+    this.triggerNavBarClick();
     this.router.navigate(['/login'], {queryParams: {thisPage: window.location.pathname}});
   }
 
@@ -127,6 +127,7 @@ export class LayoutHeaderComponent implements OnInit {
   logout() {
     this.triggerNavBarClick();
     this.siteUserServicde.logout().subscribe();
+    this.router.navigate(['/home']);
   }
 
   setRoutes() {

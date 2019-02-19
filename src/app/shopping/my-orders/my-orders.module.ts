@@ -7,6 +7,7 @@ import {DataService} from '../data.service';
 import {CartService} from '../cart.service';
 import {MyOrdersComponent} from './my-orders.component';
 import {RouterModule} from '@angular/router';
+// import {OrderViewComponent} from '../order-view/order-view.component';
 
 @NgModule({
 
@@ -18,13 +19,12 @@ import {RouterModule} from '@angular/router';
     JsonpModule
   ],
   declarations: [
-    MyOrdersComponent
+    MyOrdersComponent,
   ],
   providers: [
     DataService,
     CartService
   ],
-  exports: []
 })
 export class MyOrderModule {
 }

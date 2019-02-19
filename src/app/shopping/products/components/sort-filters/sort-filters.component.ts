@@ -19,7 +19,7 @@ export class SortFiltersComponent implements OnInit {
   }
 
   onSelectChange($event){
-    this.onSortChange.emit($event.target.value)
+    this.onSortChange.emit($event.target.value);
   }
 
 }

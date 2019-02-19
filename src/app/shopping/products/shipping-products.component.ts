@@ -74,10 +74,10 @@ export class ShippingProductsComponent implements OnInit {
       await this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
       await this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
       // this.originalData = this.products =  [
-      //   { ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
-      //   { ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
-      //   { ProductId: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255  },
-      //   { ProductId: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85  }
+      //   { ID: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
+      //   { ID: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
+      //   { ID: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255  },
+      //   { ID: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85  }
       // ];
 
     }
@@ -133,7 +133,7 @@ export class ShippingProductsComponent implements OnInit {
         this.mainFilter.categories.push(data.filter);
       } else {
         this.mainFilter.categories = this.mainFilter.categories.filter(category => {
-          return category.CategoryId != data.filter.CategoryId;
+          return category.ID != data.filter.ID;
         });
       }
     } else if (data.type == 'custom') {
@@ -171,7 +171,7 @@ export class ShippingProductsComponent implements OnInit {
         let passCategoryFilter = false;
         if (!passCategoryFilter) {
           passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
-            return found || p.CategoryId == category.CategoryId;
+            return found || p.CategoryId == category.ID;
           }, false);
         }
         if (!passCategoryFilter) {

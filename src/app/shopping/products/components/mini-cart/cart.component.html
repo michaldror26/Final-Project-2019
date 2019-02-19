@@ -23,7 +23,7 @@
       </div>
        <!-- <button type="button" class="pay-btn">Pay {{cartTotal | currency:'USD':'symbol':'1.0-0'}}</button>  -->
       <button type="button" class="pay-btn"> שלם {{cartTotal + " ש\"ח"}}</button>
-      <button type="button" class="pay-btn" (click)="submitOrder()"> הזמן</button>
+      <button type="button" class="pay-btn" style="cursor: pointer" (click)="submitOrder()"> הזמן</button>
     </div>
     <button type="button" class="close-btn" *ngIf='expanded' (click)="onCartClick()">סגור</button>
   </div>

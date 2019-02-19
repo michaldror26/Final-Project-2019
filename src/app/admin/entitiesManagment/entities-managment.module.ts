@@ -1,10 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-
-// import {FeedListComponent} from '../../shared/feeds/feeds-list/feeds-list.component';
-// import {AdDirective} from '../../shared/feeds/directives/ad.directive';
-
 import {EntityManagmentRoutingModule} from './entity-managment-routing.module';
 import {CustomerModule} from './components/customer/customer.module';
 import {ProductModule} from './components/product/product.module';

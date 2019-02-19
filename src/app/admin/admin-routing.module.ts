@@ -7,6 +7,8 @@ import {PurchaseComponent} from './purchase/components/purchase.component';
 import {SaleComponent} from './sale/sale/component/sale.component';
 import {StaticticsComponent} from './statistics/components/statictics.component';
 import {InventoryComponent} from './inventory/inventory.component';
+import {ReportsComponent} from './reports/reports/reports.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -39,13 +41,10 @@ const routes: Routes = [
         path: 'statistics', component: StaticticsComponent, data: ['סטטיסטיקה'],
         loadChildren: './statistics/modules/statistics.module#StatisticsModule'
       },
-      // {
-      //   path: '/', data: ['דוחות'], children: [
-      //   {path: '1', data: ['בסיסי נתונים']},
-      //   {path: '2', data: ['קניה']},
-      //   {path: '3', data: ['מכירה']}
-      // ]
-      // },
+      {
+        path: 'reports', component: ReportsComponent, data: ['דוחות'],
+        loadChildren: './reports/reports/reports.module#ReportsModule'
+      },
       // {
       //   path: '/**', data: ['סטטיסטיקה'], children: []
       // }

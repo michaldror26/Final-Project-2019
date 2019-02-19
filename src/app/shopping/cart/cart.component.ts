@@ -43,8 +43,9 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder() {
-    this.cartService.saveCartOnServer();
-    this.cart = this.cartService.getCart();
+    this.cartService.saveCartOnServer().then(() => {
+      // this.clearAll();
+    });
   }
 
   addToCart(product) {

@@ -7,8 +7,9 @@ import { PurchaseModule } from './purchase/purchase.module';
 import {SaleModule} from './sale/sale.module';
 import { StatisticsModule } from './statistics/modules/statistics.module';
 import {InventoryModule} from './inventory/inventory.module';
-
-
+import {ReportsModule} from './reports/reports/reports.module';
+import {ShoppingModule} from '../shopping';
+// import { AddresseeBarComponent } from './shared/addressee-bar/addressee-bar.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,9 @@ import {InventoryModule} from './inventory/inventory.module';
     PurchaseModule,
     SaleModule,
     InventoryModule,
-    StatisticsModule
+    StatisticsModule,
+    ReportsModule,
+    ShoppingModule
   ],
   declarations: [AdminComponent]
 })
