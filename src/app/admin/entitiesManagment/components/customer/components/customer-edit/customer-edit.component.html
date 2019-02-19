@@ -3,7 +3,9 @@
     <div *ngIf="customer">
 
       <form>
-        <h1 class="h3 mb-3 font-weight-normal">הזן פרטי לקוח</h1>
+        <h1 class="h3 mb-3 font-weight-normal">
+          {{isCustomer ? "הזן פרטיך אישיים" : " הזן פרטי לקוח" }}
+        </h1>
         <p class="font-weight-normal text-danger" *ngIf="message && message!='קיים כבר שם משתמש וסיסמא זהים'">
           {{message}}
         </p>
@@ -46,35 +48,37 @@
         <!--(ngModelChange)="customer.RegisteredDate=$event"-->
         <!--required>-->
         <!--</div>-->
-        <div class="row mx-0">
-          <label for="inputDiscountPercentage" class="col-md-5 col-12 text-right text-md-left">אחוז הנחה:</label>
+        <div class="row mx-0" >
+          <label for="inputDiscountPercentage" class="col-md-5 col-12 text-right text-md-left" *ngIf="!isCustomer">אחוז הנחה:</label>
           <input type="number" id="inputDiscountPercentage" class="form-control form-group col-md-7 col-12"
                  placeholder="אחוז הנחה"
                  title="אחוז הנחה" name="inputDiscountPercentage" [(ngModel)]="customer.DiscountPercentage"
-                 required>
+                 required
+                 [hidden]="isCustomer">
 
         </div>
         <button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit" (click)="addOrEditCustomer()">
           {{ isNew ? 'הוסף' : 'עדכן' }}
         </button>
-        <div class="mt-2"><a *ngIf="linkToList" [routerLink]="['/admin/entities-managment/customers/view']">חזור לרשימת
+        <div class="mt-2"><a *ngIf="linkToList&&!isCustomer" [routerLink]="['/admin/entities-managment/customers/view']">חזור לרשימת
           הלקוחות</a></div>
-          <!-- *ngIf="isNew || !customer.SiteUserId" -->
-      <div >
-        <h1 class="h3 mb-3 mt-4 font-weight-normal">הזן פרטי משתמש</h1>
-        <p class="font-weight-normal text-danger" *ngIf="message&&message == 'קיים כבר שם משתמש וסיסמא זהים'">
-          {{ message}}
-        </p>
-        <input type="text" name="inputUserName" [(ngModel)]="siteUser.UserName" id="inputUserName"
-               class="form-control form-group" placeholder="שם משתמש" title="שם משתמש"
-               required>
-        <input type="password" name="inputPassword" [(ngModel)]="siteUser.Password" id="inputPassword"
-               class="form-control form-group" placeholder="סיסמא" title="סיסמא"
-               required>
-        <button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit" (click)="addOrEditCustomer()">
-          {{ isNew ? 'הוסף' : 'עדכן' }}
-        </button>
-      </div>
+        <!-- *ngIf="isNew || !customer.SiteUserId" -->
+        <div>
+          <h1 class="h3 mb-3 mt-4 font-weight-normal">הזן פרטי משתמש</h1>
+          <p class="font-weight-normal text-danger" *ngIf="message&&message == 'קיים כבר שם משתמש וסיסמא זהים'">
+            {{ message}}
+          </p>
+          <input type="text" name="inputUserName" [(ngModel)]="siteUser.UserName" id="inputUserName"
+                 class="form-control form-group" placeholder="שם משתמש" title="שם משתמש"
+                 required>
+          <input type="password" name="inputPassword" [(ngModel)]="siteUser.Password" id="inputPassword"
+                 class="form-control form-group" placeholder="סיסמא" title="סיסמא"
+                 required>
+          <button class="btn btn-lg btn-primary btn-block col-lg-6 m-lg-auto" type="submit"
+                  (click)="addOrEditCustomer()">
+            {{ isNew ? 'הוסף' : 'עדכן' }}
+          </button>
+        </div>
       </form>
     </div>
 

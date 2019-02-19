@@ -35,6 +35,6 @@ export class ContactComponent implements OnInit {
     }
     const mess = {...this.message};
     mess.Content = mess.Content + 'מספר טלפון להתקשרות חוזרת  ' + mess.Mobile;
-    await this.contact_service.sendMailToAdmin(mess);
+    await this.contact_service.sendMailToAdmin(mess).subscribe();
   }
 }

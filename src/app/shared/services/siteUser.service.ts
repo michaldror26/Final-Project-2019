@@ -26,8 +26,11 @@ export class SiteUserService {
     let siteuser: SiteUser = new SiteUser();
     siteuser.UserName = userName;
     siteuser.Password = password; // {UserName: userName, Password: password}
-    return this.httpClient
-      .post<User>(ROOT_URL + 'user/login', {UserName: userName, Password: password})
+   return this.httpClient
+      .post<User>(ROOT_URL + 'user/login', {UserName: userName, Password: password}
+      // , { headers:
+      //     {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
+          )
       .pipe(
         map(
           data => {

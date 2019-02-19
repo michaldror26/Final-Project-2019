@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {LoadImageBase64Component} from './shared/components/load-image-base64/load-image-base64.component';
 import {AboutUsComponent} from './shared/components/about-us/about-us.component';
+import {CustomerEditComponent} from './admin/entitiesManagment/components/customer/components/customer-edit/customer-edit.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,9 @@ const routes: Routes = [
   }, {
     path: 'base64',
     component: LoadImageBase64Component
+  }, {
+    path: 'update_details',
+    component: CustomerEditComponent
   }, {
     path: '**',
     redirectTo: ''
