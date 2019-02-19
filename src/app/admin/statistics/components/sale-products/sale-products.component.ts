@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BIService } from '../../services/BIService';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-sale-products',
@@ -9,36 +8,36 @@ import { JsonPipe } from '@angular/common';
 })
 export class SaleProductsComponent {
   constructor(private biService:BIService){}
-  loaded=true;
+  loaded=false;
   async ngOnInit() {
    let cnt:number=0;
-  //!false!!!  
-//  await this.biService.getSaleValue().subscribe(
-//     data=>{
  
-//   delete data['$id'];
-  
-//      this.barChartLabels= Object.keys(data);
+ await this.biService.getSaleValue().subscribe(
+    data=>{
+ 
+  delete data['$id'];
+   
+     this.barChartLabels= Object.keys(data);
       
-//       this.barChartData=Object.values(data);
-//       cnt++;
-//       this.loaded=cnt==2;
-//   } );
+      this.barChartData=Object.values(data);
+      cnt++;
+      this.loaded=cnt==2;
+  } );
 
 
-//   await this.biService.getSaleCustomer().subscribe(
-//     data=>{
-//     delete data['$id'];
+  await this.biService.getSaleCustomer().subscribe(
+    data=>{
+    delete data['$id'];
   
-//      this.barChartLabels1=Object.keys(data);
+     this.barChartLabels1=Object.keys(data);
       
-//       this.barChartData1=Object.values(data);
-//       console.log(this.barChartData1);
-//       console.log(this.barChartLabels1);
+      this.barChartData1=Object.values(data);
+      console.log(this.barChartData1);
+      console.log(this.barChartLabels1);
 
-//       cnt++;
-//       this.loaded=cnt==2;
-//   });
+      cnt++;
+      this.loaded=cnt==2;
+  });
  
   }
 
@@ -48,15 +47,25 @@ export class SaleProductsComponent {
     responsive: true
   };
   public barChartLabels:string[]=[] ;
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
- 
+  public barChartType:string = 'horizontalBar';
+  public chartLegend:boolean = false;
+  public chartOption = {
+    responsive: true,
+    scales: {
+      xAxes: [
+        {
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ]
+    }
+  }
   public barChartData:number[]=[] ;
  
 
   public barChartLabels1:string[]=[] ;
-  public barChartType1:string = 'bar';
-  public barChartLegend1:boolean = true;
+ 
  
   public barChartData1:number[]=[] ;
   // events
@@ -87,4 +96,16 @@ export class SaleProductsComponent {
      console.log(this.barChartData,this.barChartLabels);
      
 }
+ // Doughnut
+ public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+ public doughnutChartData:number[] = [350, 450, 100];
+ public doughnutChartType:string = 'doughnut';
+ public chartOptions: any = {
+  options: {
+    legend: {
+       display: false
+    },
+   }
+   }
+ 
 }
