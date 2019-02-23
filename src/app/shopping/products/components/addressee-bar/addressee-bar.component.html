@@ -3,7 +3,7 @@
   <label class="font-weight-bold">בחר </label>
 <select (change)='onSelectChange($event)' style="width: -webkit-fill-available;">
       <option></option>
-   <option *ngFor='let item of addressees' [value]="item.CustomerId">{{item.FirstName + " "+ item.LastName}}</option>
+   <option *ngFor='let item of addressees' [value]="item.ID">{{item.FirstName + " "+ item.LastName}}</option>
 
   </select>
 </div>

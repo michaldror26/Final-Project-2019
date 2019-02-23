@@ -24,7 +24,7 @@ export class CustomerDeleteComponent implements OnInit {
   }
 
   deleteCustomer() {
-    this._customerService.deleteCustomer(this.customer.CustomerId).subscribe((cust: Customer) => {
+    this._customerService.deleteCustomer(this.customer.ID).subscribe((cust: Customer) => {
       this.customer = cust;
       this._router.navigate(['./admin/entities-managment/customers/view']);
     });

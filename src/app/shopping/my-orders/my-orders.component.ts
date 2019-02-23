@@ -22,7 +22,7 @@ export class MyOrdersComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.orderService.getOrderByUser((this.currentUser.get() as Customer).CustomerId).subscribe((orders) => {
+    await this.orderService.getOrderByUser((this.currentUser.get() as Customer).ID).subscribe((orders) => {
       this.orders = parseAndResolve((JSON.stringify(orders)));
       console.log(this.orders);
     });

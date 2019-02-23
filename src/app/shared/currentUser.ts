@@ -25,17 +25,17 @@ export class CurrentUser {
 
   set(value) {
     if(value){
-    if ((value as Admin).AdminId) {
+    if ((value as Admin).SiteUser.AuthenticationTypeId==1) {
       this.admin = value;
       this.customer=this.employee = null;
       return;
     }
-    if ((value as Customer).CustomerId) {
+    if ((value as Customer).SiteUser.AuthenticationTypeId==2) {
       this.customer = value;
       this.admin=this.employee = null;
       return;
     }
-    if ((value as Employee).EmployeeId) {
+    if ((value as Employee).SiteUser.AuthenticationTypeId==3) {
       this.employee = value;
       this.admin=this.customer= null;
       return;

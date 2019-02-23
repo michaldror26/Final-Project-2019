@@ -1,4 +1,4 @@
 ﻿export class AuthenticationType {
-  id: number;
+  ID: number;
   authName: string;
 }

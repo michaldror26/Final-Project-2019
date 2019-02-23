@@ -11,10 +11,10 @@ import {catchError, map} from 'rxjs/operators';
 export class ProductService {
 
   products: Product[] = [
-    {ProductId: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25},
-    {ProductId: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125},
-    {ProductId: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255},
-    {ProductId: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85}
+    {ID: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25},
+    {ID: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125},
+    {ID: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255},
+    {ID: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85}
   ];
   basicURL: string = 'urlBasic';
 

@@ -2,7 +2,7 @@ import {User} from './User.class';
 
 export class SiteUser {
 
-    Id:number;
+    ID:number;
     
    UserName:string;
 Password:string;

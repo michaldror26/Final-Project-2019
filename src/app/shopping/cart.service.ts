@@ -69,7 +69,7 @@ export class CartService {
     this.cartTotal -= parsedPrice;
     //Search this product on the cart and increment the quantity
     this.orderProducts = this.orderProducts.map(_product => {
-      if (_product.Product.ProductId == product.ProductId) {
+      if (_product.Product.ID == product.ID) {
         _product.Amount--;
         this.numProducts--;
         if (_product.Amount === 0)
@@ -97,7 +97,7 @@ export class CartService {
     this.cartTotal += parsedPrice;
     //Search this product on the cart and increment the quantity
      this.orderProducts = await this.orderProducts.map(_product => {
-      if (_product.Product.ProductId == product.ProductId) {
+      if (_product.Product.ID == product.ID) {
         _product.Amount++;
         this.numProducts++;
         exists = true;
@@ -121,7 +121,7 @@ export class CartService {
 
   deleteProductFromCart(product: Product) {
     this.orderProducts = this.orderProducts.filter(_product => {
-      if (_product.Product.ProductId == product.ProductId) {
+      if (_product.Product.ID == product.ID) {
         this.cartTotal -= _product.Product.SellingPrice * _product.Amount;
         this.numProducts -= _product.Amount;
         return false;
@@ -148,7 +148,7 @@ export class CartService {
   async saveCartOnServer() {
     let productsToSubmit: any[] = [];
     await this.orderProducts.forEach(prod =>
-      productsToSubmit.push({productId: prod.Product.ProductId, Amount: prod.Amount}));
+      productsToSubmit.push({productId: prod.Product.ID, Amount: prod.Amount}));
 
     if (this.type != null) {
       if (this.owerId == null) {

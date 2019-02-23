@@ -1,5 +1,5 @@
 import {User} from '../../../shared/models/User.class';
 
 export class Admin extends User{
-  public AdminId: number;
+  public ID: number;
 }

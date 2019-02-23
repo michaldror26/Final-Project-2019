@@ -78,7 +78,7 @@ export class CustomerEditComponent implements OnInit {
           }
           setTimeout(function (router, custId) {
             router.navigate(['/admin/entities-managment/customers/details/' + custId]);
-          }, 3000, this._router, this.customer.CustomerId);
+          }, 3000, this._router, this.customer.ID);
         },
         error1 => {
           this.message = error1.error.ExceptionMessage;

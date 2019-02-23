@@ -1,7 +1,7 @@
 ﻿import {Category} from './Category.class';
 
 export class Product {
-  public ProductId: number;
+  public ID: number;
   public Name: string;
   public CategoryId: number;
   public Category?: Category;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BIService } from '../../services/BIService';
 
+
 @Component({
   selector: 'app-sale-products',
   templateUrl: './sale-products.component.html',
@@ -9,13 +10,14 @@ import { BIService } from '../../services/BIService';
 export class SaleProductsComponent {
   constructor(private biService:BIService){}
   loaded=false;
+  public saleMonthLabels:string[]=[];
+  public saleMonthData:any[]=[];
   async ngOnInit() {
-   let cnt:number=0;
+    let cnt:number=0;
  
- await this.biService.getSaleValue().subscribe(
+ await this.biService.getSaleProducts().subscribe(
     data=>{
  
-  delete data['$id'];
    
      this.barChartLabels= Object.keys(data);
       
@@ -25,20 +27,31 @@ export class SaleProductsComponent {
   } );
 
 
-  await this.biService.getSaleCustomer().subscribe(
+  await this.biService.getSaleCustomers().subscribe(
     data=>{
-    delete data['$id'];
   
      this.barChartLabels1=Object.keys(data);
       
       this.barChartData1=Object.values(data);
-      console.log(this.barChartData1);
-      console.log(this.barChartLabels1);
-
       cnt++;
       this.loaded=cnt==2;
   });
  
+  await this.biService.getSaleMonths().subscribe(
+    data=>{
+  
+     this.saleMonthLabels=Object.keys(data);
+      
+      this.saleMonthData=Object.values(data);
+    //  cnt++;
+    //  this.loaded=cnt==3;
+      console.log(this.saleMonthLabels);
+      console.log(this.saleMonthData);
+  },
+  error=>{console.log('error yehudit!!!');
+  }
+  );
+
   }
 
     
@@ -95,17 +108,7 @@ export class SaleProductsComponent {
 
      console.log(this.barChartData,this.barChartLabels);
      
-}
- // Doughnut
- public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
- public doughnutChartData:number[] = [350, 450, 100];
- public doughnutChartType:string = 'doughnut';
- public chartOptions: any = {
-  options: {
-    legend: {
-       display: false
-    },
-   }
-   }
+  }
+
  
 }

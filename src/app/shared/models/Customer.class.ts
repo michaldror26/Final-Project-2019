@@ -3,7 +3,7 @@ import { User } from './User.class';
 
 export class Customer extends User {
 
- public CustomerId:number;
+ public ID:number;
   public RegisteredDate: any; // Date
   public DiscountPercentage: number;
 
