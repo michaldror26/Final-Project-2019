@@ -112,11 +112,11 @@ private yearsData:Map<number,YearData>=new Map<number,YearData>();
 
 
 
-public selectedMonthLabels:Label[];
-public chartMonthData: ChartDataSets[];
-public charSumMonthData: ChartDataSets[];
-public ChartAggregateMonthData:ChartDataSets[];
-public ChartMonthLabels:string[];
+public selectedMonthLabels:Label[]=[];
+public chartMonthData: ChartDataSets[]=[{}];
+public charSumMonthData: ChartDataSets[]=[{}];
+public ChartAggregateMonthData:ChartDataSets[]=[{}];
+public ChartMonthLabels:string[]=[];
 
 public selectedMonths:boolean[]=[false,false,false,false,false,false,false,false,false,false,false,false];
   constructor(private biService:BIService) { }
@@ -132,91 +132,146 @@ public selectedMonths:boolean[]=[false,false,false,false,false,false,false,false
     {
       this.selectedMonths[i]=true;
     }
+   
     this.initPriceData();
-    this.isDataLoaded=true;
+   
     //this.tempUpdateData(); 
   }
-  initPriceData()
+ 
+  async initPriceData()
   {
     alert("init price data");
     this.amountFlag=false;
     this.yearsData.clear();
-    
- 
-   //  let requests :Promise<void>[]=[];
-   // this.selectedYears.map((item,i) => {
-   //    if(item==true)
-   //      requests.push(this.getYearFromDb(this.initYear+i));
-  // });
-  //
-  // Promise.all(requests).then(() =>{console.log('done');this.updateCharts();});
   
+    this.selectedYears.forEach((x,i)=>{ if(x==true) { 
+      if(i+1==this.selectedYears.length) this.getYearFromDb(i+this.initYear,true)
+      else  this.getYearFromDb(i+this.initYear)     } });
+    
+
   }
   
   initAmountData()
   {
-    this.amountFlag=true;
+    alert("init amount data");
+    this.amountFlag=false;
     this.yearsData.clear();
-    this.selectedYears.forEach((x,i)=>{
-      this.getAmountYearFromDb(this.initYear+i);
-      if(i+1===this.selectedYears.length) 
-          this.updateCharts();
-    }); 
-    
+  
+    this.selectedYears.forEach((x,i)=>{ if(x==true) { 
+      if(i+1==this.selectedYears.length) this.getAmountYearFromDb(i+this.initYear,true)
+      else  this.getYearFromDb(i+this.initYear)     } });
      
-    
-       
-       
+ 
   }
 
-async  getYearFromDb(year:number)
+
+async getYearFromDb(year:number,update?:boolean)
   {
     alert("get from db");
-    let lastyear:YearData=this.yearsData[year+1];
-    
-    if(lastyear!=undefined)
+    let nextYearData:YearData=this.yearsData.get(year+1);
+    let lastYearData:YearData=this.yearsData.get(year-1);
+    let dataArr,lastdataArr;
+    if(nextYearData==undefined)
     {
-      let yearData:YearData=new YearData(lastyear.allMonthData,[1,2,3,4,5,6,7,8,9,10,11,12]);
-      this.yearsData.set(year,yearData);
+    await  this.biService.getSaleMonths(year).subscribe(
+        data=>
+        {
+          dataArr=data;
+         alert("data arive");
+         if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+        },
+        error=>alert("error")
+      );
+    }
+
+    else{
+        dataArr=nextYearData.allLastYearMonthData;
+        if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+    }
+
+    if(lastYearData==undefined)
+    {
+    await new Promise((resolve, reject) => {
+      this.biService.getSaleMonths(year-1).subscribe(
+        data=>
+        {
+          lastdataArr=data;
+         
+         alert("last data arive");
+         if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+        },
+        error=>alert("error")
+      );
+  }); 
     }
      else
      {
+       lastdataArr=lastYearData.allMonthData;
+       if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+     }
       
-   await  this.biService.getSaleMonths(year).subscribe(
-       data=>
-       {
-        alert("data arive");
-         let yearData:YearData=new YearData(data,[1,2,3,4,5,6,7,8,9,10,11,12]);
-         alert(yearData);
+   this.func(year,dataArr,lastdataArr,update);
+         
+  
+  }
+
+  func(year,dataArr,lastdataArr,update?)
+  {
+    let yearData:YearData=new YearData(dataArr,lastdataArr);       
          this.yearsData.set(year,yearData);
          console.log(this.yearsData);
          alert("data save");
-       },
-       error=>alert("error")
-     );
-    }
+        
+         update? this.updateCharts():null;
   }
 
- async getAmountYearFromDb(year:number)
+ async getAmountYearFromDb(year:number,update?:boolean)
   {
-    let lastyear:YearData=this.yearsData[year+1];
-    if(lastyear)
+    alert("get from db");
+    let nextYearData:YearData=this.yearsData.get(year+1);
+    let lastYearData:YearData=this.yearsData.get(year-1);
+    let dataArr,lastdataArr;
+    if(nextYearData==undefined)
     {
-      let yearData:YearData=new YearData(lastyear.allMonthData,[1,2,3,4,5,6,7,8,9,10,11,12]);
-      this.yearsData.set(year,yearData);
+    await  this.biService.getAmountSaleMonths(year).subscribe(
+        data=>
+        {
+          dataArr=data;
+         alert("data arive");
+         if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+        },
+        error=>alert("error")
+      );
+    }
+
+    else{
+        dataArr=nextYearData.allLastYearMonthData;
+        if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+    }
+
+    if(lastYearData==undefined)
+    {
+    await 
+      this.biService.getAmountSaleMonths(year-1).subscribe(
+        data=>
+        {
+          lastdataArr=data;
+         
+         alert("last data arive");
+         if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+        },
+        error=>alert("error")
+      );
+ 
     }
      else
      {
-     await this.biService.getAmountSaleMonths(year).subscribe(
-        data=>
-        {
-          let yearData:YearData=new YearData(data,[1,2,3,4,5,6,7,8,9,10,11,12]);
-          
-          this.yearsData.set(year,yearData);
-        }
-      );
-     }    
-    
+       lastdataArr=lastYearData.allMonthData;
+       if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
+     }
+      
+   this.func(year,dataArr,lastdataArr,update);
+        
   }
 
   
@@ -247,8 +302,8 @@ async  getYearFromDb(year:number)
         {
           let year=this.initYear+i;
          
-        let obj:YearData=this.yearsData[year];
-         alert(obj);
+        let obj:YearData=this.yearsData.get(year);
+        console.log(obj);
           for(let j=0;j<12;j++)
           {
            
@@ -257,19 +312,29 @@ async  getYearFromDb(year:number)
                selectedMonthData.push(obj.allMonthData[j]);;
                selectedAggregateMonthData.push(obj.allAggregateMonthData[j]);
                selectedSumMonthData.push(obj.allSumMonthData[j]);
-               this.selectedMonthLabels.push(this.months[j]);
              }
           }
            this.ChartAggregateMonthData.push({data:selectedAggregateMonthData, label:year+""});
            this.charSumMonthData.push({data:selectedSumMonthData, label:year+""});
-           this.chartMonthData.push({data:selectedMonthData, label:year+""}); 
+           this.chartMonthData.push({data:selectedMonthData, label:year+""});
+          //  console.log(i);
+          //  console.log(this.ChartAggregateMonthData);
+          console.log(this.charSumMonthData);
+           console.log(this.chartMonthData);
+          // console.log(this.isDataLoaded);
       }
     
      
     }
-
+    for(let i=0;i<12;i++)
+    {
      
-     
+      if(this.selectedMonths[i]==true)
+       {
+    this.selectedMonthLabels.push(this.months[i]);
+       }}
+       this.isDataLoaded=true; 
+       console.log(this.ChartAggregateMonthData);
   }
 
 
@@ -288,12 +353,12 @@ async  getYearFromDb(year:number)
      
         this.selectedYears[data.index]=data.isChecked;
         if(this.yearsData[data.index]==undefined)
-        if(this.amountFlag=false)
-           this.getYearFromDb(data.index+this.initYear);
+      
+        if(this.amountFlag==false)
+           this.getYearFromDb(data.index+this.initYear,true);
         else
            this.getAmountYearFromDb(data.index+this.initYear);
-        this.updateCharts();
-
+       
     }
     this.charts.forEach((c) => {
       c.ngOnChanges({});

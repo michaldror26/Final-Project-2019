@@ -5,25 +5,26 @@
     
     <div class="row">
         <div class="col-3">
-           <filters  class="filter" [deafult]='cy' [dataset]='years' [type]='"radio"' (onFilterChange)='onFilterChange($event,"year")'></filters> 
-           <filters [dataset]='months' [deafult_index]='selectedMonths' [type]='"radio"' (onFilterChange)='onFilterChange($event,"month")'></filters> 
+        <div class="filter"><filters  [deafult]='cy' [dataset]='years' [type]='"radio"' (onFilterChange)='onFilterChange($event,"year")'></filters>  </div>
+        <div class="filter">  <filters [dataset]='months' [deafult_index]='selectedMonths' [type]='"radio"' (onFilterChange)='onFilterChange($event,"month")'></filters> </div>
        </div>
      
      <div class="col-9">
             <div class="row" >
+                <h3>ביצועי מכירות - מבט שנתי</h3> 
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                          <label  click="initPriceData()" class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> לפי מחיר
+                          <label  (click)="initPriceData()" class="btn btn-secondary active">
+                            <input  type="radio" name="options" id="option1" autocomplete="off" checked> לפי מחיר
                           </label>
-                          <label click="initAmountData()" class="btn btn-secondary">
+                          <label (click)="initAmountData()" class="btn btn-secondary">
                             <input type="radio" name="options" id="option2" autocomplete="off"> לפי כמות
                           </label>
                     </div>
                   
             </div>
-           <!-- <div *ngIf="isDataLoaded==true">
+           <div *ngIf="isDataLoaded==true">
                <div  class="row"> 
-               //  (chartClick)="chartClicked($event)" (chartHover)="chartHovered($event)" 
+               <!-- //  (chartClick)="chartClicked($event)" (chartHover)="chartHovered($event)"  -->
               <div style=" height:50%;width:100%;  display: block;">
                 <canvas baseChart class="chart"
                             [datasets]="ChartAggregateMonthData"
@@ -38,18 +39,18 @@
                 </div>
             </div>
           
-              <div class="row" >
-              <div  class="col">
+               <div class="row" >
+              <div  class="col-6">
                 <div style="display: block">
                   <canvas baseChart [datasets]="chartMonthData" [labels]="selectedMonthLabels" [options]="barChartOptions"
                     [plugins]="barChartPlugins" legend=false chartType="bar"
                     ></canvas>
                 </div>             
               </div>
-             <div  class="col">
+             <div  class="col-6">
               <div>
                 
-                    //  (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"
+                     <!-- //  (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" -->
                   <div style="display: block">
                     <canvas baseChart [datasets]="charSumMonthData" [labels]="selectedMonthLabels" [options]="barChartOptions"
                       [plugins]="barChartPlugins" legend=false chartType="bar"
@@ -60,9 +61,15 @@
               </div>
                    
                   </div>
-                </div>  
+                </div> 
+                
+                
+
+
+
+
            </div>
-        </div>-->
+        </div>
     </div> 
    
 

@@ -22,7 +22,7 @@ export class YearData {
           if(this.allLastYearMonthData[i]==0) this.allSumMonthData[i]=0;
           else 
           
-          this.allSumMonthData[i]=this.allMonthData[i]*100/this.allLastYearMonthData[i];
+          this.allSumMonthData[i]=(this.allMonthData[i]-this.allLastYearMonthData[i])/this.allLastYearMonthData[i];
           
       }
     }
