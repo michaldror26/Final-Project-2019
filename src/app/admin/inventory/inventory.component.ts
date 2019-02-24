@@ -21,14 +21,11 @@ export class InventoryComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this._service.getInventory().subscribe(x => this.inventoryReal = this.inventory = parseAndResolve((JSON.stringify(x))));
+    await this._service.getInventory().subscribe(x =>
+      this.inventoryReal = this.inventory = parseAndResolve((JSON.stringify(x))));
   }
 
   searchText(text) {
-    console.log(text);
     this.inventory = this._service.search(text, this.inventoryReal, this.countFrom, this.countTo);
-
-
   }
-
 }

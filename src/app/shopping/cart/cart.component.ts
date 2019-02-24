@@ -3,6 +3,7 @@ import {CartService} from '../cart.service';
 import {OrderProduct} from 'src/app/shared/models/OrderProduct.class';
 import {CurrentUser} from '../../shared/currentUser';
 import {Customer} from '../../shared/models/Customer.class';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -19,6 +20,7 @@ export class CartComponent implements OnInit {
   discount = null;
 
   constructor(public cartService: CartService,
+              public router: Router,
               public currentUser: CurrentUser) {
 
   }
@@ -42,9 +44,10 @@ export class CartComponent implements OnInit {
     this.cart = this.cartService.getCart();
   }
 
-  submitOrder() {
-    this.cartService.saveCartOnServer().then(() => {
-      // this.clearAll();
+  async submitOrder() {
+    await this.cartService.saveCartOnServer().subscribe( async order => {
+      await this.cartService.flushCart();
+      await this.router.navigate(['/shopping/orderdetails/' + order.ID]);
     });
   }
 

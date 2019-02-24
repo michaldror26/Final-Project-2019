@@ -34,12 +34,19 @@
 /** Media queries **/
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .wrapper {
+    display: inline-flex;
+
     label {
       color: white;
+      margin-bottom: 6px;
     }
 
     select {
       color: white;
+    }
+
+    option {
+      color: #5D4EF0;
     }
 
   }

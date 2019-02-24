@@ -38,8 +38,8 @@ export class InventoryService {
   }
 
   search(text, inventoryReal, countFrom: number = 0, countTo: number): any[] {
+    text = text.trim();
     if (!countTo) countTo = Math.max(...inventoryReal.map(x => x.Amount));
-    console.log(inventoryReal, countFrom, countTo);
     return inventoryReal.filter(_product =>
       (
         _product.Product.Name.includes(text)
@@ -47,6 +47,10 @@ export class InventoryService {
         || _product.Product.Category &&
         _product.Product.Category.ParentCategory &&
         _product.Product.Category.ParentCategory.Name.includes(text)
+       || _product.Product.Category &&
+        _product.Product.Category.ParentCategory &&
+        _product.Product.Category.ParentCategory.ParentCategory &&
+        _product.Product.Category.ParentCategory.ParentCategory.Name.includes(text)
       )
 
       && _product.Amount >= countFrom

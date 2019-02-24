@@ -3,34 +3,36 @@ import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
+import {SaleOrder} from '../../admin/sale/sale/models/SaleOrder.class';
 
 
 @Injectable()
 export class SaleOrderService {
-  rootUrl = ROOT_URL + 'Order/customer';
+  rootUrl = ROOT_URL + 'order/customer';
 
   constructor(private httpClient: HttpClient) {
 
   }
 
-  add(productsToSubmit: any[], id?: number): Observable<string> {
+  add(productsToSubmit: any[], id?: number): Observable<SaleOrder> {
+    debugger;
+    console.log(id)
     if (id) {
-      return this.httpClient.post<string>(this.rootUrl + '/' + id, productsToSubmit)
+      return this.httpClient.post<SaleOrder>(this.rootUrl + '/' + id, productsToSubmit)
         .pipe(
           map(
-            data => {
-
-              return data;
+            order => {
+              return order;
             },
             error => {
             }
           ));
     } else {
-      return this.httpClient.post<string>(this.rootUrl + '/' + id, productsToSubmit)
+      return this.httpClient.post<SaleOrder>(this.rootUrl + '/' + id, productsToSubmit)
         .pipe(
           map(
-            data => {
-              return data;
+            order => {
+              return order;
             },
             error => {
             }

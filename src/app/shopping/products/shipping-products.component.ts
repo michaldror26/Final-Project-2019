@@ -119,7 +119,6 @@ export class ShippingProductsComponent implements OnInit {
 
 
   onSearchChange(search) {
-    debugger
     this.mainFilter.search = search.search;
     this.updateProducts({
       type: 'search',
@@ -148,7 +147,6 @@ export class ShippingProductsComponent implements OnInit {
   }
 
   updateProducts(filter) {
-    debugger
     let productsSource: Product[] = this.originalData;
     let prevProducts = this.products;
     let filterAllData = true;

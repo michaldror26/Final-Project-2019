@@ -3,6 +3,7 @@ import {parseAndResolve} from '../../../../../shared/services/CommonMethods';
 import {OrderService} from '../../../../../shared/services/order.service';
 import {Customer} from '../../../../../shared/models/Customer.class';
 import {CustomerService} from '../../../../../shared/services/customer.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-all-sales-orders',
@@ -17,15 +18,40 @@ export class AllSalesOrdersComponent implements OnInit {
   customerId: number = null;
 
   constructor(private orderService: OrderService,
-              private _customerService: CustomerService) {
+              private _customerService: CustomerService,
+              private activeRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   async ngOnInit() {
-    await this.orderService.getAllOrders().subscribe((orders) => {
-      this.orders = parseAndResolve((JSON.stringify(orders)));
+    await this.getAllCustomers();
+    this.activeRoute.queryParams.subscribe(async query => {
+      const queryFormat = query['cust_id'];
+      console.log(queryFormat); // Number(queryFormat) !== 'NaN'
+      // @ts-ignore
+      if (queryFormat === undefined) {
+        this.customerId = null;
+        this.router.navigate([], {
+          queryParams: {'cust_id': 'all'}
+        });
+        await this.getAllOrders();
+      } else {
+        this.customerId = Number(queryFormat);
+        await this.getOrdersByCustomer();
+      }
     });
-    await this._customerService.getCustomers().subscribe((cust: Customer[]) =>{ this.customers = cust;
+  }
+
+  getAllCustomers() {
+    this._customerService.getCustomers().subscribe((cust: Customer[]) => {
+      this.customers = cust;
       console.log(this.customers);
+    });
+  }
+
+  getAllOrders() {
+    this.orderService.getAllOrders().subscribe((orders) => {
+      this.orders = parseAndResolve((JSON.stringify(orders)));
     });
   }
 
@@ -49,7 +75,16 @@ export class AllSalesOrdersComponent implements OnInit {
   }
 
   onSelectCustomer($event) {
-    this.customerId = $event.target.value;
-    this.getOrdersByCustomer();
+    const selected = $event.target.value;
+    if (selected === 'all') {
+      this.getAllOrders();
+      this.customerId = null;
+    } else {
+      this.customerId = selected;
+      this.getOrdersByCustomer();
+    }
+    this.router.navigate([], {
+      queryParams: {'cust_id': selected}
+    });
   }
 }

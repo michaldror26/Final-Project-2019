@@ -1,6 +1,14 @@
-<p>
-  product works!
-</p>
-<p>כמו בלקוחות</p>
-<p>בסוף נעשה העתק הדבק</p>
+<nav id="mainnav">
+  <ul style="list-style: none;">
+    <li>
+      <a [routerLink]="['view']">מוצרים</a>
+    </li>
+    <li>
+      <a [routerLink]="['addoredit']">מוצר חדש</a>
+    </li>
+
+  </ul>
+</nav>
+<div class="clearfix"></div>
 <router-outlet></router-outlet>
+

@@ -12,7 +12,9 @@ import {Customer} from '../../../../../../shared/models/Customer.class';
     <p *ngIf="customer.City"><span>עיר מגורים:</span> {{ customer.City }} </p>
     <hr>
     <p *ngIf="customer.RegisteredDate"><span>תאריך הצטרפות:</span> {{customer.RegisteredDate | date: 'dd/MM/yyyy'}} </p>
-    <p *ngIf="customer.DiscountPercentage"><span>אחוז הנחה:</span> {{customer.DiscountPercentage }} </p>`,
+    <p *ngIf="customer.DiscountPercentage"><span>אחוז הנחה:</span> {{customer.DiscountPercentage }} </p>
+  <a [href]="'http://localhost:4200/reports/all-sales-orders?cust_id='+customer.ID" class="d-block text-right">לכל ההזמנות של לקוח זה</a>
+  `,
   styles: [`
     p {
       display: block;
