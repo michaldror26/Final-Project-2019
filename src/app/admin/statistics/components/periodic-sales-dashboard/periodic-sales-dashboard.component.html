@@ -26,21 +26,21 @@
                 <div class="col">
                    <h5>מכירות מצטברות שנה נוכחית</h5>
                     <h1>{{aggregateSalesCy |number:'1.0-2'}}</h1>
-                    <h6>השוואה לשנה קודמת</h6>
-                    <P>{{sum1 |percent:'1.0-2'}}</P>
+                    <h6>אחוז שינוי בהשוואה לשנה קודמת</h6>
+                    <P dir="ltr">{{sum1 |percent:'1.0'}}</P>
                 </div>
                 <div class="col">
                   <h5>מכירות חודש נוכחי</h5>
                   <h1>{{saleMonthData[cm] |number:'1.0-2'}}</h1>
                   <div class="row">
                       <div class="col">               
-                         <h6>השוואה לחודש קודם</h6>
-                         <P>{{sum |percent:'1.0-2'}}</P>
+                         <h6> אחוז שינוי בהשוואה לחודש קודם </h6>
+                         <P dir="ltr">{{sum |percent:'1.0'}}</P>
                       </div>
                      <div class="col">
                     
-                         <h6>השוואה לחודש אשתקד</h6>
-                          <P>{{sum2 |percent:'1.0-2'}}</P>
+                         <h6>אחוז שינוי בהשוואה לחודש אשתקד</h6>
+                          <P dir="ltr">{{sum2 |percent:'1.0'}}</P>
                     </div>
                   </div>
                 </div>

@@ -14,7 +14,7 @@ export class FiltersComponent implements OnInit {
 
   @Input()
   deafult_index:number | boolean[];
-;
+
   
   @Input()
    type: string;
@@ -23,7 +23,8 @@ export class FiltersComponent implements OnInit {
    dataset:any[];
 
    
- 
+   @Input()
+  titel:string;
   
   @Output()
   onFilterChange = new EventEmitter<any>()

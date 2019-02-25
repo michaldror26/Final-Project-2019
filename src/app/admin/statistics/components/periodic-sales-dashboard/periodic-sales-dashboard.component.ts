@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/
 import { BaseChartDirective, SingleDataSet, Label } from 'ng2-charts';
 import { BIService } from '../../services/BIService';
 import { FiltersComponent } from '../filters/filters.component';
+import { YearData } from '../annual-sales-dashboard/year-data';
 
 @Component({
   selector: 'app-periodic-sales-dashboard',
@@ -148,12 +149,13 @@ export class PeriodicSalesDashboardComponent {
        }
      );
   }
+  yearData:YearData;
   updateMonthsIncisionSales() { 
     let f:boolean=false; 
      this.biService.getSaleMonths(this.cy).subscribe(
        data=>{
          this.saleMonthData=data;
-        
+
          f==true? this.func(): f=true
         }
       );
@@ -173,7 +175,7 @@ export class PeriodicSalesDashboardComponent {
 
      this.aggregateSalesLy=this.saleLastYearMonthData.slice(0, this.cm+1).reduce((sum, current) =>sum + current, 0);
 
-      this.sum1=this.aggregateSalesCy*100/this.aggregateSalesLy;
+      this.sum1=this.aggregateSalesLy!=0? ((this.aggregateSalesCy-this.aggregateSalesLy)/this.aggregateSalesLy):0;
       
 
      this.loadedMonthGraph=true;
@@ -186,14 +188,9 @@ export class PeriodicSalesDashboardComponent {
     this.salesCmLy=this.saleLastYearMonthData[this.cm];
     this.salesLm= this.cm>0?this.saleMonthData[this.cm-1]:0;
 
-    if(this.salesCm!=0)
-    {
-        this.sum= this.salesLm/this.salesCm*100;
-        this.sum2= this.salesCmLy/this.salesCm*100;
-    }
-    else{
-      this.sum=this.sum2=0;
-    }
+    this.sum= this.salesLm!=0? ((this.salesCm-this.salesLm)/this.salesLm):0;
+    this.sum2= this.salesCmLy!=0?((this.salesCm-this.salesCmLy)/this.salesCmLy):0;
+    
         
   }
 
@@ -271,30 +268,25 @@ export class PeriodicSalesDashboardComponent {
      if(type == "customer"){
       let i= data.index; 
       
-    //  if(data.isChecked==true && this.customersChartLabels.indexOf(data.filter) == -1) {
+   
       if(data.isChecked==true){
 
        if(i>-1)
        { 
-        var index = this.customersChartData.findIndex(x => x<= this.allCustomersData[i]); 
-       
-        if(index==-1){  
-         this.customersChartData.push(this.allCustomersData[i]);
-         this.customersChartLabels.push(this.allCustomersName[i]);
-        }
-        else{
-          this.customersChartData.splice(index, 0, this.allCustomersData[i]);
-          this.customersChartLabels.splice(index, 0, this.allCustomersName[i]);
-        }
+        
+          this.customersChartData.splice(i, 0, this.allCustomersData[i]);
+          this.customersChartLabels.splice(i, 0, this.allCustomersName[i]);
+        
        }
      } 
     else{
       if(i>-1)
       {
-        delete this.customersChartData[i];
-        delete this.customersChartLabels[i];
-        this.customersChartData.splice(i, 1);
-        this.customersChartLabels.splice(i, 1);
+        var index = this.productChartLabels.findIndex(x => x=== this.allProductsName[i]);
+        delete this.customersChartData[index];
+        delete this.customersChartLabels[index];
+        this.customersChartData.splice(index, 1);
+        this.customersChartLabels.splice(index, 1);
       }
     }
   
@@ -303,29 +295,29 @@ export class PeriodicSalesDashboardComponent {
 
     if(type=="product"){ 
       let i= data.index;
+     
       if(data.isChecked==true){
-  
        if(i>-1)
        { 
-        var index = this.productChartData.findIndex(x => x<= this.allProductsData[i]); 
-        if(index==-1){    
-         this.productChartData.push(this.allProductsData[i]);
-         this.productChartLabels.push(this.allProductsName[i]);
-        }
-        else{
-          this.productChartData.splice(index, 0, this.allProductsData[i]);
-          this.productChartLabels.splice(index, 0, this.allProductsName[i]);
-        }
+       // var index = this.productChartLa.findIndex(x => x<= this.allProductsData[i]); 
+        // if(index==-1){   
+        //  this.productChartData.push(this.allProductsData[i]);
+        //  this.productChartLabels.push(this.allProductsName[i]);
+        // }
+        // else{
+          this.productChartData.splice(i, 0, this.allProductsData[i]);
+          this.productChartLabels.splice(i, 0, this.allProductsName[i]);
+        // }
        }
      }
     else{
-      
+       var index = this.productChartLabels.findIndex(x => x=== this.allProductsName[i]); 
       if(i>-1)
       {
-        delete this.productChartData[i];
-        delete this.productChartLabels[i];
-        this.productChartData.splice(i, 1);
-        this.productChartLabels.splice(i, 1);
+        delete this.productChartData[index];
+        delete this.productChartLabels[index];
+        this.productChartData.splice(index, 1);
+        this.productChartLabels.splice(index, 1);
       }
     }
     

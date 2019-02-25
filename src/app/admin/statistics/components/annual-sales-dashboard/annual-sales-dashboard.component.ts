@@ -16,7 +16,10 @@ import { YearData } from './year-data';
   styleUrls: ['./annual-sales-dashboard.component.css']
 })
 export class AnnualSalesDashboardComponent implements OnInit {
-
+  public chartColors: Color[]=[
+    { backgroundColor: 'red' },
+    { backgroundColor: 'green' },
+  ];
   initYear:number=2005;
   cy:number=new Date().getFullYear();
   cm:number= new Date().getMonth();
@@ -98,6 +101,26 @@ private yearsData:Map<number,YearData>=new Map<number,YearData>();
  charts: QueryList<BaseChartDirective>;
 
  public barChartOptions: ChartOptions = {
+  title: {
+    text: 'מכירות לפי תקופות ',
+    display: true
+  },
+  responsive: true,
+  // We use these empty structures as placeholders for dynamic theming.
+  scales: { xAxes: [{}], yAxes: [{}] },
+  plugins: {
+    datalabels: {
+      anchor: 'end',
+      align: 'end',
+    }
+  }
+};
+
+public sumBarChartOptions: ChartOptions = {
+  title: {
+    text: ' אחוז שינוי במכירות מול שנה שעברה  ',
+    display: true
+  },
   responsive: true,
   // We use these empty structures as placeholders for dynamic theming.
   scales: { xAxes: [{}], yAxes: [{}] },
@@ -286,7 +309,9 @@ async getYearFromDb(year:number,update?:boolean)
 
   updateCharts()
   {
+   
     alert("okkkkkkkkk");
+   
     this.selectedMonthLabels=[];
     this.chartMonthData=[];
     this.charSumMonthData =[];
@@ -314,27 +339,33 @@ async getYearFromDb(year:number,update?:boolean)
                selectedSumMonthData.push(obj.allSumMonthData[j]);
              }
           }
-           this.ChartAggregateMonthData.push({data:selectedAggregateMonthData, label:year+""});
+          this.ChartAggregateMonthData.push({data:selectedAggregateMonthData, label:year+""});
            this.charSumMonthData.push({data:selectedSumMonthData, label:year+""});
            this.chartMonthData.push({data:selectedMonthData, label:year+""});
-          //  console.log(i);
-          //  console.log(this.ChartAggregateMonthData);
-          console.log(this.charSumMonthData);
-           console.log(this.chartMonthData);
-          // console.log(this.isDataLoaded);
+           selectedMonthData=[];
+           selectedAggregateMonthData=[];
+           selectedSumMonthData=[];
       }
     
-     
+      
     }
-    for(let i=0;i<12;i++)
-    {
+
+    // setTimeout( () => {
+      for(let i=0;i<12;i++)
+          if(this.selectedMonths[i]==true)
+             this.selectedMonthLabels.push(this.months[i]);
+    // });
+   
+    this.isDataLoaded=false;
+     setTimeout(() => {
+      this.isDataLoaded=true;
+     }, 0); 
      
-      if(this.selectedMonths[i]==true)
-       {
-    this.selectedMonthLabels.push(this.months[i]);
-       }}
-       this.isDataLoaded=true; 
-       console.log(this.ChartAggregateMonthData);
+       this.charts.forEach((c) => {     
+        c.ngOnChanges({});      
+        alert();
+    });
+    
   }
 
 
@@ -352,16 +383,21 @@ async getYearFromDb(year:number,update?:boolean)
     {
      
         this.selectedYears[data.index]=data.isChecked;
-        if(this.yearsData[data.index]==undefined)
+        if(this.selectedYears[data.index]==true){
+              if(this.yearsData[data.index]==undefined)
       
-        if(this.amountFlag==false)
-           this.getYearFromDb(data.index+this.initYear,true);
-        else
-           this.getAmountYearFromDb(data.index+this.initYear);
-       
+                   if(this.amountFlag==false)
+                          this.getYearFromDb(data.index+this.initYear,true);
+                   else
+                           this.getAmountYearFromDb(data.index+this.initYear,true);
+        }
+         else
+            this.updateCharts();
     }
-    this.charts.forEach((c) => {
-      c.ngOnChanges({});
-  });
+  //   this.charts.forEach((c) => {
+  //     alert();
+  //     c.ngOnChanges({});
+  //     c.chart.update();
+  // });
     }
 }
