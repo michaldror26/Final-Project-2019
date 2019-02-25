@@ -35,17 +35,18 @@ export class FiltersComponent implements OnInit {
     this.priceFilters = priceFilters
     this.showFilters = false
     setTimeout(() => {
-      this.showFilters = true
+      this.showFilters = true;
     });
   }
 
   onInputChange($event, filter, type){
-    let change = $event.target.checked ? 1: -1
+    debugger
+    let change = $event.target.checked ? 1: -1;
     this.onFilterChange.emit({
       type: type,
       filter: filter,
       isChecked: $event.target.checked,
       change: change
-    })
+    });
   }
 }
