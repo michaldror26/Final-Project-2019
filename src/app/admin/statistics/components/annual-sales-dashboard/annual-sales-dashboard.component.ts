@@ -28,29 +28,23 @@ private selectedYears:boolean[]=new Array(this.years.length);
 private yearsData:Map<number,YearData>=new Map<number,YearData>();
   
 public chartColors: Array<any> = [
-  { // all colors in order
-    backgroundColor: '#7cabde'
+  { // blue
+    backgroundColor: '#6cadf8',
   },
-  { // all colors in order
-    backgroundColor: '#ffe29a'
+  { // pink
+    
+    backgroundColor:'#f295eb',
   },
-  { // all colors in order
-    backgroundColor: '#ec94f3'
+  { // orange
+    backgroundColor:  '#fcc854',
   },
-  { // all colors in order
-    backgroundColor: '#9ef394'
-  }, { // all colors in order
-    backgroundColor: '#ed97ef'
+  { // yellow,
+    backgroundColor:'#feff25',
   },
-  { // all colors in order
-    backgroundColor: '#8ce09e',
+  { // green
+    backgroundColor:  '#87fc91',
   },
-  { // all colors in order
-    backgroundColor: '#f1ba77'
-  },
-  { // all colors in order
-    backgroundColor: '#e2ec3f'
-  },
+ 
 ];
 
 
@@ -89,30 +83,48 @@ public chartColors: Array<any> = [
     },
   };
   public lineChartColors: Color[] = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+    
+    { // blue
+      backgroundColor: '#c6dffc',
+      borderColor: '#6cadf8',
+      pointBackgroundColor: '#0074fa',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: '#0074fa'
     },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
+    { // pink
+      backgroundColor: '#f8def6',
+      borderColor: '#f295eb',
+      pointBackgroundColor: '#f878ee',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
+      pointHoverBorderColor: '#f878ee'
     },
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+    { // orange
+      backgroundColor: '#fcde99',
+      borderColor: '#fcc854',
+      pointBackgroundColor: ' #faae05',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    }
+      pointHoverBorderColor: ' #faae05'
+    },
+    { // yellow
+      backgroundColor:  '#f6f870',
+      borderColor:'#feff25',
+      pointBackgroundColor: '#fff700',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#fff700'
+    },
+    { // green
+      backgroundColor: '#ddfee0',
+      borderColor: '#87fc91',
+      pointBackgroundColor: '#5afc68',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#5afc68'
+    },
+   
   ];
   public lineChartLegend = true;
   public lineChartType = 'line';
@@ -130,8 +142,20 @@ public chartColors: Array<any> = [
     display: true
   },
   responsive: true,
-  // We use these empty structures as placeholders for dynamic theming.
-  scales: { xAxes: [{}], yAxes: [{}] },
+    tooltips: {
+      callbacks: {
+          label: function(tooltipItem, data) {
+              
+              let label= tooltipItem.xLabel
+              if(this.amountFlag==true) 
+                label+" יח'";
+            else
+            label+'ש"ח';
+            return label;
+          }
+      }
+  },
+    scales: { xAxes: [{}], yAxes: [{}] },
   plugins: {
     datalabels: {
       anchor: 'end',
@@ -146,7 +170,15 @@ public sumBarChartOptions: ChartOptions = {
     display: true
   },
   responsive: true,
-  // We use these empty structures as placeholders for dynamic theming.
+  tooltips: {
+    callbacks: {
+        label: function(tooltipItem, data) {
+            
+            return tooltipItem.xLabel+"%" ;
+          
+        }
+    }
+},
   scales: { xAxes: [{}], yAxes: [{}] },
   plugins: {
     datalabels: {
@@ -187,7 +219,7 @@ public selectedMonths:boolean[]=[false,false,false,false,false,false,false,false
  
   async initPriceData()
   {
-    alert("init price data");
+    
     this.amountFlag=false;
     this.yearsData.clear();
   
@@ -200,7 +232,7 @@ public selectedMonths:boolean[]=[false,false,false,false,false,false,false,false
   
   initAmountData()
   {
-    alert("init amount data");
+   
     this.amountFlag=false;
     this.yearsData.clear();
   
@@ -214,7 +246,7 @@ public selectedMonths:boolean[]=[false,false,false,false,false,false,false,false
 
 async getYearFromDb(year:number,update?:boolean)
   {
-    alert("get from db");
+   
     let nextYearData:YearData=this.yearsData.get(year+1);
     let lastYearData:YearData=this.yearsData.get(year-1);
     let dataArr,lastdataArr;
@@ -224,7 +256,7 @@ async getYearFromDb(year:number,update?:boolean)
         data=>
         {
           dataArr=data;
-         alert("data arive");
+        
          if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
         error=>alert("error")
@@ -244,7 +276,7 @@ async getYearFromDb(year:number,update?:boolean)
         {
           lastdataArr=data;
          
-         alert("last data arive");
+         
          if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
         error=>alert("error")
@@ -267,14 +299,14 @@ async getYearFromDb(year:number,update?:boolean)
     let yearData:YearData=new YearData(dataArr,lastdataArr);       
          this.yearsData.set(year,yearData);
          console.log(this.yearsData);
-         alert("data save");
+        
         
          update? this.updateCharts():null;
   }
 
  async getAmountYearFromDb(year:number,update?:boolean)
   {
-    alert("get from db");
+   
     let nextYearData:YearData=this.yearsData.get(year+1);
     let lastYearData:YearData=this.yearsData.get(year-1);
     let dataArr,lastdataArr;
@@ -284,7 +316,7 @@ async getYearFromDb(year:number,update?:boolean)
         data=>
         {
           dataArr=data;
-         alert("data arive");
+        
          if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
         error=>alert("error")
@@ -304,7 +336,7 @@ async getYearFromDb(year:number,update?:boolean)
         {
           lastdataArr=data;
          
-         alert("last data arive");
+         
          if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
         error=>alert("error")
@@ -334,8 +366,7 @@ async getYearFromDb(year:number,update?:boolean)
   updateCharts()
   {
    
-    alert("okkkkkkkkk");
-   
+    
     this.selectedMonthLabels=[];
     this.chartMonthData=[];
     this.charSumMonthData =[];
@@ -387,7 +418,7 @@ async getYearFromDb(year:number,update?:boolean)
      
        this.charts.forEach((c) => {     
         c.ngOnChanges({});      
-        alert();
+     
     });
     
   }
