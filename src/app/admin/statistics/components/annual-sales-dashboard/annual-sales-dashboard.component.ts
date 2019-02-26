@@ -53,7 +53,7 @@ public chartColors: Array<any> = [
       callbacks: {
           label: function(tooltipItem, data) {
               
-              let label= tooltipItem.xLabel
+              let label= tooltipItem.yLabel
               if(this.amountFlag==true) 
                 label+" יח'";
             else

@@ -25,7 +25,7 @@
            <div class="row">
                 <div class="col">
                    <h5>מכירות מצטברות שנה נוכחית</h5>
-                    <h1>{{aggregateSalesCy |number:'1.0-2'}}</h1>
+                    <h1>{{aggregateSalesCy |number:'1.0-2' }}+<p *ngIf="amountFlag==true">₪</p><p  *ngIf="amountFlag==false">יח'</p></h1>
                     <h6>אחוז שינוי בהשוואה לשנה קודמת</h6>
                     <P dir="ltr">{{sum1 |percent:'1.0'}}</P>
                 </div>
