@@ -16,10 +16,7 @@ import { YearData } from './year-data';
   styleUrls: ['./annual-sales-dashboard.component.css']
 })
 export class AnnualSalesDashboardComponent implements OnInit {
-  public chartColors: Color[]=[
-    { backgroundColor: 'red' },
-    { backgroundColor: 'green' },
-  ];
+  
   initYear:number=2005;
   cy:number=new Date().getFullYear();
   cm:number= new Date().getMonth();
@@ -30,6 +27,33 @@ export class AnnualSalesDashboardComponent implements OnInit {
 private selectedYears:boolean[]=new Array(this.years.length);
 private yearsData:Map<number,YearData>=new Map<number,YearData>();
   
+public chartColors: Array<any> = [
+  { // all colors in order
+    backgroundColor: '#7cabde'
+  },
+  { // all colors in order
+    backgroundColor: '#ffe29a'
+  },
+  { // all colors in order
+    backgroundColor: '#ec94f3'
+  },
+  { // all colors in order
+    backgroundColor: '#9ef394'
+  }, { // all colors in order
+    backgroundColor: '#ed97ef'
+  },
+  { // all colors in order
+    backgroundColor: '#8ce09e',
+  },
+  { // all colors in order
+    backgroundColor: '#f1ba77'
+  },
+  { // all colors in order
+    backgroundColor: '#e2ec3f'
+  },
+];
+
+
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
     scales: {
@@ -328,7 +352,7 @@ async getYearFromDb(year:number,update?:boolean)
           let year=this.initYear+i;
          
         let obj:YearData=this.yearsData.get(year);
-        console.log(obj);
+        
           for(let j=0;j<12;j++)
           {
            

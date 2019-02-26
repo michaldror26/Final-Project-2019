@@ -17,12 +17,11 @@ export class YearData {
           sum+=this.allMonthData[i];
           LastSum+=this.allLastYearMonthData[i];
           this.allAggregateMonthData[i]=sum;
-          this.allLastAggregateMonthData[i]=LastSum;
+         // this.allLastAggregateMonthData[i]=LastSum;
           
-          if(this.allLastYearMonthData[i]==0) this.allSumMonthData[i]=0;
-          else 
-          
-          this.allSumMonthData[i]=(this.allMonthData[i]-this.allLastYearMonthData[i])/this.allLastYearMonthData[i];
+         
+          this.allSumMonthData[i]= this.allLastYearMonthData[i]!=0? ((this.allMonthData[i]-this.allLastYearMonthData[i])/this.allLastYearMonthData[i])*100:0
+
           
       }
     }

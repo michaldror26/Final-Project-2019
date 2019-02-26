@@ -4,14 +4,16 @@
   <div class="container-fluid">
     <div class="row" >
       <h3>ביצועי מכירות - מבט שנתי</h3> 
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label  (click)="initPriceData()" class="btn btn-secondary active">
-                  <input  type="radio" name="options" id="option1" autocomplete="off" checked> לפי מחיר
+        <div dir="rtl" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label dir="rtl" (click)="initPriceData()" class="btn btn-secondary active">
+                  <input class="rtl-class"dir="rtl" type="radio" name="options" id="option1" autocomplete="off" checked> לפי מחיר
                 </label>
                 <label (click)="initAmountData()" class="btn btn-secondary">
                   <input type="radio" name="options" id="option2" autocomplete="off"> לפי כמות
                 </label>
           </div>
+         
+         
         
   </div>
     <div class="row">
@@ -24,17 +26,17 @@
            
            <div *ngIf="isDataLoaded==true">
                <div  class="row"> 
-               <!-- //  (chartClick)="chartClicked($event)" (chartHover)="chartHovered($event)"  -->
+               <!-- //   [colors]="lineChartColors" (chartClick)="chartClicked($event)" (chartHover)="chartHovered($event)"  -->
               <div style=" height:50%;width:100%;  display: block;">
                 <canvas baseChart class="chart"
                             [datasets]="ChartAggregateMonthData"
                             [labels]="selectedMonthLabels"
                             [options]="lineChartOptions"
-                            [colors]="lineChartColors"
+                          
                             [legend]="lineChartLegend"
                             [chartType]="lineChartType"
                             [plugins]="lineChartPlugins" 
-                          
+                            [colors]="chartColors"
                            ></canvas>
                 </div>
             </div>
@@ -43,7 +45,8 @@
               <div  class="col-6">
                 <div style="display: block">
                   <canvas baseChart [datasets]="chartMonthData" [labels]="selectedMonthLabels" [options]="barChartOptions"
-                   [plugins]="barChartPlugins" legend=false chartType="bar"
+                  [colors]="chartColors"
+                  [plugins]="barChartPlugins" legend=false chartType="bar"
                     ></canvas>
                 </div>             
               </div>
