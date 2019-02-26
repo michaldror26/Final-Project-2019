@@ -30,7 +30,6 @@ export class OrderService {
     let url='order/customer';
     if(id!=null)
     url=url+'/'+id;
-    debugger
     return this.httpClient.post<string>(ROOT_URL + url, productsToSubmit)
     .pipe(
     map(

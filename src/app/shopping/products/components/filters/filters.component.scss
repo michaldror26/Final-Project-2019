@@ -130,14 +130,13 @@ h5{
       font-size: 1.2em;
       font-weight: 300;
       opacity: 0.7;
-      top: -40px;
       left: 12px;
     }
     .toggle-btn{
       display: inline-block;
       position: absolute;
-      left: -69px;
-      top: 11px;
+      left: -62px;
+      top: 67px;
       background: white;
       border-radius: 3px;
       color: #5D4EF0;
@@ -153,6 +152,7 @@ h5{
       box-shadow: none;
       border-radius: 0;
       height: 100%;
+      margin-top: 13px;
       @include transition-fade-circ(0.35s);
       &.side-shown{
         -webkit-transform: translateX(-100%);

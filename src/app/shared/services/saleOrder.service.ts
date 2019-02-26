@@ -15,7 +15,6 @@ export class SaleOrderService {
   }
 
   add(productsToSubmit: any[], id?: number): Observable<SaleOrder> {
-    debugger;
     console.log(id)
     if (id) {
       return this.httpClient.post<SaleOrder>(this.rootUrl + '/' + id, productsToSubmit)

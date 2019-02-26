@@ -271,7 +271,7 @@ async getYearFromDb(year:number,update?:boolean)
         
          if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
-        error=>alert("error")
+        // error=>alert("error")
       );
     }
 
@@ -291,7 +291,7 @@ async getYearFromDb(year:number,update?:boolean)
          
          if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
-        error=>alert("error")
+        // error=>alert("error")
       );
   }); 
     }
@@ -331,7 +331,7 @@ async getYearFromDb(year:number,update?:boolean)
         
          if(lastdataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
-        error=>alert("error")
+        // error=>alert("error")
       );
     }
 
@@ -351,7 +351,7 @@ async getYearFromDb(year:number,update?:boolean)
          
          if(dataArr!=undefined)this.func(year,dataArr,lastdataArr,update);
         },
-        error=>alert("error")
+        // error=>alert("error")
       );
  
     }

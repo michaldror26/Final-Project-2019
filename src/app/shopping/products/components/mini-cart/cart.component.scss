@@ -264,7 +264,7 @@
   .preview {
     position: fixed;
     bottom: 3%;
-    right: 5%;
+    left: 5%;
     width: 13%;
     @include transition-fade-circ(0.3s);
 
