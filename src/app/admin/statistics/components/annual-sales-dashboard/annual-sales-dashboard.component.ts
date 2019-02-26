@@ -49,7 +49,19 @@ public chartColors: Array<any> = [
 
 
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
-    responsive: true,
+    tooltips: {
+      callbacks: {
+          label: function(tooltipItem, data) {
+              
+              let label= tooltipItem.xLabel
+              if(this.amountFlag==true) 
+                label+" יח'";
+            else
+            label+'ש"ח';
+            return label;
+          }
+      }
+  },
     scales: {
       // We use this empty structure as a placeholder for dynamic theming.
       xAxes: [{}],
@@ -146,7 +158,7 @@ public chartColors: Array<any> = [
       callbacks: {
           label: function(tooltipItem, data) {
               
-              let label= tooltipItem.xLabel
+              let label= tooltipItem.yLabel
               if(this.amountFlag==true) 
                 label+" יח'";
             else
@@ -174,7 +186,7 @@ public sumBarChartOptions: ChartOptions = {
     callbacks: {
         label: function(tooltipItem, data) {
             
-            return tooltipItem.xLabel+"%" ;
+            return tooltipItem.yLabel+"%" ;
           
         }
     }
