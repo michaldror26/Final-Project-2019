@@ -128,9 +128,11 @@ export class CustomerService {
 
 
   search(custs: Customer[], text: string): Customer[] {
+    text = text.trim();
     return custs.filter(customer =>
       customer.FirstName.includes(text)
       || customer.LastName.includes(text)
+      || (customer.FirstName + " " + customer.LastName).includes(text)
       || customer.MobilePhone.includes(text)
       || customer.Email.includes(text)
     );

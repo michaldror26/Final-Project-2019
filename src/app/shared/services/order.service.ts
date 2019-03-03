@@ -14,7 +14,7 @@ export class OrderService {
 
 
   getAllOrders() {
-
+    return this.httpClient.get<any[]>(ROOT_URL + 'order/GetAllSaleOrders');
   }
 
   getOrderByUser(userId: number): Observable<any[]> {
@@ -30,7 +30,8 @@ export class OrderService {
     let url='order/customer';
     if(id!=null)
     url=url+'/'+id;
-    return this.httpClient.post<string>(ROOT_URL+url,productsToSubmit)
+    debugger
+    return this.httpClient.post<string>(ROOT_URL + url, productsToSubmit)
     .pipe(
     map(
       data => {return data;},

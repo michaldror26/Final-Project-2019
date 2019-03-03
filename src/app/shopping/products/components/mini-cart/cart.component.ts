@@ -31,7 +31,36 @@ export class MiniCartComponent implements OnInit {
 
   async ngOnInit() {
     await this.cartService.init();
+    this.initCart();
+    this.expandedHeight = '0';
+    await this.cartService.productAdded$.subscribe(data => {
 
+      this.products = data.products;
+      this.cartTotal = data.cartTotal;
+      let numProducts = data.numProducts;
+      // Make a plop animation
+      if (numProducts > 1) {
+        this.animatePlop = true;
+        setTimeout(() => {
+          this.animatePlop = false;
+        }, 160);
+      } else if (numProducts == 1) {
+        this.animatePopout = true;
+        setTimeout(() => {
+          this.animatePopout = false;
+        }, 300);
+      }
+      this.expandedHeight = (this.products.length * PRODUCT_HEIGHT + OFFSET_HEIGHT) + 30 + 'px';
+      if (!this.products.length) {
+        this.expanded = false;
+      }
+
+    });
+
+    this.changeDetectorRef.detectChanges();
+  }
+
+ async initCart() {
     this.expandedHeight = '0';
     await this.cartService.productAdded$.subscribe(data => {
 
@@ -75,5 +104,13 @@ export class MiniCartComponent implements OnInit {
   submitOrder() {
 
     this.cartService.saveCartOnServer();
+    //   .then(() => {
+    //   // this.initCart();
+    //
+    //   this.cartService.flushCart();
+    //   const cart = this.cartService.getCart();
+    //   this.products = cart.products;
+    //   this.cartTotal = cart.cartTotal;
+    // });
   }
 }

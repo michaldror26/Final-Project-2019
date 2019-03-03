@@ -4,6 +4,8 @@ import {Product} from '../shared/models/Product.class';
 import {OrderProduct} from '../shared/models/OrderProduct.class';
 import {SaleOrderService} from '../shared/services/saleOrder.service';
 import {PurchaseOrderService} from '../shared/services/purchaseOrder.service';
+import {CurrentUser} from '../shared/currentUser';
+import {error} from '@angular/compiler/src/util';
 
 export const OrderServiceMap = {
   sale: SaleOrderService,
@@ -20,11 +22,15 @@ export class CartService {
   private productAddedSource = new Subject<any>();
   productAdded$ = this.productAddedSource.asObservable();
 
-  type: string = null;
+  type: string = 'sale';
   owerId: number = null;
   orderService;
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector,
+              private currentUser: CurrentUser
+  ) {
+    let curUser = this.currentUser.get();
+    this.owerId = curUser ? curUser.ID : null;
   }
 
   init() {
@@ -91,12 +97,12 @@ export class CartService {
     this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal, numProducts: this.numProducts});
   }
 
- async addProductToCart(product: Product) {
+  async addProductToCart(product: Product) {
     let exists = false;
     let parsedPrice = parseFloat(product.SellingPrice.toString().replace(/\./g, '').replace(',', '.'));
     this.cartTotal += parsedPrice;
     //Search this product on the cart and increment the quantity
-     this.orderProducts = await this.orderProducts.map(_product => {
+    this.orderProducts = await this.orderProducts.map(_product => {
       if (_product.Product.ID == product.ID) {
         _product.Amount++;
         this.numProducts++;
@@ -116,7 +122,7 @@ export class CartService {
     console.log('product', this.orderProducts);
     console.log('cartTotal', this.cartTotal);
     this.saveCartLocaly();
-    this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal,numProducts: this.numProducts});
+    this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal, numProducts: this.numProducts});
   }
 
   deleteProductFromCart(product: Product) {
@@ -128,7 +134,7 @@ export class CartService {
       }
       return true;
     });
-    this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal , numProducts: this.numProducts});
+    this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal, numProducts: this.numProducts});
     this.saveCartLocaly();
   }
 
@@ -137,7 +143,7 @@ export class CartService {
     this.orderProducts = [];
     this.cartTotal = 0;
     this.numProducts = 0;
-    this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal, numProducts : this.numProducts});
+    this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal, numProducts: this.numProducts});
     this.saveCartLocaly();
   }
 
@@ -146,19 +152,29 @@ export class CartService {
   }
 
   async saveCartOnServer() {
+
     let productsToSubmit: any[] = [];
     await this.orderProducts.forEach(prod =>
       productsToSubmit.push({productId: prod.Product.ID, Amount: prod.Amount}));
 
     if (this.type != null) {
-      if (this.owerId == null) {
+      if (this.owerId == null && this.currentUser.isAdmin()) {
         alert('עליך לבחור נמען');
         return;
       }
-      await this.orderService.add(productsToSubmit, this.owerId).subscribe();
+      debugger
+      await this.orderService.add(productsToSubmit, this.owerId).subscribe(data => {
+       // this.flushCart();
+      }, error1 => {
+      });
     } else
-    //הזמנה ללקוח נוכחי
-      await this.orderService.add(productsToSubmit).subscribe();
+    //הזמנה ללקוח נוכחיdebugger
+
+    await this.orderService.add(productsToSubmit).subscribe(data => {
+
+        this.flushCart();
+      }, error1 => {
+      });
 
   }
 

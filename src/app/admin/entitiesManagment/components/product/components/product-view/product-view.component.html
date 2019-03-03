@@ -6,7 +6,7 @@
     <h4 class="mt-3">לקוחות</h4>
 
     <form class="form-inline">
-      <input class="form-control mx-sm-auto mr-md-2 my-2 col-xl-3" type="search" placeholder="חפש כאן לקוח ..."
+      <input class="form-control mx-sm-auto mr-md-2 my-2 col-xl-3" type="search" placeholder="חפש כאן מוצר ..."
              aria-label="Search" (input)="searchText($event.target.value)">
       <!-- <button class="btn btn-outline-success  col-2" type="submit">חפש</button> -->
     </form>
@@ -28,7 +28,7 @@
         </thead>
         <tbody *ngIf="customersList && customersList.length > 0">
 
-        <!-- <tr *ngFor="let customer of customersList;" [routerLink]="['../details', customer.CustomerId]"> -->
+        <!-- <tr *ngFor="let customer of customersList;" [routerLink]="['../details', customer.ID]"> -->
         <tr *ngFor="let customer of customersList">
           <!--<td><input type="checkbox"/></td>-->
           <td>
@@ -36,7 +36,7 @@
                     data-target="#details" data-placement="top"
                     data-toggle="tooltip" title="עדכן" [routerLink]="['../details', customer.ID]">פרטים</button>
           </td>
-          <td [routerLink]="['../addoredit', customer.CustomerId]" class="px-sm-1 px-3">
+          <td [routerLink]="['../addoredit', customer.ID]" class="px-sm-1 px-3">
 
 
             <button class="btn border-0 p-0 bg-transparent" data-title="Edit" data-toggle="modal" data-target="#edit"
@@ -49,7 +49,7 @@
               </svg>
             </button>
           </td>
-          <td [routerLink]="['../delete', customer.CustomerId]" class="px-sm-1 px-3">
+          <td [routerLink]="['../delete', customer.ID]" class="px-sm-1 px-3">
             <a class="btn border-0 p-0 bg-transparent" data-placement="top" data-toggle="tooltip" title="מחיקה"
                data-title="Delete" data-toggle="modal" data-target="#delete">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

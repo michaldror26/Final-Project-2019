@@ -5,12 +5,12 @@ import {ShoppingRoutingModule} from './shopping-routing.module';
 import {DataService} from './data.service';
 import {CartService} from './cart.service';
 import {ShoppingComponent} from './shopping.component';
-import { OrderViewComponent } from './order-view/order-view.component';
-import { ShippingProductsModule } from './products/shipping-products.module';
-import { CartModule } from './cart/cart.module';
-import { MyOrderModule } from './my-orders/my-orders.module';
-import { CommonModule } from '@angular/common';
-//import  {SaleModule} from '../admin/sale/sale.module'
+import {ShippingProductsModule} from './products/shipping-products.module';
+import {CartModule} from './cart/cart.module';
+import {MyOrderModule} from './my-orders/my-orders.module';
+import {CommonModule} from '@angular/common';
+import {OrderViewComponent} from './order-view/order-view.component';
+
 @NgModule({
   declarations: [
     ShoppingComponent,
@@ -25,13 +25,12 @@ import { CommonModule } from '@angular/common';
     ShippingProductsModule,
     CartModule,
     CommonModule,
-   // SaleModule
   ],
   providers: [
     DataService,
     CartService
   ],
-  exports: []
+  exports: [OrderViewComponent]
 })
 export class ShoppingModule {
 }

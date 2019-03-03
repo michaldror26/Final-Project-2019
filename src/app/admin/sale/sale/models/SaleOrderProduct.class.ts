@@ -1,6 +1,6 @@
 ﻿export class SaleOrderProduct {
   public SaleOrderId: number;
-  public ProductId: number;
+  public ID: number;
   public Quantity: number;
 }
 
