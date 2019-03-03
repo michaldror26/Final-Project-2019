@@ -1,0 +1,39 @@
+<div class="col-12">
+  <select name="customersSelectOrder" (change)='onSelectCustomer($event)' class="my-4">
+    <option *ngFor="let customer of customers"
+            [value]="customer.ID">{{customer.FirstName + " " + customer.LastName}}</option>
+  </select>
+</div>
+<ng-container *ngIf="orders.length > 0; else noOrder">
+  <h3 class="my-4" *ngIf="customerId">הזמנות
+    ללקוח: {{ orders[0].Customer.FirstName + " " + orders[0].Customer.LastName}} </h3>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th *ngIf="!customerId">לקוח</th>
+      <th>
+        תאריך
+        <button (click)="orderByDateD()">
+          {{dateOrder === 'd' ? '&darr;' : '&uarr;' }}
+        </button>
+      </th>
+      <th>הערה</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders; index as i ">
+      <td>{{i + 1}}</td>
+      <td *ngIf="!customerId">{{orders[0].Customer.FirstName + " " + orders[0].Customer.LastName}}</td>
+      <td>{{order.Date | date: 'dd/MM/yyyy'}}</td>
+      <td>{{order.Remark }}</td>
+      <td><a [routerLink]="['/shopping/orderdetails',order.ID]">צפה בהזמנה</a></td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #noOrder><span class="my-4 font-weight-bold" style="font-size: xx-large">אין הזמנות ללקוח זה </span></ng-template>
+
