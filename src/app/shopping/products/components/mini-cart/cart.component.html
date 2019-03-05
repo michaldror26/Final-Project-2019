@@ -1,11 +1,13 @@
-<div>
+<div *ngIf="!submit">
+  <p>{{!cartService || !cartService.orderProducts || cartService.orderProducts.length == 0 || expanded}}</p>
 <div class="preview" [class.expanded]='expanded'>
-  <button [class.not-shown]='cartService && cartService.orderProducts && cartService.orderProducts.length == 0 || expanded' type="button" class="circle" (click)="onCartClick()">
+  <button [class.not-shown]='numProducts() == 0 || expanded' [class.shown]='!expanded || numProducts() != 0'
+          type="button" class="circle" (click)="onCartClick()">
     <img src="../../../../../assets/cart_white.svg" alt="cart"/>
     <div class="indicator"><span>{{numProducts()}}</span></div>
   </button>
-  <div class="fill" [style.height]="expanded ? expandedHeight : 'inherit'" [class.not-shown]='!products.length'
-       [class.animate-plop]='animatePlop' [class.shown]='animatePopout && !expanded'>
+  <div class="fill" [style.height]="expanded ? expandedHeight : 'inherit'" [class.not-shown]='!expanded'
+       [class.animate-plop]='animatePlop' [class.shown]='animatePopout && expanded'>
     <div class="expanded-info" [class.shown]='expanded'>
       <h3>זה מה שאת/ה הולך לקנות...</h3>
       <div class="product" *ngFor="let item of products">
@@ -16,19 +18,20 @@
            
           </div>
           <div class="col-6-sm price">
-             <!-- <p>{{item.Amount*item.product.SellingPrice | currency:'USD':'symbol':'1.0-0' }}</p>  -->
             <p style="text-align: left; margin-right: 20px;">{{item.Amount * item.Product.SellingPrice  + " ש\"ח"}}</p>
           </div>
         </div>
       </div>
        <!-- <button type="button" class="pay-btn">Pay {{cartTotal | currency:'USD':'symbol':'1.0-0'}}</button>  -->
-      <button type="button" class="pay-btn"> שלם {{cartTotal + " ש\"ח"}}</button>
-      <button type="button" class="pay-btn" style="cursor: pointer" (click)="submitOrder()"> הזמן</button>
+      <button type="button" class="pay-btn" style="cursor: pointer" (click)="submitOrder()"> שלם {{cartTotal + " ש\"ח"}}</button>
     </div>
-    <button type="button" class="close-btn" *ngIf='expanded' (click)="onCartClick()">סגור</button>
+    <button type="button" class="close-btn" *ngIf='expanded' (click)="closeCart()">סגור</button>
   </div>
 </div>
 <div class="overlay" [class.shown]='expanded'>
 
 </div>
+</div>
+<div *ngIf="submit">
+
 </div>

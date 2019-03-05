@@ -6,6 +6,8 @@ import {SaleOrderService} from '../shared/services/saleOrder.service';
 import {PurchaseOrderService} from '../shared/services/purchaseOrder.service';
 import {CurrentUser} from '../shared/currentUser';
 import {error} from '@angular/compiler/src/util';
+import {SaleOrder} from '../admin/sale/sale/models/SaleOrder.class';
+import {parseAndResolve} from '../shared/services/CommonMethods';
 
 export const OrderServiceMap = {
   sale: SaleOrderService,
@@ -127,7 +129,7 @@ export class CartService {
 
   deleteProductFromCart(product: Product) {
     this.orderProducts = this.orderProducts.filter(_product => {
-      if (_product.Product.ID == product.ID) {
+      if (_product.Product.ID === product.ID) {
         this.cartTotal -= _product.Product.SellingPrice * _product.Amount;
         this.numProducts -= _product.Amount;
         return false;
@@ -137,7 +139,6 @@ export class CartService {
     this.productAddedSource.next({products: this.orderProducts, cartTotal: this.cartTotal, numProducts: this.numProducts});
     this.saveCartLocaly();
   }
-
 
   flushCart() {
     this.orderProducts = [];
@@ -151,30 +152,26 @@ export class CartService {
     localStorage.setItem('products', JSON.stringify(this.orderProducts));
   }
 
-  async saveCartOnServer() {
-
-    let productsToSubmit: any[] = [];
-    await this.orderProducts.forEach(prod =>
+  saveCartOnServer(): Observable<SaleOrder> {
+    const productsToSubmit: any[] = [];
+    this.orderProducts.forEach(prod =>
       productsToSubmit.push({productId: prod.Product.ID, Amount: prod.Amount}));
 
     if (this.type != null) {
-      if (this.owerId == null && this.currentUser.isAdmin()) {
-        alert('עליך לבחור נמען');
-        return;
+      if (this.owerId == null) {
+        if (this.currentUser.isAdmin()) {
+          alert('עליך לבחור נמען');
+          return;
+        }
+      } else if (this.currentUser.isCustomer()) {
+        this.owerId = this.currentUser.get().ID; // הזמנה ללקוח נוכחי debugger
+        return this.orderService.add(productsToSubmit, this.owerId);
       }
-      debugger
-      await this.orderService.add(productsToSubmit, this.owerId).subscribe(data => {
-       // this.flushCart();
-      }, error1 => {
-      });
-    } else
-    //הזמנה ללקוח נוכחיdebugger
 
-    await this.orderService.add(productsToSubmit).subscribe(data => {
-
-        this.flushCart();
-      }, error1 => {
-      });
+    } else {
+      // take id from session on server
+      return this.orderService.add(productsToSubmit);
+    }
 
   }
 

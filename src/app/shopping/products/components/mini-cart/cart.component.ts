@@ -1,6 +1,8 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {CartService} from '../../../cart.service';
-import {Subscription} from 'rxjs';
+import {CurrentUser} from '../../../../shared/currentUser';
+import {Router} from '@angular/router';
+import {parseAndResolve} from '../../../../shared/services/CommonMethods';
 
 const OFFSET_HEIGHT: number = 170;
 const PRODUCT_HEIGHT: number = 48;
@@ -20,11 +22,13 @@ export class MiniCartComponent implements OnInit {
   expandedHeight: string;
   cartTotal: number = 0;
 
-
   changeDetectorRef: ChangeDetectorRef;
 
 
-  constructor(public cartService: CartService, changeDetectorRef: ChangeDetectorRef) {
+  constructor(public cartService: CartService, changeDetectorRef: ChangeDetectorRef
+    , private currUser: CurrentUser
+    , public router: Router
+  ) {
     this.changeDetectorRef = changeDetectorRef;
 
   }
@@ -50,17 +54,18 @@ export class MiniCartComponent implements OnInit {
           this.animatePopout = false;
         }, 300);
       }
+
       this.expandedHeight = (this.products.length * PRODUCT_HEIGHT + OFFSET_HEIGHT) + 30 + 'px';
       if (!this.products.length) {
         this.expanded = false;
       }
-
     });
 
     this.changeDetectorRef.detectChanges();
   }
 
- async initCart() {
+  async initCart() {
+    debugger
     this.expandedHeight = '0';
     await this.cartService.productAdded$.subscribe(data => {
 
@@ -98,19 +103,23 @@ export class MiniCartComponent implements OnInit {
   }
 
   onCartClick() {
-    this.expanded = !this.expanded;
+    this.expanded = true;
   }
 
-  submitOrder() {
+  closeCart() {
+    this.expanded = false;
+  }
 
-    this.cartService.saveCartOnServer();
-    //   .then(() => {
-    //   // this.initCart();
-    //
-    //   this.cartService.flushCart();
-    //   const cart = this.cartService.getCart();
-    //   this.products = cart.products;
-    //   this.cartTotal = cart.cartTotal;
-    // });
+  async submitOrder() {
+    const user = this.currUser.isLogin();
+    if (user) {
+      await this.cartService.saveCartOnServer().subscribe(order => {
+        this.cartService.flushCart();
+        this.router.navigate(['/shopping/orderdetails/' + order.ID]);
+
+      });
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

@@ -1,5 +1,7 @@
 <ng-container *ngIf="orders.length > 0; else noOrder">
-  <h3 class="my-4">הזמנות ללקוח: {{ orders[0].Customer.FirstName+ " " + orders[0].Customer.LastName}} </h3>
+  <h3 class="my-4">
+    {{currentUser.isAdmin() ? 'הזמנות ללקוח:' + orders[0].Customer.FirstName + " " + orders[0].Customer.LastName : 'הזמנות שלי: '}}
+  </h3>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -7,7 +9,7 @@
       <th>
         תאריך
         <button (click)="orderByDateD()">
-         {{dateOredr === 'd' ? '&darr;' :'&uarr;' }}
+          {{dateOredr === 'd' ? '&darr;' : '&uarr;' }}
         </button>
       </th>
       <th>הערה</th>
