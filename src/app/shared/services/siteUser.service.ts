@@ -26,11 +26,11 @@ export class SiteUserService {
     let siteuser: SiteUser = new SiteUser();
     siteuser.UserName = userName;
     siteuser.Password = password; // {UserName: userName, Password: password}
-   return this.httpClient
+    return this.httpClient
       .post<User>(ROOT_URL + 'user/login', {UserName: userName, Password: password}
-      // , { headers:
-      //     {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
-          )
+        // , { headers:
+        //     {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } }
+      )
       .pipe(
         map(
           data => {
@@ -38,9 +38,9 @@ export class SiteUserService {
             this.authService.setRouter();
             return data;
           }
-           ,error => {
+          , error => {
             return error;
-           }
+          }
         ));
   }
 
@@ -54,6 +54,7 @@ export class SiteUserService {
         catchError(this.handleError),
       );
   }
+
 // TODO registerWithId
   registerWithId(userName: string, password: string, authType: number, userId: number): Observable<User> {
     return this.httpClient
@@ -73,7 +74,6 @@ export class SiteUserService {
   }
 
 
-
   handleError(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
@@ -87,12 +87,15 @@ export class SiteUserService {
   }
 
   changePasword(userName: string) {
+    debugger
     return this.httpClient
-      .get<String>(ROOT_URL + 'user/changePassword?userName=' + userName)
+      .post<string>(ROOT_URL + 'user/changePassword', userName)
       .pipe(
         map(
           data => {
-            alert('    אמור להשלח מייל עם הססמה' + data.toString());
+            alert(userName + '<br>' + data);
+            debugger
+            return data;
           },
           error => catchError(this.handleError),
         ));

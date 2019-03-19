@@ -23,6 +23,7 @@ import {LayoutFooterComponent} from './shared/components/layout/layout-footer/la
 // Services
 import {AuthService} from './shared/services/auth.service';
 import {CurrentUser} from './shared/currentUser';
+import {LoadImageBase64Component} from './shared/components/load-image-base64/load-image-base64.component';
 // import {OrderViewComponent} from './shopping/order-view/order-view.component';
 
 @NgModule({
@@ -36,7 +37,7 @@ import {CurrentUser} from './shared/currentUser';
     Auth2Module,
     AdminModule,
     ShoppingModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,

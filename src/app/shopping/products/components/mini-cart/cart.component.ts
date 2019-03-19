@@ -113,9 +113,9 @@ export class MiniCartComponent implements OnInit {
   async submitOrder() {
     const user = this.currUser.isLogin();
     if (user) {
-      await this.cartService.saveCartOnServer().subscribe(order => {
-        this.cartService.flushCart();
-        this.router.navigate(['/shopping/orderdetails/' + order.ID]);
+      await this.cartService.saveCartOnServer().subscribe(async order =>  {
+       await this.cartService.flushCart();
+       await this.router.navigate(['/shopping/orderdetails/' + order.ID]);
 
       });
     } else {

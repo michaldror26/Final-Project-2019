@@ -1,13 +1,19 @@
 <div class="col-12">
+  <h3 *ngIf="!customerId" class="mt-3">כל ההזמנות</h3>
+  <label>בחר לקוח </label>&nbsp;
   <select name="customersSelectOrder" (change)='onSelectCustomer($event)' class="my-4">
+    <option value="all" [selected]="true">הכל</option>
     <option *ngFor="let customer of customers"
-            [value]="customer.ID">{{customer.FirstName + " " + customer.LastName}}</option>
+            [value]="customer.ID"
+            [selected]="customer.ID === customerId">{{customer.FirstName + " " + customer.LastName}}</option>
   </select>
 </div>
 <ng-container *ngIf="orders.length > 0; else noOrder">
   <h3 class="my-4" *ngIf="customerId">הזמנות
     ללקוח: {{ orders[0].Customer.FirstName + " " + orders[0].Customer.LastName}} </h3>
-
+  <div class="mb-3">
+    <span>{{orders.length}}</span> <span>  הזמנות </span>
+  </div>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -35,5 +41,6 @@
   </table>
 </ng-container>
 
-<ng-template #noOrder><span class="my-4 font-weight-bold" style="font-size: xx-large">אין הזמנות ללקוח זה </span></ng-template>
+<ng-template #noOrder><span class="my-4 font-weight-bold d-block"
+                            style="font-size: xx-large">אין הזמנות ללקוח זה </span></ng-template>
 

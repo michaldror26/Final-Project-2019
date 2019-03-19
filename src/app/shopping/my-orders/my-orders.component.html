@@ -1,6 +1,6 @@
 <ng-container *ngIf="orders.length > 0; else noOrder">
   <h3 class="my-4">
-    {{currentUser.isAdmin() ? 'הזמנות ללקוח:' + orders[0].Customer.FirstName + " " + orders[0].Customer.LastName : 'הזמנות שלי: '}}
+    {{currentUser.isAdmin() ? 'הזמנות ללקוח:' + orders[0].Customer.FirstName + " " + orders[0].Customer.LastName : 'ההזמנות שלי '}}
   </h3>
   <table class="table table-striped">
     <thead>

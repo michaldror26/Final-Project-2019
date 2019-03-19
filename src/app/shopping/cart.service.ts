@@ -156,7 +156,6 @@ export class CartService {
     const productsToSubmit: any[] = [];
     this.orderProducts.forEach(prod =>
       productsToSubmit.push({productId: prod.Product.ID, Amount: prod.Amount}));
-
     if (this.type != null) {
       if (this.owerId == null) {
         if (this.currentUser.isAdmin()) {
@@ -173,9 +172,5 @@ export class CartService {
       return this.orderService.add(productsToSubmit);
     }
 
-  }
-
-  ngOnDestroy() {
-    console.log('destroy!!');
   }
 }

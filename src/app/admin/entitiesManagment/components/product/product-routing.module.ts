@@ -13,8 +13,8 @@ import {ProductService} from '../../../../shared/services/product.service';
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'view'},
   {path: 'view', component: ProductViewComponent, data: {name: 'מוצרים', atNavBar: true}},
-  {path: 'edit/:id', component: ProductEditComponent, data: {name: 'עריכה מחדש', atNavBar: true}},
-  {path: 'create', component: ProductCreateComponent, data: {name: 'מוצר חדש', atNavBar: true}},
+  {path: 'addoredit/:id', component: ProductEditComponent, data: {name: 'עריכה מחדש', atNavBar: true}},
+  {path: 'addoredit', component: ProductEditComponent, data: {name: 'מוצר חדש', atNavBar: true}},
   {path: 'delete/:id', component: ProductDeleteComponent, data: {name: 'מחיקה', atNavBar: false}},
   {path: 'details/:id', component: ProductDetailsComponent, data: {name: 'פרטים', atNavBar: false}},
 ];

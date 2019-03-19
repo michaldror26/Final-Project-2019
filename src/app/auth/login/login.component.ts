@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
   private sub: any;
   returnPage: string;
   isValidData: boolean = true;
-  userName: String = '';
+  userName: string = '';
   isUserLogin: boolean = false;
 
- errorMessage:String;
+  errorMessage: string;
 
   constructor(private siteUserService: SiteUserService,
               private authService: AuthService,
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.isUserLogin = this.userName !== '';
   }
 
- async ngOnInit() {
+  async ngOnInit() {
     this.sub = await this.activateRoute
       .queryParams
       .subscribe(params => {
@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-async  validateMe(data) {
+  async validateMe(data) {
     this.isValidData = true;
-   await this.siteUserService.login(data.userName || this.userName, data.password).subscribe(
+    await this.siteUserService.login(data.userName || this.userName, data.password).subscribe(
       data => {
         this.router.navigate([this.returnPage]);
       },
@@ -72,8 +72,9 @@ async  validateMe(data) {
     this.cookieService.set('userName', userName);
   }
 
- async forgetPassword(userName) {
-   await this.siteUserService.changePasword(userName).subscribe();
+  async forgetPassword() {
+    debugger
+    await this.siteUserService.changePasword(this.userName).subscribe(data => this.errorMessage = data);
   }
 
   changeUser() {

@@ -25,7 +25,7 @@ export class ProductService {
   }
 
   getProducts(): Observable<Product[]> {
-    return this._http.get<Product[]>(ROOT_URL + 'product/getAllProducts')
+    return this._http.get<Product[]>(ROOT_URL + 'products/getAllProducts')
       .pipe(
         catchError((error: Response) => {
           return throwError('Something went wrong');
@@ -34,7 +34,7 @@ export class ProductService {
 
   getProduct(id: number): Observable<Product> {
     return this._http
-      .get<Product>(ROOT_URL + 'product/getProduct?id=' + id)
+      .get<Product>(ROOT_URL + 'products/getProduct?id=' + id)
       .pipe(
         map(
           data => {

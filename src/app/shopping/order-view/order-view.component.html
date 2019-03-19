@@ -2,6 +2,9 @@
 
   <div class="col-12">
     <button class="btn btn-lg btn-secondary my-2"
+            (click)="backClicked()">אחורה
+    </button>
+    <button class="btn btn-lg btn-secondary my-2"
             [routerLink]="[currentUser.isCustomer()? '/shopping/myorders':'/reports/all-sales-orders']">לכל ההזמנות
     </button>
 

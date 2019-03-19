@@ -11,6 +11,7 @@ import {ProductComponent} from './components/product.component';
 import {ProductRoutingModule} from './product-routing.module';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {ProductService} from '../../../../shared/services/product.service';
+import {LoadImageBase64Component} from '../../../../shared/components/load-image-base64/load-image-base64.component';
 
 
 
