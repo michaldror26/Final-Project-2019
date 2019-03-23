@@ -1,12 +1,13 @@
 <div class="row container mx-auto mt-3">
 
   <div class="col-12">
-    <button class="btn btn-lg btn-secondary my-2"
+    <button class="btn btn-lg btn-secondary my-2 ml-1"
             (click)="backClicked()">אחורה
     </button>
-    <button class="btn btn-lg btn-secondary my-2"
+    <button class="btn btn-lg btn-secondary m-1"
             [routerLink]="[currentUser.isCustomer()? '/shopping/myorders':'/reports/all-sales-orders']">לכל ההזמנות
     </button>
+    <button class="btn btn-lg btn-secondary m-1" (click)="print()">הדפסה</button>
 
     <ng-container *ngIf="order && order.SaleOrderProducts" ; else notFound>
       <div class="card">

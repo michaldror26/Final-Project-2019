@@ -37,9 +37,15 @@ export class OrderViewComponent implements OnInit {
         }
       );
   }
+
   backClicked() {
     window.history.back();
   }
+
+  print() {
+    window.print();
+  }
+
   calcTotalSum() {
     this.totalSum = 0;
     (this.order.SaleOrderProducts as Array<any>).forEach(item => {

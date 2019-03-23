@@ -58,7 +58,7 @@ export class InventoryService {
     );
   }
 
-// c:Category parameter
+// c:Category parameter\
   getAllSubCategories(): Observable<Product[]> {
     return this.httpClient
       .get<Product[]>(ROOT_URL + 'products/category/2')
