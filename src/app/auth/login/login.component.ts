@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   isValidData: boolean = true;
   userName: string = '';
   isUserLogin: boolean = false;
-
+  userNameText: '';
   errorMessage: string;
 
   constructor(private siteUserService: SiteUserService,
@@ -73,8 +73,7 @@ export class LoginComponent implements OnInit {
   }
 
   async forgetPassword() {
-    debugger
-    await this.siteUserService.changePasword(this.userName).subscribe(data => this.errorMessage = data);
+    await this.siteUserService.changePasword(this.userNameText).subscribe(data => this.errorMessage = data);
   }
 
   changeUser() {

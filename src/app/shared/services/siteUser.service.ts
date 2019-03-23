@@ -87,14 +87,12 @@ export class SiteUserService {
   }
 
   changePasword(userName: string) {
-    debugger
     return this.httpClient
-      .post<string>(ROOT_URL + 'user/changePassword', userName)
+      .post<string>(ROOT_URL + 'user/changePassword?userName=' + userName, userName)
       .pipe(
         map(
           data => {
-            alert(userName + '<br>' + data);
-            debugger
+            alert(userName + '\n' + data);
             return data;
           },
           error => catchError(this.handleError),
