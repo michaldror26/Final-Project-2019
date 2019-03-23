@@ -28,5 +28,4 @@ export class InventoryComponent implements OnInit {
   searchText(text) {
     this.inventory = this._service.search(text, this.inventoryReal, this.countFrom, this.countTo);
   }
-
 }
