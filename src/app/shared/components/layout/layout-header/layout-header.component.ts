@@ -63,7 +63,8 @@ export class LayoutHeaderComponent implements OnInit {
     },
     {
       path: 'statistics', data: ['סטטיסטיקה'], children: [
-        {path: 'sale-products', data: ['מכירת מוצרים']},
+        {path: 'periodic-sales-dashboard', data: [ 'דשבורד מכירות תקופתי']},
+        {path: 'annual-sales-dashboard', data: [ 'דשבורד מכירות שנתי']},
       ]
     }
   ];

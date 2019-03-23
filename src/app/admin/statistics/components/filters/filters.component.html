@@ -1,0 +1,62 @@
+<button type="button" class="toggle-btn" (click)="sideShown = true">Filters</button>
+<div  [class.side-shown]="sideShown">
+  <button type="button" class="close-side-btn" (click)="sideShown = false">x</button>
+
+  <div *ngIf="type=='select'">
+  <!--class="filters" class="category-filter filter-wrapper" -->
+  <form *ngIf = "showFilters">
+    <select  class="form-control" checked (change)='onSelectChange($event)'>
+    <option  *ngFor = 'let filter of dataset; index as i'
+    [attr.selected]="filter == deafult || i == deafult_index ? true : null ">
+      
+        <span class="label">{{filter}}</span>
+        <span></span>
+      
+    </option>
+  </select>
+  </form>
+  </div>
+
+<!-- <div *ngIf="type==month">
+  <h5>בחר חודש</h5>
+  <form *ngIf = "showFilters">
+    <select checked (change)='onSelectMonthChange($event)'>
+    <option class="category-filter filter-wrapper" *ngFor = 'let filter of months; index as i'
+    [attr.selected]="i == currentMonth ? true : null">
+      
+        <span class="label">{{filter}}</span>
+        <span></span>
+      
+    </option>
+  </select>
+  </form>
+</div> -->
+
+<div *ngIf="type=='radio'">
+  
+  <form *ngIf = "showFilters">
+    <div class="custom-filter filter-wrapper" *ngFor = 'let filter of dataset; index as i'>
+        <label class="fake-checkbox">
+          <input type="checkbox" name="price" checked=true (click)='onInputChange($event, i)'
+          [checked]="deafult_index!=undefined&&deafult_index[i]          
+          || deafult_index==undefined ? true : null ">
+          <span class="circle"><span class="fill"></span></span>
+          <span class="label">{{filter}}</span>
+          <span></span>
+        </label>
+    </div>
+  </form>
+</div>
+<!-- <h5>בחר מוצרים</h5> -->
+  <!-- <h5>בחר לקוחות</h5>
+  <form *ngIf = "showFilters">
+    <div class="custom-filter filter-wrapper" *ngFor = 'let filter of customers; index as i'>
+        <label class="fake-checkbox">
+          <input type="checkbox" name="custom" checked=true (click)='onInputChange($event, i, "customer")'>
+          <span class="circle"><span class="fill"></span></span>
+          <span class="label">{{filter}}</span>
+          <span></span>
+        </label>
+    </div>
+  </form> -->
+</div>

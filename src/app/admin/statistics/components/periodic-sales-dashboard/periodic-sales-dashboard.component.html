@@ -1,0 +1,117 @@
+<script src="node_modules/chart.js/src/chart.js"></script>
+<div class="main-container">
+  <div class="container-fluid">
+      <div class="row">
+       <h2>ביצועי מכירות</h2> 
+       
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label  click="updateCharts()" class="btn btn-secondary active">
+                  <input type="radio" name="options" id="option1" autocomplete="off" checked> לפי מחיר
+                </label>
+                <label click="updateAmountCharts()" class="btn btn-secondary">
+                  <input type="radio" name="options" id="option2" autocomplete="off"> לפי כמות
+                </label>
+              </div>
+        </div>
+    <div *ngIf="loadedMonthGraph" class="row section">
+        <div clas="col-4">  
+            <h6>בחר שנה:</h6>  
+            <filters [dataset]='years' [type]='"select"' [deafult]='cy' (onFilterChange)="onFilterChange($event, 'year')"></filters>
+            <h6>בחר חודש:</h6>
+            <filters [dataset]='months' [type]='"select"' [deafult_index]='cm' (onFilterChange)="onFilterChange($event, 'month')"></filters>  
+          </div>
+        <div class="col-8">
+           
+           <div class="row">
+                <div class="col">
+                   <h5>מכירות מצטברות שנה נוכחית</h5>
+                    <h1>{{aggregateSalesCy |number:'1.0-2'}}</h1>
+                    <h6>השוואה לשנה קודמת</h6>
+                    <P>{{sum1 |percent:'1.0-2'}}</P>
+                </div>
+                <div class="col">
+                  <h5>מכירות חודש נוכחי</h5>
+                  <h1>{{saleMonthData[cm] |number:'1.0-2'}}</h1>
+                  <div class="row">
+                      <div class="col">               
+                         <h6>השוואה לחודש קודם</h6>
+                         <P>{{sum |percent:'1.0-2'}}</P>
+                      </div>
+                     <div class="col">
+                    
+                         <h6>השוואה לחודש אשתקד</h6>
+                          <P>{{sum2 |percent:'1.0-2'}}</P>
+                    </div>
+                  </div>
+                </div>
+            
+          
+    </div>
+    </div>
+  </div>
+    <div class="row">
+      
+        <div    class="col">
+          <div *ngIf="loadedProductGraph" class="row section">
+          <div  class="col-4">
+              <filters [dataset]='allProductsName' [type]='"radio"' (onFilterChange)="onFilterChange($event, 'product')"></filters>
+            </div>
+          <div class="col-8">
+              <div  class=".chartRegularView" style="display: block">
+                  <canvas baseChart #chart="base-chart"
+                          [data]="productChartData"
+                          [labels]="productChartLabels"
+                          [legend]="chartLegend"
+                          [options]="chartOption"
+                          chartType="horizontalBar"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+                </div>
+          </div>
+        </div>
+         </div>
+
+        <div  class="col">
+          <div *ngIf="loadedCustomerGraph"class="row section">
+            <div  class="col-4">
+                <filters [dataset]='allCustomersName'  [type]='"radio"' (onFilterChange)="onFilterChange($event, 'customer')"></filters>
+              </div>
+            <div class="col-8">
+                <div  style="display: block">
+                 <canvas baseChart #chart1="base-chart"
+                         [data]="customersChartData"
+                         [labels]="customersChartLabels"
+                         [legend]="chartLegend"
+                         [options]="chartOption"
+                         chartType="horizontalBar"
+                         (chartHover)="chartHovered($event)"
+                         (chartClick)="chartClicked($event)"></canvas>
+               </div>
+              </div>
+            </div>
+         </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+             
+    
+
+ 
+              
+                 
