@@ -1,5 +1,5 @@
 <div *ngIf="!submit">
-  <p>{{!cartService || !cartService.orderProducts || cartService.orderProducts.length == 0 || expanded}}</p>
+  <!--<p>{{!cartService || !cartService.orderProducts || cartService.orderProducts.length == 0 || expanded}}</p>-->
 <div class="preview" [class.expanded]='expanded'>
   <button [class.not-shown]='numProducts() == 0 || expanded' [class.shown]='!expanded || numProducts() != 0'
           type="button" class="circle" (click)="onCartClick()">

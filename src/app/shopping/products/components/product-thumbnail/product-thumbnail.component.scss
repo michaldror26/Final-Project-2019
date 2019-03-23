@@ -50,9 +50,10 @@
     margin-bottom: 0;
   }
 
-.available {
-  width: -webkit-fill-available;
-}
+  .available {
+    width: -webkit-fill-available;
+  }
+
   hr {
     width: 90%;
     width: -webkit-fill-available;
@@ -279,7 +280,7 @@
     transform: translateY(32px);
   }
   .img-wrapper {
-    height: 123px;
+    height: 171px;
   }
 
   .detail-view {

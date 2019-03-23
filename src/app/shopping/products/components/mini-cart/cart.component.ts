@@ -65,7 +65,7 @@ export class MiniCartComponent implements OnInit {
   }
 
   async initCart() {
-    debugger
+    // debugger
     this.expandedHeight = '0';
     await this.cartService.productAdded$.subscribe(data => {
 

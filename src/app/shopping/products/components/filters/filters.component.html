@@ -1,4 +1,4 @@
-<button type="button" class="toggle-btn" (click)="sideShown = true">Filters</button>
+<button type="button" class="toggle-btn" (click)="sideShown = true">סינון</button>
 <div class="filters" [class.side-shown]="sideShown">
   <button type="button" class="close-side-btn" (click)="sideShown = false">x</button>
   <h5>סינון לפי קטגוריות</h5>
@@ -23,15 +23,15 @@
         </label>
     </div>
   </form>
-  <h5>סינון מותאם</h5>
-  <form *ngIf = "showFilters">
-    <div class="custom-filter filter-wrapper" *ngFor = 'let filter of customFilters'>
-        <label class="fake-checkbox">
-          <input type="radio" name="custom" [checked]='filter.checked' (click)='onInputChange($event, filter, "custom")'>
-          <span class="circle"><span class="fill"></span></span>
-          <span class="label">{{filter.name}}</span>
-          <span></span>
-        </label>
-    </div>
-  </form>
+  <!--<h5>סינון מותאם</h5>-->
+  <!--<form *ngIf = "showFilters">-->
+    <!--<div class="custom-filter filter-wrapper" *ngFor = 'let filter of customFilters'>-->
+        <!--<label class="fake-checkbox">-->
+          <!--<input type="radio" name="custom" [checked]='filter.checked' (click)='onInputChange($event, filter, "custom")'>-->
+          <!--<span class="circle"><span class="fill"></span></span>-->
+          <!--<span class="label">{{filter.name}}</span>-->
+          <!--<span></span>-->
+        <!--</label>-->
+    <!--</div>-->
+  <!--</form>-->
 </div>
