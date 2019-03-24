@@ -47,15 +47,14 @@ export class SearchBarComponent implements OnInit {
   */
   private onSearchKeyup(search: string) {
     let change = 0;
-    if (search.length > this.previousSearch.length) {
+    if (search !== this.previousSearch) {
       change = 1;
-    } else if (search.length < this.previousSearch.length) {
+    } else {
       change = -1;
     }
     this.previousSearch = search;
-    if (change != 0) {
       console.log(({search, change}));
+      if(this.previousSearch != "")
       this.onSearchChange.emit({search, change});
-    }
   }
 }

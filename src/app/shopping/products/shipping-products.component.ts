@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { FiltersComponent } from './components/filters/filters.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { DataService } from '../data.service';
-import { CartService } from '../cart.service';
-import { Product } from 'src/app/shared/models/Product.class';
-import { Category } from 'src/app/shared/models/Category.class';
+import {Component, OnInit, ViewChild, Input} from '@angular/core';
+import {FiltersComponent} from './components/filters/filters.component';
+import {SearchBarComponent} from './components/search-bar/search-bar.component';
+import {DataService} from '../data.service';
+import {CartService} from '../cart.service';
+import {Product} from 'src/app/shared/models/Product.class';
+import {Category} from 'src/app/shared/models/Category.class';
 
 @Component({
   selector: 'app-shipping-products',
@@ -13,7 +13,7 @@ import { Category } from 'src/app/shared/models/Category.class';
 })
 export class ShippingProductsComponent implements OnInit {
   @Input()
-  type:string;
+  type: string;
   products: Product[];
   categories: Category[] = [];
   mainFilter: any;
@@ -27,15 +27,15 @@ export class ShippingProductsComponent implements OnInit {
   searchComponent: SearchBarComponent;
 
   sortFilters: any[] = [
-    { name: 'שם (א-ת)', value: 'name' },
-    { name: 'מחיר (מהנמוך לגבוה)', value: 'priceAsc' },
-    { name: 'מחיר (מהגבוה לנמוך)', value: 'priceDes' }
+    {name: 'שם (א-ת)', value: 'name'},
+    {name: 'מחיר (מהנמוך לגבוה)', value: 'priceAsc'},
+    {name: 'מחיר (מהגבוה לנמוך)', value: 'priceDes'}
   ];
 
   priceFilters: any[] = [
-    { name: 'הכל', value: 'all', checked: true },
-    { name: 'מחיר > 30.000', value: 'more_30000', checked: false },
-    { name: 'מחיר < 10.000', value: 'less_10000', checked: false }
+    {name: 'הכל', value: 'all', checked: true},
+    {name: 'מחיר > 30.000', value: 'more_30000', checked: false},
+    {name: 'מחיר < 10.000', value: 'less_10000', checked: false}
   ];
 
   originalData: Product[] = [];
@@ -44,42 +44,22 @@ export class ShippingProductsComponent implements OnInit {
 
   }
 
-   async ngOnInit() {
-
-    // this.dataService.getAllProducts().then(
-    //   data => {this.originalData=data;
-    //            this.products = this.originalData.slice(0);}
-    //            );
-
-    //  this.dataService.getAllCategories().then(
-    //    data=>{this.categories=data;                  
-    //    this.mainFilter = {
-    //      search: '',
-    //      categories: this.categories,
-    //     // customFilter: this.customFilters[0],
-    //      priceFilter: this.priceFilters[0]
-    //    };
-    //   });
-    if(this.type){
-      console.log("type="+this.type);
-      this.cartService.type=this.type;}
-
-
-    
-    // this.dataService.getAllProducts().subscribe(f => this.originalData = f);
-    //  this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
+  async ngOnInit() {
+    if (this.type) {
+      console.log('type=' + this.type);
+      this.cartService.type = this.type;
+    }
     this.products = this.originalData;
     if (!this.originalData || this.originalData.length == 0) {
 
       await this.dataService.getProductsFromServer().subscribe(d => this.originalData = this.products = d);
-      await this.dataService.getCategoriesFromServer().subscribe(d => this.categories = d);
+      await this.dataService.getCategoriesFromServer().subscribe(d => this.mainFilter.categories = this.categories = d);
       // this.originalData = this.products =  [
       //   { ID: 1, CategoryId: 2, Name: 'product1', SellingPrice: 25  },
       //   { ID: 2, CategoryId: 3, Name: 'product2', SellingPrice: 125  },
       //   { ID: 3, CategoryId: 3, Name: 'product3', SellingPrice: 255  },
       //   { ID: 4, CategoryId: 2, Name: 'product4', SellingPrice: 85  }
       // ];
-
     }
     this.mainFilter = {
       search: '',
@@ -127,12 +107,13 @@ export class ShippingProductsComponent implements OnInit {
   }
 
   onFilterChange(data) {
+    debugger;
     if (data.type == 'category') {
       if (data.isChecked) {
         this.mainFilter.categories.push(data.filter);
       } else {
         this.mainFilter.categories = this.mainFilter.categories.filter(category => {
-          return category.ID != data.filter.ID;
+          return category.ID !== data.filter.ID;
         });
       }
     } else if (data.type == 'custom') {
@@ -151,7 +132,8 @@ export class ShippingProductsComponent implements OnInit {
     let prevProducts = this.products;
     let filterAllData = true;
     if ((filter.type == 'search' && filter.change == 1) || (filter.type == 'category' && filter.change == -1)) {
-      productsSource = this.products;
+      // productsSource = this.products;
+      productsSource = this.originalData;
       filterAllData = false;
     }
     //console.log('filtering ' + productsSource.length + ' products')
@@ -169,7 +151,10 @@ export class ShippingProductsComponent implements OnInit {
         let passCategoryFilter = false;
         if (!passCategoryFilter) {
           passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
-            return found || p.CategoryId == category.ID;
+            return found || p.CategoryId === category.ID
+              || p.Category.ParentCategory && p.Category.ParentCategory.ID === p.CategoryId
+              || p.Category.ParentCategory && p.Category.ParentCategory.ParentCategory && p.Category.ParentCategory.ParentCategory.ID === category.ID
+              || p.Category.ParentCategory && p.Category.ParentCategory.ParentCategory  && p.Category.ParentCategory.ParentCategory.ParentCategory && p.Category.ParentCategory.ParentCategory.ParentCategory.ID === category.ID;
           }, false);
         }
         if (!passCategoryFilter) {
@@ -232,7 +217,7 @@ export class ShippingProductsComponent implements OnInit {
     this.currentSorting = criteria;
   }
 
-setOwer(Id:number){
-  this.cartService.owerId=Id;
- }
+  setOwer(Id: number) {
+    this.cartService.owerId = Id;
+  }
 }
