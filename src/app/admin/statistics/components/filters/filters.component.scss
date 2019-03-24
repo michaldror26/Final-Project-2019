@@ -12,6 +12,7 @@
   border-radius: 4px;
   padding-top: 1px;
   position: relative;
+  right: 0px;
 }
 
 .filter{
@@ -28,6 +29,7 @@
 
 .filter-wrapper{
   margin-bottom: 8px;
+ 
   label{
     cursor: pointer;
     &:hover .label{
