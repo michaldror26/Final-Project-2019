@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {logger} from 'codelyzer/util/logger';
 
 @Component({
@@ -6,7 +6,7 @@ import {logger} from 'codelyzer/util/logger';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent implements OnInit, OnDestroy {
 
   previousSearch: string;
 
@@ -22,6 +22,11 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.previousSearch = '';
+    window.addEventListener('scroll', this.scroll);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('scroll', this.scroll);
   }
 
   //Perform a plop animation on the search icon. This animation is executed on keydown just for visual reasons
@@ -39,6 +44,10 @@ export class SearchBarComponent implements OnInit {
     });
   }
 
+  scroll() {
+    document.getElementById('filterTop').style.top = window.scrollY >= 98 ? '45px' : '103px';
+  }
+
   /*
     This event will emit an object indicating the new search term, and:
       -1 if the search term length has descreased
@@ -53,8 +62,8 @@ export class SearchBarComponent implements OnInit {
       change = -1;
     }
     this.previousSearch = search;
-      console.log(({search, change}));
-      if(this.previousSearch != "")
-      this.onSearchChange.emit({search, change});
+    console.log(({search, change}));
+    // if(this.previousSearch != "")
+    this.onSearchChange.emit({search, change});
   }
 }

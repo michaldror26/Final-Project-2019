@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Category } from 'src/app/shared/models/Category.class';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Category} from 'src/app/shared/models/Category.class';
 
 @Component({
   selector: 'filters',
@@ -9,39 +9,46 @@ import { Category } from 'src/app/shared/models/Category.class';
 export class FiltersComponent implements OnInit {
 
   @Input()
-  categories: Category[]
+  categories: Category[];
 
   @Input()
-  customFilters: any[]
+  customFilters: any[];
 
   @Input()
-  priceFilters: any[]
+  priceFilters: any[];
 
   @Output()
-  onFilterChange = new EventEmitter<any>()
+  onFilterChange = new EventEmitter<any>();
 
 
-  showFilters: boolean = true
+  showFilters: boolean = true;
 
-  sideShown: boolean = false
+  sideShown: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
 
-  reset(customFilters, priceFilters){
-    this.customFilters = customFilters
-    this.priceFilters = priceFilters
-    this.showFilters = false
+  ngOnInit() {
+    window.addEventListener('scroll', this.scroll);
+  }
+
+  scroll() {
+    let yy = document.getElementById('toggle-btn');
+    if (yy)
+      yy.style.top = window.scrollY < 98 ? '67px' : '11px';
+  }
+
+  reset(customFilters, priceFilters) {
+    this.customFilters = customFilters;
+    this.priceFilters = priceFilters;
+    this.showFilters = false;
     setTimeout(() => {
       this.showFilters = true;
     });
   }
 
-  onInputChange($event, filter, type){
-    debugger
-    let change = $event.target.checked ? 1: -1;
+  onInputChange($event, filter, type) {
+    let change = $event.target.checked ? 1 : -1;
     this.onFilterChange.emit({
       type: type,
       filter: filter,

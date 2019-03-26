@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, Input} from '@angular/core';
+import {Component, OnInit, ViewChild, Input, OnDestroy} from '@angular/core';
 import {FiltersComponent} from './components/filters/filters.component';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {DataService} from '../data.service';
@@ -11,13 +11,12 @@ import {Category} from 'src/app/shared/models/Category.class';
   templateUrl: './shipping-products.component.html',
   styleUrls: ['./shipping-products.component.scss']
 })
-export class ShippingProductsComponent implements OnInit {
+export class ShippingProductsComponent implements OnInit, OnDestroy {
   @Input()
   type: string;
   products: Product[];
   categories: Category[] = [];
   mainFilter: any;
-
   currentSorting: string;
 
   @ViewChild('filtersComponent')
@@ -67,7 +66,7 @@ export class ShippingProductsComponent implements OnInit {
       // customFilter: this.customFilters[0],
       priceFilter: this.priceFilters[0]
     };
-
+    window.addEventListener('scroll', this.scroll);
     // Make a deep copy of the original data to keep it immutable
     //this.sortProducts('name');
 
@@ -75,6 +74,8 @@ export class ShippingProductsComponent implements OnInit {
 
   ngOnDestroy() {
     this.cartService.saveCartLocaly();
+    window.removeEventListener('scroll', this.scroll);
+
   }
 
   onURLChange(url) {
@@ -107,7 +108,7 @@ export class ShippingProductsComponent implements OnInit {
   }
 
   onFilterChange(data) {
-    debugger;
+    // debugger;
     if (data.type == 'category') {
       if (data.isChecked) {
         this.mainFilter.categories.push(data.filter);
@@ -140,6 +141,8 @@ export class ShippingProductsComponent implements OnInit {
     this.products = productsSource.filter(p => {
       //Filter by search
       if (filterAllData || filter.type == 'search') {
+        if (this.mainFilter.search === '')
+          return true;
         if (!p.Name.match(new RegExp(this.mainFilter.search, 'i')) && !p.Name.includes(this.mainFilter.search)) {
           return false;
         }
@@ -154,7 +157,7 @@ export class ShippingProductsComponent implements OnInit {
             return found || p.CategoryId === category.ID
               || p.Category.ParentCategory && p.Category.ParentCategory.ID === p.CategoryId
               || p.Category.ParentCategory && p.Category.ParentCategory.ParentCategory && p.Category.ParentCategory.ParentCategory.ID === category.ID
-              || p.Category.ParentCategory && p.Category.ParentCategory.ParentCategory  && p.Category.ParentCategory.ParentCategory.ParentCategory && p.Category.ParentCategory.ParentCategory.ParentCategory.ID === category.ID;
+              || p.Category.ParentCategory && p.Category.ParentCategory.ParentCategory && p.Category.ParentCategory.ParentCategory.ParentCategory && p.Category.ParentCategory.ParentCategory.ParentCategory.ID === category.ID;
           }, false);
         }
         if (!passCategoryFilter) {
@@ -164,14 +167,15 @@ export class ShippingProductsComponent implements OnInit {
 
       //Filter by price filters
       if (filterAllData || filter.type == 'price') {
+        debugger
         let passPriceFilter = false;
         let customFilter = this.mainFilter.priceFilter.value;
         let productPrice = parseFloat(p.SellingPrice.toString().replace(/\./g, '').replace(',', '.'));
         if (customFilter == 'all') {
           passPriceFilter = true;
-        } else if (customFilter == 'more_30000' && productPrice > 30000) {
+        } else if (customFilter == 'more_30000' && p.SellingPrice > 30) {
           passPriceFilter = true;
-        } else if (customFilter == 'less_10000' && productPrice < 10000) {
+        } else if (customFilter == 'less_10000' && p.SellingPrice < 10) {
           passPriceFilter = true;
         }
         if (!passPriceFilter) {
@@ -192,6 +196,10 @@ export class ShippingProductsComponent implements OnInit {
     if (filter.type == 'custom' || filter.type == 'price') {
       this.sortProducts(this.currentSorting);
     }
+  }
+
+  scroll() {
+    document.getElementById('searchTop').style.top = window.scrollY >= 98 ? '0px' : '58px';
   }
 
   sortProducts(criteria) {

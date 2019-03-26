@@ -33,6 +33,7 @@ export class CartService {
   ) {
     let curUser = this.currentUser.get();
     this.owerId = curUser ? curUser.ID : null;
+
   }
 
   init() {
@@ -152,7 +153,8 @@ export class CartService {
     localStorage.setItem('products', JSON.stringify(this.orderProducts));
   }
 
-  saveCartOnServer(): Observable<SaleOrder> {
+  public saveCartOnServer(): Observable<SaleOrder> {
+    debugger;
     const productsToSubmit: any[] = [];
     this.orderProducts.forEach(prod =>
       productsToSubmit.push({productId: prod.Product.ID, Amount: prod.Amount}));
@@ -162,11 +164,12 @@ export class CartService {
           alert('עליך לבחור נמען');
           return;
         }
-      } else if (this.currentUser.isCustomer()) {
-        this.owerId = this.currentUser.get().ID; // הזמנה ללקוח נוכחי debugger
+      } else {
+        if (this.currentUser.isCustomer()) {
+          this.owerId = this.currentUser.get().ID; // הזמנה ללקוח נוכחי debugger
+        }
         return this.orderService.add(productsToSubmit, this.owerId);
       }
-
     } else {
       // take id from session on server
       return this.orderService.add(productsToSubmit);

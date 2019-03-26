@@ -21,11 +21,9 @@ export class ContactUsService {
       .pipe(
         map(
           data => {
-            debugger
             return data;
           },
           error => {
-            debugger
           }
         ));
   }
