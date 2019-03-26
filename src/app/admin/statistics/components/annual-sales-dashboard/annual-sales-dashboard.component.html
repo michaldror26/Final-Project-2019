@@ -26,17 +26,16 @@
            
            <div *ngIf="isDataLoaded==true">
                <div  class="row"> 
-               <!-- //   [colors]="lineChartColors" (chartClick)="chartClicked($event)" (chartHover)="chartHovered($event)"  -->
+               <!-- //    (chartClick)="chartClicked($event)" (chartHover)="chartHovered($event)"  -->
               <div style=" height:50%;width:100%;  display: block;">
                 <canvas baseChart class="chart"
                             [datasets]="ChartAggregateMonthData"
                             [labels]="selectedMonthLabels"
                             [options]="lineChartOptions"
-                          
+                            [colors]="lineChartColors"
                             [legend]="lineChartLegend"
                             [chartType]="lineChartType"
                             [plugins]="lineChartPlugins" 
-                            [colors]="chartColors"
                            ></canvas>
                 </div>
             </div>
@@ -56,7 +55,7 @@
                      <!-- //  (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" -->
                   <div style="display: block">
                     <canvas baseChart [datasets]="charSumMonthData" [labels]="selectedMonthLabels" [options]="sumBarChartOptions"
-                      [plugins]="barChartPlugins" legend=false chartType="bar"
+                    [colors]="chartColors"  [plugins]="barChartPlugins" legend=false chartType="bar"
                       ></canvas>
                   </div> 
                  
